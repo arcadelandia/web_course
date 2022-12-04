@@ -1,21 +1,54 @@
+<section id=”Internet”>
 1) Introduction to the Internet, programming, and Web programming
 
 The Internet is a collection of computers that can intercommunicate. Most computers are smartphones, and there are also laptops, desktops, tablets, routers, servers, and specialized computers. Although any of these can serve any purpose, smartphones, laptops, desktops, and tablets are usually accessors of information, servers are storers of information, routers are dispatchers of information flowing between some of those other types (are what internet service providers use to create their networks), and specialized computers are usually measurers of information (e.g., a weather station sensor monitoring data). All computers that are connected to the Internet have at least one Internet address (called an IP address) used to reach them. When a browser asks for a website, it finds the IP address of the destination website , and creates a message addressed to that destination IP address writing its own IP address as sender, and asking for whatever data it wants to know. The message passes to the router of the entity providing service to the browser (Internet Service Provider, or ISP) and this ISP then chooses to which ISP to send it next ( eg in a Burgos to Sydney path, the ISPs could be Movistar to BT, BT to ATT, ATT to Telstra). The destination server receives the message, and replies to the browser with another message addressed to the browser IP address as destination, and its own IP address as sender, and containing the reply data (either the requested data or an error if it does not exist, etc). This is the same way in which the postal office operates. ISP computers are called routers, Routers use those IP addresses to decide how to route those messages through the Internet from source to destination(e.g. from a browser in Burgos to a server in Sydney the request may go through Madrid to Ottawa to Vancouver to Hawaii to Sydney, and the reply may come trough Tokyo to Vladivostok to Moscow to Paris to Irun to Burgos). Routers may use the destination or source IP addresses to filter messages, or to prevent them from being transmitted, etc (e.g. a router belonging to a Japanese internet provider may be legally forced to stop messages originated in Australian addresses if that is the law, or something like that).
+</section>
 
+<section id=”Web”>
 Web is the part of Internet data that can be accessed with a program called a Web browser. Web browsers are usually standalone programs that allow access to any website (Chrome, Edge, Firefox, Opera, Safari, etc) but can also be smartphone apps that allow access only to a given website selected by the creator of the app. The information that Web browsers use is typically stored in servers, and consists of data to be shown to the browser user, plus instructions for the browser about how to present that information to the user. The server also runs special software called a webserver in charge of controlling who is allowed access to data, whether encryption will be used to transmit the data, etc.; due to server cost issues, historically several webservers belonging to different users had to share the same server (e.g. one with her webserver about music, another with her webserver about poetry, etc). Thus, in order for browser users to be able to distinguish which particular webserver they want to access among all the ones running in the same server, each webserver running in a given server is assigned a unique number called a port(between 0 and 65535). When a browser gets information from some server, it needs to indicate that port; either the user indicates it, or a default one is tried.
-
+</section>
+<section id=”Computer”>
 A computer is basically a large database of symbols stored in an electronic circuit called RAM memory (e.g., 1GB means 1 thousand million symbols, where each symbol is called a byte, and has one of 256 values that are typically represented as letters, numbers, or punctuation signs), and another electronic  circuit called the CPU that move bytes around RAM, checks their values, and changes them (all these circuits are collectively called the hardware). A set of instructions to do that kind of thing is called a program (or software). Web browsers are examples of programs. All elements of computers produce or consume data that ultimately is stored in RAM: keyboards put data in the RAM, same as mouse movements and clicks, or finger movements in smartphones; screens show parts of RAM to the user, 5G and Wifi cards take parts of RAM and send it through the Internet, and receive data from the Internet and put it in RAM; hard drives and other storage media grab parts of RAM and store them inside as files, and also copy the data they store inside into RAM when the user wants to access it.
-
+<section>
+<section id=”Programming”>
 Programming is instructing any part of the computer to do something. Programs can be targeted at controlling the CPU, or at controlling another program (like a browser, or a media player, or the operating system). If the target is the CPU, the program must be in something called machine code, hard for humans to write and read and understand. Thus, English-based programming languages have been designed to make the task easier (so called high-level programming languages), and a special program called a compiler translates those into machine code. When the target to be controlled is a program rather than the CPU, the English-based language can be used directly; this is called interpretation (interpreted language). In theory, any programming language can be compiled or interpreted, but in practice, some tend to be compiled nearly always, and others interpreted nearly always as well. Web programming languages tend to be interpreted.
-
+</section>
+<section id=”Web programming”>
 Web programming is the creation of programs that affect the information presented by browsers. This includes the creation of programs that control the browser itself (called frontend Web programming), and programs controlling processes in the server that communicate with the browser (typically database management, in what is called backend programming). Programmers usually specialize as frontend programmers, or as backend programmers; some work in both, and are called full-stack programmers.
-
+</section>
+<section id=”Frontend web programming”>
 There are many English-based programming languages; the most common ones used in frontend Web development are HTML (a language to tell the browser how the author wants to structure a piece of text), CSS (a language that tells the browser how the information should be presented in the screen), and Javascript (a language that tells the browser when and how to change the information presented to the user).
+</section>
 
+<section id=”Backend web programming”>
 The most common ones in backend Web development are Javascript, Python, SQL, Java, C++, and a long list of others (there are tens of them, many are already in disuse).
+</section>
 
+<section id=”Philosophies while programming in a team”>
 Programming is a task that typically happens between individuals that must coordinate. There are currently two main ways to coordinate programmers at work: The first way is for when the goal cannot be articulated clearly (either because it is largely irrelevant like in ad-based companies like Google, Meta, etc.: as long as people use it, whatever is created is good; or too subjective for customers to describe, like graphics-heavy work like websites, where the customer will not be able to tell if she likes something until she sees it, or where customers do not feel comfortable describing requirements for whatever reasons); these use what is called agile methodologies, which tend to skip long planning stages, and tend to produce little to no documentation as it is assumed that it is largely irrelevant (the reasoning goes that it does not matter too much what to build as long as it can be built reasonably fast to be tested, and it is assumed that it may be forced to change soon, so too much effort in documenting the thing may be unwarranted). The second way is for when the goal is reasonably clear at the beginning, so considerable time is spent doing planning and also comprehensive documentation is usually present, in what is called a waterfall methodology. Choosing between agile or waterfall, and what variants of each one are best suited for a given project, is more an art than a science, and the software community has not been able to reach any agreement at what is good vs what is bad.
+</section>
 
+<section id=”Introduction to frontend web programming”>
 2) Frontend web development
 
-We will learn HTML, CSS, and JS.
+
+<h1>HTML with only a body of text</h1>
+<h1>HTML with metainformation for web spiders</h1>
+<h1>HTML with web links</h1>
+<h1>HTML with images</h1>
+<h1>HTML with videos</h1>
+<h1>HTML with forms: text fields, buttons, and menus for dates, and menus for other options</h1>
+<h1>HTML with CSS: margins, sizes, text colors, and background colors</h1>
+<h1>HTML with CSS: different presentations for laptops and smartphones</h1>
+<h1>HTML with CSS and JS: use a text-field and a button to change background color</h1>
+<h1>HTML with JS: use a text-field and a button to change background color</h1>
+<h1>HTML with JS: grab data from other websites and show it in yours</h1>
+</section>
+
+<section id=”Introduction to backend web programming”>
+<h1>Managing a DB in the backend server for comments: metadata plus content</h1>
+<h1>Authenticating users</h1>
+</section>
+
+<section id=”Introduction to apps”>
+</section>
