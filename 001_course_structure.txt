@@ -1,0 +1,18 @@
+Step 1: you create two folders in the Desltop of your laptop; 
+        one named web_programming, and another named 
+        web_information. We will use the first for storing
+        your programs, and the second to store support material
+        from the Internet, for when you are in a place without Internet
+        and want to access that material.
+
+Our work will be structured in several lessons. For each lesson, I will
+write a document with the information that I want you to know; you will 
+save it in your web_information folder so you can always have access to it
+even if you do not have Internet coverage.
+
+For each lesson, you will create a new subfolder inside the web_programming folder,
+where you will store all the material that you will create. After each lesson,
+you will send me the contents of that subfolder for me to check. Then, we will
+comment about it.
+
+Bicos!
