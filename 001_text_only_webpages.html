@@ -1,41 +1,46 @@
-HTML is a way to tell a web browser two things: 1) what information we want to show when
-creating a webpage, and 2) how to represent it. This includes the text of the
+HTML (acronym of hypertext markup language) is a way to tell a web browser 
+two things: 1) what information we want to show in
+a webpage, and 2) how to represent that information. This includes the text of the
 page, plus any links to other pages that we want to inttoduce, plus
 images, plus videos, plus buttons, plus forms to allow the viewers of the webpage
 to input information, etc. These elements are collectively called hypertext. 
 
-HTML does not care about whitespace. If we write a file with very long lines,
-and another with very short lines, and another with several whitespaces between
-words, and another with just one whitespace between words, the open them with
-a web browser, the four files will be represented in the screen in exactly
-the same way. If we want to control the presentation of the text, we will use
-another language called CSS (that will be in a later lesson).
+HTML does not care about the amount of whitespace between words or about how many
+lines we have in a document. If we write a file with very long lines,
+and another with the same content but with very short lines, and another with several whitespaces between
+words, and another with just one whitespace between words, and finally we open them with
+a web browser, the four files will be represented in the screen as exactly
+equal to each other. If we want to control the presentation of the text (line length, separation between
+lines, centering of headings, etc), we will need to use another language called CSS (we will learn it in a later lesson).
 
 HTML is what is called a markup language, because it uses special words or
-sequences of characters to instruct the browser how it should present the webpage to the viewer.
+sequences of characters (called markup in the world of text edition) to instruct 
+the browser about how it should present the webpage to the viewer.
 Each markup language uses its special words. HTML does too; for example, the 
 markup word "b" (without quotes) means to bring the attention of the webpage reader 
 to the text that follows (browsers usually interpret that by writing the text in bold); 
-in a related example, the markup word "/b" means to stop bringing the attention of the reader (so, if the
+in a related example, the markup word "/b" (without quotes) means to stop bringing the 
+attention of the reader to that part of the text (so, if the
 browser was writing text in bold until that moment, it stops doing so). In HTML, the
 "b" is called an opening markup word, and the "/b" is called a closing markup word.
 
 In HTML, to tell the browser that we want to use a markup word, we enclose the word
 inside the "less than" and "more than" symbols. For example, to use the markup
-word "b", we would write it as: "<b>". This is needed because otherwise it would be\
-impossible to write the letter "b" by itself in a document. For example, if we want
+word "b", we would write it as: "<b>" (without the quotes). This is needed because otherwise it would be
+impossible to write the letter "b" as a separate word by itself in a document, as the browser
+would interpret it as a command rather than a a word to be shown on the screen. For example, if we want
 to write the list of four seasons, with the middle two written
 in bold font, we would create an HTML document with 
-the content: "spring <b> summer autumn</b> winter". The browser will write in the screen
-the names of the four seasons, bolding the two middle words, and nothing else: it
-and will not show in the screen neither "<b>" nor "</b>".
+the content: "spring <b> summer autumn </b> winter". The browser will write in the screen
+the names of the four seasons, bolding the two middle words, and nothing else: 
+it will not show in the screen neither "<b>" nor "</b>".
 
-in another example, the markup word "em" means to emphasize the content that follows (browsers
+In another example, the markup word "em" means to emphasize the content that follows (browsers
 usually do this by using italics); the markup word "/em" means to stop emphasizing the 
-text. Markup words can be used at the same time; for example, if we want to write a phrase
+text. Markup words can be combined; for example, if we want to write a phrase
 in bold and italics at the same time, we would use the "b" "em" markup words together (in any order
 we want), write the text that we want to write, and then use "/b" "/em" to tell the
-browser to stop. When using several markups together, it is usually recommended to
+browser to stop. When using several markup words together, it is usually recommended to
 write the closing markup words in reverse order to the opening one. For example, both the phrase
 "spring <em> <b> summer autumn </em> </b> winter" and the phrase
 "spring <em> <b> summer autumn </b> </em> winter" are correct, but the second is usually preferred
@@ -46,27 +51,35 @@ An HTML document is usually saved in a plain-text file whose name ends
 with either ".html" or ".htm", although ".html" is preferred. If we write any
 other extension at the end, and we open that file with the web browser, the web browser will 
 not interpret its contents as markup language, and will show instead the plain-text of the
-page. For example, if we write "One <b> two </b>" in a file called "helloworld.html", the web browser
-will show the word two in bold; however, if we call the file "helloworld.txt" and open it with
-the browser, the browser will not do what the markup words say, and instead it will show them
-in the screen.
+page. For example, if we write "One <b> two </b>" in a file called "example.html" and open
+it in a web browser, the web browser will show the word "two" in bold; however, if we 
+call the file "example.txt" and open it with the browser, the browser will not pay attention
+to the markup words, and instead it will show everything in the screen, both markup words
+and normal words.
   
 HTML calls "elements" to its markup words. Some of the most common HTML elements are:
 "title": tells the browser which title to show on the tab where the webpage is opened (above the page itself, usually)
-"p": tells the browser that we want to open a paragraph (the browser will usually put more vertical whitespace than between the previous lines)
+"p": tells the browser that we want to open a paragraph (the browser will usually put more vertical whitespace than inside a praragraph)
 "h1": creates a big heading
 "h2": creates a slightly smaller heading than h1
 "h3": creates a slightly smaller heading than h2
 "h4": creates a slightly smaller heading than h3
-"br": forces a line break (usually to write poetry, or anything that requires a line break in a given point)
-"b": brings attention to (usually means bold, unless in reading devices for the blind, etc)
-"em": emphasizes (usually means italics)
+"br": forces a line break (usually to write poetry, or anything 
+  that requires a line break at a given point). It does not have a closing element, as it does not make sense.
+"b": brings attention to the text starting at that point (usually means bold, unless in reading devices for the blind, etc)
+"em": emphasizes the text starting at that point(usually means italics)
 "u": underlines
 "ol": creates a bulleted ordered list (where each item as a number or letter)
 "ul": creates a bulleted unordered list (where each item has an asterisk or a dot)
 "item": inside a bulleted list, creates a new item.  
-  
-  
+
+Most markup words need opening and closing version (e.g., "b" and "/b", "p" and "/p", or "h1" and "/h1"), 
+because we need to tell the browser when to start and end doing what we want it to do. 
+(for example, when bolding text, we need to tell when to start, and when to stop).
+However, some markup words do not need a closing version because it does not make
+sense: for example, "br" inserts a new line, so it appears by itself whenever when we want
+to insert one.
+
   
 For example, let's assume that we write the following:
 =====================================================
