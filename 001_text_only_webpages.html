@@ -1,0 +1,55 @@
+HTML is a way to tell a web browser two things: 1) what information we want to show when
+creating a webpage, and 2) how to represent it. This includes the text of the
+page, plus any links to other pages that we want to inttoduce, plus
+images, plus videos, plus buttons, plus forms to allow the viewers of the webpage
+to input information, etc. These elements are collectively called hypertext. 
+
+HTML does not care about whitespace. If we write a file with very long lines,
+and another with very short lines, and another with several whitespaces between
+words, and another with just one whitespace between words, the open them with
+a web browser, the four files will be represented in the screen in exactly
+the same way. If we want to control the presentation of the text, we will use
+another language called CSS (that will be in a later lesson).
+
+HTML is what is called a markup language, because it uses special words or
+sequences of characters to instruct the browser how it should present the webpage to the viewer.
+Each markup language uses its special words. HTML does too; for example, the 
+markup word "b" (without quotes) means to bring the attention of the webpage reader 
+to the text that follows (browsers usually interpret that by writing the text in bold); 
+in a related example, the markup word "/b" means to stop bringing the attention of the reader (so, if the
+browser was writing text in bold until that moment, it stops doing so). In HTML, the
+"b" is called an opening markup word, and the "/b" is called a closing markup word.
+
+In HTML, to tell the browser that we want to use a markup word, we enclose the word
+inside the "less than" and "more than" symbols. For example, to use the markup
+word "b", we would write it as: "<b>". This is needed because otherwise it would be\
+impossible to write the letter "b" by itself in a document. For example, if we want
+to write the list of four seasons, with the middle two written
+in bold font, we would create an HTML document with 
+the content: "spring <b> summer autumn</b> winter". The browser will write in the screen
+the names of the four seasons, bolding the two middle words, and nothing else: it
+and will not show in the screen neither "<b>" nor "</b>".
+
+in another example, the markup word "em" means to emphasize the content that follows (browsers
+usually do this by using italics); the markup word "/em" means to stop emphasizing the 
+text. Markup words can be used at the same time; for example, if we want to write a phrase
+in bold and italics at the same time, we would use the "b" "em" markup words together (in any order
+we want), write the text that we want to write, and then use "/b" "/em" to tell the
+browser to stop. When using several markups together, it is usually recommended to
+write the closing markup words in reverse order to the opening one. For example, both the phrase
+"spring <em> <b> summer autumn </em> </b> winter" and the phrase
+"spring <em> <b> summer autumn </b> </em> winter" are correct, but the second is usually preferred
+when creating HTML because the closing tags are in reverse order to the opening ones (this is, we
+opened first with "em" and second with "b", and closed first with "b" and second with "em").
+
+An HTML document is usually saved in a plain-text file whose name ends 
+with either ".html" or ".htm", although ".html" is preferred. If we write any
+other extension at the end, and we open that file with the web browser, the web browser will 
+not interpret its contents as markup language, and will show instead the plain-text of the
+page. For example, if we write "One <b> two </b>" in a file called "helloworld.html", the web browser
+will show the word two in bold; however, if we call the file "helloworld.txt" and open it with
+the browser, the browser will not do what the markup words say, and instead it will show them
+in the screen.
+  
+  
+ 
