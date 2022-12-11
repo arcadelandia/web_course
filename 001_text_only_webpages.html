@@ -163,8 +163,9 @@ try to predict how it will be represented in the browser. </li>
   changing the closing markup word <b>&lt;/title&gt;</b>
   for <b>&lt;title&gt;</b> and save the file, and reload it in the browser (or open it in a tab if you closed it before) 
   You should see that the whole
-  page is blank. If you pass the mouse through the tab title, you should see the entire of the HTML code
-  there. What happened is that the browser read the opening markup work <b>&lt;title&gt;</b> and interpreted everything
+  page is blank. If you pass the mouse through the tab title, you should see a snippet of text with the entire HTML code
+  there (which is the new title of the webpage). What happened is that the browser read the opening markup 
+  work <b>&lt;title&gt;</b> and interpreted everything
   after it, and before the closing markup word <b>&lt;/title&gt;</b>, as the title to write in the top of the tab.
   However, there is no <b>&lt;/title&gt;</b> because you changed it, so the browser continues reading
   everything until the end of the document and thinks it is the title. Thus,
