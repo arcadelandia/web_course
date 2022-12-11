@@ -165,9 +165,9 @@ try to predict how they will be represented in the screen once the browser loads
   it in the browser (or open it in a tab if you closed it before). 
   You should see that the whole
   page is blank. If you pass the mouse through the tab title, you should see a snippet of text with the entire HTML code
-  there (which is the new title of the webpage). What happened is that the browser read the opening markup 
-  work <b>&lt;title&gt;</b> and interpreted everything
-  after it, and before the closing markup word <b>&lt;/title&gt;</b>, as the title to write in the top of the tab.
+  there (which is the new title of the webpage). What happened is that the browser started readng the file at the very beginning,
+  where the first <b>&lt;title&gt;</b> tag appears, analyzed it, seeing that we are telling the title, and started 
+  interpreting everything that follows as the title, looking for the closing markup word <b>&lt;/title&gt;</b>.
   However, there is no <b>&lt;/title&gt;</b> because you changed it, so the browser continues reading
   everything until the end of the document and thinks it is the title. Thus,
   it is very important to pay attention to the correct typing of all the opening and end markup 
