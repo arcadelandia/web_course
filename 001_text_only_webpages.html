@@ -166,8 +166,9 @@ try to predict how they will be represented in the screen once the browser loads
   You should see that the whole
   page is blank. If you pass the mouse through the tab title, you should see a snippet of text with the entire HTML code
   there (which is the new title of the webpage). What happened is that the browser started readng the file at the very beginning,
-  where the first <b>&lt;title&gt;</b> tag appears, analyzed it, seeing that we are telling the title, and started 
-  interpreting everything that follows as the title, looking for the closing markup word <b>&lt;/title&gt;</b>.
+  where the first <b>&lt;title&gt;</b> tag appears, analyzed it and correctly interpreted it as the start of the title
+  that we want to use for the website. From that point on, the browser treats everything that appears before the closing
+  markup tag <b>&lt;title&gt;</b> as the webpage title.
   However, there is no <b>&lt;/title&gt;</b> because you changed it, so the browser continues reading
   everything until the end of the document and thinks it is the title. And then represents the entire document
   as the title, and since there is nothing else in the document, the webpage that we see is entirely blank. This is
