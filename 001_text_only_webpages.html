@@ -1,10 +1,18 @@
+<!docctype html>
+<meta lang="en" charset="utf-8">
+<title>Azu's web course: Lesson 1</title>
+<p>Hello Azu! This is the first lesson on our web programming course.</p>
+
+<p>
 HTML (acronym of hypertext markup language) is a way to tell a web browser 
-two things: 1) what information we want to show in
-a webpage, and 2) how to represent that information. This includes the text of the
+two things: <ol><li>what information we want to show in
+a webpage</li>, and <li>how to represent that information on the screen.</li></ol>. 
+This includes the text of the
 page, plus any links to other pages that we want to inttoduce, plus
 images, plus videos, plus buttons, plus forms to allow the viewers of the webpage
 to input information, etc. These elements are collectively called hypertext. 
-
+</p>
+<p>
 HTML does not care about the amount of whitespace between words or about how many
 lines we have in a document. If we write a file with very long lines,
 and another with the same content but with very short lines, and another with several whitespaces between
@@ -12,81 +20,88 @@ words, and another with just one whitespace between words, and finally we open t
 a web browser, the four files will be represented in the screen as exactly
 equal to each other. If we want to control the presentation of the text (line length, separation between
 lines, centering of headings, etc), we will need to use another language called CSS (we will learn it in a later lesson).
-
+</p>
+<p>
 HTML is what is called a markup language, because it uses special words or
 sequences of characters (called markup in the world of text edition) to instruct 
 the browser about how it should present the webpage to the viewer.
 Each markup language uses its special words. HTML does too; for example, the 
-markup word "b" (without quotes) means to bring the attention of the webpage reader 
+markup word <b>b</b> means to bring the attention of the webpage reader 
 to the text that follows (browsers usually interpret that by writing the text in bold); 
-in a related example, the markup word "/b" (without quotes) means to stop bringing the 
+in a related example, the markup word <b>/b</b> means to stop bringing the 
 attention of the reader to that part of the text (so, if the
 browser was writing text in bold until that moment, it stops doing so). In HTML, the
-"b" is called an opening markup word, and the "/b" is called a closing markup word.
-
+<b>b</b> is called an opening markup word, and the <b>/b</b> is called a closing markup word.
+</p>
+<p>
 In HTML, to tell the browser that we want to use a markup word, we enclose the word
 inside the "less than" and "more than" symbols. For example, to use the markup
-word "b", we would write it as: "<b>" (without the quotes). This is needed because otherwise it would be
-impossible to write the letter "b" as a separate word by itself in a document, as the browser
+word <b>b</b>, we would write it as: <b>&lt;b&gt;</b>. This is needed because otherwise it would be
+impossible to write the letter <b>b</b> as a separate word by itself in a document, as the browser
 would interpret it as a command rather than a a word to be shown on the screen. For example, if we want
 to write the list of four seasons, with the middle two written
 in bold font, we would create an HTML document with 
-the content: "spring <b> summer autumn </b> winter". The browser will write in the screen
+the content: <b>spring &lt;b&gt; summer autumn &lt;/b&gt; winter</b>. The browser will write in the screen
 the names of the four seasons, bolding the two middle words, and nothing else: 
-it will not show in the screen neither "<b>" nor "</b>".
-
-In another example, the markup word "em" means to emphasize the content that follows (browsers
-usually do this by using italics); the markup word "/em" means to stop emphasizing the 
+it will not show in the screen neither &lt;b&gt; nor &lt;/b&gt;.
+</p>
+<p>
+In another example, the markup word <b>em</b> means to emphasize the content that follows (browsers
+usually do this by using italics); the markup word <b>/em</b> means to stop emphasizing the 
 text. Markup words can be combined; for example, if we want to write a phrase
-in bold and italics at the same time, we would use the "b" "em" markup words together (in any order
+in bold and italics at the same time, we would use the <b>b em</b> markup words together (in any order
 we want), write the text that we want to write, and then use "/b" "/em" to tell the
 browser to stop. When using several markup words together, it is usually recommended to
 write the closing markup words in reverse order to the opening one. For example, both the phrase
-"spring <em> <b> summer autumn </em> </b> winter" and the phrase
-"spring <em> <b> summer autumn </b> </em> winter" are correct, but the second is usually preferred
+<b>spring &lt;em&gt; &lt;b&gt; summer autumn &lt;/em&gt; &lt;/b&gt; winter</b> and the phrase
+<b>spring &lt;em&gt; &lt;b&gt; summer autumn &lt;/b&gt; &lt;/em&gt; winter</b> are correct, but the second is usually preferred
 when creating HTML because the closing tags are in reverse order to the opening ones (this is, we
-opened first with "em" and second with "b", and closed first with "b" and second with "em").
-
+opened first with <b>em</b> and second with <b>b</b>, and closed first with <b>b</b> and second with <b>em</b>).
+</p>
+<p>
 An HTML document is usually saved in a plain-text file whose name ends 
-with either ".html" or ".htm", although ".html" is preferred. If we write any
+with either <b>.html</b> or <b>.htm</b>, although <b>.html</b> is preferred. If we write any
 other extension at the end, and we open that file with the web browser, the web browser will 
 not interpret its contents as markup language, and will show instead the plain-text of the
-page. For example, if we write "One <b> two </b>" in a file called "example.html" and open
-it in a web browser, the web browser will show the word "two" in bold; however, if we 
-call the file "example.txt" and open it with the browser, the browser will not pay attention
+page. For example, if we write "One &lt;b&gt; two &lt;/b&gt;" in a file called <b>example.html</b> and open
+it in a web browser, the web browser will show the word <b>two</b> in bold; however, if we 
+call the file <b>example.txt</b> and open it with the browser, the browser will not pay attention
 to the markup words, and instead it will show everything in the screen, both markup words
 and normal words.
-  
-HTML calls "elements" to its markup words. Some of the most common HTML elements are:
-"title": tells the browser which title to show on the tab where the webpage is opened (above the page itself, usually)
-"p": tells the browser that we want to open a paragraph (the browser will usually put more vertical whitespace than inside a praragraph)
-"h1": creates a big header
-"h2": creates a slightly smaller header than h1
-"h3": creates a slightly smaller header than h2
-"h4": creates a slightly smaller header than h3
-"br": (break) forces a line break (usually to write poetry, or anything 
-  that requires a line break at a given point). It does not have a closing element, as it does not make sense.
-"b": brings attention to the text starting at that point (usually means bold, unless in reading devices for the blind, etc)
-"em": emphasizes the text starting at that point(usually means italics)
-"u": underlines
-"ol": (ordered list) creates a bulleted ordered list (where each item as a number or letter)
-"ul": (unordered list) creates a bulleted unordered list (where each item has an asterisk or a dot)
-"li": (list item) inside a bulleted list, creates a new item.  
-
-Most markup words need opening and closing version (e.g., "b" and "/b", "p" and "/p", or "h1" and "/h1"), 
+</p>
+<p>
+HTML calls <b>elements</b> to its markup words. Programmers often also call them tags.
+Some of the most common HTML tags are:
+<ol>
+<li><b>title</b>: instructs the browser which title to show on the tab where the webpage is opened (above the page itself, usually)</li>
+<li><b>p</b>: instructs the browser that we want to open a paragraph (the browser will usually put more vertical whitespace than inside a praragraph)</li>
+<li><b>h1</b>: instructs the browser creates a big header</li>
+<li><b>h2</b>: instructs the browser to create a slightly smaller header than h1.</li>
+<li><b>br</b>: (break)instructs the browser to force a line break (usually to write poetry, or anything
+  that requires a line break at a given point). It does not have a closing element, as it does not make sense.</li>
+<li><b>b</b>: instructs the browser to bring attention to the text starting at that point (usually means bold, unless in reading devices for the blind, etc)</li>
+<li><b>em</b>: instructs the browser to emphasize the text starting at that point(usually means italics).</li>
+<li><b>u</b>: instructs the browser to underline the text that follows.</li>
+<li><b>ol</b>: (ordered list) instructs the browser to create a bulleted ordered list (where each item as a number or letter).</li>
+<li><b>ul</b>: (unordered list) instructs the browser to create a bulleted unordered list (where each item has an asterisk or a dot).</li>
+<li><b>li</b>: (list item) instructs the browser to create a new item for the ordered or unordered list that appears before.</li>
+</ol>
+</p>
+<p>
+Most markup words need opening and closing version (e.g., <b>b</b> and <b>/b</b>, <b>p</b> and <b>/p</b>, or <b>h1</b> and <b>/h1</b>), 
 because we need to tell the browser when to start and end doing what we want it to do. 
-(for example, when bolding text, we need to tell when to start, and when to stop).
+(for example, when bolding text, we need to tell when to start, and when to stop; idem for udnerlining text, to write a paragraph, etc.).
 However, some markup words do not need a closing version because it does not make
 sense: for example, "br" inserts a new line, so it appears by itself whenever when we want
 to insert one.
-
-EXERCISE:  
+</p>
+<p>
   
-Let's write the following content inside a file named "001_continents.html" (do not write
-the lines with START BELOW and END ABOVE). Observe the usage of all the elements and 
-try to predict how it will be represented in the browser. Then,
-open it with the browser and observe how each individual element gets represented.
-
+<h1>EXERCISES 1</h1>
+<p>
+Below is an example webpage using some of the markup elements we described above.
+</p>
+<pre>
 ------------------------- START BELOW HERE ------------------------------------------  
 <title>Continents of the world</title>
 <h1>The continents and trivia about them</h1>
@@ -127,8 +142,35 @@ open it with the browser and observe how each individual element gets represente
 <p>The North Sea is part of the Atlantic Ocean, like the Cantabric Sea.</p>
 <p>The Baltic Sea is cold.</p>
 ------------------------- END ABOVE HERE ------------------------------------------  
-
-  
-  
-
+</pre>
+<ol> Steps of the exercise:
+<li> Create a new file in <b>notepad++</b> named <b>001_continents.html</b> (do not write
+the lines that contain START BELOW and END ABOVE, only the lines between them). </li>
+<li> Read it, observe the usage of all the elements and 
+try to predict how it will be represented in the browser. </li>
+<li>Open the file you just created in the browser (usually by typing Ctr+O, or using the 
+  "Open File" option in the menu of Chrome or any other browser). 
+  Observe how each individual markup element of the HTML file gets represented in the screen.
+  Pay attention to the <b>title,h1,p,ul,li,h2</b> in all the places they appear.</li>
+<li> Copy, with the file explorer, the file <b>001_continents.txt</b> to another file named <b>001_continents.txt</b>.
+  Open this new file with the browser. Can you see that the browser is just showing the text you wrote? It is
+  not interpreting the markup tags as commands; instead, it just represents in the screen what was written. That
+  is because the extension is "txt" rather than "html".</li>
+<li>Using <b>notepad++</b>, mpodify the first line of the <b>001_continents.html</b> file, 
+  changing the closing markup word <b>&lt;/title&gt;</b>
+  for <b>&lt;title&gt;</b> and save the file, and reopen (or reload it if you ahve it opened) 
+  with the browser. You should see that the whole
+  page is blank. If you pass the mouse through the tab title, you should see the entire of the HTML code
+  there. What happened is that the browser read the opening markup work <b>&lt;title&gt;</b> and interpreted everything
+  after it, and before the closing markup word <b>&lt;/title&gt;</b>, as the title to write in the top of the tab.
+  However, there is no <b>&lt;/title&gt;</b> because you changed it, so the browser continues reading
+  everything until the end of the document and thinks it is the title. Thus,
+  it is very important to pay attention to the correct typing of all the opening and end markup 
+  tags. As this can get tedious
+  to do, especially in large HTML files, there are tools designed to analyze the HTML documents that you write
+  and that tell you if you forgot something. We will use them in other lessons.</li>
+<li> Edit back the first line, changing the closing markup to <b>&lt;/title&gt;</b>, as it was originally,
+  and reload it again in the browser, so you see it normally again.</li>
+<li>End of the exercises.</li>
+</ol>
  
