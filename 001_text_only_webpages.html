@@ -170,9 +170,10 @@ try to predict how they will be represented in the screen once the browser loads
   that we want to use for the website. From that point on, the browser treats everything that appears before the closing
   markup tag <b>&lt;title&gt;</b> as the webpage title.
   However, there is no <b>&lt;/title&gt;</b> because you changed it, so the browser continues reading
-  everything until the end of the document and thinks it is the title. And then represents the entire document
-  as the title, and since there is nothing else in the document, the webpage that we see is entirely blank. This is
-  what in prorgamming is called a bug (some behavior that is not the desired one). The process of analyzing what is wrong
+  everything until the end of the document and interprets it as the title, and shpows it in the tab, above the webpage.
+  Then, as the browser has reached the end of the HTML file, and there is nothing else in the document, 
+  the webpage that we see is entirely blank. This is not what we want to do; these undesired behaviors are
+  called bugs in programming. The process of analyzing what is wrong
   when we find a bug, is called debugging. Thus, when programming, it is very important to pay
   attention to the correct typing of all the opening and ending markup tags. As this can get tedious,
   especially when creating large HTML files, there are tools designed to analyze the HTML documents that you write
