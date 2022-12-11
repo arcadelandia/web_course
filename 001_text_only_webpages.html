@@ -172,9 +172,10 @@ try to predict how they will be represented in the screen once the browser loads
   However, there is no closing markup tag <b>&lt;/title&gt;</b> because you changed it, so the browser continues reading
   everything until the end of the document and interprets it as the title, and shows it in the tab, above the webpage.
   Then, as the browser has reached the end of the HTML file, and there is nothing else to read, 
-  the webpage that we see is entirely blank. This is not what we want to do; these undesired behaviors are
-  called bugs in programming. The process of analyzing what is wrong
-  when we find a bug, is called debugging. Thus, when programming, it is very important to pay
+  the webpage that we see is entirely blank. This is not what the page programmer wants to do; in general, any
+  undesired behavior in programming is called a bug. The process of analyzing what is wrong
+  when we find a bug, is called debugging. In this case, the bug was caused by an incorrect closing markup tag for the <b>title</b>
+  tag. Thus, when programming in HTML, it is very important to pay
   attention to the correct typing of all the opening and ending markup tags. As this can get tedious,
   especially when creating large HTML files, there are tools designed to analyze the HTML documents that you write
   and that tell you if you forgot something. We will use them in other lessons.</li>
