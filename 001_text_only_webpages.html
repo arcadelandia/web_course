@@ -58,7 +58,7 @@ browser to stop using bold italics. When using several markup words together, it
 write the closing markup words in reverse order to the opening one. For example, both the phrase
 <b>spring &lt;em&gt; &lt;b&gt; summer autumn &lt;/em&gt; &lt;/b&gt; winter</b> and the phrase
 <b>spring &lt;em&gt; &lt;b&gt; summer autumn &lt;/b&gt; &lt;/em&gt; winter</b> are correct, but the second is usually preferred
-when creating HTML because the closing tags are in reverse order to the opening ones (this is, we
+when creating HTML because the closing markup words are in reverse order to the opening ones (this is, we
 opened first with <b>em</b> and second with <b>b</b>, and closed first with <b>b</b> and second with <b>em</b>).
 </p>
 <p>
@@ -165,7 +165,7 @@ try to predict how they will be represented in the screen once the browser loads
 <li>Open the file you just created in the browser (usually by typing Ctr+O, or using the 
   "Open File" option in the menu of Chrome or any other browser). 
   Observe how each individual markup element of the HTML file gets represented in the screen.
-  Pay attention to the <b>title,h1,p,ul,li,h2,h3</b> tags in all the places they appear.</li>
+  Pay attention to the <b>title,h1,p,ul,li,h2,h3</b> markup tags in all the places they appear.</li>
 <li> Copy, with the file explorer, the file <b>001_continents.html</b> to another file named <b>001_continents.txt</b>,
   so their contents are the same and their names only differ in the extension.
   Open this <b>001_continents.txt</b> file in another tab inside the browser. Can you see that the browser is just showing the text you wrote? It is
@@ -178,7 +178,7 @@ try to predict how they will be represented in the screen once the browser loads
   You should see that the whole
   page is blank. If you pass the mouse through the tab title, you should see a snippet of text with the entire HTML code
   there (which is the new title of the webpage). What happened is that the browser started reading the file at the very beginning,
-  where the first <b>&lt;title&gt;</b> tag appears, analyzed it and correctly interpreted it as the start of the title
+  where the first <b>&lt;title&gt;</b> markup tag appears, analyzed it and correctly interpreted it as the start of the title
   that we want to use for the webpage. From that point on, the browser treats everything that appears before the closing
   markup tag <b>&lt;/title&gt;</b> as the webpage title.
   However, there is no closing markup tag <b>&lt;/title&gt;</b> because you changed it, so the browser continues reading
@@ -186,11 +186,12 @@ try to predict how they will be represented in the screen once the browser loads
   Then, as the browser has reached the end of the HTML file, and there is nothing else to read, 
   the browser interprets that the webpage does not have any content, so what we see is entirely blank. This is not what the page programmer wants to do; in general, any
   undesired behavior in programming is called a bug. The process of analyzing what is wrong
-  when we find a bug, is called debugging. In this case, the bug was caused by an incorrect closing markup tag for the <b>title</b>
-  tag. Thus, when programming in HTML, it is very important to pay
+  when we find a bug, is called debugging. In this case, the bug was caused by an incorrect closing markup tag for the opening
+  markup tag <b>title</b>. 
+  Thus, when programming in HTML, it is very important to pay
   attention to the correct typing of all the opening and closing markup tags. As this process can get tedious,
   especially when creating large HTML files, there are tools designed to analyze the HTML documents that you write
-  and that tell you if you forgot to write a closing tag or something like that. We will use those tools in other lessons later.</li>
+  and that tell you if you forgot to write a closing markup tag or something like that. We will use those tools in other lessons later.</li>
 <li> Undo the change you did in the first line, changing the closing markup to <b>&lt;/title&gt;</b>, as it was originally,
   and reload it again in the browser, so you see the webpage normally again.</li>
 <li>Each day of this week, create with notepad++ an example HTML webpage that covers some of the above elements, about 
