@@ -9,40 +9,36 @@ Hi Azu! In this lesson we will learn how to insert links, photos, audio, and vid
 Links are pieces of a webpage that point to a different webpage. In order to use them, you 
 typically click with the mouse on them. For example, when you make a Google search, each 
 of the results is a link because, when you click on them, they lead you to another page.
-In HTML jargon, they refer to another webpage. Links are usually strings of text or photos.
+Links are usually either strings of text, or photos.
 </p>
 <p>
 To create a link, we use the HTML tag <b>a</b> (whcih means address). We also need to indicate 
-where it leads to: that will be the address that appears in the browser's address bar
-when we open it. That address is sometimes called URL in web parlance. Inside the HTML code, 
-it is indicated using the HTML word <em>href</em> (short for hypertext reference).
+the address where it leads to: if we do not know it, we can copy it from the browser's address bar
+when we are viewing the page we want to link to. That address is sometimes called URL in web 
+parlance. Inside the HTML code, it is indicated using the HTML word <em>href</em> (short for hypertext reference).
 For example, if we want to write "The Wikipedia website is a very useful place" inside a webpage, and we want to
 take the browser to the main page of Wikipedia when the user clicks on top of the "Wikipedia website" words,
 we would write:
 </p>
 <p>
-The <a href="https://www.wikipedia.org"> Wikipedia website </a> is a very useful place. 
-</p>
-<p>
-In summary, when you want to create a HTML link, you need to go to the webpage yo uwant to link to, 
-observe what appears in the browser address bar, copy it and put it into the href property inside the opening <b>a</b> tag.
+The &lt;a href="https://www.wikipedia.org"&gt; Wikipedia website &lt;/a&gt; is a very useful place. 
 </p>
 <p>
 If you want to link to a webpage that is stored in the same folder, you just put its name in the
 href field. For example, if you create a webpage called countries.html and another
-called cities.html and put them both in the same folder, and you want to link from countries.html to cities.html, 
-you would do:
+called cities.html and put them both in the same folder, and you want to link to cities.html from inside the countries.html file,
+you would write:
 </p>
 <p>
-If you <a href="cities.html"> click here </a> you will go to see a list of cities.
+If you &lt;a href="cities.html"&gt; click here &lt;/a&gt; you will see a list of cities.
 </p>
 <p>
-Photos can included in a webpage using the HTML tag <b>img</b>. You need to indicate their name
+Photos can be included in a webpage using the HTML tag <b>img</b>. You need to indicate their name
 with the <b>src</b> property. For example, if the photo is named "bird.jpg" and it is in the same
 folder as your webpage, you write:
 </p>
 <p>
-<img src="bird.jpg">
+&lt;img src="bird.jpg"&gt;
 </p>
 <p>
 Sometimes, it is desirable to add some text that appears when the mouse is over the image; that text
@@ -50,7 +46,7 @@ is used by readers for visually impaired users. To do that, we use the HTML prop
 means alternative description).
 </p>
 <p>
-<img src="bird.jpg" alt="This is a photo of a gaviota flying over Arcade or Paredes">
+&lt;img src="bird.jpg" alt="This is a photo of a gaviota flying over Arcade or Paredes"&gt;
 </p>
 <p>
 Photos can be used as links too, so when you click on them, they lead you to another page. For example,
@@ -58,9 +54,9 @@ to use the photo of the bird to lead you to the Wikipedia page for birds, you ca
 inside the <b>a</b>:
 </p>
 <p>
-<a href="https://en.wikipedia.org/wiki/Bird">
-  <img src="bird.jpg">
-</a>
+&lt;a href="https://en.wikipedia.org/wiki/Bird"&gt;
+  &lt;img src="bird.jpg"&gt;
+&lt;/a&gt;
 </p>
 <p>
 Observe that in the previous example I used three lines with indentation in order to make it easier to read,
@@ -68,9 +64,6 @@ but it can be written in the same line, as HTML does not care about number of li
 </p>
 <p>
 The image formats more common in the web, are JPG, PNG, and SVG.
-</p>
-<p>
-Examples can be downloaded in https://samplelib.com/
 </p>
 <p>
 If we have a video file named "example.mp4" in the same folder as our webpage we can include it with
@@ -93,7 +86,7 @@ mp4 or webm for video are usually among the simplest to find support for.
 <p>
 In order to find sample image, audio and video files, Google Images is a good resource, especially
 with the option to look for content with Creative Commons licenses; the website https://samplelib.com/
-is also a goodf resource to find sample content to use when doing HTML programming exercises.
+is also a good resource to find sample content to use when doing HTML programming exercises.
 </p>
 <p>
 EXERCISES:
