@@ -123,7 +123,29 @@ The HTML tag that creates a form is <b>form</b>. It usually contains one or more
       the form input to see if something is missing, etc.); when we learn Javascript, we will learn how to deal with these.</li>
   </ol>
 
-<p>Type the following example and observe what each elemet does:</p>
+  <p>
+  Each input tag needs to have an attribute called "name", whose value can be whatever we want, but it is recommended
+    to be something short and memorable for the field. This value will be used by the computer we send the data to, in order
+    to know which value corresponds to each field (we will see those details in a later lesson). 
+    For example, if we would like to create a form with the
+    that allowed the website to collect information like this: 
+    "petname=Pipo, phonenumber=12345678, favoritecolor=green, preferredfood=patatillas", then we would need to create
+    a form field with a name called petname, another with name phonenumber, another with name favoritecolor,
+    and another with name preferredfood.  It could be something like, for example:
+    <pre>
+    &lt;form action="blablabla.html" method="post"&gt;
+    &lt;input type="text" name="petname"&gt;
+    &lt;input type="text" name="phonenumber"&gt;
+    &lt;input type="text" name="favoritecolor"&gt;
+    &lt;input type="text" name="preferredfood"&gt;
+    &lt;/form&gt;
+    </pre>
+  </p>
+
+
+<h1>EXERCISES:</h1>
+<ol>
+ <li>Type the following example in notepad++ and open it in the browser, observing what each elemet does:</li>
 <pre>
 &lt;label&gt;Check all foods that apply:&lt;/label&gt;                          
 &lt;input type="checkbox" name="foodselection1" value="Nocilla"&gt;             
@@ -160,22 +182,14 @@ The HTML tag that creates a form is <b>form</b>. It usually contains one or more
 &lt;/form&gt; 
 </pre>
  
-  <p>
-  Each input tag needs to have an attribute called "name", whose value can be whatever we want, but it is recommended
-    to be something short and memorable for the field. This value will be used by the backend to distinguish between 
-    the different values of the form (we will see that in a later lesson). For example, if we would like to create a form with the
-    that allowed the website to collect information like this: 
-    "petname=Pipo, phone=12345678, color=green, preferredfood=patatillas", then we would create a form in this way.
-    <pre>
-    </pre>
-  </p>
-  This is an example form. Type it in notepad++ and open it in the browser. Observe its working.
+<li>Create your own example of form. Try to use as many of the existing categories as you can; use
+several of each kind.</li>
+</ol>
   
-  
-  <h1> Miscellaneous:
+  <h1> Miscellaneous HTML programming tips and tricks:</h1>
     <ol>
-      <li>When writing a HTML page, it is recommended to indicate which version is being used. 
-        Since 2008, the last version has been HTML 5.0.
+      <li>When writing a HTML page, it is recommended to indicate which version of the langauge is being used. 
+        The current version of HTML is 5.0, and has been this way since 2008ersion has been HTML 5.0.
         This 5.0 version is indicated by writing, as the very first line of the HTML document, the following:
         <!doctype html>.
       </li>
