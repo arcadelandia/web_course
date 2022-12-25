@@ -189,57 +189,65 @@ several of each kind.</li>
   <h1> Miscellaneous HTML programming tips and tricks:</h1>
     <ol>
       <li>When writing a HTML page, it is recommended to indicate which version of the langauge is being used. 
-        The current version of HTML is 5.0, and has been this way since 2008ersion has been HTML 5.0.
+        The current version of HTML is 5.0, and has been this way since 2008.
         This 5.0 version is indicated by writing, as the very first line of the HTML document, the following:
-        <!doctype html>.
+        <b>&lt;!doctype html&gt;</b>. Earlier versions have more complicated ways to do it.
       </li>
-      <li>When writing characters that are not present in American English, like tildes in Spanish, it is recommended
-      to indicate that in the text. Otherwise, browsers from users in countries whose languages do not have Spanish characters
-      will show garbled text where tildes appear. To make sure that all browsers are able to correctly represent these, we write:
-      <meta charset="utf-8">
+      <li>When writing characters that are not present in American English, like tildes in Spanish, it is needed
+      to say so explicitly; otherwise, browsers from users in countries whose languages do not have Spanish characters
+      will show garbled text. In order to indicate that, we write inside the document:
+      <b>&lt;meta charset="utf-8"&gt;</b>
       </li>
-      <li>Sometimes we want to include comments destined to the programmer itself rather than to the webpage user, 
-        or HTML code that is not yet ready to be shown by the browser because maybe has bugs, or somethign similar. In these
-      cases, we can comment those parts so the browser will not pay attention to them. It is done this way:
-      <!-- blabla bla bla -->
+      <li>Comments are part of an HTML file that get ignored by the browser. Sometimes we want to include 
+        these comments to remind the programmer about why something was done
+        in a given way, just in case it gets forgotten in the future. Or sometimes the programmer 
+        is writing HTML code that is not yet ready to be shown to the user because it may have bugs, or 
+        something similar. In order to include these comments, we write:
+      <b>&lt;!-- ANYTHING WRITTEN HERE IS IGNORED BY THE BROWSER --&gt;</b>
       </li>
-      <li>To indicate the author of a page, we can use <meta name="author" content="paco y pipo"></li>
-      <li>To indicate any attribute that we mnay want Google or other search engines to know about, we can
-        use the meta tag with the name and content attributes. For example, if we want to say that
-        our webpage has a theme about cars, and information focused on Spain, and historical period in the 1230s,
-        we coould write 
-        <meta name="theme" content="cars">
-        <meta name="country" content="Spain">
-        <meta name="epoch" content="1930s">
-        where we are free to choose the values of the name and content attributes.
+      <li>To indicate the author of a page, we can use <b>&lt;meta name="author" content="paco y pipo"&gt;</b> </li>
+      <li>To indicate any attribute that we may want Google or other search engines to know about, just
+        in case it helps in any web search made by people, we can
+        use the <em>meta</em> tag using its <em>name</em> and <em>content</em> attributes. For example, if we want to say that
+        our webpage is related to cars, and its information is focused on Spain, and on the historical period of the 1230s,
+        we could write
+        <pre>
+        &lt;meta name="theme" content="cars"&gt;
+        &lt;meta name="country" content="Spain&gt;
+        &lt;meta name="epoch" content="1930s"&gt;
+        </pre>
+        where we are free to choose the values of the name and content attributes. Whether any web search engine like
+        Google will be able to use it is unclear, but the meta tag is designed to help that way.
       </li>
       <li>Old versions of HTML recommended to group all elements of a webpage into two gropus: one formed
-      by elements that do not show in the browser (identified by the <head> tag) 
-        and the elements that show (identified by the element body). In addition, they also recommended
-        to put both elements inside a tag called <html>. With HTML5.0 they are not needed,
-        but many people continue to put those tags, and they appear in many tutorials. For example.
-        
-        <title>Cars and motorbikes</title>
-        <meta charset="utf-8">
-        <meta name="food" content="patatillas;cropanes">
-        <h1>Tasty foods</h1>
-        <p>Patatillas</p>
-        
+      by elements that do not show in the browser (contained inside a <b>&lt;head&gt;</b> tag) 
+        and the elements that show (identified by the <b>&lt;body&gt;</b> tag). In addition, they also recommended
+        to put all elements inside a tag called <b>html</b>. With HTML5.0 they are not needed,
+        but many people continue to put those tags, and they appear in many tutorials. For example, the HTML code:
+        <pre>
+        &lt;title&gt;Cars and motorbikes&lt;/title&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta name="food" content="patatillas;cropanes"&gt;
+        &lt;h1>Tasty foods&lt;/h1&gt;
+        &lt;p>Patatillas&lt;/p&gt;
+        </pre>
         can be written in old HTML style as:
-        <html>
-          <head>
-            <title>Cars and motorbikes</title>
-            <meta charset="utf-8">
-            <meta name="food" content="patatillas;cropanes">
-          </head>
-          <body>
-            <h1>Tasty foods</h1>
-            <p>Patatillas</p>
-          <body>
-        </html>
-        
-        Since not writing the <html><head><body> tags is simpler than writing them, it is recommended
-        not to write them to make things easier.
+        <pre>g
+        &lt;html&gt;
+          &lt;head&gt;
+            &lt;title>Cars and motorbikes&lt;/title&gt;
+            &lt;meta charset="utf-8"&gt;
+            &lt;meta name="food" content="patatillas;cropanes"&gt;
+          &lt;/head&gt;
+          &lt;body&gt;
+            &lt;h1&gt;Tasty foods&lt;/h1&gt;
+            &lt;p&gt;Patatillas&lt;/p&gt;
+          &lt;body&gt;
+        &lt;/html&gt;
+        </pre>
+        Since not writing the <b>&lt;html&gt;&lt;head&gt;&lt;body&gt;</b> tags is simpler than writing them, it is recommended
+        to not write them to make things easier. However, many HTML tutorials continue using them, so it is good
+        to be aware of their existence.
         </li>
     </ol>
   
