@@ -2,94 +2,163 @@
 <meta lang="en" charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" >
 <title>Azu's web course: Lesson 3: Inputting information.</title>
-<p>Hello Azu! This is the thirs lesson on our web programming course. 
-  We will learn how to allow users of your website to provide information.
+<p>Hello Azu! This is the third lesson on our web programming course. 
+  We will learn how to allow users of your website to provide information, so
+  you are later able to use it in some way, typically to store that information 
+  in a database, or to use it to process some existing database according
+  to the data that you send.
 This functionality is the basis for most popular websites: for example, to use
-Google Search, you provide a string of text that Google will process to find it
-in websites around the Internet. In another example, when you post a video
-on Facebook or a photo on Instagram, you provide files that will be stored
-in Facebook's computers in order to allow you to see them later.</p>
+Google Search, you provide a string of text that Google will look for in its
+  databse. In another example, when you post a video
+on Facebook, you provide files that will be stored
+in Facebook's database in order to allow you to see them later.</p>
 
-There are many ways to allow users to provide info inside a webpage. We are going
-to learn one of those. There are others that we will see in other lessons.
+<p>
+  There are many ways to allow users to provide info inside a webpage. We are going
+ to learn one of those, based on what is called an HTML form. There are others that 
+  we will see in other lessons.
+</p>
 
-A comon way to allow users to provide info is to create the web equivalent of
-a form. In the paper world, a form has fields that allow you to input your name,
+<p> An HTML form is the browser equivalent of a paper-based form. In the paper 
+  world, a form has fields that allow you to input things like your name,
 address, date of birth, favorite food, favorite color, a text with your thoughts,
-speace to glue a photo or to append it to the form, etc. Each of those fields has
-usually a short label explaining what the field is supposed to mean. A web form 
-is the equivalent of that: a group of fields that allow you to provide info; each 
-of those fields has usually a label next to it that describes what the field is about.
-For example, a post in Instagram has usually a label saying "upload file" for you
-to upload a file, and a box to enter the text that you want to show with your photo.
-That is a form. Facebook does the same. Google Search has a basic form that is 
-the space where you type what you want to search, and a button that initiates the
+speace to glue a photo or to append it to the form, possibility of attaching a
+  DVD with a video or aa pdf, check some box that applies to you, etc. 
+  When you need to write something, each of those fields has usually a short 
+  label explaining what the field is supposed to mean (e.g., address, name, etc). 
+  In an HTML form you have the equivalent of that: the form has a group of fields 
+  that allow you to provide info; the HTML programmer decides what fields exist;
+  each of those fields has usually a label next to it that describes what the 
+  field is about. For example, a post in Instagram has usually a label saying "upload file" for you
+to upload a photo, and a box to enter the text that you want to show with your photo.
+That is an HTML form. Facebook does the same. Google Search has a basic form that is 
+the box where you type what you want to search, plus the button that initiates the
 search.
+</p>
 
-The HTML tag that creates a form is <form>. It usually contains one or more input
-  elements; the programmer needs to decide how many of each type of input to
-  put, depending on the needs of a website. For example: a text area to put a name, 
+<p>
+The HTML tag that creates a form is <b>form</b>. It usually contains one or more input
+  elements; the programmer needs to decide how many of each type of input element to
+  put, depending on the needs of the website. For example: a text area to put a name, 
   another to put an email, another to select one or more files to upload, another 
   with a checkbox to select any available options, another with a radio button 
   to select one and only one of several options, another with a dropdown menu, etc.
-  Often, it is possible to have more than one possibility to allow the user to
-  indicate something; subjectivity plays an important role when deciding what to
-  put and how to put it.
-  
-  The idea of having a form is to end up sending that info to the computers hosting the
-  webpage, for them to store that information, or process it somehow. In order to control
-  this process, the <form> tag needs to indicate two things: first, the name of the 
-  webpage that will receive that information; this is controlled by an attribute 
-  named "action". Second, it needs to indicate whether the information should be
-  stored in the server, or just processed to return some information and then not
-  stored; this is controlled by an attribute in the <form> tag called "method": if
-  we want the server to store the info, we use a value of "post" for the method; otherwise,
-  we use a value of "get". The most common case is that we want to store that data, so
-  we will typically use "post". For example, the following lines indicate that there is
-  a form (whose fields we still did not write) that, once the user is done with, will
-  send its data to a webpage named processmydata.html which exists in the same folder
-  as the webpage where the form is written, and that the webpage designer intends to
-  store that data so it is available later if needed.
+  Creating forms is more an art than a science, and there are lots of different
+  opinions about how to do it; subjectivity plays an important role when creating a form.
+  </p>
 
-  <form action="processmydata.html" method="post"> 
-    .... 
-  </form>
-  
-  There are many ways to allow a user to input information. In a future lesson, we will
-  learn how to use those values. Here are some of the most common ones:
+<p>Let's take a look at the following example:</p>
+<pre>
+  &lt;form action="processmydata.html" method="post" enctype="multipart/form-data"&gt; 
+    .... CONTENT OF THE FORM WOULD BE HERE .... 
+  &lt;/form&gt;
+ </pre>
+<p>  
+  The previous example creates a HTML form (whose fields we still did not write); this
+  form, once the user is done with it, will send its data to a webpage named 
+  processmydata.html which exists in the same folder as the webpage where this form is 
+  written. 
+</p>
+
+<p>
+  The most common purpose of having a form is to send the info that the website user types
+  in it, to the computer hosting the webpage. This computer will process and/or store that
+  information. In order to control this process, the <b>form</b> tag needs to indicate 
+  three things: <b>first</b>, the name of the webpage that will receive that information; this 
+  is controlled by an attribute named "action" inside the opening tag of the form; in the
+  example above, the page is called processmydata.html (any name would be valid, and the
+  programmer will need to create that page; we will learn how to do that in a later lesson).
+  <b>Second</b>, it needs to indicate whether the information should be
+  stored in the server, or just processed rather than stored (for example, to look for that
+  information in a database, like Google Search does); this is controlled by an attribute 
+  called "method" in the opening tag of the form: it can have a value of "post" if we
+  want the server to store the info provided in the form; otherwise, we use a value of "get"
+  if the info should just be processed but not necessarily stored. 
+  The most common case is that we want to store that data, so
+  we will typically use "post". In our previous example, we are indicating that we want
+  to store that information.
+  <b>Third</b>, if what we send in the form includes files (for example, to post photos,
+  or videos, or pdfs, etc), we should include the string <em>enctype="multipart/form-data"</em>
+  to the form openinf tag; this is not strictly needed, but tells the browser to try to
+  compress as much as possible the files sent (mnay help clients with low bandwidth)
+  </p>
+
+  <p>There are many types of input fields that allow a user to input information. Here are some of the most common ones:</p>
   <ol>
-    <li> label: this field is used before some input element, to allow the user to know that the field is about. For example, if there
+    <li> label: this field is just a text label to tell the user what a field is used for. For example, if there
     is a text field where the user is supposed to write an email address, a label saying something like: "Write your email address" will typically
     be present. Each input field will typically have a label, except those that already have labels themselves like buttons.</li>
-    <li>text: a one line text field where the user can write whatever they want (e.g., a Google Search field to write what you want to search for).
+    <li>text: a one line text field where the user can write whatever they want (e.g., Google Search uses a text field to allow the user
+      to write what they want to search for).
     </li>
     <li>password: it is a text field, but the characters are hidden as they are typed (used to make it hard for other 
       people to know what is being typed).</li>
     <li>email: this one is a particularization of the text field, that is supposed to ask the computer to make it easier for the 
-      user to write the @ symbol; it may or may not be different from a vanilla text field.</li>
+      user to write the @ symbol; it may or may not be different from a vanilla text field, depending on the browser and operating system.</li>
     <li>number: this one is another particularization of the text field, that is supposed to tell the computer to make it easier for the user
       to write numbers (for example, in a smartphone it would show the numeric keypad with big numbers rather than the small keypad with 
-      letters and numbers). It may or may not be different from a vanilla text field, depending on the browser and the computer.</li>
+      letters and numbers). It may or may not be different from a vanilla text field.</li>
     <li>tel: this one is another particularization of the text field, that is suposed to make it easier to write phone numbers.</li>
     <li>url: another particularization of a text field, assumed to make it easier to write an URL (for example, the user's favorite website).  
-      As with the "email", "number", and "tel", they are not strictly needed, and a vanilla "text" filed can be used for them.</li>
+      As with the "email", "number", and "tel", they may not have any difference with a text field. Thus, maybe it is easier to
+      use text fields for all input elements where users can type text.</li>
     <li>range: allows the user to control a bar similar to those controlling volume levels, so they can pick a number between a
-    minimum and a maximum. This is recommended for items where the exact number is not very important, as long as it is close to the desired one
-    (for examplem selecting an audio volume). </li>
-    <li>datetime-local: allows the user to select a data and time.</li>
+    minimum and a maximum, indicated y the usage of the <em>mim</em> and <em>max</em> attributes. 
+      This is recommended for items where the exact number is not very important, as long as it is close to the desired one
+    (for example, selecting an audio volume). </li>
+    <li>datetime-local: allows the user to select a date and time.</li>
     <li>color: allows the user to pick a color.</li>
-    <li>checkbox: allows the user to select any suitable option among several ones shown in the screen at the same time.</li>
-    <li>select: allows the user to select any suitable option inside a drop-down menu.</li>
+    <li>checkbox: allows the user to select any suitable option among several ones shown in the screen at the same time. 
+      All the options related to the same group should be given the same name; if any has the attribute <em>checked</em>
+    present, it will show checked when the page is loaded.</li>
+    <li>select: allows the user to select any suitable option inside a drop-down menu. If the attribute <em>multiple</em> is 
+      present in the opening tag, multiple selections are possible.</li>
     <li>radio: allows the user to select one and only one option among several ones provided by the programmer.</li>
     <li>textarea: allows the user to input arbitrary, multi-line, text. This element, in contrast to all the rest, needs a closing tag.</li>
     <li>file: allows the user to upload one or more files.</li>
-    <li>reset: this shows a button that allows the user to reset all info inputted up to that moment. This is handy if the user wants to restart.</li>
+    <li>reset: this shows a button that allows the user to reset all info inputted up to that moment. This is handy if the user wants to erase
+      all information typed.</li>
     <li>submit: this shows a button that allows the user to send all information in the form to the computer hosting the website.</li>
     <li>button: this shows a button without any predefined behavior (e.g., change the color of the background of the form, or check
       the form input to see if something is missing, etc.); when we learn Javascript, we will learn how to deal with these.</li>
-    
-    
   </ol>
+
+<p>Type the following example and observe what each elemet does:</p>
+<pre>
+&lt;label&gt;Check all foods that apply:&lt;/label&gt;                          
+&lt;input type="checkbox" name="foodselection1" value="Nocilla"&gt;             
+&lt;input type="checkbox" name="foodselection1" value="Patatillas" checked&gt;  
+&lt;input type="checkbox" name="foodselection11" value="Pan" checked&gt;        
+&lt;label&gt;Check one option:&lt;/label&gt;                                    
+&lt;input type="radio" name="continent" value="Europe"&gt;                      
+&lt;input type="radio" name="continent" value="Asia"&gt;                        
+&lt;input type="radio" name="continent" value="Africa" checked&gt;              
+                                                                                
+&lt;label&gt;Select one item here:&lt;/label&gt;                                
+&lt;select name="carbrand"&gt;                                                  
+&lt;option&gt;Mazda&lt;/option&gt;                                              
+&lt;option&gt;Toyota&lt;/option&gt;                                             
+&lt;option&gt;VW&lt;/option&gt;                                                 
+&lt;option&gt;Seat&lt;/option&gt;                                               
+&lt;option&gt;Ford&lt;/option&gt;                                               
+&lt;/select&gt;                                                                 
+&lt;label&gt;Select as many items as you want:&lt;/label&gt;                    
+&lt;select name="country" multiple&gt;                                          
+&lt;option&gt;Spain&lt;/option&gt;                                              
+&lt;option&gt;Portugal&lt;/option&gt;                                           
+&lt;option&gt;The Moon&lt;/option&gt;                                           
+&lt;option&gt;Jupiter&lt;/option&gt;                                            
+&lt;/select&gt;                                                                 
+&lt;textarea name="opinions"&gt;Write your opinions here...&lt;/textarea&gt;    
+                                                                                
+&lt;label&gt;file&lt;/label&gt;&lt;input type="file" name="filestosend" multiple&gt;
+                                                                                
+&lt;label&gt;submit&lt;/label&gt;&lt;input type="submit" value="Push here to send"&gt;
+&lt;label&gt;reset&lt;/label&gt;&lt;input type="reset" value="Push here to reset"&gt;
+&lt;label&gt;button&lt;/label&gt;&lt;input type="button" value="Push here for something"&gt;
+                                                                                
+&lt;/form&gt; 
+</pre>
  
   <p>
   Each input tag needs to have an attribute called "name", whose value can be whatever we want, but it is recommended
