@@ -121,8 +121,43 @@ The HTML tag that creates a form is <form>. It usually contains one or more inpu
       <!-- blabla bla bla -->
       </li>
       <li>To indicate the author of a page, we can use <meta name="author" content="paco y pipo"></li>
-      <li>To indicate any attribute that we mnay want Google  author of a page, we can use <meta name="author" content="paco y pipo"></li>
-      <li>Old versions of HTML</li>
+      <li>To indicate any attribute that we mnay want Google or other search engines to know about, we can
+        use the meta tag with the name and content attributes. For example, if we want to say that
+        our webpage has a theme about cars, and information focused on Spain, and historical period in the 1230s,
+        we coould write 
+        <meta name="theme" content="cars">
+        <meta name="country" content="Spain">
+        <meta name="epoch" content="1930s">
+        where we are free to choose the values of the name and content attributes.
+      </li>
+      <li>Old versions of HTML recommended to group all elements of a webpage into two gropus: one formed
+      by elements that do not show in the browser (identified by the <head> tag) 
+        and the elements that show (identified by the element body). In addition, they also recommended
+        to put both elements inside a tag called <html>. With HTML5.0 they are not needed,
+        but many people continue to put those tags, and they appear in many tutorials. For example.
+        
+        <title>Cars and motorbikes</title>
+        <meta charset="utf-8">
+        <meta name="food" content="patatillas;cropanes">
+        <h1>Tasty foods</h1>
+        <p>Patatillas</p>
+        
+        can be written in old HTML style as:
+        <html>
+          <head>
+            <title>Cars and motorbikes</title>
+            <meta charset="utf-8">
+            <meta name="food" content="patatillas;cropanes">
+          </head>
+          <body>
+            <h1>Tasty foods</h1>
+            <p>Patatillas</p>
+          <body>
+        </html>
+        
+        Since not writing the <html><head><body> tags is simpler than writing them, it is recommended
+        not to write them to make things easier.
+        </li>
     </ol>
   
   
