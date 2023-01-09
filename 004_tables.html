@@ -1,0 +1,65 @@
+Hi Azu!
+
+In this lesson we will learn how to create HTML tables. Tables are a popular way
+to present information: they have a series of rows where each row is composed by
+one or more columns of information. An HTML table is created using the tag <b>table</b>.
+Tables usually have:
+<ul> 
+  <li>an optional caption that tells the reader what thwe table is about. It is created with the tag <b>captiom</b></li>
+  <li>an optional header row where each column has a label that allows the reader to know
+    what that column is about. It is created with the tag <b>thead</b></li>
+  <li>a body composed by all rows of information that the table will show. It is created
+    with the tag <b>tbody</b></li>
+  <li>an optional footer row where each column usually summarizes the information
+    of that column. It is created with the tag <b>tfoot</b></li>
+  </ul>
+
+Each row of information in the header, body, and footer is created with the tag <b>tr</b>.
+Each column of information inside a row is created either with the label <b>th</b> (short for
+table header, which makes the information bolder) or with the label <b>td</b> (short for table
+data, which is the normal one).
+
+For example, this is a table with information about population of places in a given year:
+<pre>
+&lt;table&gt;                                                                   
+&lt;caption&gt;Population of the planets of the Solar System&lt;/caption&gt;    
+&lt;thead&gt;                                                                   
+        &lt;th&gt;Name of the planet&lt;/th&gt;                                 
+        &lt;th&gt;Year 2021&lt;/th&gt;                                          
+        &lt;th&gt;Year 2022&lt;/th&gt;                                          
+        &lt;th&gt;The future&lt;/th&gt;                                         
+&lt;/thead&gt;                                                                  
+&lt;tbody&gt;                                                                   
+        &lt;tr&gt;                                                              
+                &lt;td&gt;Mercury&lt;/td&gt;                                    
+                &lt;td&gt;20&lt;/td&gt;                                         
+                &lt;td&gt;21&lt;/td&gt;                                         
+                &lt;td&gt;22&lt;/td&gt;                                         
+        &lt;/tr&gt;                                                             
+        &lt;tr&gt;                                                              
+                &lt;td&gt;Venus&lt;/td&gt;                                      
+                &lt;td&gt;50&lt;/td&gt;                                         
+                &lt;td&gt;Muchos&lt;/td&gt;                                     
+                &lt;td&gt;Pocos&lt;/td&gt;                                      
+        &lt;/tr&gt;                                                             
+        &lt;tr&gt;                                                              
+                &lt;td&gt;Earth&lt;/td&gt;                                      
+                &lt;td&gt;30&lt;/td&gt;                                         
+                &lt;td&gt;9 billion&lt;/td&gt;                                  
+                &lt;td&gt;Only fish&lt;/td&gt;                                  
+        &lt;/tr&gt;                                                             
+&lt;/tbody&gt;                                                                  
+&lt;tfoot&gt;                                                                   
+        &lt;tr&gt;                                                              
+                &lt;th&gt;Total:&lt;/th&gt;                                     
+                &lt;th&gt;80&lt;/th&gt;                                         
+                &lt;th&gt;A lot&lt;/th&gt;                                      
+                &lt;th&gt;A little&lt;/th&gt;                                   
+        &lt;/tr&gt;                                                             
+&lt;/tfoot&gt;                                                                  
+&lt;/table&gt;            
+</pre>
+
+  
+  
+  
