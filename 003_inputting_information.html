@@ -203,6 +203,51 @@ browser will probably prevent you from submitting
 the form.</li>
 </ol>
   
+<h1>Common forms found around the web</h1>
+<p>Three form types found commonly around the web are:</p>
+<ul>
+  <li>Terms and conditions of a website</li>
+  <li>Google-like search form</li>
+  <li>Facebook-like form to upload photos and comments</li>
+</ul>
+<p>An example webpage containing a form of each of those three types follows:</p>
+<pre>
+&lt;!doctype html&gt;                                                           
+&lt;title&gt;Common form types for Azu&lt;/title&gt;
+&lt;meta charset="utf-8"&gt;                                                    
+&lt;h1&gt;First form example: accepting terms and conditions&lt;/h1&gt;         
+                                                                                
+&lt;form action="termsandconditions.html" method="post" enctype="multipart/form-data"&gt;
+ &lt;p&gt;                                                                      
+  La parte contratante de la primera parte será considerada la                  
+  parte contratante de la primera parte.                                        
+ &lt;/p&gt;                                                                     
+ &lt;p&gt;                                                                      
+  La parte contratante de la segunda parte será considerada la                  
+  parte contratante de la segunda parte.                                        
+ &lt;/p&gt;                                                                     
+ &lt;input type="checkbox" name="check1" value="accept" checked&gt;Accept terms 
+ &lt;input type="checkbox" name="check2" value="receive"&gt;Receive email       
+ &lt;input type="submit" value="Accept"&gt;                                     
+&lt;/form&gt;                                                                   
+                                                                                
+&lt;h1&gt;Second form example: Google-like&lt;/h1&gt;                           
+                                                                                
+&lt;form action="googlelike.html" method="post" enctype="multipart/form-data"&gt;
+ &lt;input type="text" name="term" value="Type your search term here"&gt;       
+ &lt;input type="submit" value="Search"&gt;                                     
+ &lt;input type="button" value="I'm feeling lucky"&gt;                          
+&lt;/form&gt;                                                                   
+                                                                                
+&lt;h1&gt;Third form example: Facebook-like&lt;/h1&gt;                          
+&lt;form action="facebooklike.html" method="post" enctype="multipart/form-data"&gt;
+ &lt;label&gt;Select selfies to upload:&lt;/label&gt;&lt;input type=file name=files multiple&gt;
+ &lt;textarea name="opinion"&gt;Write here your post...&lt;/textarea&gt;        
+ &lt;input type="submit" value="Publish"&gt;                                    
+&lt;/form&gt;
+</pre>
+
+
   <h1> Miscellaneous HTML programming tips and tricks:</h1>
     <ol>
       <li>When writing a HTML page, it is recommended to indicate which version of the langauge is being used. 
