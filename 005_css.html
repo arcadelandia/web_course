@@ -38,7 +38,7 @@ on the top, or on the bottom.
 We can also use CSS to indicate the size of margins of elements, whether we
 want borders around them and with which styles (dashed, solid, dotted, etc.), font
 colors, font sizes, background colors, font families and styles (underlines, overlines,
-with a line through the text, cursive, bold, bold size, etc.). 
+with a line through the text, cursive, bold, bold size, etc.).
 
 CSS also allows control over the shape and color of the mouse cursor when it hovers
 over a given element (for example, change the cursor from an arrow to a dot when
@@ -47,6 +47,138 @@ hovering over a given image, etc.).
 There are too many properties that allow to be modified in CSS to cite them here. For
 a good introduction to them, search Google for "CSS MDN". MDN stands for Mozilla Development
 Network.
+
+CSS instructions are written in one or more files. Those files are usually named with ".css" extension.
+To tell the browser to apply the instructions found in a file named "aeiou.css" 
+file to a given HTML file, we write anywhere in that HTML file the following:
+<pre>
+<link rel="stylesheet" href="aeiou.css">
+</pre>
+
+Inside the css file, we write instructions that will tell the browser how to
+modify the appearance and presentation in the screen of the content of the
+HTML webpage. There are three main instruction types to do that inside the CSS file:
+<ul>
+<li>If we want to control all elements with a given tag name (for example, we
+  we want all paragraphs to use a blue font, and a red background) we write: 
+  <b>tagname {property1: value1; property2: value2; ... ; propertyN: valueN;}</b>
+where tagname is the name of the tag whose appearance we want to control, propertyX is the
+name of the property that we want to control, and valueX the value for that property.
+For example, to tell the browser that elements with tag <b>p</b> should have blue font
+  over yellow background, we would write:
+<pre>
+p {
+   color: blue; 
+   background-color: red;
+}
+</pre>
+</li>
+<li>
+  If we want to apply some instructions to a specific element, we need to identify it
+  by an unique name inside the HTML code, and then refer to that unique identifier in the
+  CSS file. In order to give unique names to elements in the HTML code, we use the attribute id
+  inside the opening tag of an element. For example, the following:
+  <pre>
+   <p id="spain">Spain is in Europe. It borders the Atlantic Ocean.</p>
+  </pre>
+  defines a paragraph with the identier "spain". Idenfiers are case sensitive, and must be unique
+  inside the HTML document. Since it has an identifier, we can write this in the CSS file:
+  <pre>
+   #spain {
+      color: yellow; 
+      background-color: red;
+      text-decoration: underline;
+   }
+ </pre>
+  And in this way, the paragraph identified as "spain" would have yellow font over a red baclground,
+  and its text is underlined. In addition, if the CSS file also indicated that paragraphs should be
+  written in blue font, the instructions for the paragraph whose id is "spain" would override the
+  instructions for all paragraphs.
+</li>
+  <li>
+    If we want a lot of elements in a HTML page, but not all, to have a common appearance, in theory
+    we can put a different id to each of them, and then indicate, for each one, how we want them to
+    appear. For example, if we have a HTML page where we have a paragraph for each country in the
+    world, and we want to use a different color for the countries of a given continent, 
+    then we would have 193 paragraphs: 43 would be for countries in Europe, 35 for America,
+    54 for Africa, 47 for Asia, and 14 for Oceania. We can give a unique id for each one in the HTML
+    file (whose value can be, for example, the name of that country), by:
+    <pre>
+     <p id="spain">Spain is square.</p>
+     <p id="portugal">Portugal is rectangular.</p>
+     ...
+     <p id="japan">Japan is long.</p>
+     <p id="china">China is rectangular.</p>
+     ...
+     <p id="morocco">Morocco has the Atlas.</p>
+     <p id="algeria">Algeria is big.</p>
+     ...
+     <p id="canada">Canada is cold.</p>
+     <p id="usa">USA is rectangular.</p>
+     ...
+     <p id="austalia">Australia is big.</p>
+     <p id="newzealand">New Zealand has two islands.</p>
+    </pre>
+    and then, in the CSS file, we would
+    have 193 repetitions of the kind:
+    <pre>
+      #spain {color: blue; background-color: white; font: 2em; font-family: arial; }
+      #portugal {color: blue; background-color: white; font: 2em; font-family: arial; }
+      ...      
+      #japan {color: red; background-color: green; font: 2em; font-family: arial; }
+      #china {color: red; background-color: green; font: 2em; font-family: arial; }
+      ....
+      #morocco {color: blue; background-color: green; font: 2em; font-family: arial; }
+      #algeria {color: blue; background-color: green; font: 2em; font-family: arial; }
+      ....
+      #canada {color: red; background-color: blue; font: 2em; font-family: arial; }
+      #usa {color: red; background-color: blue; font: 2em; font-family: arial; }
+      ....
+      #australia {color: yellow; background-color: white; font: 2em; font-family: arial; }
+      #newzealand {color: yellow; background-color: white; font: 2em; font-family: arial; }
+    </pre>
+    We can see that all have the same characteristics. That is a totally fine way to control
+    the appearance of the HTML page. However, we can alternatively group all HTML elements of a given continent
+    in what is called a HTML class, and use CSS to tell the browser to apply some isntructions to all elements
+    that belong to a given class. We use the attribute <p>class</p> in the opening tag of 
+    an HTML element to identify it as belonging to a class. In our example, we could create five classes, one
+    per continent, and apply them to each paragraph in the folowing way: 
+    <pre>
+     <p id="spain" class="europe">Spain is square.</p>
+     <p id="portugal" class="europe">Portugal is rectangular.</p>
+     ...
+     <p id="japan" class="asia">Japan is long.</p>
+     <p id="china" class="asia">China is rectangular.</p>
+     ...
+     <p id="morocco" class="africa">Morocco has the Atlas.</p>
+     <p id="algeria" class="africa">Algeria is big.</p>
+     ...
+     <p id="canada" class="america">Canada is cold.</p>
+     <p id="usa" class="america">USA is rectangular.</p>
+     ...
+     <p id="austalia" class="oceania">Australia is big.</p>
+     <p id="newzealand" class="oceania">New Zealand has two islands.</p>
+    </pre>
+ 
+  And then, instead of having 193 lines in our CSS file, we can have just 5, where
+  each line tells CSS how to represent each element of a class. To do that, we write
+  a dot followed by the class name:
+    <pre>
+      .europe {color: blue; background-color: white; font: 2em; font-family: arial; }
+      .asia {color: red; background-color: green; font: 2em; font-family: arial; }
+      .africa {color: blue; background-color: green; font: 2em; font-family: arial; }
+      .america {color: red; background-color: blue; font: 2em; font-family: arial; }
+      .oceania {color: yellow; background-color: white; font: 2em; font-family: arial; }
+     </pre>
+    </li>
+</ul>
+
+
+
+
+
+
+
 
 
 
