@@ -1,8 +1,15 @@
+<!doctype html>
+<meta lang="en" charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+<title>Azu's web course: Lesson 5: Controlling presentation with CSS</title>
+<p>
 Hi Azu!
-
+</p>
+<p>
 We are going to learn how to use CSS, a lenguage that controls how the elements
 of a HTML webpage are presented.
-
+</p>
+<p>
 CSS is a language that allows us to tell the browser that we want to change the
 default behavior that it used to present HTML content. Its name means
 cascading style sheets: an style sheet is a set of attributes without semantic
@@ -13,7 +20,8 @@ sheets at the same time, and any potential conflicting instructions can be resol
 in a reasonable manner: for example, if one style sheet says that font color should be
 blue, and another that it should be red, the browser has some reasonable rule
 to determine which one, if any, should be the final one.
-
+</p>
+<p>
 HTML, as we have seen until now, allows us to define some elements by means of
 tags: we use a <b>&lt;p&gt;</b> to indicate that we want to write a paragraph,
 a <b>&lt;h1&gt;</b> for a heading, a <b>&lt;ul&gt;</b> for an unordered list, etc.
@@ -22,10 +30,12 @@ we use <b>&lt;p&gt;</b>, the browser will automatically put more space with resp
 to whatever we were writing before; when we use <b>&lt;ul&gt;</b> the browser
 prepares to print a list of items in vertical; when we use <b>&lt;h1&gt;</b>
 the browser uses a large font and usually writes the content in bold. 
-
+</p>
+<p>
 By default, all the elements that we write in the HTML file are presented in
 the browser in the same order in which we wrote them in the HTML file.
-
+</p>
+<p>
 CSS allows to avoid the vertical presentation of items, by placing elements in
 other orders: for example, if we write in HTML an ordered list of links to pages,
 the browser will write it immnediately below of what we were writing before.
@@ -34,27 +44,32 @@ to put it to the left of the window, preventing any oter content to share that
 left space: this would turn that ordered list into a navigation menu of the kind that is
 common in many websites. We can also use CSS to put it in the right of the page, or
 on the top, or on the bottom.
-
+</p>
+<p>
 We can also use CSS to indicate the size of margins of elements, whether we
 want borders around them and with which styles (dashed, solid, dotted, etc.), font
 colors, font sizes, background colors, font families and styles (underlines, overlines,
 with a line through the text, cursive, bold, bold size, etc.).
-
+</p>
+<p>
 CSS also allows control over the shape and color of the mouse cursor when it hovers
 over a given element (for example, change the cursor from an arrow to a dot when
 hovering over a given image, etc.).
-
+</p>
+<p>
 There are too many properties that allow to be modified in CSS to cite them here. For
 a good introduction to them, search Google for "CSS MDN". MDN stands for Mozilla Development
 Network.
-
+</p>
+<p>
 CSS instructions are written in one or more files. Those files are usually named with ".css" extension.
 To tell the browser to apply the instructions found in a file named "aeiou.css" 
 file to a given HTML file, we write anywhere in that HTML file the following:
 <pre>
-<link rel="stylesheet" href="aeiou.css">
+&lt;link rel="stylesheet" href="aeiou.css"&gt;
 </pre>
-
+</p>
+<p>
 Inside the css file, we write instructions that will tell the browser how to
 modify the appearance and presentation in the screen of the content of the
 HTML webpage. There are three main instruction types to do that inside the CSS file:
@@ -79,7 +94,7 @@ p {
   CSS file. In order to give unique names to elements in the HTML code, we use the attribute id
   inside the opening tag of an element. For example, the following:
   <pre>
-   <p id="spain">Spain is in Europe. It borders the Atlantic Ocean.</p>
+   &lt;p id="spain"&gt;Spain is in Europe. It borders the Atlantic Ocean.&lt;/p&gt;
   </pre>
   defines a paragraph with the identier "spain". Idenfiers are case sensitive, and must be unique
   inside the HTML document. Since it has an identifier, we can write this in the CSS file:
@@ -104,20 +119,20 @@ p {
     54 for Africa, 47 for Asia, and 14 for Oceania. We can give a unique id for each one in the HTML
     file (whose value can be, for example, the name of that country), by:
     <pre>
-     <p id="spain">Spain is square.</p>
-     <p id="portugal">Portugal is rectangular.</p>
+     &lt;p id="spain"&gt;Spain is square.&lt;/p&gt;
+     &lt;p id="portugal"&gt;Portugal is rectangular.&lt;/p&gt;
      ...
-     <p id="japan">Japan is long.</p>
-     <p id="china">China is rectangular.</p>
+     &lt;p id="japan">Japan is long.&lt;/p&gt;
+     &lt;p id="china">China is rectangular.&lt;/p&gt;
      ...
-     <p id="morocco">Morocco has the Atlas.</p>
-     <p id="algeria">Algeria is big.</p>
+     &lt;p id="morocco">Morocco has the Atlas.&lt;/p&gt;
+     &lt;p id="algeria">Algeria is big.&lt;/p&gt;
      ...
-     <p id="canada">Canada is cold.</p>
-     <p id="usa">USA is rectangular.</p>
+     &lt;p id="canada">Canada is cold.&lt;/p&gt;
+     &lt;p id="usa">USA is rectangular.&lt;/p&gt;
      ...
-     <p id="austalia">Australia is big.</p>
-     <p id="newzealand">New Zealand has two islands.</p>
+     &lt;p id="austalia">Australia is big.&lt;/p&gt;
+     &lt;p id="newzealand">New Zealand has two islands.&lt;/p&gt;
     </pre>
     and then, in the CSS file, we would
     have 193 repetitions of the kind:
@@ -144,20 +159,20 @@ p {
     an HTML element to identify it as belonging to a class. In our example, we could create five classes, one
     per continent, and apply them to each paragraph in the folowing way: 
     <pre>
-     <p id="spain" class="europe">Spain is square.</p>
-     <p id="portugal" class="europe">Portugal is rectangular.</p>
+     &lt;p id="spain" class="europe">Spain is square.&lt;/p&gt;
+     &lt;p id="portugal" class="europe">Portugal is rectangular.&lt;/p&gt;
      ...
-     <p id="japan" class="asia">Japan is long.</p>
-     <p id="china" class="asia">China is rectangular.</p>
+     &lt;p id="japan" class="asia">Japan is long.&lt;/p&gt;
+     &lt;p id="china" class="asia">China is rectangular.&lt;/p&gt;
      ...
-     <p id="morocco" class="africa">Morocco has the Atlas.</p>
-     <p id="algeria" class="africa">Algeria is big.</p>
+     &lt;p id="morocco" class="africa">Morocco has the Atlas.&lt;/p&gt;
+     &lt;p id="algeria" class="africa">Algeria is big.&lt;/p&gt;
      ...
-     <p id="canada" class="america">Canada is cold.</p>
-     <p id="usa" class="america">USA is rectangular.</p>
+     &lt;p id="canada" class="america">Canada is cold.&lt;/p&gt;
+     &lt;p id="usa" class="america">USA is rectangular.&lt;/p&gt;
      ...
-     <p id="austalia" class="oceania">Australia is big.</p>
-     <p id="newzealand" class="oceania">New Zealand has two islands.</p>
+     &lt;p id="austalia" class="oceania">Australia is big.&lt;/p&gt;
+     &lt;p id="newzealand" class="oceania">New Zealand has two islands.&lt;/p&gt;
     </pre>
  
   And then, instead of having 193 lines in our CSS file, we can have just 5, where
