@@ -115,10 +115,11 @@ p {
    }
  </pre>
   And in this way, the paragraph identified as "spain" would have yellow font over a red background,
-  and its text would be underlined. As the CSS file also indicates that paragraphs should be
+  and its text would be underlined. As the CSS file also indicates that all paragraphs should be
   written in blue font over yellow background, there is a potential conflict between the instructions.
-  In this case, the browser uses the ones for the "#spain" identifier because it is more specific than
-  the ones for "p".
+  In this case, for the paragraph whose id in the HTML file is "spain", the browser uses the instructions 
+  narked as "#spain" in the CSS file. For the
+  rest of paragraphs, the browser uses the CSS instructions marked as "p" in the CSS file. 
  </li>
   <li>
     If we want a lot of elements in a HTML page, but not all, to have a common appearance, in theory
