@@ -197,10 +197,11 @@ p {
       .oceania {color: yellow; background-color: white; font: 2em; font-family: arial; }
      </pre>
     
-  It is possible to indicate both class and id for the same element; if we want a specific element
-  to have a differnet presentation than the rest of the elements of its class, then we need to give
-  it an id, For example, if we wanted to write the paragraph for australia in the same style as before
-  but with yellow font over green background, we would write:
+  It is also possible to indicate both class and id for the same element in the HTML file.
+    This can be useful to give a specific element of a class some additional presentation
+    attributes. For example, if we wanted to write the paragraph for australia in 
+    underlined font in addition to the rest of characteristics of elements in the class "oceania",
+    we would give an id to the paragraph related to australia (apart from its class attribute), like this:
   <pre>
      &lt;p class="europe">Spain is square.&lt;/p&gt;
      &lt;p class="europe">Portugal is rectangular.&lt;/p&gt;
@@ -224,7 +225,7 @@ p {
       .africa {color: blue; background-color: green; font: 2em; font-family: arial; }
       .america {color: red; background-color: blue; font: 2em; font-family: arial; }
       .oceania {color: yellow; background-color: white; font: 2em; font-family: arial; }
-      #australia {color: yellow; background-color: green; font: 2em; font-family: arial;}
+      #australia {text-decoration: underline;}
      </pre>
     </li>
 </ul>
