@@ -127,7 +127,8 @@ p {
     appear. For example, if we have a HTML page where we have a paragraph for each country in the
     world, and we want to use a common color for the countries of each continent, 
     then we would have 193 paragraphs: 43 would be for countries in Europe, 35 for America,
-    54 for Africa, 47 for Asia, and 14 for Oceania. We can give a unique id for each paragraph in the HTML
+    54 for Africa, 47 for Asia, and 14 for Oceania (I just looked at the numbers in Wikipedia :)). 
+    We can give a unique id for each paragraph in the HTML
     file (whose value can be, for example, the name of that country), by doing something like this:
     <pre>
      &lt;p id="spain"&gt;Spain is square.&lt;/p&gt;
@@ -145,7 +146,7 @@ p {
      &lt;p id="australia">Australia is big.&lt;/p&gt;
      &lt;p id="newzealand">New Zealand has two islands.&lt;/p&gt;
     </pre>
-    and then, in the CSS file, we could have 193 repetitions of something like this:
+    and then, in the CSS file, we could have 193 lines like this (the colors are just an example):
     <pre>
       #spain {color: blue; background-color: white; font: 2em; font-family: arial; }
       #portugal {color: blue; background-color: white; font: 2em; font-family: arial; }
@@ -166,7 +167,7 @@ p {
     That is a totally fine way to control the appearance of the HTML page. 
     However, in order to save typing in the CSS file, we can instead group all HTML elements of a given continent
     in what is called a HTML class, and use CSS to tell the browser to apply the same instructions to all elements
-    that belong to a given class. We use the attribute <p>class</p> in the opening tag of 
+    that belong to a given class. We use the attribute <b>class</b> in the opening tag of 
     an HTML element to identify it as belonging to a class. In our example, we could create five classes, one
     per continent, and apply them to each paragraph in the folowing way: 
     <pre>
