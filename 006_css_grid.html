@@ -94,8 +94,134 @@ This is done with something like <b>img {display: block; width: 50%; margin: aut
 
 EXERCISES:
 
-1) Read these HTML and CSS files, and try to understand the meaning of all elements.
+1) Read the following HTML and CSS files (japan.css and japan.html), and try to understand the meaning of all elements.
+<h2>japan.html</h2>
+<pre>
+&lt;!doctype html&gt;                                                           
+&lt;html&gt;                                                                    
+&lt;head&gt;                                                                    
+&lt;title&gt;Japan prefectures&lt;/title&gt;                                    
+&lt;link rel="stylesheet" href="japan.css"&gt;                                  
+&lt;meta charset="utf-8"&gt;                                                    
+&lt;meta name="about" content="Japan"&gt;                                       
+&lt;meta name="theme" content="geography"&gt;                                   
+&lt;meta name="author" content="Perico de los Palotes and his friends"&gt;      
+&lt;/head&gt;                                                                   
+&lt;body&gt;                                                                    
+&lt;div id="mainheader"&gt;                                                     
+  &lt;h1 id="maintitle"&gt;Japan and its geography&lt;/h1&gt;                   
+  &lt;img id="japanflag" src="japanflag.png"&gt;                                
+&lt;/div&gt;                                                                    
+&lt;div id="leftsubheader"&gt;                                                  
+ &lt;ul&gt;                                                                     
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/hokkaido"&gt;Hokkaido&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/honshu"&gt;Honshu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/shikoku"&gt;Shikoku&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/kyushu"&gt;Kyushu&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;                                                                    
+&lt;/div&gt;                                                                    
+&lt;div id="centersubheader"&gt;                                                
+&lt;h2&gt; Plenty of islands and cities!&lt;/h2&gt;                             
+&lt;/div&gt;                                                                    
+&lt;div id="rightsubheader"&gt;                                                 
+ &lt;ul&gt;                                                                     
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/tokyo"&gt;Tokyo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/osaka"&gt;Osaka&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/nagoya"&gt;Nagoya&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/sendai"&gt;Sendai&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;                                                                    
+&lt;/div&gt;                                                                    
+&lt;div id="sidebar"&gt;                                                        
+ &lt;ol&gt;                                                                     
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/ramen"&gt;Ramen&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Soba"&gt;Soba&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Udon"&gt;udon&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/sushi"&gt;Sushi&lt;/a&gt;&lt;/li&gt;
+ &lt;/ol&gt;                                                                    
+                                                                                
+&lt;/div&gt;                                                                    
+&lt;div id="maincontent"&gt;                                                    
+ &lt;p&gt;Japan is big.&lt;/p&gt;                                               
+ &lt;p&gt;Japan has lots of islands. And rivers. And mountains.&lt;/p&gt;       
+  &lt;img id="japanmap" src="japanmap.png"&gt;                                  
+ &lt;p&gt;Japan has manga and anime.&lt;/p&gt;                                  
+&lt;/div&gt;                                                                    
+&lt;div id="footer"&gt;                                                         
+ &lt;ul&gt;                                                                     
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/universe"&gt;About us&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/email"&gt;Contact information&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/weather"&gt;Weather&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;                                                                    
+&lt;/div&gt;                                                                    
+&lt;/body&gt;                                                                   
+&lt;/html&gt;                 
+</pre>
 
+<h2>japan.css</h2>
+<pre>
+body {                                                                          
+  display: grid;                                                                
+  grid-template-areas: "A A A"                                                  
+                       "B C D"                                                  
+                       "E F F"                                                  
+                       "G G G";                                                 
+  height: 100vh;                                                                
+  grid-template-rows: auto auto 1fr auto;                                       
+  text-align: center;                                                           
+}                                                                               
+#mainheader {                                                                   
+  grid-area: A;                                                                 
+  text-align: center;                                                           
+}                                                                               
+#leftsubheader {                                                                
+  grid-area: B;                                                                 
+  background-color: green;                                                      
+}                                                                               
+#centersubheader {                                                              
+  grid-area: C;                                                                 
+  background-color: grey;                                                       
+}                                                                               
+#rightsubheader {                                                               
+  grid-area: D;                                                                 
+  background-color: red;                                                        
+}                                                                               
+#sidebar {                                                                      
+  grid-area: E;                                                                 
+  background-color: pink;                                                       
+}                                                                               
+#maincontent {                                                                  
+  grid-area: F;                                                                 
+  text-align: center;                                                           
+}                                                                               
+#footer {                                                                       
+  grid-area: G;                                                                 
+  background-color: aquamarine;                                                 
+}                                                                               
+ul {                                                                            
+ list-style: none;                                                              
+}                                                                               
+ul li {                                                                         
+ display: inline-block;                                                         
+}                                                                               
+li:hover {                                                                      
+ color: blue;                                                                   
+ background-color: yellow;                                                      
+ cursor: pointer;                                                               
+}                                                                               
+#japanmap {                                                                     
+ display: block;                                                                
+ margin: auto;                                                                  
+ width: 50%;                                                                    
+}                                                                               
+#japanflag {                                                                    
+ display: inline-block;                                                         
+ margin: auto;                                                                  
+ width: 10%;                                                                    
+}                                                                               
+#maintitle {    
+ color: blue;                                                                   
+}      
+</pre>
 2) Write these files as exampleazu.html and exampleazu.css. Download the Google logo visible in the
 center of the screen at "https://www.google.com" as googlelogo.png in the folder where you have the
 HTML and CSS files. Load the exampleazu.html file in the browser and observe how it works.
