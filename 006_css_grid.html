@@ -91,7 +91,14 @@ This is done with <b>text-align</b> set to center, left, or right, and <b>color,
 set to a given color.
 9) for image elements, it is typical to control sizes, centering, and borders.
 This is done with something like <b>img {display: block; width: 50%; margin: auto; padding: 10%; border: 5px solid pink;}</b>.
-
+10) When webpages are seen in smartphones or in small screens, or in normal computers but where the browser
+window in made very narrow, it is not nice if the website does not adapt to
+the size of the screen somehow to make it easier for readers of those devices. To make reading easier, the
+CSS command <b>@media (max-width: 600px){ body {grid-template-areas: "A" "B" "C" "D" "E" "F" "G"}}</b> can
+be used to say that, for example, if the width of the screen is lower than 600 pixels (it is unclear
+how big this number should be, you can play with
+that number and then make the browser window thinner and wider to select an adequate value), then the grid
+that you were working with is replaced by one where each element is written in a row.
 EXERCISES:
 
 1) Read the following HTML and CSS files (japan.css and japan.html), and try to understand the meaning of all elements.
@@ -110,7 +117,7 @@ EXERCISES:
 &lt;body&gt;                                                                    
 &lt;div id="mainheader"&gt;                                                     
   &lt;h1 id="maintitle"&gt;Japan and its geography&lt;/h1&gt;                   
-  &lt;img id="japanflag" src="japanflag.png"&gt;                                
+  &lt;img id="japanflag" src="japanflag.svg"&gt;                                
 &lt;/div&gt;                                                                    
 &lt;div id="leftsubheader"&gt;                                                  
  &lt;ul&gt;                                                                     
@@ -220,10 +227,30 @@ li:hover {
 }                                                                               
 #maintitle {    
  color: blue;                                                                   
-}      
+}
+@media (max-width: 600px) {                                                                                   
+ body {                                                                                                       
+  grid-template-areas: "A"                                                      
+                       "B"                                                      
+                       "C"                                                                                    
+                       "D"                                                      
+                       "E"                                                                                    
+                       "F"                                                      
+                       "G";                                                      
+ }                                                                              
+}           
 </pre>
-2) Write these files as exampleazu.html and exampleazu.css. Download the Google logo visible in the
-center of the screen at "https://www.google.com" as googlelogo.png in the folder where you have the
-HTML and CSS files. Load the exampleazu.html file in the browser and observe how it works.
-
-3) Create a webpage that imitates the main design of the https://www.google.com wepage
+2) Write these files as japan.html and japan.css in a folder that you need to create for this
+lesson. The file japan.html needs two imatges: a flag of Japan,
+and a map of Japan. I found two that you can download from
+https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg
+and 
+https://upload.wikimedia.org/wikipedia/commons/6/69/Japan_Map_CIA_2021.png
+Download them and rename them to japanflag.svg and japanmnap.svg respectively.
+3) Load the file japan.html in the browser, and observe how each element is represented.
+4) Play with the CSS file elements, eliminating some lines and observing what happens,
+changing colors, etc.
+5) Create a webpage that imitates the main design of the https://www.google.com webpage. Have fun!!!
+6) Create a webpage that imitates the main design of Instagram.
+7) Create a webpage that imitates the main design of your favorite webpage.
+8) Repeat as many times as you can. Practice makes perfection. Have fun!!!!
