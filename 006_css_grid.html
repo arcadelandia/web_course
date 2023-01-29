@@ -13,19 +13,91 @@ called <b>CSS grids</b>.
 There are several ways to use a CSS grid. One is as follows:
 1) have a clear idea of how we want our webpage to look. Pen and paper is helpful, making
 a grid diagram showing the design of the page, and what menus and images and headers are in which area.
-Iterate design in the paper until you are happy with it.
-2) use CSS to tell the browser that we want to use a grid design,
-3) use CSS to tell the browser the design that we created on paper
+Iterate design in the paper until you are happy with it. For example, look at this simple
+diagram for a webpage with four rows: a header bar A, a subheader bar with three areas (a left one, B, 
+a center one C, and a right ine D), a sidebar E side by side with a main area F, and a footer bar G
+<img src="cssdiagram.png">.
+2) use CSS to tell the browser that we want to use a grid design with the line 
+<b>body {display:grid} </b> inside the CSS file. 
+3) Decide which of the rows of the design will stretch to fill the entire browser window
+if the information is not wnough to cover all available space. If, in this example, that
+is the third row (the one with elements E and F, where we want to put the main content). 
+This is done by writing <b>body {grid-template-rows: auto auto 1fr auto; }</b> where the word auto means
+that the corresponding row height will be automatically adjusted according to its content,
+and the word 1fr means "fractional unit" and basically means to use all available space (so
+it will stretch if needed).
 4) this is optional: use CSS to tell the browser to use the full space of the window to paint
 the elements, just in case there is not enough information to fll it. This is because many people
 consider estethically pleasing to have something non-blank at the
 bottom of the visible area of the browser (something like a footer bar or anything
 like that). This tells the browser to stretch information as much as possible in order to try to
-fill space until the bottom.
-5) in the HTML, create a div element for each grid area; give that div a unique id.
-6) use CSS to tell in which area each id will be located.
+fill space until the bottom. This is done with the line <b>height: 100vh;</b>
+5) use CSS to tell the browser the design that we created on paper. For example, for the
+image displyed above, we would divide the whole webpage in a grid as detailed as needed:
+<pre>
+body {
+ display: grid;
+ height: 100vh;
+ grid-template-rows: auto auto 1fr auto;
+ grid-template-areas: "A A A"
+                      "B C D"
+                      "E F F"
+                      "G G G";
+}
+</pre>
+Observe how we write inside the CSS file several rows of letters, where each letter 
+corresponds to the name that we gave in the paper design (we can put any name 
+that we want instead of letters, but letters are convenient and short). In each line there 
+needs to be the same number of letters (in this case 3 per line, separated by spaces).
+This number is the size of the longest row in our design: the first row has 1 element (the header A),
+the second row has a length of 3 (the subheaders B, C, and D), the third row has a length of two (the 
+sidebar E and the main content F), and the fourth row has a length of one (the footer G). So the maximum
+is 3, and that is the amount of letters in each row. Then, in each row we put each lines according
+to the graphical design that we have in mind.
+6) in the HTML, create a div element for each grid area; give that div a unique id, and enclose all
+information that we want to be in a given area of the grid in that element. For example, if we want
+to put a title related to Castilla and an image of its flag in the header A, we can write something
+like
+<pre>
+<div id="azuheader">
+ <h1>Provincias de Castilla</h1>
+ <img src="banderaocastilla.png">
+</div>
+</pre>
+and then use the CSS to tell the browser that the element whose id is <b>azuheader</b>
+goes into the part of the grid that we labeled A.
+<pre>
+#azuheader {
+ grid-area: A;
+}
+</pre>
+and we do this for each and every group of elements in the webpage.
 7) use CSS to create horzontal menus by taking away the vertical alignment, and the item marker,
 and giving a different cursor and color of the font and/or backgrounf of an item when hovering
 the mouse over it.
+This means that we can write something like:
+<pre>
+li {
+  display: inline-block;
+}
+li:hover {
+  color: blue;
+  background-color: yellow;
+  cursor: pointer; 
+}
+</pre>
 8) for text elements, it is typical to control color, background color, font size, and centering.
+This is done with <b>text-align</b> set to center, left, or right, and <b>color, background-color</b>
+set to a given color.
 9) for image elements, it is typical to control sizes, centering, and borders.
+This is done with something like <b>img {display: block; width: 50%; margin: auto; padding: 10%; border: 5px solid pink;}</b>.
+
+EXERCISES:
+
+1) Read these HTML and CSS files, and try to understand the meaning of all elements.
+
+2) Write these files as exampleazu.html and exampleazu.css. Download the Google logo visible in the
+center of the screen at "https://www.google.com" as googlelogo.png in the folder where you have the
+HTML and CSS files. Load the exampleazu.html file in the browser and observe how it works.
+
+3) Create a webpage that imitates the main design of the https://www.google.com wepage
