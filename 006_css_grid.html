@@ -24,16 +24,16 @@ have a clear idea of how we want our webpage to look. Pen and paper is helpful, 
 a grid diagram showing the design of the page, and what menus and images and headers are in which area.
 Iterate design in the paper until you are happy with it. For example, look at this simple
 diagram for a webpage with four rows: a header bar A, a subheader bar with three areas (a left one, B, 
-a center one C, and a right ine D), a sidebar E side by side with a main area F, and a footer bar G
-<img src="cssdiagram.png">.
+a center one C, and a right ine D), a sidebar E side by side with a main area F, and a footer bar G.
+<img src="cssdiagram.png">
 </li>
 <li>
-use CSS to tell the browser that we want to use a grid design with the line 
+Use CSS to tell the browser that we want to use a grid design with the line 
 <b>body {display:grid} </b> inside the CSS file. 
 </li>
 <li>
 Decide which of the rows of the design will stretch to fill the entire browser window
-if the information is not wnough to cover all available space. If, in this example, that
+if the information is not enough to cover all available space. In this example, that
 is the third row (the one with elements E and F, where we want to put the main content). 
 This is done by writing <b>body {grid-template-rows: auto auto 1fr auto; }</b> where the word auto means
 that the corresponding row height will be automatically adjusted according to its content,
@@ -41,7 +41,7 @@ and the word 1fr means "fractional unit" and basically means to use all availabl
 it will stretch if needed).
 </li>
 <li>
-this is optional: use CSS to tell the browser to use the full space of the window to paint
+Use CSS to tell the browser to use the full space of the window to paint
 the elements, just in case there is not enough information to fll it. This is because many people
 consider estethically pleasing to have something non-blank at the
 bottom of the visible area of the browser (something like a footer bar or anything
@@ -49,7 +49,7 @@ like that). This tells the browser to stretch information as much as possible in
 fill space until the bottom. This is done with the line <b>height: 100vh;</b>
 </li>
 <li>
-use CSS to tell the browser the design that we created on paper. For example, for the
+Use CSS to tell the browser the design that we created on paper. For example, for the
 image displyed above, we would divide the whole webpage in a grid as detailed as needed:
 <pre>
 body {
@@ -73,7 +73,11 @@ is 3, and that is the amount of letters in each row. Then, in each row we put ea
 to the graphical design that we have in mind.
 </li>
 <li>
-in the HTML, create a div element for each grid area; give that div a unique id, and enclose all
+Using HTML, create a <b>div</b> element for each grid area; a div is an element that simply
+  means that we want to create a division of the webpage, without further semantic meaning.
+  We then use wull use CSS to instruct the browser to assign that div (and thus all elements
+  that we write inside it) to the grid area that we assigned in the paper design. To do that,
+  we give that div a unique id inside the HTML file, and enclose in it all the
 information that we want to be in a given area of the grid in that element. For example, if we want
 to put a title related to Castilla and an image of its flag in the header A, we can write something
 like
@@ -93,7 +97,7 @@ goes into the part of the grid that we labeled A.
 and we do this for each and every group of elements in the webpage.
 </li>
 <li>
-use CSS to create horzontal menus by taking away the vertical alignment, and the item marker,
+Use CSS to create horzontal menus by taking away the vertical alignment, and the item marker,
 and giving a different cursor and color of the font and/or backgrounf of an item when hovering
 the mouse over it.
 This means that we can write something like:
@@ -109,12 +113,13 @@ li:hover {
 </pre>
 </li>
 <li>
-for text elements, it is typical to control color, background color, font size, and centering.
+Use CSS to control the appearance of text elements. With them, it is typical to 
+  control color, background color, font size, and centering.
 This is done with <b>text-align</b> set to center, left, or right, and <b>color, background-color</b>
 set to a given color.
 </li>
 <li>
-for image elements, it is typical to control sizes, centering, and borders.
+Use CSS to control image elements. With them,, it is typical to control sizes, centering, and borders.
 This is done with something like <b>img {display: block; width: 50%; margin: auto; padding: 10%; border: 5px solid pink;}</b>.
 </li>
 <li>
