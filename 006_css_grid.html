@@ -35,8 +35,10 @@ Use CSS to tell the browser that we want to use a grid design with the line
 Decide which of the rows of the design will stretch to fill the entire browser window
 if the information is not enough to cover all available space. In this example, that
 is the third row (the one with elements E and F, where we want to put the main content). 
-This is done by writing <b>body {grid-template-rows: auto auto 1fr auto; }</b> where the word auto means
-that the corresponding row height will be automatically adjusted according to its content,
+For this particular example, this is done by writing  <b>body {grid-template-rows: auto auto 1fr auto; }</b> 
+where there is one word per row ofvthe paper design,and the word auto means
+that the corresponding row height will be automatically adjusted according to how big is
+its content when we write it,
 and the word 1fr means "fractional unit" and basically means to use all available space (so
 it will stretch if needed).
 </li>
