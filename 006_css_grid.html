@@ -36,7 +36,7 @@ Decide which of the rows of the design will stretch to fill the entire browser w
 if the information is not enough to cover all available space. In this example, that
 is the third row (the one with elements E and F, where we want to put the main content). 
 For this particular example, this is done by writing  <b>body {grid-template-rows: auto auto 1fr auto; }</b> 
-where there is one word per row ofvthe paper design,and the word auto means
+where there is one word per row of the paper design,and the word auto means
 that the corresponding row height will be automatically adjusted according to how big is
 its content when we write it,
 and the word 1fr means "fractional unit" and basically means to use all available space (so
@@ -48,11 +48,11 @@ the elements, just in case there is not enough information to fll it. This is be
 consider estethically pleasing to have something non-blank at the
 bottom of the visible area of the browser (something like a footer bar or anything
 like that). This tells the browser to stretch information as much as possible in order to try to
-fill space until the bottom. This is done with the line <b>height: 100vh;</b>
+fill space until the bottom. This is done with the line <b>body { height: 100vh; }</b>
 </li>
 <li>
-Use CSS to tell the browser the design that we created on paper. For example, for the
-image displyed above, we would divide the whole webpage in a grid as detailed as needed:
+Use CSS to tell the browser the design that we created on paper. For example, and
+  summarizing all the above points, we would divide the whole webpage in a grid as detailed as needed:
 <pre>
 body {
  display: grid;
@@ -64,7 +64,8 @@ body {
                       "G G G";
 }
 </pre>
-Observe how we write inside the CSS file several rows of letters, where each letter 
+Observe how we write inside the CSS file the grid-template-areas property of the body element:
+  it has several rows of letters, where each letter 
 corresponds to the name that we gave in the paper design (we can put any name 
 that we want instead of letters, but letters are convenient and short). In each line there 
 needs to be the same number of letters (in this case 3 per line, separated by spaces).
@@ -81,16 +82,17 @@ Using HTML, create a <b>div</b> element for each grid area; a div is an element 
   that we write inside it) to the grid area that we assigned in the paper design. To do that,
   we give that div a unique id inside the HTML file, and enclose in it all the
 information that we want to be in a given area of the grid in that element. For example, if we want
-to write a title related to Castilla and an image of its flag in the header A, we can write something
-like
+to write a title related to Castilla and an image of its flag in the area marked as A in our paper
+  design (this is, the uppermost header), we can write something
+like the following inside the HTML file:
 <pre>
 &lt;div id="azuheader"&gt;
  &lt;h1&gt;Provincias de Castilla&lt;/h1&gt;
  &lt;img src="banderacastilla.png"&gt;
 &lt;/div&gt;
 </pre>
-and then use the CSS to tell the browser that the element whose id is <b>azuheader</b>
-goes into the part of the grid that we labeled A.
+and then use the CSS file to tell the browser that the element whose id is <b>azuheader</b>
+goes into the part of the grid that we labeled A, by writing something like:
 <pre>
 #azuheader {
  grid-area: A;
@@ -99,13 +101,14 @@ goes into the part of the grid that we labeled A.
 and we do this for each and every group of elements in the webpage.
 </li>
 <li>
-Use CSS to create horizontal menus by taking away the vertical alignment, and the item marker,
+Use CSS to create usual horizontal menus by telling to not put a newline after each element, and taking
+  away the item marker (the dot or star in unordered lists, or number or letter in ordered lists),
 and giving a different cursor and color of the font and/or background of an item when hovering
 the mouse over it.
 This means that we can write something like:
 <pre>
 ul {
-  list-style: none; /* this eliminates the dog or number from each element of the list */
+  list-style: none; /* this eliminates the dot or number from each element of the list */
 }
 li {
   display: inline-block; /* this writes the list item in the same line as the rest */
@@ -113,7 +116,7 @@ li {
 li:hover {
   color: blue;
   background-color: yellow;
-  cursor: pointer; 
+  cursor: pointer; /* this changes the mouse cursor to a hand when hovering over any li element*/ 
 }
 </pre>
 </li>
@@ -123,19 +126,25 @@ Use CSS to control the appearance of text elements. With them, it is typical to
 This is done with <b>text-align</b> set to center, left, or right, and <b>color, background-color, font-size</b>
 set to a given color.
 </li>
+<li>Use the CSS attributes <b>margin</b>, <b>border</b>, and <b>padding</b> with any element, if we want
+  to control the amount of whitespace that it will have around, and whether a border bar will be
+  displayed. padding is a whitespace area in the inside of the border, and margin on the outside.
+</li>
 <li>
 Use CSS to control image elements. With them,, it is typical to control sizes, centering, and borders.
 This is done with something like <b>img {display: block; width: 50%; margin: auto; padding: 10%; border: 5px solid pink;}</b>.
 </li>
 <li>
 When webpages are seen in smartphones or in small screens, or in normal computers but where the browser
-window in made very narrow, it is not nice if the website does not adapt to
-the size of the screen somehow to make it easier for readers of those devices. To make reading easier, the
-CSS command <b>@media (max-width: 600px){ body {grid-template-areas: "A" "B" "C" "D" "E" "F" "G"}}</b> can
-be used to say that, for example, if the width of the screen is lower than 600 pixels (it is unclear
-how big this number should be, you can play with
-that number and then make the browser window thinner and wider to select an adequate value), then the grid
-that you were working with is replaced by one where each element is written in a row.
+window is made very narrow (for example, by using the mouse), it is considered a nice design if 
+  the website appearance adapts somehow to
+the small size of the screen, hopefully to make it easier for readers of those devices. In our paper design,
+  that probably will imply to present the A,B,C,D,E,F,G areas in a continuous column, rather than how we
+  drew them on paper. We can use the following CSS command to make the browset change from
+  our original CSS grid to the new one: <b>@media (max-width: 600px){ body {grid-template-areas: "A" "B" "C" "D" "E" "F" "G"}}</b>. it
+  says that, if the width of the screen is lower than 600 pixels (you can do trial and error with different values to see 
+  how big or small this number should be, making 
+the browser window thinner and wider), to present the A to G areas in a continuous column, one below the other.
 </li>
 </ol>
 
