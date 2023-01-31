@@ -71,23 +71,23 @@ needs to be the same number of letters (in this case 3 per line, separated by sp
 This number is the size of the longest row in our design: the first row has 1 element (the header A),
 the second row has a length of 3 (the subheaders B, C, and D), the third row has a length of two (the 
 sidebar E and the main content F), and the fourth row has a length of one (the footer G). So the maximum
-is 3, and that is the amount of letters in each row. Then, in each row we put each lines according
+is 3, and that is the amount of letters in each row. Then, in each row we write each line according
 to the graphical design that we have in mind.
 </li>
 <li>
 Using HTML, create a <b>div</b> element for each grid area; a div is an element that simply
   means that we want to create a division of the webpage, without further semantic meaning.
-  We then use wull use CSS to instruct the browser to assign that div (and thus all elements
+  We then use CSS to instruct the browser to assign that div (and thus all elements
   that we write inside it) to the grid area that we assigned in the paper design. To do that,
   we give that div a unique id inside the HTML file, and enclose in it all the
 information that we want to be in a given area of the grid in that element. For example, if we want
-to put a title related to Castilla and an image of its flag in the header A, we can write something
+to write a title related to Castilla and an image of its flag in the header A, we can write something
 like
 <pre>
-<div id="azuheader">
- <h1>Provincias de Castilla</h1>
- <img src="banderacastilla.png">
-</div>
+&lt;div id="azuheader"&gt;
+ &lt;h1&gt;Provincias de Castilla&lt;/h1&gt;
+ &lt;img src="banderacastilla.png"&gt;
+&lt;/div&gt;
 </pre>
 and then use the CSS to tell the browser that the element whose id is <b>azuheader</b>
 goes into the part of the grid that we labeled A.
