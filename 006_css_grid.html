@@ -99,13 +99,16 @@ goes into the part of the grid that we labeled A.
 and we do this for each and every group of elements in the webpage.
 </li>
 <li>
-Use CSS to create horzontal menus by taking away the vertical alignment, and the item marker,
-and giving a different cursor and color of the font and/or backgrounf of an item when hovering
+Use CSS to create horizontal menus by taking away the vertical alignment, and the item marker,
+and giving a different cursor and color of the font and/or background of an item when hovering
 the mouse over it.
 This means that we can write something like:
 <pre>
+ul {
+  list-style: none; /* this eliminates the dog or number from each element of the list */
+}
 li {
-  display: inline-block;
+  display: inline-block; /* this writes the list item in the same line as the rest */
 }
 li:hover {
   color: blue;
