@@ -107,6 +107,7 @@ function change_to_red_background() {
  variations, which do not have any predefined meaning in the language. Care
  should be taken when writing Javascript programs regarding the case of the words,
  because it is a common source of errors.
+     
  The first line has an equal sign. Lines with an equal sign are                 
  easier to understand by reading the left part backwards, and then              
  the right part. So, in this example, we can read that line as:                 
@@ -121,7 +122,7 @@ function change_to_red_background() {
  Javascript sentences that we need to create in order to do whatever            
  it is that we want to do when the user clicks in the button: in this           
  case, it is changing the background color to red. We selected the              
- name change_to_red_backrgound because it is expressive of what the             
+ name change_to_red_background because it is expressive of what the             
  function does, which is the recommended way; however, it could have            
  any other name, like function123, or tonto_el_que_lo_lea, and it               
  would be correct as well. It is considered a good programming         
@@ -159,7 +160,24 @@ function change_to_red_background() {
  of the webpage, and is indicated with the tag <body> in the HTML file,         
  although taht tag is optional, because the browser will act as if it           
  is written even if we do not write it).                       
-                                                                                
+                                      
+ When working with functions in Javascript, it is important to know
+ when to use parenthesis after the name, and when not. In general,
+ if we need to indicate the name of the function, but not run it,
+ we do not write the parentheses. When we need tio run it, or when we
+ are defining it (i.e., describing the instructions that it does), we need
+ the parentheses. For example, inside the line document.getElementById("redbutton").onclick = change_to_red_background;
+ we are telling the browser which function will run once the user clicks, but we do not
+ want to run it now, so the change_to_red_background name does not have parenthesis after it
+ (this is, it is not change_to_red_background). In contrast, the line
+ function change_to_red_background() {                                           
+ does have parentheses after the function name because it defines the function. If, at some
+ point in the Javascript file, we see change_to_red_background() somewhere, that means
+ that we want the browser to execute the instructions inside the function in that precise
+ moment (what is called to run the function). If, on the other hand, we see just change_to_red_background
+     without parentheses, that means that we want to tell the browser something related to the
+     function, but we do not want to run it in that moment.
+     
  So imagine that we have an html file named "example.html" as follows:
  <pre>
  &lt;!doctype HTML&gt;                                                           
