@@ -190,5 +190,40 @@ function change_to_blue_background() {
 }                                               
  </pre>
  
+ It is interesting to see the effect of the word defer in the <b>script</b> tag
+     in the HTML file. If we do not write it,
+     and laod the html file, and try to use the buttons, we will see that they
+     do not appear to have any effect. What happens is:
+ 1) the browser starts loading the html file: it processes the doctype line,
+     and the html opening tag, and the head tag, and then the script tag with
+     the src attribute telling it to load the backgroundcolor.js file and, since
+     there is no defer attribute, it will process it right now before continuing
+     with the next line of the HTML file (the one with the closing head tag)
+ 2) the Javascript file, in its first line, tells the browser to get the element whose
+     id is redbutton, and do something to it (basically what we explained above: assign
+     a function to be run when a user clicks). However, the browser still did not get
+     to process the part of the HTML file that defines the button whose id is redbutton
+     (because it is defined in an <b>input</b> tag that appears in the HTML file
+     after the <b>script</b> tag that it is currently processing). Thus, the browser
+     does not know what element is that, and as a result, it does not do anything.
+     Then, it sees the definition of the function, and takes notice of it just in
+     case it is used later somewhere (which in our example is not), then processes
+     the element whose id is greenbutton, which cannot be found due to the same
+     reason as redbutton, and then the same with bluebutton.
+     
+  So, if we do not write the attribute <b>defer</b> in the script tag of the
+     javascript file, the buttons will not do anything, because the instructions
+     that tell the browser what to do when the user clicks, run only once, when
+     the script is loaded, and they run before the downloading of the entire HTML
+     page is done. This is solved by using the word <b>defer</b>, whcih tells the
+     browser to finish downloading the whole HTML file before processing the Javascript
+     file; thus, the browser, when the webpage is loaded, or reloaded, will 
+     read the line with the doctype, then the html and body tags, then the 
+     line with the script tag (but will not process that script yet because it 
+     has the defer attribute), then the closing head tag,, then the openingnbody tag,
+     then the three buttons, and then the closing body and html tags, and then, and only then,
+     it will process the Javascript script. Thus, since the browser has already seen
+     the button definitions, when it processes the lines <b>document.getEleemnetById("redbutton").onclick = ...</b>
+     it will already know what are those buttons, so the buttons will work as expected.
 
                                          
