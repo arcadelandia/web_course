@@ -1,0 +1,168 @@
+Javascript is a language that is used to tell the browser                      
+ what to do with the HTML elements that we write in the html files              
+ and how to modify them, delete them, or create them, if needed.                
+ For example, if we want to put a button that, when pressed, allows             
+ to change the background color of the page, we would use Javascript;           
+ or, if we want to move an image from the center of the page to                 
+ the left of the page when the user moves the mouse over it (like in            
+ a game of cat and mouse), we would use also Javascript. Or, if                 
+ we want to connect to another website each minute to download some             
+ information (for example, news headlines from the webpage of a given           
+ newspaper), and then present that information in a new paragraph               
+ in the main body of our webpage, we would use Javascript.                      
+                                                                                
+ Javascript instructions are stored in text files with extension "js".          
+ For example, a file named example.js would be a Javascript file.               
+ When writing an HTML file whose content we will like to control                
+ via Javascript, we need to indicate to the browser                             
+ the path to the javascript file that we want to use, in the following          
+ way:>                                                                          
+ <script src="whatever-path-to-the-js-file" defer></script>                     
+ where the src attribute contains the path to the location of the               
+ js file, and the attribute "defer" means that you want the browser             
+ to wait (i.e., defer further action) until it has downloaded                   
+ the entire webpage before running                                              
+ whatever instructions you have put in the Javascript file. This is             
+ not strictly needed, but it is a good idea                                     
+                                                                                
+ For example, if you see the following code in an HTML file                     
+ <title>Example</title>                                                         
+ <html>                                                                         
+ <link src="thingies/stuff/stylenumber1.css">                                   
+ <link src="thingamajig/someweirdstyle.css">                                    
+ <script src="morestuff/something.js" defer></script>                           
+ <script src="blabla/prrr/something2.js"></script>                              
+ <script src="interestingeffectsjs" defer></script>                             
+                                                                                
+ that means that:                                                               
+ 1) the html webpage will get its CSS instructions                              
+ from two files: one named stylenumber1.css that is inside a folder named       
+ stuff that is inside a folder named thingies, which is in the same             
+ folder as the html file itself; and another named someweirdstyle.vss           
+ located in a folder named thingamajig that is in the same folder as the        
+ html file                                                                      
+ 2) the html webpage will get its Javascript instructions from three            
+ files:                                                                         
+  a) one located in a file named something.js located in a folder named         
+     morestuff located in the same folder as the html file                      
+     and whose instructions need to wait to be executed until the browser       
+     has finished downloading all the page info,                                
+  b) from another named something2.js located in a folder named                 
+     prrr which is inside a folder named blabla located inside the same         
+     folder as the html file, and whose instructions do not need to wait        
+     until the downloading of the HTML file (because it does not have the       
+     defer attribute), and thus would be executed immediately once the          
+     browser sees that line in the HTML file, and                               
+  c) from another called interestingeffects.js located inside the same          
+     folder as the HTML file, and whose instructions need to wait until         
+     the browser has finished downloading the entire html webpage.              
+                                                                                
+ In general, a html file will only include one css file, and one Javascript     
+ file.                                                                          
+                                                                                
+ Let's see how to use the Javascript language to command the browser            
+ to do something that we want it to do.                  
+   
+  In Javascript, the word Document means the entire webpage:                     
+Document                                                                        
+ In Javascript, the expression Document.getElementById("holaazu") means to      
+ get the Document, and inside it (the dot means to go inside), get              
+ the HTML element with the id "holaazu". That element could be                  
+ a paragraph, a header, a list, an image, a div, etc.). For example,            
+Document.getElementById("bocadillo")                                            
+ means to get the element whose id is "bocadillo". If that element does         
+ not exist, then the browser will not do anything. Otherwise, it will           
+ do whatever we indicate later.                                                 
+ For example, imagine that we want to create a webpage with three               
+ buttons:                                                                       
+ 1) one with the id redbutton, with the text 'Pulse here to change to red'      
+    and that, when the user clicks on it, the background color of the           
+    entire webpage changes to red.                                              
+ 2) one with the id greenbutton, with the text 'Pulse here to change to green'  
+    and that, when the user clicks on it, the background color of the           
+    entire webpage changes to green.                                            
+ 3) one with the id bluebutton, with the text 'Pulse here to change to blue'    
+    and that, when the user clicks on it, the background color of the           
+    entire webpage changes to blue.                                             
+ When any page loads, the background color is white, because                    
+ that is color that most browsers use by default. We use these three            
+ buttons to change the background color. In order to tell the                   
+ browser to change the background color to red when a user clicks it,           
+ we write in the Javascript file as follows:                                    
+                                                                                
+Document.getElementById("redbutton").onclick = change_to_red_background;        
+function change_to_red_background() {                                           
+  Document.body.style.backgroundColor = "red";                                  
+}                                                                               
+ The first line has an equal sign. Lines with an equal sign are                 
+ easier to understand by reading the left part backwards, and then              
+ the right part. So, in this example, we can read that line as:                 
+ when the user clicks (indicate via the word 'onclick', which is a              
+ special word in the Javascript language that means 'a user clicks')            
+ on the element whose id is redbutton (indicated via the word getElementById    
+ and the label 'redbutton' that we freely assigned to the button inside         
+ the html file) inside the webpoage (indicated via the word Document, which     
+ means the webpage in Javascript), then execute the instruction named           
+ change_to_red_background, which is a name that we just invented. This          
+ invented name is called a function, and it basically is a series of            
+ Javascript sentences that we need to create in order to do whatever            
+ it is that we want to do when the user clicks in the button: in this           
+ case, it is changing the background color to red. We selected the              
+ name change_to_red_backrgound because it is expressive of what the             
+ function does, which is the recommended way (however, it could have            
+ any other name, like function123, or tonto_el_que_lo_lea, and it               
+ would be correct as well; however, it is considered a good programming         
+ practice to use names that are expressive of what the function does, and       
+ that usually means using a verb followed by distinctive characteristics:       
+ in this case: change_to_red_background. The choice of separating the           
+ words via underscores is optional; each programmer has its own style:          
+ a common option is camel case, like: changeToRedBackground. Use whatever       
+ you prefer.                                                                    
+ So, the first line tell the browser "when a user clicks on the element         
+ whose id is redbutton, do the instructions contained in the function           
+ named change_to_red_background". So now, the only thing remaining is           
+ to create that function and use to tell the browser to change the              
+ page background color to red. That is done by the lines:                       
+ function change_to_red_background()                                            
+  Document.body.style.backgroundColor = "red";                                  
+ }                                                                              
+ The first tells Javascript that we are about to say what is exactly            
+ the change_to_red_background function that we referenced before.               
+ The function can be anywhere in the Javascript document, it does               
+ not have to be following the line with the onclick isntruction.                
+ The function is defined with the word function, then the name that             
+ we selected, two parentheses that may not have anything between them,          
+ or may have something (we will see that later), and then the function          
+ instructions between braces {}                                                 
+ In our case, the function istructions is just a single one because             
+ Javascript allows us to change the background of the webpage with              
+ just a single instruction:                          
+   Document.body.style.backgroundColor = "red";                                    
+ This line means that "red" will be the background color of the body            
+ element of the HTML page (the body is the entire visible area                  
+ of the webpage, and is indicated with the tag <body> in the HTML file,         
+ although taht tag is optional, because the browser will act as if it           
+ is written even if we do not write it).                                        
+                                                                                
+                                                                                
+                                                                                
+ <button id="cambiaazul" value="click me to see what happens!">                 
+ and then you                                                                   
+ For example, imagine that we have a webpage about provinces in                 
+ Castilla, in such a way that there are nine paragraphs, each one               
+ with an id equal to the name of the corresponding province. This               
+ means that somewhere in the html there is a <p id="leon">                      
+ there is a <p id="zamora">, etc. Imagine                                       
+                                                                                
+ which would tell the browser that we want to do something (yet unspecified)    
+ with the element whose id is cocodrilos. If we did not write that element,     
+ the browser will no do anything. A common error in Javascript is to            
+ mispell the id of an element, so care should be taken when writing them        
+                                                                                
+                                                                                
+ Using a dot means 'go inside': for example,                                    
+  "a.b" (without the quotes) means: take a, and inside it, 'b'                  
+ for example,                                                                   
+Document.getElementById("cocodrilo")                                            
+                                                                  
+   
