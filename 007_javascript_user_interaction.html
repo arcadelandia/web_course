@@ -102,7 +102,11 @@ function change_to_red_background() {
 }                                
  In Javascript, lines that have equal signs (called assignments) usually
  end in a semicolon; it is optional, but it is recommended practice to
- write it.
+ write it. Javascript is a case sensitive language: the word document, which
+ means the webpage, is not the same as the word Document, or DOCUMENT, or other
+ variations, which do not have any predefined meaning in the language. Care
+ should be taken when writing Javascript programs regarding the case of the words,
+ because it is a common source of errors.
  The first line has an equal sign. Lines with an equal sign are                 
  easier to understand by reading the left part backwards, and then              
  the right part. So, in this example, we can read that line as:                 
@@ -156,5 +160,35 @@ function change_to_red_background() {
  although taht tag is optional, because the browser will act as if it           
  is written even if we do not write it).                       
                                                                                 
-                                                                                
+ So imagine that we have an html file named "example.html" as follows:
+ <pre>
+ &lt;!doctype HTML&gt;                                                           
+&lt;html&gt;                                                                    
+&lt;head&gt;                                                                    
+&lt;script src="backgroundcolor.js" defer&gt;&lt;/script&gt;                    
+&lt;/head&gt;                                                                   
+&lt;body&gt;                                                                    
+&lt;input type='button' id="redbutton" value="Click here to change to red"&gt;  
+&lt;input type='button' id="greenbutton" value="Click here to change to green"&gt;
+&lt;input type='button' id="bluebutton" value="Click here to change to blue"&gt;
+&lt;/body&gt;                                                                   
+&lt;/html&gt;     
+ </pre>
+ and a Javascript file named "backgroundcolors.js" as follows:
+ <pre>
+ document.getElementById("redbutton").onclick = change_to_red_background;        
+function change_to_red_background() {                                           
+  document.body.style.backgroundColor = "red";                                  
+}                                                                               
+document.getElementById("greenbutton").onclick = change_to_green_background;    
+function change_to_green_background() {                                         
+  document.body.style.backgroundColor = "green";                                
+}                                                                               
+document.getElementById("bluebutton").onclick = change_to_blue_background;      
+function change_to_blue_background() {                                          
+  document.body.style.backgroundColor = "blue";                                 
+}                                               
+ </pre>
+ 
+
                                          
