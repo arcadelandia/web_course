@@ -1,3 +1,24 @@
+<!doctype html>
+<title>How to change webpages after loading, using Javascript</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<p>
+With HTML and CSS we have seen how to create the content of a webpage,
+and how to control its presentation. However, once a given webpage has been
+loaded in the browser, both the content and its apperance will remain unaltered
+if we do not interact with the browser window. In some situations, modifying the
+content is desired: for example, we may want to connect to some other
+Internet webpage (e.g., our favorite news site), and grab some information
+from it (e.g., breaking news) and print that information in some text area of
+our webpage; and we want to do this periodically (e.g., each minute).
+We may also want to allow the user to interact with the webpage in some
+way: for example, use a button to allow the user to change the background color
+of a page, or to eliminate a figure, or add a paragraph with some information
+that the user writes, etc. Javascript is a language that is used for these
+tasks, which are usually called dynamic effects becasue they allow to change
+the content and presentation of a webpage according to the logic that the
+programmer wants.
+</p>
+<p>
 Javascript is a language that is used to tell the browser                      
 what to do with the HTML elements that we write in the html files              
 and how to modify those elements, delete those elements, or create new elements, if needed.                
@@ -10,7 +31,8 @@ we want to connect to another website each fifteen minutes in order to download 
 information (for example, news headlines from the webpage of our favorite
 newspaper), and then write those headlines somewhere in the text of the webpage, 
 we would also use Javascript.
-                                                                                
+</p>
+<p>
 Javascript instructions are usually stored in text files with extension "js".          
 For example, a file named example.js would be a Javascript file.               
 When writing an HTML file whose content we will like to control                
@@ -18,7 +40,7 @@ via Javascript, we need to indicate to the browser
 the path to the javascript file that we want to use, in the following          
 way:                                                                          
 <script src="whatever-path-to-the-js-file" defer></script>                     
-
+</p>
 So we use an HTML tag named <b>script</b>, and that needs to be close with its
 closing tag <b>/script<b>, where its src attribute contains the path to the location of the               
 js file, and the attribute "defer" means that you want the browser             
