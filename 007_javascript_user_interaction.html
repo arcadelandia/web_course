@@ -19,38 +19,26 @@ the content and presentation of a webpage according to the logic that the
 programmer wants.
 </p>
 <p>
-Javascript is a language that is used to tell the browser                      
-what to do with the HTML elements that we write in the html files              
-and how to modify those elements, delete those elements, or create new elements, if needed.                
-For example, if we want to put inside an html file a button that, when pressed, allows             
-to change the background color of the page, we would use Javascript;           
-or, if we want to move an image from its current position, wherever that
-may be, to another random psosition in the screen whenever the user moves the mouse over it (like in            
-a game of cat and mouse), we would use also Javascript. Or, if                 
-we want to connect to another website each fifteen minutes in order to download some             
-information (for example, news headlines from the webpage of our favorite
-newspaper), and then write those headlines somewhere in the text of the webpage, 
-we would also use Javascript.
+Javascript instructions are usually stored in text files with extension <b>js</b>.          
+For example, a file named <b>example.js</b> would be a Javascript file.               
+When writing an HTML file whose content we will like to control                
+via Javascript, we need to indicate to the browser the path to the 
+javascript file that we want to use, by means of the <b>script</b> element, with
+an attribute named <b>src</b> whose value is the path to the javascript file
+relative to the folder where the HTML file is, like this:
+<pre>
+  &lt;script src="whatever-path-to-the-js-file" defer&gt;&lt;/script&gt;
+</pre>
 </p>
 <p>
-Javascript instructions are usually stored in text files with extension "js".          
-For example, a file named example.js would be a Javascript file.               
-When writing an HTML file whose content we will like to control                
-via Javascript, we need to indicate to the browser                             
-the path to the javascript file that we want to use, in the following          
-way:                                                                          
-<script src="whatever-path-to-the-js-file" defer></script>                     
+Observe that the script element has an opening and a closing tag, without any content
+in between the two tags. The optional attribute <b>defer</b> is used to tell the browser
+to finish downloading the full HTML file before doing anything indicated inside the
+HTML file, which is usually a good idea ---because the Javascript file is basically instructions
+affecting elements inside the HTML file, and if Javascript instructions refer to elements
+that still have not been seen by the browser, it will not be able to run those instructions.
 </p>
-So we use an HTML tag named <b>script</b>, and that needs to be close with its
-closing tag <b>/script<b>, where its src attribute contains the path to the location of the               
-js file, and the attribute "defer" means that you want the browser             
-to wait (i.e., defer further action) until it has downloaded                   
-the entire webpage before running                                              
-whatever instructions you have put in the Javascript file. The attribute defer is optional,
-but it is recommended just in case the browser starts doing whatever we tell it to do
-inside the Javascript file to elements that still have not been downloaded, so the browser
-may get confused about what to do.
-                                                                                
+                                                                              
 For example, if you see the following code inside an HTML file                     
  <title>Example</title>                                                         
  <html>
