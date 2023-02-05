@@ -14,76 +14,44 @@ In some situations, modifying the content of the webpage is desirable:
   for example, we may want to connect to some other
 Internet webpage (e.g., our favorite news site), and grab some information
 from it (e.g., breaking news) and print that information in some text area of
-our webpage; and we want to do this periodically (e.g., each minute).
-In another example, we may also want to allow the user to interact with the webpage in some
-way: for example, use a button to allow the user to change the background color
+our webpage; we may also want to do this periodically (e.g., each minute).
+We may also want to allow the user to interact with the webpage in some
+way: for example, using a button to allow the user to change the background color
 of a page, or add a paragraph with some information that the user writes 
 in a textfield (like a post in Twitter), etc. Javascript is a language that is used for these
 tasks involved in changing something in the webpage. These are sometimes 
-called dynamic effects becasue they allow to change
+called dynamic effects because they allow to change
 the content and presentation of a webpage according to the logic that the
 programmer wants. Webpages that use Javascript for these tasks are thus sometimes
-called dynamic webpages. In contrasct, webpages that use just HTML and CSS are
+called dynamic webpages. In contrast, webpages that use just HTML and CSS are
 called static webpages.
 </p>
 <p>
 Javascript instructions are usually stored in text files with extension <b>js</b>.          
 For example, a file named <b>example.js</b> would be a Javascript file.               
-When writing an HTML file whose content we will like to control                
-via Javascript, we need to indicate to the browser the path to the 
-javascript file that we want to use, by means of the <b>script</b> element, with
+When we create an HTML file whose contents we will like to control                
+via Javascript, we need to tell the browser the path to the 
+Javascript file that we want to use, by means of the <b>script</b> element, with
 an attribute named <b>src</b> whose value is the path to the javascript file
 relative to the folder where the HTML file is, like this:
 <pre>
-  &lt;script src="whatever-path-to-the-js-file" defer&gt;&lt;/script&gt;
+  &lt;script src="example.js" defer&gt;&lt;/script&gt;
 </pre>
 </p>
 <p>
 Observe that the script element has an opening and a closing tag, without any content
 in between the two tags. The optional attribute <b>defer</b> is used to tell the browser
-to finish downloading the full HTML file before doing anything indicated inside the
-HTML file, which is usually a good idea ---because the Javascript file is basically instructions
-affecting elements inside the HTML file, and if Javascript instructions refer to elements
-that still have not been seen by the browser, it will not be able to run those instructions.
+to finish downloading the full HTML file before doing any of the instructions that we
+write inside the Javascript file, which is usually a good idea ---this is because the browser
+process information in order once it starts reading the start of the HTML file, so if
+we include a Javascript file at the beginning of the HTML file that tells the browser
+to change the color of a button each 10 seconds, but that button is defined later in
+the HTML file than the reference to the Javascript file, the browser will not know
+what to do, and as a result it will not do anything: the Javascript file needs in this
+case to wait until the whole HTML file has been processed.
 </p>
-                                                                              
-For example, if you see the following code inside an HTML file                     
- <title>Example</title>                                                         
- <html>
-   <head>
-     <link src="thingies/stuff/stylenumber1.css">                                   
-     <link src="thingamajig/someweirdstyle.css">                                    
-     <script src="morestuff/something.js" defer></script>                           
-     <script src="blabla/prrr/something2.js"></script>                              
-     <script src="interestingeffectsjs" defer></script>                             
-     
-    
- that means that:                                                               
- 1) the html webpage will get its CSS instructions                              
- from two files: one named stylenumber1.css that is inside a folder named       
- stuff that is inside a folder named thingies, which is in the same             
- folder as the html file itself; and another named someweirdstyle.vss           
- located in a folder named thingamajig that is in the same folder as the        
- html file                                                                      
- 2) the html webpage will get its Javascript instructions from three            
- files:                                                                         
-  a) one located in a file named something.js located in a folder named         
-     morestuff located in the same folder as the html file                      
-     and whose instructions need to wait to be executed until the browser       
-     has finished downloading all the page info (this is because we wrote the attribute defer),                                
-  b) from another named something2.js located in a folder named                 
-     prrr which is inside a folder named blabla located inside the same         
-     folder as the html file, and whose instructions do not need to wait        
-     until the downloading of the HTML file (because it does not have the       
-     defer attribute, and thus would be executed immediately once the          
-     browser sees that line in the HTML file), and                               
-  c) from another called interestingeffects.js located inside the same          
-     folder as the HTML file, and whose instructions need to wait until         
-     the browser has finished downloading the entire html webpage.              
-                                                                                
- In general, most html files that we write will only include just one css file, and just 
- one Javascript file.                                                                          
-                                                                                
+<p>                                                                              
+                                                                               
  Let's now see how to use the Javascript language to command the browser            
  to do something that we want it to do.                  
    
