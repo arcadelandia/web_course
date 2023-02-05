@@ -2,21 +2,29 @@
 <title>How to change webpages after loading, using Javascript</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <p>
-With HTML and CSS we have seen how to create the content of a webpage,
-and how to control its presentation. However, once a given webpage has been
-loaded in the browser, both the content and its apperance will remain unaltered
-if we do not interact with the browser window. In some situations, modifying the
-content is desired: for example, we may want to connect to some other
+Once a webpage has been created using HTML and CSS, its appearance in
+the screen will not change: the text in is text elements (paragraphs,
+  headers, lists) will remain as is; the color of the text and backgrounds 
+  will too. The only way we saw where a given webpage could modify something
+  related to its appearance was by using the '@media(...)' keyword in CSS
+  to adapt the webpage to browser screens that were too small.
+</p>
+<p>
+In some situations, modifying the content of the webpage is desirable: 
+  for example, we may want to connect to some other
 Internet webpage (e.g., our favorite news site), and grab some information
 from it (e.g., breaking news) and print that information in some text area of
 our webpage; and we want to do this periodically (e.g., each minute).
-We may also want to allow the user to interact with the webpage in some
+In another example, we may also want to allow the user to interact with the webpage in some
 way: for example, use a button to allow the user to change the background color
-of a page, or to eliminate a figure, or add a paragraph with some information
-that the user writes, etc. Javascript is a language that is used for these
-tasks, which are usually called dynamic effects becasue they allow to change
+of a page, or add a paragraph with some information that the user writes 
+in a textfield (like a post in Twitter), etc. Javascript is a language that is used for these
+tasks involved in changing something in the webpage. These are sometimes 
+called dynamic effects becasue they allow to change
 the content and presentation of a webpage according to the logic that the
-programmer wants.
+programmer wants. Webpages that use Javascript for these tasks are thus sometimes
+called dynamic webpages. In contrasct, webpages that use just HTML and CSS are
+called static webpages.
 </p>
 <p>
 Javascript instructions are usually stored in text files with extension <b>js</b>.          
