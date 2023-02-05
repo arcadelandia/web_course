@@ -51,41 +51,63 @@ what to do, and as a result it will not do anything: the Javascript file needs i
 case to wait until the whole HTML file has been processed.
 </p>
 <p>                                                                              
-                                                                               
+                                                              
+<p>
  Let's now see how to use the Javascript language to command the browser            
- to do something that we want it to do.                  
-   
- In Javascript, the word <b>document</b> means the entire webpage:                     
- In Javascript, the expression <b>document.getElementById("holaazu")</b> means to      
- get the webpage, and inside it (the dot means to go inside), get              
- the HTML element with the id "holaazu". That element could be                  
- a paragraph, a header, a list, an image, a div, etc.). For example,            
- document.getElementById("bocadillo")                                            
- means to get the element whose id is "bocadillo". If that element does         
- not exist, then the browser will not do anything. Otherwise, it will           
- do whatever we indicate later.                                                 
- 
- For example, imagine that we want to create a webpage with three               
- buttons:                                                                       
- 1) one whose id we choose to be: redbutton, with the text 'Pulse here to change to red'      
-    and that, when the user clicks on it, the background color of the           
+ to do something that we want it to do. Let's start with some vocabulary
+ and some grammar.
+</p> 
+ In a Javascript file, the word <b>document</b> means the entire webpage (in lowercase).
+ In Javascript, care should be taken to distinguish between lowercase and uppercase.
+ The words document, <b>DOCUMENT</b>, <b>Document</b>, <b>dOcUmEnT</b>, etc., are all treated differently
+ and only the word in lowercase refers to the whole document.
+</p>
+<p>
+  Inside a Javascript file, in order to indicate something that is inside
+  of something else, a dot is used. Let's see with an example: the 
+  word <b>getElementById</b> instructs the browser to find, inside 
+  the HTML file, an HTML element that you assigned an ID to (as we saw, this is done with 
+  the id attribute, like in <b>&lt;p id="zamora"&gt;</b>).
+ You need to provide the id inside quotes and inside parentheses, in this way:
+ <b>document.getElementById("holaazu")</b> which means to      
+ grab the whole HTML file (indicated by the word <b>document</b>), 
+  go inside it (indicated by the dot) and get the element whose 
+ id is holaazu (the getElementById). If that element does         
+ not exist, then the browser will not find anything, and thus it will not 
+ do anything later with it. Otherwise, it will do whatever we indicate later in the
+ Javascript file.
+</p>
+<p>
+ Let's use another example: imagine that we want to create a webpage with three               
+ buttons:     
+ <ul> 
+ <li> one button whose id we choose to be <b>redbutton</b>, that has the text 'Click here to change to red'      
+    written on it and that, when the user clicks on it, the background color of the           
     entire webpage changes to red.                                              
- 2) one whose id we choose to be: greenbutton, with the text 'Pulse here to change to green'  
-    and that, when the user clicks on it, the background color of the           
+   </li>
+ <li> one button whose id we choose to be <b>greenbutton</b>, that has the text 'Click here to change to green'  
+    written on it and that, when the user clicks on it, the background color of the           
     entire webpage changes to green.                                            
- 3) one whose id we choose to be: bluebutton, with the text 'Pulse here to change to blue'    
-    and that, when the user clicks on it, the background color of the           
+   </li>
+ <li> one button whose id we choose to be <b>bluebutton</b>, that has the text 'Click here to change to blue'    
+    written on it and that, when the user clicks on it, the background color of the           
     entire webpage changes to blue.                                             
- When any page loads, the background color is white, because                    
+  </li>
+ </ul>
+
+<p>
+ When the browser loads a webpage, the background color is usually white, because                    
  that is color that most browsers use by default. Thus, we will use these three            
- buttons to change the background color of the page. In order to tell the                   
+ buttons to change the background color of the webpage. In order to tell the                   
  browser to change the background color to red when a user clicks it,           
  we write in the Javascript file as follows:                                    
-                                                                                
+  </p>
+<pre>                                                                              
 Document.getElementById("redbutton").onclick = change_to_red_background;        
 function change_to_red_background() {                                           
   Document.body.style.backgroundColor = "red";                                  
-}                                
+}   
+</pre>
  In Javascript, lines that have equal signs (called assignments) usually
  end in a semicolon; it is optional, but it is recommended practice to
  write it. Javascript is a case sensitive language: the word document, which
