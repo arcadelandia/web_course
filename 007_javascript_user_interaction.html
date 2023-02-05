@@ -100,7 +100,7 @@ case to wait until the whole HTML file has been processed.
  that is color that most browsers use by default. Thus, we will use these three            
  buttons to change the background color of the webpage. In order to tell the                   
  browser to change the background color to red when a user clicks it,           
- we write in the Javascript file as follows:                                    
+ we write in the Javascript file the following:                                    
   </p>
 <pre>                                                                              
 Document.getElementById("redbutton").onclick = change_to_red_background;        
@@ -110,7 +110,10 @@ function change_to_red_background() {
 </pre>
  In Javascript, lines that have equal signs (called assignments) usually
  end in a semicolon; it is optional, but it is recommended practice to
- write it. Javascript is a case sensitive language: the word document, which
+ write it, just to emphasize where the instruction ends; several instructions
+can appear in the same line, but is is widely thought that that impairs readability,
+so most programmers write one and only one instructions per line.  
+Javascript is a case sensitive language: the word document, which
  means the webpage, is not the same as the word Document, or DOCUMENT, or other
  variations, which do not have any predefined meaning in the language. Care
  should be taken when writing Javascript programs regarding the case of the words,
