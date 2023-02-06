@@ -3,9 +3,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <p>
 Once a webpage has been created using HTML and CSS, its appearance in
-the screen will not change: the text in is text elements (paragraphs,
+the screen will usually not change: the text in is text elements (paragraphs,
   headers, lists) will remain as is; the color of the text and backgrounds 
-  will too. The only way we saw where a given webpage could modify something
+  will too; images, video, forms, tables the same; the CSS grid that
+  we designed to put the elements in, will remain as well as shown. 
+  The only way we saw where a given webpage could modify something
   related to its appearance was by using the '@media(...)' keyword in CSS
   to adapt the webpage to browser screens that were too small.
 </p>
@@ -13,16 +15,16 @@ the screen will not change: the text in is text elements (paragraphs,
 In some situations, modifying the content of the webpage is desirable: 
   for example, we may want to connect to some other
 Internet webpage (e.g., our favorite news site), and grab some information
-from it (e.g., breaking news) and print that information in some text area of
+from it (e.g., breaking news) and print that information in some area of
 our webpage; we may also want to do this periodically (e.g., each minute).
-We may also want to allow the user to interact with the webpage in some
+Or, we may want to allow the user to interact with the webpage in some
 way: for example, using a button to allow the user to change the background color
-of a page, or add a paragraph with some information that the user writes 
-in a textfield (like a post in Twitter), etc. Javascript is a language that is used for these
+of the webpage, or to add a paragraph with some information that the user has just written
+in some textfield (like a post in Twitter), etc. Javascript is a language that is used for these
 tasks involved in changing something in the webpage. These are sometimes 
 called dynamic effects because they allow to change
 the content and presentation of a webpage according to the logic that the
-programmer wants. Webpages that use Javascript for these tasks are thus sometimes
+programmer wants. Webpages that use Javascript are thus sometimes
 called dynamic webpages. In contrast, webpages that use just HTML and CSS are
 called static webpages.
 </p>
@@ -31,18 +33,79 @@ Javascript instructions are usually stored in text files with extension <b>js</b
 For example, a file named <b>example.js</b> would be a Javascript file.               
 When we create an HTML file whose contents we will like to control                
 via Javascript, we need to tell the browser the path to the 
-Javascript file that we want to use, by means of the <b>script</b> element, with
-an attribute named <b>src</b> whose value is the path to the javascript file
-relative to the folder where the HTML file is, like this:
+Javascript file that we want to use, by means of the <b>script</b> element. Let's see
+  with an example: take a look at the following webpage, written in a file named
+  <b>exampleForAzu.html</b>:
 <pre>
-  &lt;script src="example.js" defer&gt;&lt;/script&gt;
+<!doctype html>
+<html>
+  <head>
+    <title>Azu is learning Javascript!</title>
+    &lt;script src="exampleForAzu.js" defer&gt;&lt;/script&gt;
+  </head>
+  <body>
+    <input type='button' id="buttonForRed" value="Click here to change background to red">
+    <input type='button' id="buttonForGreen" value="Click here to change background to green">
+    <input type='button' id="buttonForBlue" value="Click here to change background to blue">
+    <input type='button' id="buttonForWhite" value="Click here to change background to white">  
+  </body>
+</html>
 </pre>
+<p>
+In the above example HTML file, we declare the doctype (which indicates that we intend
+to use standard HTML), then the html element that contains the whole webpage, and inside
+it, two elements: the element head, and the element body.
+The element head, which contains the elements that are not presented
+to the user in the browser window under the menus ---the title, which goes into the tab near the
+browser menu, and the script element that contains the information about which 
+  Javascript file we want to use to control this HTML webpage.
+  The element body contains everything that
+will be shown to the user in the browser visualization area, and in this case it contains four
+buttons. We gave a unique ID to each one: the first button has an id of <b>buttonForRed</b>, 
+and on it we write the phrase "Click here to change background to red"; when the user clicks
+on it, the background color of the entire webpage will turn to red; we will do that using the
+Javascript file. The other three buttons are similar, but change color to green, blue, and white,
+respectively ---white is also the default color of the background if we do not tell anything
+at the respect to the browser.
+</p>
+<p>
+In the head element, we use the element script to tell the browser which file contains
+the Javascript code. In this example, it is a file named exampleForAzu.js; since we
+just write its name, the browser will look for it in the same folder where the exampleForAzu.html
+file is. If we had written <b>&lt;script src="folderABC/exampleForAzu.js"</b>, then the browser
+would look for the exampleForAzu.js file inside a folder named folderABC, and the browser will look
+for folderABC in the same folder as the exampleForAzu.html file.
+</p>
+<p>
+The script element has opening and closing tags, without anything written between them. This is
+different than what we saw with CSS files, which we referenced with the meta tag:
+<b>&lt;meta rel="stylesheet" href="exampleForAzu.css"&gt;</b>. The meta tag does not have a closing
+tag, in contrast with the <b>script</b> tag.
+</p>
+<p>
+The script opening tag has the optional attribute <b>defer</b>. If the browser sees it, it will wait
+(defer) until it finished downloading the entire HTML file before processing the Javascript file, which
+is a good idea. Let's see why. If we do not write defer, the browser, when it starts reading the HTML
+file, will do everything in the order it appears: first, it will read the first line (the one with
+the doctype), then the second (the one with the html tag), then the third (the one with the head opening tag)
+then the fourth (so it reads the title tag and thus it learns that it should write "Azu is learning Javascript!"
+in the tab.
+  
+  
+  
+As we can see, the <b>script</b> element has opening and closing tags. Its opening
+tag has an attribute named <b>src</b> whose value is the path to the javascript file
+relative to the folder where the HTML file; in this example, it would be a file in the
+  same folder as the HTML file, named <b>example.js</b>.
 </p>
 <p>
 Observe that the script element has an opening and a closing tag, without any content
 in between the two tags. The optional attribute <b>defer</b> is used to tell the browser
 to finish downloading the full HTML file before doing any of the instructions that we
-write inside the Javascript file, which is usually a good idea ---this is because the browser
+write inside the Javascript file, which is usually a good idea.
+
+
+---this is because the browser
 process information in order once it starts reading the start of the HTML file, so if
 we include a Javascript file at the beginning of the HTML file that tells the browser
 to change the color of a button each 10 seconds, but that button is defined later in
@@ -100,7 +163,7 @@ case to wait until the whole HTML file has been processed.
  that is color that most browsers use by default. Thus, we will use these three            
  buttons to change the background color of the webpage. In order to tell the                   
  browser to change the background color to red when a user clicks it,           
- we write in the Javascript file the following:                                    
+ we write in the Javascript file as follows:                                    
   </p>
 <pre>                                                                              
 Document.getElementById("redbutton").onclick = change_to_red_background;        
@@ -110,10 +173,7 @@ function change_to_red_background() {
 </pre>
  In Javascript, lines that have equal signs (called assignments) usually
  end in a semicolon; it is optional, but it is recommended practice to
- write it, just to emphasize where the instruction ends; several instructions
-can appear in the same line, but is is widely thought that that impairs readability,
-so most programmers write one and only one instructions per line.  
-Javascript is a case sensitive language: the word document, which
+ write it. Javascript is a case sensitive language: the word document, which
  means the webpage, is not the same as the word Document, or DOCUMENT, or other
  variations, which do not have any predefined meaning in the language. Care
  should be taken when writing Javascript programs regarding the case of the words,
