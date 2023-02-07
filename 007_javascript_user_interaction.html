@@ -35,24 +35,26 @@ When we create an HTML file whose contents we will like to control
 via Javascript, we need to tell the browser the path to the 
 Javascript file that we want to use, by means of the <b>script</b> element. Let's see
   with an example: take a look at the following webpage, written in a file named
-  <b>exampleForAzu.html</b>:
+  <b>exampleForAzu.html</b>, and which defines four buttons, one that should
+  change the webpage background color to red when clicked on, another to change
+  it to green, another to blue, and another to white:
 <pre>
-<!doctype html>
-<html>
-  <head>
-    <title>Azu is learning Javascript!</title>
+&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Azu is learning Javascript!&lt;/title&gt;
     &lt;script src="exampleForAzu.js" defer&gt;&lt;/script&gt;
-  </head>
-  <body>
-    <input type='button' id="buttonForRed" value="Click here to change background to red">
-    <input type='button' id="buttonForGreen" value="Click here to change background to green">
-    <input type='button' id="buttonForBlue" value="Click here to change background to blue">
-    <input type='button' id="buttonForWhite" value="Click here to change background to white">  
-  </body>
-</html>
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;input type='button' id="buttonForRed" value="Click here to change background to red"&gt;
+    &lt;input type='button' id="buttonForGreen" value="Click here to change background to green"&gt;
+    &lt;input type='button' id="buttonForBlue" value="Click here to change background to blue"&gt;
+    &lt;input type='button' id="buttonForWhite" value="Click here to change background to white"&gt; 
+  &lt;/body&gt;
+&lt;/html&gt;
 </pre>
 <p>
-In the above example HTML file, we declare the doctype (which indicates that we intend
+In the above HTML file, we declare the doctype (which indicates that we intend
 to use standard HTML), then the html element that contains the whole webpage, and inside
 it, two elements: the element head, and the element body.
 The element head, which contains the elements that are not presented
@@ -84,42 +86,23 @@ tag, in contrast with the <b>script</b> tag.
 </p>
 <p>
 The script opening tag has the optional attribute <b>defer</b>. If the browser sees it, it will wait
-(defer) until it finished downloading the entire HTML file before processing the Javascript file, which
-is a good idea. Let's see why. If we do not write defer, the browser, when it starts reading the HTML
-file, will do everything in the order it appears: first, it will read the first line (the one with
-the doctype), then the second (the one with the html tag), then the third (the one with the head opening tag)
-then the fourth (so it reads the title tag and thus it learns that it should write "Azu is learning Javascript!"
-in the tab.
-  
-  
-  
-As we can see, the <b>script</b> element has opening and closing tags. Its opening
-tag has an attribute named <b>src</b> whose value is the path to the javascript file
-relative to the folder where the HTML file; in this example, it would be a file in the
-  same folder as the HTML file, named <b>example.js</b>.
+(defer) until it finished downloading the entire HTML file before processing the Javascript file, rather
+than process the Javascript file as soon as it sees the <b>script</b> tag; deferring the processing
+of the Javascript file is in general is a good idea, because the sole purpose of the Javascript file
+is to change the behavior of the elements defined inside the HTML file, so it is a good idea to let
+the browser download the entire HTML file (and thus to know which elements we wrote inside the HTML file)
+before it takes a look at the Javascript file, otherwise we may refer inside the Javascript file to
+elements that have still not been downloaded, and that can confuse the browser.
 </p>
 <p>
-Observe that the script element has an opening and a closing tag, without any content
-in between the two tags. The optional attribute <b>defer</b> is used to tell the browser
-to finish downloading the full HTML file before doing any of the instructions that we
-write inside the Javascript file, which is usually a good idea.
-
-
----this is because the browser
-process information in order once it starts reading the start of the HTML file, so if
-we include a Javascript file at the beginning of the HTML file that tells the browser
-to change the color of a button each 10 seconds, but that button is defined later in
-the HTML file than the reference to the Javascript file, the browser will not know
-what to do, and as a result it will not do anything: the Javascript file needs in this
-case to wait until the whole HTML file has been processed.
+ Now let's see how to write the Javascript file exampleForAzu.js. Let's start with 
+  some Javascript vocabulary and grammar.
 </p>
-<p>                                                                              
-                                                              
+
+
+
+
 <p>
- Let's now see how to use the Javascript language to command the browser            
- to do something that we want it to do. Let's start with some vocabulary
- and some grammar.
-</p> 
  In a Javascript file, the word <b>document</b> means the entire webpage (in lowercase).
  In Javascript, care should be taken to distinguish between lowercase and uppercase.
  The words document, <b>DOCUMENT</b>, <b>Document</b>, <b>dOcUmEnT</b>, etc., are all treated differently
