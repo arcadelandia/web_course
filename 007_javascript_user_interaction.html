@@ -96,10 +96,68 @@ elements that have still not been downloaded, and that can confuse the browser.
 </p>
 <p>
  Now let's see how to write the Javascript file exampleForAzu.js. Let's start with 
-  some Javascript vocabulary and grammar.
+  some <b>Javascript vocabulary and grammar</b>.
 </p>
-
-
+<ol>
+  <li>
+    The word <b>document</b> in lowercase means the entire webpage. Javascript, in contrast to HTML and CSS,
+    is case sensitive: the words document, Document, dOcUmEnT, etc., are all different.
+  </li>
+  <li>
+    A dot between two words without spaces ---like in <b>mibibicleta.manillar</b>---- means that whatever 
+    is on the right is applied to whatever is on the left. In the example before, that means the thing called
+    manillar that is found inside the thing called mibicicleta.
+  </li>
+  <li>
+    The word <b>getElementById</b> followed by a string between parentheses ---like getElementById("limonero")---
+    means the HTML element that we have declared with id equal to limonero ---for example, <b>&lt;p id="limonero"&gt;---
+  </li>
+  <li>
+    The word <b>style</b> means the set of styling attributes of an HTML element, like color, background color, etc. ---the
+    ones that we saw in the CSS lessons.
+  </li>
+  <li>
+    The word <b>backgroundColor</b> means the background color of some element. It is usually used jointly with the style keyword,
+    like in <b>style.backgroundColor</b>
+  </li>
+  <li>
+    The word <b>innerHTML</b> means the HTML code that we write inside an element. For example, if we have 
+    a paragraph written like this: <b>&lt;p&gt;Hola caracola&lt;/p&gt;</b>,
+    then its innerHTML woul be <b>Hola caracola</b>.
+  </li>
+  <li>
+    To change the value of an element, Javascript uses an equal sign followed by the new value for that element:
+    <b>document.body.style.backgroundColor = "blue"</b>
+  </li>
+  <li>
+    To append some text to a text element, Javascript uses a plus sign followed without spaces by an equal sign, followed by the text
+    to be appended:
+    <b>document.getElementById("parrafo") += " THE END."</b>
+  </li>
+  <li>
+    Javascript is used to tell the browser to do something when a condition of some kind occurs: for example, if we
+    want to do something like this: "when the user clicks in the button whose id is "pulsame", then
+    change the color of the background of the webpage to blue, and the color of the font of all text to red,
+    and also append the phrase <b>"Raro, muy raro." to the paragraph whose id is "parrafocastilla", and replace the text of the
+    paragaph whose id is "parrafogalicia" for the phrase "Por la costa."
+    The condition that needs to happen before the browser does all those actions is the button click. 
+    A set of actions that we want to do one after the other is called a function. The Javascript programmer
+    is free to choose a name for any function. A function is indicated by the name function, followed by
+    the chosen name for the function, two parentheses, and the actions to be done written inside braces. It is usual
+    to write one action per line, and to finish each action with a semicolon. An action can be written in several
+    ways; for simple properties like changing a color, it is usually done with a equal sign and the value of the
+    property, like:
+    <pre>
+    function cosas_que_hacer_al_pulsar_el_boton() {
+      document.body.style.backgroundColor = blue;
+      document.body.style.color = red;
+      document.getElementById("parrafocastilla").innerHTML += "Raro, muy raro.";
+      document.getElementById("parrafogalicia").innerHTML = "Por la costa.";
+    }
+    </pre>
+    
+  </li>
+</ol>
 
 
 <p>
