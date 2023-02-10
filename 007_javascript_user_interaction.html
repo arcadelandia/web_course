@@ -31,11 +31,11 @@ called static webpages.
 <p>
 Javascript instructions are usually stored in text files with extension <b>js</b>.          
 For example, a file named <b>example.js</b> would be a Javascript file.               
-When we create an HTML file whose contents we will like to control                
+When we create an HTML file whose contents we want to control                
 via Javascript, we need to tell the browser the path to the 
-Javascript file that we want to use, by means of the <b>script</b> element. Let's see
+Javascript file that we want to use, by means of the <b>script</b> element. Let's see it
   with an example: take a look at the following webpage, written in a file named
-  <b>exampleForAzu.html</b>, and which defines four buttons, one that should
+  <b>exampleForAzu.html</b>. This file defines four buttons, one that should
   change the webpage background color to red when clicked on, another to change
   it to green, another to blue, and another to white:
 <pre>
@@ -43,7 +43,7 @@ Javascript file that we want to use, by means of the <b>script</b> element. Let'
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Azu is learning Javascript!&lt;/title&gt;
-    &lt;script src="exampleForAzu.js" defer&gt;&lt;/script&gt;
+    &lt;script src="blabla.js" defer&gt;&lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;input type='button' id="buttonForRed" value="Click here to change background to red"&gt;
@@ -57,26 +57,32 @@ Javascript file that we want to use, by means of the <b>script</b> element. Let'
 In the above HTML file, we declare the doctype (which indicates that we intend
 to use standard HTML), then the html element that contains the whole webpage, and inside
 it, two elements: the element head, and the element body.
-The element head, which contains the elements that are not presented
-to the user in the browser window under the menus ---the title, which goes into the tab near the
-browser menu, and the script element that contains the information about which 
+The element head, as we saw in previous lessons, contains the elements that are not presented
+to the user in the browser main visualization area, under the browser menus: the title, which 
+  will be shown in the tab, above the main visualization area, and a script element that contains the information about which 
   Javascript file we want to use to control this HTML webpage.
-  The element body contains everything that
-will be shown to the user in the browser visualization area, and in this case it contains four
+  The element <b>body</b> contains everything that
+will be shown to the user in the browser main visualization area; in this example, it contains four
 buttons. We gave a unique ID to each one: the first button has an id of <b>buttonForRed</b>, 
 and on it we write the phrase "Click here to change background to red"; when the user clicks
 on it, the background color of the entire webpage will turn to red; we will do that using the
-Javascript file. The other three buttons are similar, but change color to green, blue, and white,
-respectively ---white is also the default color of the background if we do not tell anything
-at the respect to the browser.
+Javascript file. The other three buttons are similar: one uses green, another blue, and the last one, white;
+white is also usually the default color of the background when we open the webpage.
 </p>
 <p>
-In the head element, we use the element script to tell the browser which file contains
-the Javascript code. In this example, it is a file named exampleForAzu.js; since we
-just write its name, the browser will look for it in the same folder where the exampleForAzu.html
-file is. If we had written <b>&lt;script src="folderABC/exampleForAzu.js"</b>, then the browser
-would look for the exampleForAzu.js file inside a folder named folderABC, and the browser will look
-for folderABC in the same folder as the exampleForAzu.html file.
+The element <b>script</b> tells the browser which file contains
+the Javascript code. In this example, it is a file named <b>blabla.js</b>; since we
+just write its name, the browser will look for it in the same folder where the <b>exampleForAzu.html</b>
+file is.
+If we had written <b>&lt;script src="folderABC/blabla.js"</b>, then the browser
+would go into a folder named <b>folderABC</b> which should be in the same folder where the 
+<b>exampleForAzu.html</b> file is, and there look for the <b>blabla.js</b> file.
+If we had written <b>&lt;script src="../blabla.js"</b>, then the browser
+would go into the folder above the one that has the <b>exampleForAzu.html</b>, and look
+there for the <b>blabla.js</b> file.
+If we had written <b>&lt;script src="../folderABC/blabla.js"</b>, then the browser
+would go to the folder above the folder where the <b>exampleForAzu.html</b> file is, from there into
+a folder named <b>folderABC</b>, and inside there it would look for the file named <b>blabla.js</b>.
 </p>
 <p>
 The script element has opening and closing tags, without anything written between them. This is
