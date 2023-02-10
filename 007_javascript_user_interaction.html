@@ -91,17 +91,24 @@ different than what we saw with CSS files, which we referenced with the meta tag
 tag, in contrast with the <b>script</b> tag.
 </p>
 <p>
-The script opening tag has the optional attribute <b>defer</b>. If the browser sees it, it will wait
-(defer) until it finished downloading the entire HTML file before processing the Javascript file, rather
-than process the Javascript file as soon as it sees the <b>script</b> tag; deferring the processing
-of the Javascript file is in general is a good idea, because the sole purpose of the Javascript file
-is to change the behavior of the elements defined inside the HTML file, so it is a good idea to let
-the browser download the entire HTML file (and thus to know which elements we wrote inside the HTML file)
-before it takes a look at the Javascript file, otherwise we may refer inside the Javascript file to
-elements that have still not been downloaded, and that can confuse the browser.
+The script opening tag has the optional attribute <b>defer</b>. It is recommended to write it, due to
+the following: the sole purpose of the Javascript file is to control the behavior of HTML elements that
+we will write inside the HTML file, after the line where the script tag appears (in this example, those
+elements are the four buttons). Each HTML element, as we saw in previous lessons, is identified by an unique id that
+we must select for it. The Javascript file will basically tell the browser what to do with each id (somehing like:
+when somebody click the button whose id is "buttonForRed", change the background color of the webpage to red, etc.)
+If we do not write the attribute <b>defer</b> in the opening script tag, the browser will open and read the entire
+Javascript file before continuing processing the HTML file; thus, it still will have not seen the lines creating the
+buttons when it starts processing the Javascript file; so, when it sees inside the Javascript file the instructions
+referring to what to d owith the buttons, it will be confused about what are those buttons (since it still did not
+reach that point in the HTML file. In contrast, if we use the word <b>defer</b> inside the opening <b>script</b>
+tag, the browser will not read yet the Javascript file, and instead it will <em>defer</em> until it finishes reading
+the entire HTML file before reading the Javascript file; thus, by the time it starts processing the Javascript file
+it will have already seen the four buttons, and when it sees the instructions processing them inside the Javascript
+file it will be able to understand what are those.
 </p>
 <p>
- Now let's see how to write the Javascript file exampleForAzu.js. Let's start with 
+ Now let's see how to write the Javascript file <b>blabla.js</b>. Let's start with 
   some <b>Javascript vocabulary and grammar</b>.
 </p>
 <ol>
