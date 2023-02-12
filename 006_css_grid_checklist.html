@@ -1,3 +1,68 @@
-Steps to use a CSS grid checklist:
+<title>Checklinst for using a CSS grid to build a webpage</title>
+<meta name="viewport" content="width:device-width,initial-scale:1">
 
-Imagine that we use a 
+<h1>Steps to use a CSS grid checklist</h1>
+
+<ol>
+  <li>
+    Create an schematic of what you want to create. Use paper or any similar media.
+    Write on it the outline of the text elements, the images, menus, links, etc. that
+    you want it to have. For example, you may want to create a webpage that imitates
+    the main Google webpage.
+  </li>
+  <li>
+    Divide the above schematic into rectangular areas of a grid; let's call them grid-areas. To each grid-area, 
+    assign two items and write them on the paper: an uppercase letter (A, B, C, ...) and a word ending in the suffix
+    div with semantic meaning for that area (topbardiv, weatherbardiv, menudiv, maincontentdiv, footerdiv, etc.)
+    For example, we may create something like this to imitate the Google webpage.
+  </li>
+  <li>
+    If two or more grid-areas identified in the previous step share some kind of similarity that deviates
+    from the default (which is white background and text aligned to the left), give that similarity a 
+    word ending in the suffix "class", and write that word in its grid-area. 
+    For example, if two (or more) of the
+    grid-areas have text that is aligned to the right instead of to the left, assign them
+    the name "rightAlignedClass". Or, if two (or more) areas ahve a background color that is green,
+    assign them the name "greenBackgroundClass"; etc. Some grid-areas will end up without
+    any of these "class" words because they do not have any special characteristic, some
+    will have one, and some may have more than one. For example, a grid-area may have a green background
+    and text aligned to the right, so it ends up with the words "rigthAlignedClass" and 
+    "greenBackgroundClass"; while other grid-area that only has a green background ends up with
+    only "greenBackgroundClass".
+  </li>
+  <li>
+    Create a folder for the webpage and give it a descriptive name.
+  </li>
+  <li>
+    Choose a name for the html file and another for the css file.
+  </li>
+  <li>
+    Create the html file and css files in the editor.
+  </li>
+  <li>
+    Write inside the html file the lines corresponding to: doctype, and the lines with the opening anc
+    closing html tags. Inside the html tags, write the head opening and closing tags followed by the body
+    opening and closing tags.
+  </li>
+  <li>
+    Inside the head tag, write the title inside the title tags and the link tag with the reference to the css file.
+  </li>
+  <li>
+    Inside the body tag, write as many div tags as grid-areas you have in the paper design. Write one div after the other, in the
+    order that you have in the paper design. Inside each opening div tag, put an id equal to the word that ends in the suffix div that
+    you assigned to that grid-area. If you assigned words ending in class to a grid-area, assign as many class attributes as you wrote.
+    For example 
+    <pre>
+      ...
+      &lt;div id="headerbardiv"&gt;
+      &lt;/div&gt;
+      &lt;div id="menubardiv" class="greenBackgroundClass" class="centeredTextClass"&gt;
+      &lt;/div&gt;
+      &lt;div id="maincontentdiv" class="greenBackgroundClass"&gt;
+      &lt;/div&gt;
+      &lt;div id="footerbardiv"&gt;
+      &lt;/div&gt;
+      ...
+    </pre>
+  </li>
+</ol>
