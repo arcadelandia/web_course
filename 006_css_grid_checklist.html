@@ -17,6 +17,22 @@
     For example, we may create something like this to imitate the Google webpage.
   </li>
   <li>
+    Write the uppercase letters in a series of rows, mimicking the design of the webpage. Some rows
+    may be shorter than other; if that is the case, write as many letters as needed in order to make
+    all lines the same length, using in each line the last letter that appears in that line.
+    For example
+    <pre>
+    A      ->  A A
+    B      ->  B B
+    C      ->  C C
+    D E    ->  D E
+    </pre>
+  </li>
+  <li>
+    Decide which of the rows in the above design will stretch to fill the entire webpage if there
+    is not enough information to fill the entire screen. In our example, that will be the "D D" row.
+  </li>
+  <li>
     If two or more grid-areas identified in the previous step share some kind of similarity that deviates
     from the default (which is white background and text aligned to the left), give that similarity a 
     word ending in the suffix "class", and write that word in its grid-area. 
@@ -51,18 +67,71 @@
     Inside the body tag, write as many div tags as grid-areas you have in the paper design. Write one div after the other, in the
     order that you have in the paper design. Inside each opening div tag, put an id equal to the word that ends in the suffix div that
     you assigned to that grid-area. If you assigned words ending in class to a grid-area, assign as many class attributes as you wrote.
-    For example 
+    For example:
     <pre>
       ...
-      &lt;div id="headerbardiv"&gt;
+      &lt;div id="googleservicesdiv" class="alignedrightclass"&gt;
       &lt;/div&gt;
-      &lt;div id="menubardiv" class="greenBackgroundClass" class="centeredTextClass"&gt;
+      &lt;div id="maincontentdiv"&gt;
       &lt;/div&gt;
-      &lt;div id="maincontentdiv" class="greenBackgroundClass"&gt;
+      &lt;div id="countrydiv"&gt;
       &lt;/div&gt;
-      &lt;div id="footerbardiv"&gt;
+      &lt;div id="googleinfodiv"&gt;
+      &lt;/div&gt;
+      &lt;div id="termsandconditionsdiv" class="alignedrightclass"&gt;
       &lt;/div&gt;
       ...
+    </pre>
+  </li>
+  <li>
+    In the css file, write the body element with the "display: grid;" "height: 100vh"
+  </li>
+  <li>
+    In the css file, write the body element with the "grid-template-rows" with one word for each row in the paper design. Use the
+    word "1fr" for the row that will stretch the entire screen, and "auto" for the rest. In our example, "grid-template-rows: auto 1fr auto auto;"
+  </li>
+  <li>
+    In the css file, write the body element with the "grid-template-areas" with the series of rows of our design.
+    In our example:
+    <pre>
+     grid-template-areas: "A A"                                                     
+                          "B B"                                                     
+                          "C C"                                                     
+                          "D E";        
+    </pre>
+  </li>
+  <li>
+    In the CSS file, write the id of each grid-area with a # symbol as prefix, and assign it its corresponding uppercase letter with the grid-area attribute.
+    <pre>
+    ...
+    #googleservicesdiv {
+      grid-area: A;
+    }
+    #maincontentdiv {
+      grid-area: B;
+    }
+    #countrydiv {
+      grid-area: C;
+    }
+    #aboutgooglediv {
+      grid-area: D;
+    }
+    #termsandconditionsdiv {
+      grid-area: E;
+    }
+    </pre>
+  </li>
+  <li>
+    In the CSS file, write the class of each grid-area with a . (dot) symbol as prefix and write whatever conditions we want to apply to it:
+    <pre>
+    ...
+    .alignedrightclass {
+      text-align: right;
+    }
+    .weirdcolorsclass {
+      color: green;
+      background-color: yellow;
+    }
     </pre>
   </li>
 </ol>
