@@ -16,7 +16,7 @@
     assign two items and write them on the paper: an uppercase letter (A, B, C, ...) and a word ending in the suffix
     div with semantic meaning for that area (topbardiv, weatherbardiv, menudiv, maincontentdiv, footerdiv, etc.)
     For example, we may create something like this to imitate the Google webpage.
-    <img src="googlelanding_schema2.png" style="width:40%; display: block;">
+    <img src="googlelanding_schema.png" style="width:40%; display: block;">
   </li>
   <li>
     Write the uppercase letters in a series of rows, mimicking the design of the webpage. Some rows
@@ -72,7 +72,7 @@
     For example:
     <pre>
       ...
-      &lt;div id="googleservicesdiv" class="alignedrightclass"&gt;
+      &lt;div id="googleservicesdiv" class="rightalignedclass"&gt;
       &lt;/div&gt;
       &lt;div id="maincontentdiv"&gt;
       &lt;/div&gt;
@@ -80,7 +80,7 @@
       &lt;/div&gt;
       &lt;div id="googleinfodiv"&gt;
       &lt;/div&gt;
-      &lt;div id="termsandconditionsdiv" class="alignedrightclass"&gt;
+      &lt;div id="termsandconditionsdiv" class="rightalignedclass"&gt;
       &lt;/div&gt;
       ...
     </pre>
@@ -127,7 +127,7 @@
     In the CSS file, write the class of each grid-area with a . (dot) symbol as prefix and write whatever conditions we want to apply to it:
     <pre>
     ...
-    .alignedrightclass {
+    .rightalignedclass {
       text-align: right;
     }
     .weirdcolorsclass {
