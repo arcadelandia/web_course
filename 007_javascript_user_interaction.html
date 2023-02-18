@@ -1,6 +1,10 @@
 <!doctype html>
+<head>
 <title>How to change webpages after loading, using Javascript</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h1>Introduction to Javascript</h1>
 <p>
 Once a webpage has been created using HTML and CSS, its appearance in
 the screen will usually not change: the text in is text elements (paragraphs,
@@ -110,6 +114,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
   contents of the Javascript file until the entire HTML file has been processed (so the browser has alredy
   seen the buttons and everything else inside the webpage).
 </p>
+<h1>Javascript Vocabulary</h1>
 <p>
  Now let's see how to write the Javascript file <b>example.js</b>. Let's start with 
   some <b>Javascript vocabulary and grammar</b>.
@@ -120,97 +125,100 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     is case sensitive: the words document, Document, dOcUmEnT, etc., are all different.
   </li>
   <li>
-    A dot between two words without spaces ---like in <b>mibibicleta.manillar</b>---- means that whatever 
-    is on the right is applied to whatever is on the left. In the example before, that means the thing called
-    manillar that is found inside the thing called mibicicleta.
+    A dot between two words without spaces ---like in <b>totoro.tail</b>---- means that whatever 
+    word is on the right of the dot is applied to whatever is on the left. In the example before, that means the tail
+    of the entity called totoro.
   </li>
   <li>
-    The word <b>getElementById</b> followed by a string between parentheses, like in <b>getElementById("limonero")</b>
-    means the HTML element that we have declared with id equal to limonero;for example, <b>&lt;p id="limonero"&gt;</b>
+    The expression <b>document.body</b> means all the HTML elements that we write inside the <b>body</b> tag
+    in the HTML file.
   </li>
   <li>
-    The word <b>style</b> means the set of styling attributes of an HTML element, like color, background color, etc.; the
-    ones that we saw in the CSS lessons.
+    The word <b>getElementById</b> followed by a string between parentheses, like in <b>getElementById("buttonForRed")</b>
+    means the HTML element whose id is the word in the parentheses. In the example HTML file above (the one called exampleForAzu.html)
+    it would be the button whose id is buttonForRed.
+  </li>
+  <li>
+    The word <b>style</b> means the set of CSS styling attributes of an HTML element, like color, background color, padding, etc.
   </li>
   <li>
     The word <b>backgroundColor</b> means the background color of some element. It is usually used jointly with the style keyword,
-    like in <b>style.backgroundColor</b>
+    like in <b>style.backgroundColor</b>.
   </li>
   <li>
-    The word <b>innerHTML</b> means the HTML code that we write inside an element. For example, if we have 
+    The equal sign is used to assign something a value. For example, the following would change the background color of the
+    HTML element called "buttonForRed" to pink:
+    <pre>
+    document.getElementById("buttonForRed").style.backgroundColor = "pink"
+    </pre>
+    The above is read by the browser as: "get the document, and inside it the element whose id is buttonForRed, and from its
+    style properties, change the background color to pink".
+  </li>  
+  <li> 
+    In Javascript, any word or series of words that isntruct the browser to do spomething is called an statement. For example,
+    </b>document.getElementById("buttonForRed").style.backgroundColor = "pink"</b> is an statement because it tells the
+    browser to do something. Is is customary, although not mandatory, to write a semicolon after each statement in Javascript,
+    For example, instead of 
+    <pre>
+     document.getElementById("buttonForRed").style.backgroundColor = "pink"
+    </pre>
+    it is recommended to write
+    <pre>
+    document.getElementById("buttonForRed").style.backgroundColor = "pink";
+    </pre>
+  </li>
+  <li>
+    In Javascript, any word or words that ahve any value is called an expression. For example, the word
+    <b>docuemnt</b> is an expression; the series of words
+    <b>document.getElementById("buttonForRed").style.backgroundColor")</b> is also an expression;
+    the word <b>"pink"</b> is also an expression too.
+  </li>
+  <li>
+    Javascript expressions are somewhat equivalent to anything that can be the subject in a normal language like English
+    or Spanish. Javascript statements are equivalent to complete sentences with a verb that indicates an action. <br>
+    For example,
+    <b>document.getElementById("buttonForRed").style.backgroundColor")</b> means "the background color of the element
+    named buttonForRed", which can be the subject of an English sentence. The word <b>"pink"</b> can also be the
+    subject of an English sentence. The complete expression 
+    <pre>
+      document.getElementById("buttonForRed").style.backgroundColor = "pink";
+    </pre>
+    is equivalent to a complere English sentence because it involves an assignment, which means "CHANGE to pink the
+    background color of the element whose id is buttonForRed".
+  </li>
+  <li>
+    The word <b>innerHTML</b> means the HTML code that is written inside an element. For example, if we have 
     a paragraph written like this: <b>&lt;p&gt;Hola caracola&lt;/p&gt;</b>,
     then its innerHTML woul be <b>Hola caracola</b>.
   </li>
   <li>
-    To change the value of an element, Javascript uses an equal sign followed by the new value for that element:
-    <b>document.body.style.backgroundColor = "blue"</b>
-  </li>
-  <li>
-    To append some text to a text element, Javascript uses a plus sign followed without spaces by an equal sign, followed by the text
+    To append some text to a HTML text element like a paragraph of a list item, 
+    Javascript uses a plus sign followed, without spaces, by an equal sign, followed by the text
     to be appended:
-    <b>document.getElementById("parrafo") += " THE END."</b>
+    <b>document.getElementById("parrafoSobreBurgos").innerHTML += " El cuento de la buena pipa."</b>
   </li>
   <li>
-    Javascript is used to tell the browser to do something when a condition of some kind occurs: for example, if we
-    want to do something like this: "when the user clicks in the button whose id is "pulsame", then
-    change the color of the background of the webpage to blue, and the color of the font of all text to red,
-    and also append the phrase <b>Raro, muy raro.</b> to the paragraph whose id is "parrafocastilla", and replace the text of the
-    paragaph whose id is "parrafogalicia" for the phrase "Por la costa."
-    The condition that needs to happen before the browser does all those actions is the button click. 
-    A set of actions that we want to do one after the other is called a function. The Javascript programmer
-    is free to choose a name for any function. A function is indicated by the name function, followed by
+    Javascript can be used to tell the browser to do something when a condition of some kind occurs. For example, if we
+    want to do something like this: "when the user clicks in the button whose id is "curiousButton", then
+    change the color of the background of the webpage to blue, and the color of the font of the text of all elements to red,
+    and <b>append</b> the phrase <b>Burgos has a town.</b> to the paragraph whose id is "parrafocastilla", and <b>replace</b> the text of the
+    paragaph whose id is "parrafogalicia" for the phrase "Galicia has four provinces."
+   
+    In Javascript, any group of actions that we want to do one after the other is called a function. The Javascript programmer
+    is free to choose a name for any function. A function is indicated by the word <b>function</b>, followed by
     the chosen name for the function, two parentheses, and the actions to be done written inside braces. It is usual
-    to write one action per line, and to finish each action with a semicolon. An action can be written in several
-    ways; for simple properties like changing a color, it is usually done with a equal sign and the value of the
-    property, like:
+    to write one action per line. In the example above, we would write:
     <pre>
     function cosas_que_hacer_al_pulsar_el_boton() {
       document.body.style.backgroundColor = blue;
       document.body.style.color = red;
-      document.getElementById("parrafocastilla").innerHTML += "Raro, muy raro.";
-      document.getElementById("parrafogalicia").innerHTML = "Por la costa.";
+      document.getElementById("parrafocastilla").innerHTML += "Burgos has a town.";
+      document.getElementById("parrafogalicia").innerHTML = "Galicia has four provinces.";
     }
     </pre>
-    
-  </li>
+    Observe the difference between how we use <b>+=</b> and <b>=</b>: the former appends text to the existing text, 
+    and the latter replaces the existing text for new one. Take care with not confusing them.
+   </li>
 </ol>
-
-
-<p>
- In a Javascript file, the word <b>document</b> means the entire webpage (in lowercase).
- In Javascript, care should be taken to distinguish between lowercase and uppercase.
- The words document, <b>DOCUMENT</b>, <b>Document</b>, <b>dOcUmEnT</b>, etc., are all treated differently
- and only the word in lowercase refers to the whole document.
-</p>
-<p>
-  Inside a Javascript file, in order to indicate something that is inside
-  of something else, a dot is used. Let's see with an example: the 
-  word <b>getElementById</b> instructs the browser to find, inside 
-  the HTML file, an HTML element that you assigned an ID to (as we saw, this is done with 
-  the id attribute, like in <b>&lt;p id="zamora"&gt;</b>).
- You need to provide the id inside quotes and inside parentheses, in this way:
- <b>document.getElementById("holaazu")</b> which means to      
- grab the whole HTML file (indicated by the word <b>document</b>), 
-  go inside it (indicated by the dot) and get the element whose 
- id is holaazu (the getElementById). If that element does         
- not exist, then the browser will not find anything, and thus it will not 
- do anything later with it. Otherwise, it will do whatever we indicate later in the
- Javascript file.
-</p>
-<p>
- Let's use another example: imagine that we want to create a webpage with three               
- buttons:     
- <ul> 
- <li> one button whose id we choose to be <b>redbutton</b>, that has the text 'Click here to change to red'      
-    written on it and that, when the user clicks on it, the background color of the           
-    entire webpage changes to red.                                              
-   </li>
- <li> one button whose id we choose to be <b>greenbutton</b>, that has the text 'Click here to change to green'  
-    written on it and that, when the user clicks on it, the background color of the           
-    entire webpage changes to green.                                            
-   </li>
- <li> one button whose id we choose to be <b>bluebutton</b>, that has the text 'Click here to change to blue'    
-    written on it and that, when the user clicks on it, the background color of the           
-    entire webpage changes to blue.                                             
-  </li>
- </ul>
+</ul>
+</body>
