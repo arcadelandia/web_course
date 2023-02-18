@@ -7,7 +7,7 @@ the screen will usually not change: the text in is text elements (paragraphs,
   headers, lists) will remain as is; the color of the text and backgrounds 
   will too; same for images, video, forms, tables; the CSS grid that
   we designed to put the elements in, will remain unaltered as well. 
-  The only way we saw where a given webpage could modify something
+  The only way we saw where a webpage could modify something
   related to its appearance was by using the <b>@media(...)</b> keyword in CSS
   in order to adapt the webpage to browser screens that are too narrow by showing
   the cells of the design in a single line rather than in a matrix.
@@ -43,7 +43,8 @@ Javascript file that we want to use, by means of the <b>script</b> element. Let'
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Azu is learning Javascript!&lt;/title&gt;
-    &lt;script src="blabla.js" defer&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="weirdstyle.css"&gt;
+    &lt;script src="example.js" defer&gt;&lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;input type='button' id="buttonForRed" value="Click here to change background to red"&gt;
@@ -58,57 +59,59 @@ In the above HTML file, we declare the doctype (which indicates that we intend
 to use standard HTML), then the html element that contains the whole webpage, and inside
 it, two elements: the element head, and the element body.
 The element head, as we saw in previous lessons, contains the elements that are not presented
-to the user in the browser main visualization area, under the browser menus: the title, which 
-  will be shown in the tab, above the main visualization area, and a script element that contains the information about which 
-  Javascript file we want to use to control this HTML webpage.
-  The element <b>body</b> contains everything that
-will be shown to the user in the browser main visualization area; in this example, it contains four
+to the user inside the webpage: the title, which 
+  is shown in the browser outside of the webpage, in the tab, and a <b>script</b> element that indicates
+  which Javascript file we want to use to control this HTML webpage. We also see a <b>link</b> element
+  referencing the CSS file that we intend to use in this example.
+  Then, the element <b>body</b> contains everything that
+will be shown to the user; in this example, it contains four
 buttons. We gave a unique ID to each one: the first button has an id of <b>buttonForRed</b>, 
 and on it we write the phrase "Click here to change background to red"; when the user clicks
-on it, the background color of the entire webpage will turn to red; we will do that using the
-Javascript file. The other three buttons are similar: one uses green, another blue, and the last one, white;
-white is also usually the default color of the background when we open the webpage.
+on it, we want the background color of the entire webpage to turn to red; we will do that using code
+that we will write inside the Javascript file. The other three buttons are similar: one 
+  uses green, another blue, and the last one, white, which is usually the default color of any webpage background.
 </p>
 <p>
 The element <b>script</b> tells the browser which file contains
-the Javascript code. In this example, it is a file named <b>blabla.js</b>; since we
+the Javascript code. In this example, it is a file named <b>example.js</b>; since we
 just write its name, the browser will look for it in the same folder where the <b>exampleForAzu.html</b>
 file is.
-If we had written <b>&lt;script src="folderABC/blabla.js"</b>, then the browser
-would go into a folder named <b>folderABC</b> which should be in the same folder where the 
-<b>exampleForAzu.html</b> file is, and there look for the <b>blabla.js</b> file.
-If we had written <b>&lt;script src="../blabla.js"</b>, then the browser
-would go into the folder above the one that has the <b>exampleForAzu.html</b>, and look
-there for the <b>blabla.js</b> file.
-If we had written <b>&lt;script src="../folderABC/blabla.js"</b>, then the browser
+If we had written <b>&lt;script src="abc/example.js"</b>, then the browser
+would go into a folder named <b>abc</b> which should be in the same folder where the 
+<b>exampleForAzu.html</b> file is, and inside it look for the <b>example.js</b> file.
+And, if we had written <b>&lt;script src="../example.js"</b>, then the browser
+would go into the folder <b>above</b> the one that has the <b>exampleForAzu.html</b>, and look
+there for the <b>blabla.js</b> file (the two consecutive dots means to go up one folder, so .. means
+  the upper folder, and ../../ would mean two folders up).
+If we had written <b>&lt;script src="../abc/example.js"</b>, then the browser
 would go to the folder above the folder where the <b>exampleForAzu.html</b> file is, from there into
-a folder named <b>folderABC</b>, and inside there it would look for the file named <b>blabla.js</b>.
+a folder named <b>abc</b>, and inside there it would look for the file named <b>example.js</b>.
 </p>
 <p>
-The script element has opening and closing tags, without anything written between them. This is
-different than what we saw with CSS files, which we referenced with the meta tag:
-<b>&lt;link rel="stylesheet" href="exampleForAzu.css"&gt;</b>. The <b>link</b> tag does not have a closing
-tag, in contrast with the <b>script</b> tag.
+The <b>script</b> element has a closing tag in addition to the opening one. Nothing is written
+  between the script opening and closing tags. This is in contrast to the <b>link</b> element
+  that we use to indicate a CSS file, which does not have a closing tag.
 </p>
 <p>
-The script opening tag has the optional attribute <b>defer</b>. It is recommended to write it, due to
-the following: the sole purpose of the Javascript file is to control the behavior of HTML elements that
-we will write inside the HTML file, after the line where the script tag appears (in this example, those
-elements are the four buttons). Each HTML element, as we saw in previous lessons, is identified by an unique id that
-we must select for it. The Javascript file will basically tell the browser what to do with each id (somehing like:
-when somebody click the button whose id is "buttonForRed", change the background color of the webpage to red, etc.)
-If we do not write the attribute <b>defer</b> in the opening script tag, the browser will open and read the entire
-Javascript file before continuing processing the HTML file; thus, it still will have not seen the lines creating the
-buttons when it starts processing the Javascript file; so, when it sees inside the Javascript file the instructions
-referring to what to d owith the buttons, it will be confused about what are those buttons (since it still did not
-reach that point in the HTML file. In contrast, if we use the word <b>defer</b> inside the opening <b>script</b>
-tag, the browser will not read yet the Javascript file, and instead it will <em>defer</em> until it finishes reading
-the entire HTML file before reading the Javascript file; thus, by the time it starts processing the Javascript file
-it will have already seen the four buttons, and when it sees the instructions processing them inside the Javascript
-file it will be able to understand what are those.
+The <b>script</b> opening tag has the optional attribute <b>defer</b>, which means that we want the browser
+  to finish downloading the entire html file before attempting to process the Javascript file (i.e., the browser
+  <em>defers</em> the processing of the js file until the html has been downloaded).
+  In general, it is recommended to write it, due to the following: the browser starts reading the HTML file
+  at the beginning, and processes it line by line. First it processes the doctype, and then the opening tags
+  of the html and head elements. Then, the title element, and then the script element referencing the
+  Javascript file. Then, before continuing processing the link element, it reads the entire Javascript file,
+  and only when it finishes processing the Javascript file it will continue processing the HTML file, starting
+  with the link element, then the closing head tag, and then the body element. The important part is that
+  when the browser reads the Javascript file, it still did not see the four buttons that we intend to control (and
+  that is because they are defined after the Javascript file). And, since the whole point of the Javascript file
+  is to control those four buttons in this example, the browser may get confused if we attempt to do anything
+  related to those buttons inside the Javascript file. To make sure that the browser knows about the existence
+  of the buttons when we try to control them with Javascript, it is better to <b>defer</b> the reading of the
+  contents of the Javascript file until the entire HTML file has been processed (so the browser has alredy
+  seen the buttons and everything else inside the webpage).
 </p>
 <p>
- Now let's see how to write the Javascript file <b>blabla.js</b>. Let's start with 
+ Now let's see how to write the Javascript file <b>example.js</b>. Let's start with 
   some <b>Javascript vocabulary and grammar</b>.
 </p>
 <ol>
