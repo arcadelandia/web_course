@@ -43,8 +43,8 @@ Javascript file that we want to use. We do this by means of the <b>script</b> el
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Azu is learning Javascript!&lt;/title&gt;
-    &lt;link rel="stylesheet" href="weirdstyle.css"&gt;
-    &lt;script src="example.js" defer&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="css4azu.css"&gt;
+    &lt;script src="javascript4azu.js" defer&gt;&lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;input type='button' id="buttonForRed" value="Click here to change background to red"&gt;
@@ -58,13 +58,13 @@ Javascript file that we want to use. We do this by means of the <b>script</b> el
 In the above HTML file, we declare the doctype (which indicates that we intend
 to use standard HTML), then the html element that contains the whole webpage, and inside
 it, two elements: the element head, and the element body.
-The element head, as we saw in previous lessons, contains the elements that are not presented
-to the user inside the webpage: the title, which 
-  is shown in the browser outside of the webpage, in the tab, and a <b>script</b> element that indicates
-  which Javascript file we want to use to control this HTML webpage. We also see a <b>link</b> element
-  referencing the CSS file that we intend to use in this example.
+The element head, as we saw in previous lessons, contains information that is not directly
+  shown to the user: in this example they are the title,
+  a <b>script</b> element that indicates that we want to use a file named javascript4zu.js with
+  Javascript code that we will use to make sure that the buttons allow to change the background color; and 
+  a <b>link</b> element referencing a CSS file named css4zu.css that would contain style instructions.
   Then, the element <b>body</b> contains everything that
-will be shown to the user; in this example, it contains four
+will be shown to the user in the webpage: in this example, it is just four
 buttons. We gave a unique ID to each one: the first button has an id of <b>buttonForRed</b>, 
 and on it we write the phrase "Click here to change background to red"; when the user clicks
 on it, we want the background color of the entire webpage to turn to red; we will do that using code
