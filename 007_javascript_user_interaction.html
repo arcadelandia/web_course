@@ -72,43 +72,28 @@ that we will write inside the Javascript file. The other three buttons are simil
   uses green, another blue, and the last one, white, which is usually the default color of any webpage background.
 </p>
 <p>
-The element <b>script</b> tells the browser which file contains
-the Javascript code. In this example, it is a file named <b>example.js</b>; since we
-just write its name, the browser will look for it in the same folder where the <b>exampleForAzu.html</b>
-file is.
-If we had written <b>&lt;script src="abc/example.js"</b>, then the browser
-would go into a folder named <b>abc</b> which should be in the same folder where the 
-<b>exampleForAzu.html</b> file is, and inside it look for the <b>example.js</b> file.
-And, if we had written <b>&lt;script src="../example.js"</b>, then the browser
-would go into the folder <b>above</b> the one that has the <b>exampleForAzu.html</b>, and look
-there for the <b>blabla.js</b> file (the two consecutive dots means to go up one folder, so .. means
-  the upper folder, and ../../ would mean two folders up).
-If we had written <b>&lt;script src="../abc/example.js"</b>, then the browser
-would go to the folder above the folder where the <b>exampleForAzu.html</b> file is, from there into
-a folder named <b>abc</b>, and inside there it would look for the file named <b>example.js</b>.
-</p>
-<p>
-The <b>script</b> element has a closing tag in addition to the opening one. Nothing is written
-  between the script opening and closing tags. This is in contrast to the <b>link</b> element
+  One important aspect of the <b>script</b> element is that it has a closing tag, and that nothing is written
+  between the opening tag and the closing tag. This is in contrast to the <b>link</b> element
   that we use to indicate a CSS file, which does not have a closing tag.
 </p>
 <p>
 The <b>script</b> opening tag has the optional attribute <b>defer</b>, which means that we want the browser
   to finish downloading the entire html file before attempting to process the Javascript file (i.e., the browser
-  <em>defers</em> the processing of the js file until the html has been downloaded).
-  In general, it is recommended to write it, due to the following: the browser starts reading the HTML file
-  at the beginning, and processes it line by line. First it processes the doctype, and then the opening tags
+  <em>defers</em> the processing of the javascript file until the html file has been downloaded).
+  In general, it is recommended to write it, due to the following: the browser starts reading the html file
+  at the beginning of the file, and processes it line by line. Take a look at the example: first, the browser
+  processes the doctype, and then the opening tags
   of the html and head elements. Then, the title element, and then the script element referencing the
-  Javascript file. Then, before continuing processing the link element, it reads the entire Javascript file,
-  and only when it finishes processing the Javascript file it will continue processing the HTML file, starting
-  with the link element, then the closing head tag, and then the body element. The important part is that
-  when the browser reads the Javascript file, it still did not see the four buttons that we intend to control (and
-  that is because they are defined after the Javascript file). And, since the whole point of the Javascript file
-  is to control those four buttons in this example, the browser may get confused if we attempt to do anything
+  Javascript file. Then, before continuing processing the link element that appears in the next line, it reads the entire Javascript file,
+  and only when it finishes processing the Javascript file it will continue processing the html file, starting
+  with the link element, then the closing head tag, and then the body element. The important part to notice here is that
+  when the browser reads the Javascript file, it still did not read the four buttons that the Javascript file will manage (and
+  that is because they are written in the html file AFTER the Javascript file). And, since the whole point of the Javascript file
+  is to control those four buttons, the browser may get confused if we attempt to do anything
   related to those buttons inside the Javascript file. To make sure that the browser knows about the existence
   of the buttons when we try to control them with Javascript, it is better to <b>defer</b> the reading of the
   contents of the Javascript file until the entire HTML file has been processed (so the browser has alredy
-  seen the buttons and everything else inside the webpage).
+  seen the buttons and everything else inside the webpage). That is why we write defer in the script opening tag.
 </p>
 <h1>Javascript Vocabulary</h1>
 <p>
