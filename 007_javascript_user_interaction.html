@@ -169,14 +169,18 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     background color of the element whose id is buttonForRed".
   </li>
   <li>
-    The word <b>innerHTML</b> means the HTML code that is written inside an element. For example, if we have 
+    The word <b>innerHTML</b> means whatever is written in between
+    the opening and closing tags of a given HTML element. For example, if we have 
     a paragraph written like this: <b>&lt;p&gt;Hola caracola&lt;/p&gt;</b>,
-    then its innerHTML woul be <b>Hola caracola</b>.
+    then its innerHTML woul be <b>Hola caracola</b>. This is, everything written between 
+    the opening and closing <b>p</b> tags will be
+    its innerHTML.
   </li>
   <li>
-    To append some text to a HTML text element like a paragraph of a list item, 
+    To append some text to a HTML text element, like a paragrap, or a list item, 
     Javascript uses a plus sign followed, without spaces, by an equal sign, followed by the text
-    to be appended:
+    to be appended. For example, the following code appends a phrase
+    to the element whose id is <em>parrafoSobreBurgos</em>:
     <b>document.getElementById("parrafoSobreBurgos").innerHTML += " El cuento de la buena pipa."</b>
   </li>
   <li>
