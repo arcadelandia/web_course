@@ -187,8 +187,8 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     <b>document.getElementById("parrafoSobreBurgos").innerHTML += " El cuento de la buena pipa."</b>
   </li>
   <li>
-    Javascript can be used to tell the browser to do something when a condition of some kind occurs. For example, imagine that we
-    want to do something like this: <em>when the user clicks in the button whose id is "curiousButton", then
+    Javascript can be used to tell the browser to do some action when a condition of some kind occurs. For example, imagine that we
+    want to do the following: <em>when the user clicks the button whose id is "curiousButton", then the browser should
     change the color of the background of the webpage to blue, and the color of the font of the text of all elements to red,
     and <b>append</b> the phrase "Burgos has a town." to the paragraph whose id is "parrafocastilla", and <b>replace</b> the text of the
     paragaph whose id is "parrafogalicia" for the phrase "Galicia has four provinces.</em>
@@ -196,18 +196,44 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     In Javascript, any group of actions that we want to do one after the other is called a <em>function</em>. The Javascript programmer
     is free to choose a name for any function. A function is indicated by the word <b>function</b>, followed by
     the chosen name for the function, two parentheses, and the actions to be done written inside braces. It is usual
-    to write one action per line. In the example above, we would write:
+    to write one action per line. In the example above, if we choose the name <em>curiousFunction</em> for the actions that
+    we described above, we would write:
     <pre>
-    function cosas_que_hacer_al_pulsar_el_boton() {
+    function curiousFunction() {
       document.body.style.backgroundColor = blue;
       document.body.style.color = red;
       document.getElementById("parrafocastilla").innerHTML += "Burgos has a town.";
       document.getElementById("parrafogalicia").innerHTML = "Galicia has four provinces.";
     }
     </pre>
-    Observe the difference between how we use <b>+=</b> and <b>=</b>: the former appends text to the existing text, 
+    IMPORTANT: observe the difference between how we use <b>+=</b> and <b>=</b>: the former appends text to the existing text, 
     and the latter replaces the existing text for new one. Take care with not confusing them.
+  </li>
+  <li>
+    When the browser sees a function like in the previous point (this is, declared using the word <em>function</em>) 
+    it does NOT do the actions indicated; it just tells the browser what actions we want to do in the future when
+    we desire so. So, when the browser sees the the previous example, the background color would not change, nor would the
+    text color, etc. In order for those actions to happen, we need to write the name of the function followed by parentheses,
+    like this:
+    <pre>
+       curiousFunction();
+    </pre> 
    </li>
+  <li>
+    If we have a function
+  </li>
+  <li>
+    In Javascript, the word <b>onclick</b> means the actions that happen when the user clicks on a given element. For example,
+    if we write the following inside a Javascript file:
+    <pre>
+      document.getElementById("curiousButton").onclick = curiousFunction;
+    </pre>
+    it means that we are telling the browser that, when the user clicks on the webpage's element whose id is 
+    <em>curiousButton</em>, it should do the actions written inside the function called <em>curiousFunction</em>. 
+    When the browser reads the previous line, it does not do those actions: it will only do them when the user clicks on the button.
+    It is important to note that there are not parentheses after the name <em>curiousFunction</em>; if there were, the
+    actions would be done when the browser reads that line (but it would be incorrect, so do not put parentheses there).
+  </li>
   <li>
     In Javascript, three equal signs one after the other without blank spaces in between them, mean the question <em>is?</em>,
     For example, the expression <em>document.title === "Galicia"</em> means <em>is the document's title Galicia?</em>.
