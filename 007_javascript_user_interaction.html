@@ -112,6 +112,9 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     an apostrophe s in English.
   </li>
   <li>
+    The expression <b>document.title</b> can be read as "document's title", and it means the title of the webpage.
+  </li>
+  <li>
     The expression <b>document.body</b> means all the HTML elements that we write inside the <b>body</b> tag
     in the HTML file.
   </li>
@@ -205,6 +208,54 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     Observe the difference between how we use <b>+=</b> and <b>=</b>: the former appends text to the existing text, 
     and the latter replaces the existing text for new one. Take care with not confusing them.
    </li>
+  <li>
+    In Javascript, three equal signs one after the other without blank spaces in between them, mean the question <em>is?</em>,
+    For example, the expression <em>document.title === "Galicia"</em> means <em>is the document's title Galicia?</em>.
+  </li>
+  <li>
+    If you want to do something only if something else is true, you can use what is called an <b>if</b> statement. For example,
+    if you want to change the background color of the webpage to blue ONLY if the current webpage title is <em>Galicia</em>, you
+    can write the following:
+    <pre>
+      if (document.title === "Galicia") {
+          document.body.style.backgroundColor = "blue";
+      }
+    </pre>
+  </li>
+  <li>
+    If you want to do something ONLY if something else is true, and in addition you also want to do a third thing if that other thing is
+    false, you can use what is called an <em>if/else</em> statement. For example, if you want to change the backlground color to blue
+    if the title is Galicia, and change it to green if the title is not Galicia, you can write:
+    <pre>
+      if (document.title === "Galicia") {
+          document.body.style.backgroundColor = "blue";
+      } else {
+          document.body.style.backgroundColor = "green";
+      }
+    </pre>
+  </li>
+  <li>
+    If you want to do different things depending on the value of something, you can use what is called 
+    an <em>if/else if</em> statement. For example, if you want to change the background color to blue
+    if the title is Galicia, and change it to green if the title is Asturias, and to red if it is Castilla, and
+    to magenta if the title is Cantabria, and to white in any other case, you can write:
+    <pre>
+      if (document.title === "Galicia") {
+          document.body.style.backgroundColor = "blue";
+      } else if (document.title === "Asturias") {
+          document.body.style.backgroundColor = "green";
+      } else if (document.title === "Castilla") {
+          document.body.style.backgroundColor = "red";
+      } else if (document.title === "Cantabria") {
+          document.body.style.backgroundColor = "magenta";
+      } else {
+          document.body.style.backgroundColor = "white";
+      }
+    </pre>
+    You can write as many <em>} else if ... </em> lines as needed.
+    The previous code can be read as: if the webpage's title is Galicia, change its background color to blue; if it is Asturias, to green,
+    if it is Castilla, to red, if it is Cantabria, to magenta, and if it was not any of those cases, to white.
+  </li>
 </ol>
 </ul>
 </body>
