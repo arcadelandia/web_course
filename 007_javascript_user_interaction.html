@@ -220,9 +220,6 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     </pre> 
    </li>
   <li>
-    If we have a function
-  </li>
-  <li>
     In Javascript, the word <b>onclick</b> means the actions that happen when the user clicks on a given element. For example,
     if we write the following inside a Javascript file:
     <pre>
@@ -281,6 +278,93 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     You can write as many <em>} else if ... </em> lines as needed.
     The previous code can be read as: if the webpage's title is Galicia, change its background color to blue; if it is Asturias, to green,
     if it is Castilla, to red, if it is Cantabria, to magenta, and if it was not any of those cases, to white.
+  </li>
+  <li>
+    In a Javascript file, anything is written between the strings <em>/*</em> and <em>*/</em>, is ignored
+    by the browser. That is called a comment, and it is usually used to give information for the
+    human reader of the file: author information, copyright notice, an observation that may be useful for
+    the future reader of the file, etc. For example:
+    <pre>
+     /*Hello everybody: 
+       this file was created by the cookie monster
+       Copyright hold by Tedio Plomez Sopor*/
+     document.body.style.backgroundColor = "magenta"; /* we choose magenta because we like it*/
+    </pre>
+  </li>
+  <li>
+    In Javascript, you have access to space to store pieces of data that you may want inside a webpage.
+    You can assign any name to any piece of data, and give it whatever value you want.
+    For example, if your webpage wants to show information about a city, you can have a piece of data
+    called <em>city_name</em>, whose value is <em>Tokyo</em>, and another piece of data 
+    called <em>continent</em>, whose value is <em>Asia</em>, and another piece of data 
+    called <em>population</em>, whose value is <em>40000000</em>, and another piece of data
+    called <em>famous_neighborhoods</em>, whose value is <em>Minato, Chuo, Shinagawa, Shibuya, Shinjuku</em>, and another piece of data 
+    called <em>is_country_capital</em>, whose value is <em>true</em>.
+    Each piece of data is written using the word <b>let</b> followed by the name, an equal sign, and the value, like this:
+    <pre>
+      let city_name = "Tokyo"; /* This is a string, so it uses quotes*/
+      let continent = "Asia";  /* This is a string, so it uses quotes*/
+      let population = 40000000; /* This is an integer number, that admits mathematical operations, so it does not use quotes*/
+      let famous_neighborhoods = [ "Minato", "Chuo", "Shinagawa", "Shibuya", "Shinjuku" ];
+      let is_country_capital = true;
+    </pre>
+    Variable names can contain letters, numbers, and underscores. The first character must not be a number. Variables that
+    can be true or false, like <em>is_country_capital</em> in the above example, are called booleans.
+    It is possible to change the value of any of these pieces of data at any point inside the Javascript file, for example:
+    <pre>
+      ...
+      population = 35000000; /*population changes from 40 million to 35 million*/
+      famous_neighborhoods += [ "Ota" ]; /*the old array, which had 5 elements, is extended with a new value, so it now has 6 elements*/ 
+    </pre>
+    These pieces of data are called <b>variables</b> because their values may vary; the set of all
+    variables of the Javascript file is sometimes called <em>memory</em>.
+  </li>
+  <li>
+    Javascript offers a tool called <em>loops</em> to control how many times some action is done. One of the
+    most useful loops is called the <em>for loop</em>. Let's see it with an example. Let's assume that there is
+    inside the HTML file an element whose id is <em>paragraph_about_cats</em>. In it, we want to write 100 phrases, in the following
+    style:
+    <pre>
+      There are 1 cats in the bed.
+      There are 2 cats in the bed.
+      There are 3 cats in the bed.
+      ....
+      There are 98 cats in the bed.
+      There are 99 cats in the bed.
+      There are 100 cats in the bed.
+    </pre>
+    We can write the above directly inside the HTML file, but is is going to take a lot of work (100 lines to be written).
+    Instead, we can see that there is an easy pattern in those phrases: all phrases have exactly the same format, and 
+    only the number changes in each one, from 1 to 100. This is a clear pattern; and <b>for loops</b> are designed
+    to create patterns. In this case, we can werite inside the Javascript file the following:     
+    <pre>
+    for (let number_cats = 1; number_cats <= 100; number_cats = number_cats + 1) {
+       document.getElementById("paragraph_about_cats").innerHTML += "There are " + number_cats + "cats in the bed.";
+    }
+    </pre>
+    The for loop has the word <em>for</em> followed by, between parentheses, three statements separated by semicolons, and one
+    or more statements between braces. The first statement inside the parentheses (in this example, <em>let number_cats = 1;</em>) 
+    declares a variable that we named number_cats;
+    this first statement in called the initialization statement of the for loop: the browser runs the initialization
+    statement once and only once, at the beginning of the processing of the for loop; in this case, the variable number_cats
+    is assigned a numeric value of one.
+    The for loop has a second statement, in this case, <em>number_cats <= 100;</em>. This is called the termination statement:
+    the browser, after running whatever we wrote between the braces, checks if the termination statement is correct; in this
+    case, whether the variable number_cats is lower than or equal to 100. If that is false, it stops processing the for loop;
+    if it is true, it continues. The third statement inside the parentheses is called the increment statement; in this case,
+    it is <em>number_cats = number_cats + 1</em>. The browser runs the increment statement after finishing doing all the
+    actions written between the braces. So, in this case, we can translate to English the above example like: initialize
+    a variable called number_cats to the number 1, and then append to the HTML element called paragraph_about_cats the phrase <em>There are </em> followed
+    by the value of the variable number_cats (which is 1), followed by the phrase <em>cats in the bed.</em>; 
+    then increment number_cats by one (so it becomes the number 2); 
+    then check whether number_cats is less than or equal to 100; if that is false; finish the for loop; else, append, to the HTML element
+    called paragraph_about_cats the phrase <em>There are </em> followed by the value of the variable number_cats (which is 2), 
+    followed by the phrase <em>cats in the bed.</em>; then increment number_cats by one (so it becomes 3); then 
+    check whether number_cats is less than or equal to 100; if that is false; finish the for loop; else, append, to the HTML element
+    called paragraph_about_cats the phrase <em>There are </em> followed by the value of the variable number_cats (which is 3), etc.
+    We can see that this will append the phrases "There are N cats in the bed." until N is incremented from 100 to 101, at which
+    point the check for whether number_cats is less than or equal to 100 will fail, so the browser will stop the for loop and stop
+    adding phrases with numbers.
   </li>
 </ol>
 </ul>
