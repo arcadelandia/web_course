@@ -404,6 +404,21 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
    let k = j * i; /* This declares a variable named k whose value is the multiplication of the values of the variables i and j, so k becomes 8*/
   </pre>
   </li>
+  <li>
+  There is a loop called <b>do while loop</b> that is written
+  <pre>
+  let number_cats = 1;
+  do {
+           document.getElementById("paragraph_about_cats").innerHTML += "There are " + number_cats + "cats in the bed.";
+           number_cats = number_cats + 1;
+  } while (number_cats <= 100);
+  </pre>
+  This is read: declare a variable named number_cats and initialize its value to 1, and then, do whatever is in the braces, and then check
+  if number_cats is lower than or equal to 100; if it is so, do the actions between brackets again, othrwise, stop the loop. The difference
+  of this <b>do while loop</b> with the <b>while loop</b> is that the former always does the actions between brackets at least once (because
+  the termination check is written after the brackets) while the latter may not run the actions between the brackets if the termination check
+  fails (because it is written before the brackets).
+  </li>
 </ol>
 </ul>
 </body>
