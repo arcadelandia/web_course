@@ -503,5 +503,96 @@ function appendItem() {
 }                  
     </pre>
   </li>
+  <li>
+    Create an HTML file and an CSS file named <em>playing_with_javascript.html</em> and <em>playing_with_javascript.js</em> respectively with the following content, and 
+    play with the buttons. Read carefully the code of the HTML and the CSS files and try to understand every line.
+    <h2>File named <em>playing_with_javascript.html</em></h2>
+    <pre>
+    &lt;!doctype HTML&gt;                                                           
+&lt;html&gt;                                                                    
+&lt;head&gt;                                                                    
+&lt;script src="playin_with_javascript.js" defer&gt;&lt;/script&gt;                    
+&lt;/head&gt;                                                                   
+&lt;body&gt;                                                                    
+&lt;input type='button' id="redbutton" value="Click here to change to red"&gt;  
+&lt;input type='button' id="greenbutton" value="Click here to change to green"&gt;
+&lt;input type='button' id="bluebutton" value="Click here to change to blue"&gt;
+&lt;input type='button' id="whitebutton" value="Click here to change to white"&gt;
+&lt;p&gt;                                                                       
+We are going to change the information in the following paragraph.              
+&lt;/p&gt;                                                                      
+&lt;p id="firstparagraph"&gt;                                                   
+Hello!                                                                          
+&lt;/p&gt;                                                                      
+&lt;p&gt;                                                                       
+This paragraph will be as usual. Nothing changes in it.                         
+&lt;/p&gt;                                                                      
+&lt;p id="secondparagraph"&gt;                                                  
+Good morning!                                                                   
+&lt;/p&gt;                                                                      
+&lt;p id="thirdparagraph"&gt;                                                   
+Castilla has nine provinces. They are in the interior of Spain.                 
+&lt;/p&gt;                                                                      
+&lt;/body&gt;                                                                   
+&lt;/html&gt;    
+    </pre>
+    <h2>File named <em>playing_with_javascript.js</em></h2>
+    <pre>
+     document.getElementById("redbutton").onclick = change_to_red_background;        
+function change_to_red_background() {                                           
+  document.body.style.backgroundColor = "red";                                  
+}                                                                               
+document.getElementById("greenbutton").onclick = change_to_green_background;    
+function change_to_green_background() {                                         
+  document.body.style.backgroundColor = "green";                                
+}                                                                               
+document.getElementById("bluebutton").onclick = change_to_blue_background;      
+function change_to_blue_background() {                                          
+  document.body.style.backgroundColor = "blue";                                 
+}                                                                               
+document.getElementById("whitebutton").onclick = change_to_white_background;    
+function change_to_white_background() {                                         
+  document.body.style.backgroundColor = "white";                                
+}                                                                               
+setTimeout(replace_content_of_first_paragraph_each_second, 1000);               
+var contador_de_repeticiones = 1;                                               
+function replace_content_of_first_paragraph_each_second() {                     
+  if (es_par_este_numero(contador_de_repeticiones) === true) {                  
+    document.getElementById("firstparagraph").innerHTML = "This is <b>great!</b>.";
+  } else {                                                                      
+    document.getElementById("firstparagraph").innerHTML = "This is <b>not great!</b> We have repeated this " + contador_de_repeticiones;
+  }                                                                             
+  contador_de_repeticiones = contador_de_repeticiones + 1;                      
+  setTimeout(replace_content_of_first_paragraph_each_second, 1000);             
+}                                                                               
+function es_par_este_numero(numero) {                                           
+  if ((numero % 2) === 0) {                                                     
+    return true;                                                                
+  } else {                                                                      
+    return false;                                                               
+  }                                                                             
+}                                                                               
+setTimeout(append_message_to_second_paragraph_each_second, 1000);               
+function append_message_to_second_paragraph_each_second() {                     
+  document.getElementById("secondparagraph").innerHTML += "Bla ";               
+  setTimeout(append_message_to_second_paragraph_each_second, 1000);             
+}                                                                               
+setTimeout(change_style_of_third_paragraph_each_second, 1000); 
+function change_style_of_third_paragraph_each_second() {                        
+  if (document.getElementById("thirdparagraph").style.color === "black") {      
+     document.getElementById("thirdparagraph").style.color = "blue";            
+  } else if (document.getElementById("thirdparagraph").style.color === "blue") {
+     document.getElementById("thirdparagraph").style.color = "yellow";          
+  } else if (document.getElementById("thirdparagraph").style.color === "yellow") {
+     document.getElementById("thirdparagraph").style.color = "pink";            
+  } else if (document.getElementById("thirdparagraph").style.color === "pink") {
+     document.getElementById("thirdparagraph").style.color = "green";           
+  } else {                                                                      
+     document.getElementById("thirdparagraph").style.color = "black";           
+  }                                                                             
+                                                                                
+  setTimeout(change_style_of_third_paragraph_each_second, 1000);                
+}        
+    </pre>
 </ul>
 </body>
