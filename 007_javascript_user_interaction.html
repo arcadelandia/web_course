@@ -421,4 +421,87 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
   </li>
 </ol>
 </ul>
+<h1>EXERCISE 1</h1>
+<ul>
+  <li>
+    Create an HTML file and an CSS file named <em>buttons.html</em> and <em>example.js</em> respectively with the following content, and 
+    play with the buttons. Read carefully the code of the HTML and the CSS files and try to understand every line.
+    <h2>File named <em>buttons.html</em></h2>
+    <pre>
+      lt;!doctype html&gt;                                                           
+&lt;html&gt;                                                                    
+  &lt;head&gt;                                                                  
+    &lt;title&gt;Fun with buttons!&lt;/title&gt;                                
+    &lt;script src="example.js" defer&gt;&lt;/script&gt;                        
+  &lt;/head&gt;                                                                 
+  &lt;body&gt;                                                                  
+    &lt;input type="button" id="buttonForRedBackground" value="Click here for red background"&gt;
+    &lt;input type="button" id="buttonForGreenBackground" value="Click here for green background"&gt;
+    &lt;input type="button" id="buttonForBlueBackground" value="Click here for blue background"&gt;
+    &lt;input type="button" id="buttonForWhiteBackground" value="Click here for white background"&gt;
+    &lt;p id="silly_paragraph"&gt;                                              
+      La parte contratante de la primera parte.                                 
+    &lt;/p&gt;                                                                  
+    &lt;input type="button" id="buttonForRedText" value="Click here for red text"&gt;
+    &lt;input type="button" id="buttonForGreenText" value="Click here for green text"&gt;
+    &lt;input type="button" id="buttonForBlueText" value="Click here for blue text"&gt;
+    &lt;input type="button" id="buttonForBlackText" value="Click here for black text"&gt;
+    &lt;br&gt;                                                                  
+    &lt;br&gt;                                                                  
+    &lt;input type="button" id="buttonForAppendText" value="Click here to append text"&gt;
+    &lt;ul id="lista_de_la_compra"&gt;                                          
+     &lt;li&gt;Nocilla.&lt;/li&gt;                                              
+    &lt;/ul&gt;                                                                 
+    &lt;input type="button" id="buttonForAppendItem" value="Click here to add something tasty to the list"&gt;
+  &lt;/body&gt;                                                                 
+&lt;/html&gt;      
+    </pre>
+    <h2>File named <em>example.js</em></h2>
+    <pre>
+    document.getElementById("buttonForRedBackground").onclick = putRedBackground;   
+document.getElementById("buttonForGreenBackground").onclick = putGreenBackground;
+document.getElementById("buttonForBlueBackground").onclick = putBlueBackground; 
+document.getElementById("buttonForWhiteBackground").onclick = putWhiteBackground;
+                                                                                
+document.getElementById("buttonForRedText").onclick = putRedText;               
+document.getElementById("buttonForGreenText").onclick = putGreenText;           
+document.getElementById("buttonForBlueText").onclick = putBlueText;             
+document.getElementById("buttonForBlackText").onclick = putBlackText;           
+                                                                                
+document.getElementById("buttonForAppendText").onclick = appendText;            
+document.getElementById("buttonForAppendItem").onclick = appendItem;            
+                                                                                
+function putRedBackground() {                                                   
+  document.body.style.backgroundColor = "red";                                  
+}                                                                               
+function putGreenBackground() {                                                 
+  document.body.style.backgroundColor = "green";                                
+}                                                                               
+function putBlueBackground() {                                                  
+  document.body.style.backgroundColor = "blue";                                 
+}                                                                               
+function putWhiteBackground() {                                                 
+  document.body.style.backgroundColor = "white";                                
+}                                                                               
+function putRedText() {                                                         
+  document.body.style.color = "red";                                            
+}                                                                               
+function putGreenText() {                                                       
+  document.body.style.color = "green";                                          
+}                                                                               
+function putBlueText() {                                                        
+  document.body.style.color = "blue";                                           
+}                                                                               
+function putBlackText() {                                                       
+  document.body.style.color = "black";                                          
+}                                                                               
+function appendText() {                                                         
+  document.getElementById("silly_paragraph").innerHTML += " This was just appended!";
+}                                                                               
+function appendItem() {                                                         
+  document.getElementById("lista_de_la_compra").innerHTML += "<li>Nocilla.</li>";
+}                  
+    </pre>
+  </li>
+</ul>
 </body>
