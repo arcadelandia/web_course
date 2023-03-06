@@ -60,9 +60,9 @@ to use standard HTML), then the html element that contains the whole webpage, an
 it, two elements: the element head, and the element body.
 The element head, as we saw in previous lessons, contains information that is not directly
   shown to the user: in this example they are the title,
-  a <b>script</b> element that indicates that we want to use a file named javascript4zu.js with
+  a <b>script</b> element that indicates that we want to use a file named javascript4azu.js with
   Javascript code that we will use to make sure that the buttons allow to change the background color; and 
-  a <b>link</b> element referencing a CSS file named css4zu.css that would contain style instructions.
+  a <b>link</b> element referencing a CSS file named css4azu.css that would contain style instructions.
   Then, the element <b>body</b> contains everything that
 will be shown to the user in the webpage: in this example, it is just four
 buttons. We gave a unique ID to each one: the first button has an id of <b>buttonForRed</b>, 
@@ -88,9 +88,9 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
   and only when it finishes processing the Javascript file it will continue processing the html file, starting
   with the link element, then the closing head tag, and then the body element. The important part to notice here is that
   when the browser reads the Javascript file, it still did not read the four buttons that the Javascript file will manage (and
-  that is because they are written in the html file AFTER the Javascript file). And, since the whole point of the Javascript file
+  that is because they are written in the html file AFTER the script element that references the Javascript file). And, since the whole point of the Javascript file
   is to control those four buttons, the browser may get confused if we attempt to do anything
-  related to those buttons inside the Javascript file. To make sure that the browser knows about the existence
+  related to those buttons inside the Javascript file because it still did not see them. To make sure that the browser knows about the existence
   of the buttons when we try to control them with Javascript, it is better to <b>defer</b> the reading of the
   contents of the Javascript file until the entire HTML file has been processed (so the browser has alredy
   seen the buttons and everything else inside the webpage). That is why we write defer in the script opening tag.
@@ -140,7 +140,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     style properties, change the background color to pink".
   </li>  
   <li> 
-    In Javascript, any word or series of words that isntruct the browser to do something is called an statement. For example,
+    In Javascript, any word or series of words that instruct the browser to do something is called an statement. For example,
     </b>document.getElementById("buttonForRed").style.backgroundColor = "pink"</b> is an statement because it tells the
     browser to do something. Is is customary, although not mandatory, to write a semicolon after each statement in Javascript,
     For example, instead of 
@@ -149,7 +149,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     </pre>
     it is recommended to write
     <pre>
-    document.getElementById("buttonForRed").style.backgroundColor = "pink";
+     document.getElementById("buttonForRed").style.backgroundColor = "pink";
     </pre>
   </li>
   <li>
@@ -180,7 +180,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     its innerHTML.
   </li>
   <li>
-    To append some text to a HTML text element, like a paragrap, or a list item, 
+    To append some text to a HTML text element, like a paragraph, or a list item, 
     Javascript uses a plus sign followed, without spaces, by an equal sign, followed by the text
     to be appended. For example, the following code appends a phrase
     to the element whose id is <em>parrafoSobreBurgos</em>:
@@ -200,8 +200,8 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     we described above, we would write:
     <pre>
     function curiousFunction() {
-      document.body.style.backgroundColor = blue;
-      document.body.style.color = red;
+      document.body.style.backgroundColor = "blue";
+      document.body.style.color = "red";
       document.getElementById("parrafocastilla").innerHTML += "Burgos has a town.";
       document.getElementById("parrafogalicia").innerHTML = "Galicia has four provinces.";
     }
@@ -298,29 +298,30 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     For example, if your webpage wants to show information about a city, you can have a variable
     named <em>city_name</em>, whose value is the name <em>Tokyo</em>, and another variable
     named <em>part_of_the_world</em>, whose value is the phrase <em>East Asia</em>, and another variable
-    named <em>population</em>, whose value is the number <em>40000000</em>, and another variable
-    named <em>lottery_number</em>, whose value is the set of characters <em>40000000</em>, which means
+    named <em>population</em>, whose value is the <b>number</b> <em>40000000</em> (number
+    basically means that we may want to do mathematical operations on it later in the Javascript file), and another variable
+    named <em>lottery_number</em>, whose value is the <b>set of characters</b> <em>40000000</em>, which means
     40 million, but we do not want to trear as a number, but rather as a name (so no mathematical operations on it), and another variable
     named <em>famous_neighborhoods</em>, whose value is the set of values <em>Minato, Chuo, Shinagawa, Shibuya, Shinjuku</em>, and another variable
-    named <em>is_country_capital</em>, whose value is the truth value <em>true</em>. Names are written between quotes,
-    numbers, if we want to do nathematical operations with them later, are written without quotes, and with quotes
-    if we do not want so. Sets of values are also called arrays, and are written between squate brackets, with a comma separating each value.
-    Truth values are called booleans (in honor of James Boole, an Irish logician) and can be either true or false.
+    named <em>is_country_capital</em>, whose value is the truth value <em>true</em>. Names are written between quotes;
+    numbers, if we want to do mathematical operations with them later, are written without quotes, and with quotes
+    if we do not want so; sets of values are also called arrays, and are written between squate brackets, with a comma separating each value.
+    Truth values are called booleans (in honor of Gorge Boole, an English logician) and can be either true or false.
     Each piece of data is written using the word <b>let</b> followed by the name, an equal sign, and the value, like this:
     <pre>
-      let city_name = "Tokyo"; /* This variable value is a name, so it uses quotes*/
-      let par_of_the_world = "East Asia";  /* This value is a phrase, so it uses quotes */
-      let population = 40000000; /* This is a number that admits mathematical operations, so it does not use quotes*/
-      let lottery_number = "40000000"; /* This is a number that does not admit mathematical operations, so it uses quotes*/
-      let famous_neighborhoods = [ "Minato", "Chuo", "Shinagawa", "Shibuya", "Shinjuku" ]; /* this is an array*/
+      let city_name = "Tokyo"; /* This variable value is a name, so it uses quotes */
+      let part_of_the_world = "East Asia";  /* This value is a phrase, so it uses quotes */
+      let population = 40000000; /* This is a number that admits mathematical operations, so it does not use quotes */
+      let lottery_number = "40000000"; /* This is a number that does not admit mathematical operations, so it uses quotes */
+      let famous_neighborhoods = [ "Minato", "Chuo", "Shinagawa", "Shibuya", "Shinjuku" ]; /* this is an array */
       let is_country_capital = true;
     </pre>
     Variable names can contain letters, numbers, and underscores. The first character must not be a number. 
     It is possible to change the value of any of these pieces of data at any point inside the Javascript file, for example:
     <pre>
       ...
-      population += 10000000; /*population changes from 40 million to 50 million*/
-      famous_neighborhoods += [ "Akasaka" ]; /*the old array, which had 5 elements, is extended with a new value, so it now has 6 elements*/ 
+      population += 10000000; /* population changes from 40 million to 50 million */
+      famous_neighborhoods += [ "Akasaka" ]; /*the old array, which had 5 elements, is extended with the new value Akasaka, so it now has 6 elements */ 
     </pre>
     
   </li>
@@ -341,7 +342,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     We can write the above directly inside the HTML file, but is is going to take a lot of work (100 lines to be written).
     Instead, we can see that there is an easy pattern in those phrases: all phrases have exactly the same format, and 
     only the number changes in each one, from 1 to 100. This is a clear pattern; and <b>for loops</b> are designed
-    to create patterns. In this case, we can werite inside the Javascript file the following:     
+    to create patterns. In this case, we can write inside the Javascript file the following:     
     <pre>
     for (let number_cats = 1; number_cats <= 100; number_cats = number_cats + 1) {
        document.getElementById("paragraph_about_cats").innerHTML += "There are " + number_cats + "cats in the bed.";
@@ -355,10 +356,11 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     is assigned a numeric value of one.
     The for loop has a second statement, in this case, <em>number_cats <= 100;</em>. This is called the termination statement:
     the browser, after running whatever we wrote between the braces, checks if the termination statement is correct; in this
-    case, whether the variable number_cats is lower than or equal to 100. If that is false, it stops processing the for loop;
-    if it is true, it continues. The third statement inside the parentheses is called the increment statement; in this case,
-    it is <em>number_cats = number_cats + 1</em>. The browser runs the increment statement after finishing doing all the
-    actions written between the braces. So, in this case, we can translate to English the above example like: initialize
+    case, whether the variable number_cats is lower than or equal to 100. If that is false, it stops processing the for loop,
+    and continues processing wahtever is written in the Javascript file after the closing brace of the for loop;
+    if it is true, it continues repeating whatever is inside the braces of the for loop from the beginning. The third statement inside the parentheses is called the increment statement; in this case,
+    it is <em>number_cats = number_cats + 1</em>. The browser runs the increment statement after finishing each repetition 
+    of the lines between the braces. So, in this case, we can translate to English the above example like: initialize
     a variable called number_cats to the number 1, and then append to the HTML element called paragraph_about_cats the phrase <em>There are </em> followed
     by the value of the variable number_cats (which is 1), followed by the phrase <em>cats in the bed.</em>; 
     then increment number_cats by one (so it becomes the number 2); 
@@ -372,7 +374,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     adding phrases with numbers.
   </li>
   <li>
-    Javascrip also has another kind of loop called the <b>while loop</b>. It is equivalent to the for loop, but not as expressive,
+    Javascrip also has another kind of loop called the <b>while loop</b>. It is equivalent to the for loop, but not as expressive.
     For example, to do the previous example with a while loop we would write:
     <pre>
     let number_cats = 1;
@@ -382,30 +384,12 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     }
     </pre>
     The previous can be read in English as: create a variable named number_cats and set it to the number 1; then, while the value of
-    number_cats is lower than or equal to 100, append to the document the phrase <em>There are </em> plus the value of the variable number_cats plus
+    number_cats is lower than or equal to 100, append to the element whose id is paragraph_abouty_cats the phrase <em>There are </em> plus 
+    the value of the variable number_cats plus
     the phrase <em>cats in the bed.</em> and then increase the value of the variable number_cats by one.
   </li>
   <li>
-  Numeric variables can be incremented in different ways:
-  <pre>
-   let i = 100; /* This declares a variable named i, whose value is 100 */
-   i = i + 1; /* This adds 1 to the value of i and stores the value in i; so i becomes 101 */
-   i++; /* This is equivalent to the above line, i.e., shorthand for i = i+1; so i becomes 102*/
-   i = i + 5; /* This adds 5 to i, so i becomes 107 */
-   i += 10; /* This adds 10 to i, so i becomes 117*/
-   i = i - 100; /* This subtracts 100 from i, so i becomes 17*/
-   i -= 7; /* This subtracts 7 from i, so i becomes 10 */
-   i = i * 2 ; /* This multiplies io by 2 and stores the value in i,so i becomes 20 */
-   i *= 3; /* This multiples i by 3, so i becomes 60*/
-   i = i / 3; /* This divides i by 3, so i becomes 20 */
-   i /= 5; /* This divides i by 5, so i becomes 4*/
-   
-   let j = 2; /* This declares a variable named j with a value of 2*/
-   let k = j * i; /* This declares a variable named k whose value is the multiplication of the values of the variables i and j, so k becomes 8*/
-  </pre>
-  </li>
-  <li>
-  There is a loop called <b>do while loop</b> that is written
+  There is another loop called <b>do while loop</b> that is written
   <pre>
   let number_cats = 1;
   do {
@@ -419,13 +403,32 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
   the termination check is written after the brackets) while the latter may not run the actions between the brackets if the termination check
   fails (because it is written before the brackets).
   </li>
-</ol>
+  <li>
+  Numeric variables can be incremented in different ways:
+  <pre>
+   let i = 100; /* This declares a variable named i, whose value is 100 */
+   i = i + 1; /* This adds 1 to the value of i and stores the value in i; so i becomes 101 */
+   i++; /* This is equivalent to the above line, i.e., shorthand for i = i+1; so i becomes 102*/
+   i = i + 5; /* This adds 5 to i, so i becomes 107 */
+   i += 10; /* This adds 10 to i, so i becomes 117 */
+   i = i - 100; /* This subtracts 100 from i, so i becomes 17 */
+   i -= 7; /* This is another way to subtract: it subtracts 7 from i, so i becomes 10 */
+   i = i * 2 ; /* This multiplies i by 2 and stores the value in i, so i becomes 20 */
+   i *= 3; /* This multiples i by 3, so i becomes 60 */
+   i = i / 3; /* This divides i by 3, so i becomes 20 */
+   i /= 5; /* This divides i by 5, so i becomes 4 */
+   
+   let j = 2; /* This declares a variable named j with a value of 2 */
+   let k = j * i; /* This declares a variable named k whose value is the multiplication of the values of the variables i and j, so k becomes 8 */
+  </pre>
+  </li>
+  </ol>
 </ul>
 <h1>EXERCISE 1</h1>
 <ul>
   <li>
-    Create an HTML file and an CSS file named <em>buttons.html</em> and <em>example.js</em> respectively with the following content, and 
-    play with the buttons. Read carefully the code of the HTML and the CSS files and try to understand every line.
+    Create an HTML file and a Javascript file named <em>buttons.html</em> and <em>example.js</em> respectively with the following content, and 
+    play with the buttons. Read carefully the code of the HTML and the Javascript files and try to understand every line.
     <h2>File named <em>buttons.html</em></h2>
     <pre>
 &lt;!doctype html&gt;                                                           
@@ -504,8 +507,8 @@ function appendItem() {
     </pre>
   </li>
   <li>
-    Create an HTML file and an CSS file named <em>playing_with_javascript.html</em> and <em>playing_with_javascript.js</em> respectively with the following content, and 
-    play with the buttons. Read carefully the code of the HTML and the CSS files and try to understand every line.
+    Create an HTML file and a Javascript file named <em>playing_with_javascript.html</em> and <em>playing_with_javascript.js</em> respectively with the following content, and 
+    play with the buttons. Read carefully the code of the HTML and the Javascript  files and try to understand every line.
     <h2>File named <em>playing_with_javascript.html</em></h2>
     <pre>
 &lt;!doctype HTML&gt;                                                           
