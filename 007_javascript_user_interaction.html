@@ -404,6 +404,68 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
   fails (because it is written before the brackets).
   </li>
   <li>
+   In mathematical operations, the percentage sign, like in <em>17 % 5</em> means the remainder of dividing 17 by 5 (in this case,
+   the remainder is 2). If you see something like <em>x % y</em> that means the remainder left after dividing x by y. It is common
+   to see the remainder in Javascript when checking if a number <em>x</em> is even or odd: if the remainder of dividing x by 2 is
+   0, then <em>x</em> is even, else it is odd. For example, imagine that we want to check if the number 12345678 is even or odd, and if
+   it is even, we want to set the background color of the webpage to blue, and to red if it is odd. We would be
+   able to do that in the following way:
+   <pre>
+   if (es_par_este_numero(12345678) === true) {
+      document.body.style.backgroundColor = "blue";
+   } else {   
+      document.body.style.backgroundColor = "red";
+   }
+   
+   function es_par_este_numero(x) {
+      if ( (x % 2) === 0) {
+        return true;
+      } else {
+        return false;
+      }
+   }
+   </pre>
+   Observe how the function es_par_este_numero needs the number in order to check whether it is even or odd; as
+   the number is needed, it is written between the parentheses; we can given the number any name we wish; in this
+   case, we choose to call it <em>x</em>. Anything written between parentheses is called a parameter of the function.
+   Also, this function, in addition to the previous functions that we saw (that merely did something), is expected
+   to provide information to whoever calls that function. In other words, in previous examples, when a function changed
+   colors and similar thinds, it just did that; however, in this case, the caller needs information: whether the
+   number is even or odd; that piece of information that needs to be given is expressed by writing the keyword <em>return</em>
+   followed by whatever result the function wants to communicate to whoever called it.
+   In this case, the function checks whether the remainder of dividing x by 2 is zero,
+   and if that is true, the function finishes by writing <em>return true;</em> since we want the function
+   to say that it is true that the number is even (an if the remainder is not zero, then the number is not even, so
+   we return a value of false to whover called the function). That means that whoever called
+   the function can know that the number is even, or odd.
+  </li>
+  <li>
+   Javascript functions can have multiple parameters, as many as needed to do whatever it is that
+   the function does; and can return any kind of information. In the previous example, the function
+   <em>es_par_este_numero</em> needed to return either true or false because we designed it that way.
+   Let`s see an example of a function that returns a number: imagine that we have a function 
+   named <em>suma_cinco_numeros<> that adds 5 numbers that we provide.
+   We can use the following code to print inside an HTML element whose id is <em>silly_paragraph</em> the sum of the
+   numbers 10,30,15,60,100 (just a random example):
+   <pre>
+     document.getElementById("silly_paragraph").innerHTML = "The sum of the numbers is: " + suma_cinco_numeros(10, 30, 15, 60, 100);
+     function suma_cinco_numeros(n1, n2, n3, n4, n5) {
+       let resultado = n1 + n2 + n3 + n4 + n5;
+       return resultado;
+     }
+   </pre>
+  </li>
+  <li>
+   In Javascript we can use a timer to run a function after a given number of milliseconds after the webpage is loaded. For example,
+   the following would run the function <em>change_background_to_blue</em> after 10 seconds (10 thousand milliseconds):
+   <pre>
+   setTimeout(change_background_to_blue, 10000);
+   function change_background_to_blue() {
+     document.body.style.backgroundColor = "blue";
+   }
+   </pre>
+  </li>
+  <li>
   Numeric variables can be incremented in different ways:
   <pre>
    let i = 100; /* This declares a variable named i, whose value is 100 */
@@ -420,6 +482,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
    
    let j = 2; /* This declares a variable named j with a value of 2 */
    let k = j * i; /* This declares a variable named k whose value is the multiplication of the values of the variables i and j, so k becomes 8 */
+   let x = 17 % 5; /* This does the integer division of 12 by 5 and sets x as the remainder of that division (in this case 2) */
   </pre>
   </li>
   </ol>
