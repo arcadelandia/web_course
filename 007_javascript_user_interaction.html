@@ -502,7 +502,7 @@ function appendText() {
   document.getElementById("silly_paragraph").innerHTML += " This was just appended!";
 }                                                                               
 function appendItem() {                                                         
-  document.getElementById("lista_de_la_compra").innerHTML += "<li>Nocilla.</li>";
+  document.getElementById("lista_de_la_compra").innerHTML += "&lt;li&gt;Nocilla.&lt;/li&gt;";
 }                  
     </pre>
   </li>
@@ -561,9 +561,9 @@ setTimeout(replace_content_of_first_paragraph_each_second, 1000);
 var contador_de_repeticiones = 1;                                               
 function replace_content_of_first_paragraph_each_second() {                     
   if (es_par_este_numero(contador_de_repeticiones) === true) {                  
-    document.getElementById("firstparagraph").innerHTML = "This is <b>great!</b>.";
+    document.getElementById("firstparagraph").innerHTML = "This is &lt;b&gt;great!&lt;/b&gt;.";
   } else {                                                                      
-    document.getElementById("firstparagraph").innerHTML = "This is <b>not great!</b> We have repeated this " + contador_de_repeticiones;
+    document.getElementById("firstparagraph").innerHTML = "This is &lt;b&gt;not great!&lt;/b&gt; We have repeated this " + contador_de_repeticiones;
   }                                                                             
   contador_de_repeticiones = contador_de_repeticiones + 1;                      
   setTimeout(replace_content_of_first_paragraph_each_second, 1000);             
