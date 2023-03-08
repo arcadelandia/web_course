@@ -383,7 +383,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     adding phrases with numbers.
   </li>
   <li>
-    Javascrip also has another kind of loop called the <b>while loop</b>. It is equivalent to the for loop, but not as expressive.
+    Javascript also has another kind of loop called the <b>while loop</b>. It is equivalent to the for loop, but not as expressive.
     For example, to do the previous example with a while loop we would write:
     <pre>
     let number_cats = 1;
@@ -409,8 +409,8 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
   This is read: declare a variable named number_cats and initialize its value to 1, and then, do whatever is in the braces, and then check
   if number_cats is lower than or equal to 100; if it is so, do the actions between brackets again, othrwise, stop the loop. The difference
   of this <b>do while loop</b> with the <b>while loop</b> is that the former always does the actions between brackets at least once (because
-  the termination check is written after the brackets) while the latter may not run the actions between the brackets if the termination check
-  fails (because it is written before the brackets).
+  the termination check is written AFTER the brackets) while the latter may not run the actions between the brackets if the termination check
+  fails (because it is written BEFORE the brackets).
   </li>
   <li>
    In mathematical operations, the percentage sign, like in <em>17 % 5</em> means the remainder of dividing 17 by 5 (in this case,
@@ -427,22 +427,29 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
    }
    
    function es_par_este_numero(x) {
-      if ( (x % 2) === 0) {
+      if ( (x % 2) === 0 ) {
         return true;
       } else {
         return false;
       }
    }
    </pre>
-   Observe how the function es_par_este_numero needs the number in order to check whether it is even or odd; as
-   the number is needed, it is written between the parentheses; we can given the number any name we wish; in this
-   case, we choose to call it <em>x</em>. Anything written between parentheses is called a parameter of the function.
-   Also, this function, in addition to the previous functions that we saw (that merely did something), is expected
-   to provide information to whoever calls that function. In other words, in previous examples, when a function changed
-   colors and similar thinds, it just did that; however, in this case, the caller needs information: whether the
-   number is even or odd; that piece of information that needs to be given is expressed by writing the keyword <em>return</em>
-   followed by whatever result the function wants to communicate to whoever called it.
-   In this case, the function checks whether the remainder of dividing x by 2 is zero,
+   Observe how we created a function named <em>es_par_este_numero</em> that contains
+   the code that will check whether the number is even or odd. In order to be semantically and
+   grammatically reasonable, we want that function to be named adequately in order to allow
+   the reader to understand in an English-like manner the meaning of the first line, where we 
+   use the function jointly with the if. Thus, the first line can be read as something like: if it is true that the number 1345678 is even, 
+   then change the background color of the webpage to blue, else to red. We can describe the function as being boolean
+   because it can be true or false when we give it a number between the parentheses (anything that
+   the function needs goes inside the parentheses, and it is called a parameter of the function). For example,
+   <em>es_par_este_numero(12)</em> would be true, while <em>es_par_este_numero(13)</em> would be false.
+   The boolean value of the function is indicated inside the function using the word <b>return</b> followed
+   by that value.<br>
+   We write the instructions that check whether the number is even or odd between the braces of the function statement,
+   between lines 7 and 13. These instructions are called the implementation of the function. In the implementation,
+   we use an indetifier of our choice to represent the number; in this
+   case, we choose to call it <em>x</em> because it is short and x is usually used to represent numbers. 
+   The implementation of the function checks whether the remainder of dividing x by 2 is zero,
    and if that is true, the function finishes by writing <em>return true;</em> since we want the function
    to say that it is true that the number is even (an if the remainder is not zero, then the number is not even, so
    we return a value of false to whover called the function). That means that whoever called
