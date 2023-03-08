@@ -460,7 +460,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
    the function does; and can return any kind of information. In the previous example, the function
    <em>es_par_este_numero</em> needed to return either true or false because we designed it that way.
    Let`s see an example of a function that returns a number: imagine that we have a function 
-   named <em>suma_cinco_numeros<> that adds 5 numbers that we provide.
+   named <em>suma_cinco_numeros</em> that adds 5 numbers that we provide.
    We can use the following code to print inside an HTML element whose id is <em>silly_paragraph</em> the sum of the
    numbers 10,30,15,60,100 (just a random example):
    <pre>
@@ -640,7 +640,7 @@ function change_to_white_background() {
   document.body.style.backgroundColor = "white";                                
 }                                                                               
 setTimeout(replace_content_of_first_paragraph_each_second, 1000);               
-var contador_de_repeticiones = 1;                                               
+let contador_de_repeticiones = 1;                                               
 function replace_content_of_first_paragraph_each_second() {                     
   if (es_par_este_numero(contador_de_repeticiones) === true) {                  
     document.getElementById("firstparagraph").innerHTML = "This is &lt;b&gt;great!&lt;/b&gt;.";
