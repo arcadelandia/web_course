@@ -194,10 +194,10 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
   </li>
   <li>
     Javascript can be used to tell the browser to do some action when a condition of some kind occurs. For example, imagine that we
-    want to do the following: <em>when the user clicks the button whose id is "curiousButton", then the browser should
+    want to do the following: <em>when the user clicks the button whose id is curiousButton, then the browser should
     change the color of the background of the webpage to blue, and the color of the font of the text of all elements to red,
-    and <b>append</b> the phrase "Burgos has a town." to the paragraph whose id is "parrafocastilla", and <b>replace</b> the text of the
-    paragaph whose id is "parrafogalicia" for the phrase "Galicia has four provinces.</em>
+    and <b>append</b> the phrase "Burgos has a town." to the paragraph whose id is parrafocastilla, and <b>replace</b> the text of the
+    paragaph whose id is "parrafogalicia" for the phrase "Galicia has four provinces."</em>
    
     In Javascript, any group of actions that we want to do one after the other is called a <em>function</em>. The Javascript programmer
     is free to choose a name for any function. A function is indicated by the word <b>function</b>, followed by
@@ -219,7 +219,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     When the browser sees a function like in the previous point (this is, declared using the word <em>function</em>) 
     it does NOT do the actions indicated; it just tells the browser what actions we want to do in the future when
     we desire so. So, when the browser sees the the previous example, the background color would not change, nor would the
-    text color, etc. In order for those actions to happen, we need to write the name of the function followed by parentheses,
+    text color, etc. In order for those actions to happen, we need to write somewhere else in the script the name of the function followed by parentheses,
     like this:
     <pre>
        curiousFunction();
@@ -253,7 +253,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
   </li>
   <li>
     If you want to do something ONLY if something else is true, and in addition you also want to do a third thing if that other thing is
-    false, you can use what is called an <em>if/else</em> statement. For example, if you want to change the backlground color to blue
+    false, you can use what is called an <em>if/else</em> statement. For example, if you want to change the background color to blue
     if the title is Galicia, and change it to green if the title is not Galicia, you can write:
     <pre>
       if (document.title === "Galicia") {
@@ -265,7 +265,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
   </li>
   <li>
     If you want to do different things depending on the value of something, you can use what is called 
-    an <em>if/else if</em> statement. For example, if you want to change the background color to blue
+    an <em>if/elseif</em> statement. For example, if you want to change the background color to blue
     if the title is Galicia, and change it to green if the title is Asturias, and to red if it is Castilla, and
     to magenta if the title is Cantabria, and to white in any other case, you can write:
     <pre>
@@ -274,7 +274,7 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
       } else if (document.title === "Asturias") {
           document.body.style.backgroundColor = "green";
       } else if (document.title === "Castilla") {
-          document.body.style.backgroundColor = "red";ic variables can be incremented 
+          document.body.style.backgroundColor = "red";
       } else if (document.title === "Cantabria") {
           document.body.style.backgroundColor = "magenta";
       } else {
@@ -319,15 +319,15 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
       let part_of_the_world = "East Asia";  /* This value is a phrase, so it uses quotes */
       let population = 40000000; /* This is a number that admits mathematical operations, so it does not use quotes */
       let lottery_number = "40000000"; /* This is a number that does not admit mathematical operations, so it uses quotes */
-      let famous_neighborhoods = [ "Minato", "Chuo", "Shinagawa", "Shibuya", "Shinjuku" ]; /* this is an array */
-      let is_country_capital = true;
+      let famous_neighborhoods = [ "Minato", "Chuo", "Shinagawa", "Shibuya", "Shinjuku" ]; /* this is an array of variables */
+      let is_country_capital = true; /* This is a boolean, so it does not use quotes */
     </pre>
     Variable names can contain letters, numbers, and underscores. The first character must not be a number. 
     It is possible to change the value of any of these pieces of data at any point inside the Javascript file, for example:
     <pre>
       ...
       population += 10000000; /* population changes from 40 million to 50 million */
-      famous_neighborhoods += [ "Akasaka" ]; /*the old array, which had 5 elements, is extended with the new value Akasaka, so it now has 6 elements */ 
+      famous_neighborhoods += [ "Akasaka" ]; /* the array, which had 5 elements until here, is extended with the new value Akasaka, so it now has 6 elements */ 
     </pre>
     
   </li>
@@ -357,14 +357,17 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     The for loop has the word <em>for</em> followed by, between parentheses, three statements separated by semicolons, and one
     or more statements between braces. The first statement inside the parentheses (in this example, <em>let number_cats = 1;</em>) 
     declares a variable that we named number_cats;
-    this first statement in called the initialization statement of the for loop: the browser runs the initialization
+    this first statement is called the initialization statement of the for loop: the browser runs the initialization
     statement once and only once, at the beginning of the processing of the for loop; in this case, the variable number_cats
-    is assigned a numeric value of one.
+    is assigned a numeric value of one; as this does not have quotes, it means that we can perform mathematical operations
+    on this variable, which will be adding one by one in order to change its value from 1 to 2, then to 3, then to 4, and all
+    the way to 100.<br>
     The for loop has a second statement, in this case, <em>number_cats <= 100;</em>. This is called the termination statement:
     the browser, after running whatever we wrote between the braces, checks if the termination statement is correct; in this
     case, whether the variable number_cats is lower than or equal to 100. If that is false, it stops processing the for loop,
     and continues processing wahtever is written in the Javascript file after the closing brace of the for loop;
-    if it is true, it continues repeating whatever is inside the braces of the for loop from the beginning. The third statement inside the parentheses is called the increment statement; in this case,
+    if it is true, it continues repeating whatever is inside the braces of the for loop from the beginning. <br> 
+    The third statement inside the parentheses is called the increment statement; in this case,
     it is <em>number_cats = number_cats + 1</em>. The browser runs the increment statement after finishing each repetition 
     of the lines between the braces. So, in this case, we can translate to English the above example like: initialize
     a variable called number_cats to the number 1, and then append to the HTML element called paragraph_about_cats the phrase <em>There are </em> followed
