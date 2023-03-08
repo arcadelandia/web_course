@@ -155,36 +155,42 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
   <li>
     In Javascript, any word or words that have any value is called an expression. For example, the word
     <b>document</b> is an expression; the series of words
-    <b>document.getElementById("buttonForRed").style.backgroundColor")</b> is also an expression;
+    <b>document.getElementById("buttonForRed").style.backgroundColor</b> is also an expression;
     the word <b>"pink"</b> is also an expression too.
   </li>
   <li>
     Javascript expressions are somewhat equivalent to anything that can be the subject in a normal language like English
-    or Spanish. Javascript statements are equivalent to complete sentences with a verb that indicates an action. <br>
+    or Spanish. Javascript statements are equivalent to complete sentences, because they have a verb that indicates an action. <br>
     For example,
-    <b>document.getElementById("buttonForRed").style.backgroundColor")</b> means "the background color of the element
-    named buttonForRed", which can be the subject of an English sentence. The word <b>"pink"</b> can also be the
-    subject of an English sentence. The complete expression 
+    <b>document.getElementById("buttonForRed").style.backgroundColor</b> means "the background color of the element
+    named buttonForRed", which can be the subject of an English sentence, but not a complete sentence. The word <b>"pink"</b> can also be the
+    subject of an English sentence, but not a complete sentence. In contrasst, the following expression 
     <pre>
       document.getElementById("buttonForRed").style.backgroundColor = "pink";
     </pre>
-    is equivalent to a complete English sentence because it involves an assignment, which means "CHANGE to pink the
-    background color of the element whose id is buttonForRed".
+    is equivalent to a complete English sentence because it involves an assignment, which is a verb: the expression
+    means "CHANGE to pink the background color of the element whose id is buttonForRed".
   </li>
   <li>
     The word <b>innerHTML</b> means whatever is written in between
     the opening and closing tags of a given HTML element. For example, if we have 
     a paragraph written like this: <b>&lt;p&gt;Hola caracola&lt;/p&gt;</b>,
-    then its innerHTML woul be <b>Hola caracola</b>. This is, everything written between 
+    then its innerHTML would be <b>Hola caracola</b>. This is, everything written between 
     the opening and closing <b>p</b> tags will be
     its innerHTML.
   </li>
   <li>
     To append some text to a HTML text element, like a paragraph, or a list item, 
     Javascript uses a plus sign followed, without spaces, by an equal sign, followed by the text
-    to be appended. For example, the following code appends a phrase
+    to be appended. For example, the following code appends the phrase <em>El cuento de la buena pipa.</em>
     to the element whose id is <em>parrafoSobreBurgos</em>:
-    <b>document.getElementById("parrafoSobreBurgos").innerHTML += " El cuento de la buena pipa."</b>
+    <pre>document.getElementById("parrafoSobreBurgos").innerHTML += "El cuento de la buena pipa."</pre>
+  </li>
+  <li>
+    The previous point showed how to APPEND to a paragraph. If we want to REPLACE instead of appending,
+    we would use just a equal sign. For example, the following replaces whatever is in the element
+    whose id is <em>parrafoSobrteBurgos</em> with the phrase <em>El cuento de la buena pipa</em>
+    <pre>document.getElementById("parrafoSobreBurgos").innerHTML = "El cuento de la buena pipa."</pre>
   </li>
   <li>
     Javascript can be used to tell the browser to do some action when a condition of some kind occurs. For example, imagine that we
