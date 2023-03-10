@@ -289,12 +289,16 @@ The <b>script</b> opening tag has the optional attribute <b>defer</b>, which mea
     In a Javascript file, anything is written between the strings <em>/*</em> and <em>*/</em>, is ignored
     by the browser. That is called a comment, and it is usually used to give information for the
     human reader of the file: author information, copyright notice, an observation that may be useful for
-    the future reader of the file, etc. For example:
+    the future reader of the file, etc. In addition, anything inside
+    a line that appears between <b>//</b> and the
+    end of the line is also a comment. For example:
     <pre>
      /*Hello everybody: 
        this file was created by the cookie monster
        Copyright hold by Tedio Plomez Sopor*/
      document.body.style.backgroundColor = "magenta"; /* we choose magenta because we like it*/
+     // This is a useless comment; improve later!
+     let contador_de_gatos = 100; // this counts kittens 
     </pre>
   </li>
   <li>
