@@ -1,1 +1,61 @@
 
+Websites basically present data to their users. Most of the websites we interact with have data 
+geared towards a human being: HTML to categorize information, and CSS to make its presentation
+nice for a human viewer.
+
+There are websites that inted to make their data easy to access, not to humans, but also to
+computers. The main difference between humans and computers is that computers are not as good
+as humans to search for a given piece of information if it is in the middle of more data. For
+example, it is reasonably easy for a human to look at a photo and try to see if there is
+something in that photo (for example, a fruit on top of a book); a computer has a much harder
+time doing that. As a result, when website data is targeted towards being used by a computer,
+or by a program running in a computer, its data tends to be made available in a format that
+makes it easy for the computer to make sense of it. There are many ways to do this. A popular
+way to do this is by using a language called JSON. 
+
+JSON is short for Javascript Object Notation, and it was designed to make it easy for Javascript
+programs to deal with website data. In theory, a Javascript program can download a HTML page in the
+same way as a human would, but HTML is a format designed to structure data for humans. JSON attempts
+to structure data for computers.
+
+Most JSON files are used to represent sequences of attributes with values, which often represents
+objects from the real world. As a result, these collections of attributes with values are called objects.
+An attribute together with its value is also called a property. For example, we can represent a given orange fruit
+with a JSON object, with an attribute called <b>weight</b> whose value is <b>100g</b>, and an attribute 
+called <b>color</b> which can be <b>orange</b>, an attribute called <b>bittenByABug</b> whose
+value may be <b>some people say yes, some people say no</b>, and an attribute called
+<b>numberOfButsLivingInside</b> whose value is <b>35</b>. We are free to put any number of
+attributes to an object, and to give any value that we wish to those attributes. The JSON way to
+represent this orange object would be:
+<pre>
+ {
+   "weight": "100g",
+   "color": "orange",
+   "bitenByBug": "some people say yes, some people say no",
+   "numberOfBugsLivingInside": 35
+ }
+</pre>
+The presence of blank spaces is irrelevant outside of the inside of quotes. For example, the above example file
+is the same as the following one:
+<pre>
+{"weight":"100g","color":"orange","bitenByBug":"some people say yes, some people say no","numberOfBugsLivingInside":35}
+</pre>
+When presenting JSON files for human reading, those spaces are often used to make it prettier.
+
+Objects are represented betweeen brackets, with their properties separated by commas, and where
+each property has an attribute name written between quotes, and an attribute value that either
+is an integer name (which may be written without quotes), or a piece of information of any kind (which
+must be written inside quotes). There are some other types of values but we will see them later.
+
+JSON files can also have collections of objects. These collection of objects are called arrays,
+and are written between square brackets. For example, if we have a box with three objects: an apple, an strawberry,
+and a beach ball, we can represent those contents as:
+<pre>
+[
+ {"weight": "80g", "isFruit": "yes", "fruitType": "apple", "color": "green", "isItMine": "yes"},
+ {"weight": "20g", "isFruit": "yes", "fruitType": "strawberry", "isItMine": "maybe", "willIEatItSoon": "hopefully so"},
+ {"weight": "400g", "isFruit": "no", "description": "beach ball", "isItMine": "no", "color": "blue", "texture": "plastic"},
+]
+</pre>
+
+
