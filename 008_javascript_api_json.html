@@ -1,4 +1,12 @@
-
+<!doctype html>
+<html>
+ <head>
+  <title>Downloading data from other websites using Javascript</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  </head>
+ <body>
+  <h1>Downloading data from the web using Javascript</h1>
+  
 Websites basically present data to their users. Most of the websites we interact with have data 
 geared towards a human being: HTML to categorize information, and CSS to make its presentation
 nice for a human viewer.
@@ -17,6 +25,10 @@ JSON is short for Javascript Object Notation, and it was designed to make it eas
 programs to deal with website data. In theory, a Javascript program can download a HTML page in the
 same way as a human would, but HTML is a format designed to structure data for humans. JSON attempts
 to structure data for computers.
+  
+The rules to access JSON data, or any other kind of data geared towards computers, are usually
+called an API (short for application program interface); the ones to interact with humans are
+usually called GUI (short for graphical user interface).
 
 Most JSON files are used to represent sequences of attributes with values, which often represents
 objects from the real world. As a result, these collections of attributes with values are called objects.
@@ -57,12 +69,71 @@ and a beach ball, we can represent those contents as:
  {"weight": "400g", "isFruit": "no", "description": "beach ball", "isItMine": "no", "color": "blue", "texture": "plastic"},
 ]
 </pre>
+  
+Many websites have data in JSON format. Websites like these are intended to be used by browsers running Javascript programs;
+  these programs typically download the JSON data and represent it in the browser in some way that is nice for
+  the users of that webiste, or of other websites. For example, let' consider
+  a hypothetical news website <em>castillanews.com</em>, which offers pieces of information in JSON, which include things 
+  like headines and brief descripions of news items; this means that, when connecting to <b>https://castillanews.com/</b>,
+  users (both humans observing it, or web browsers downloading it with Javascript), see something like this:
+  <pre>
+  [
+  { "headline": "New province discovered!", "description": "Earthquake creates new province near the Padornelo", "date": "01/01/2024 13:00GMT"},
+  { "headline": "UFOs in Burgos", "description": "UFOs land in Burgos due to lack of fuel; they stay until Monday", "date": "01/01/2024 13:10GMT"},
+  { "headline": "Sky is blue", "description": "Researchers have confirmed that the sky is blue; other opinions exist", "date": "01/01/2024 13:12GMT"}
+  ]
+  </pre>
+  Then, the programmers creating another website, for example <em>https://universenews.com</em>, can use a Javascript program
+  in their website that connects to castillanews.com each minute, downloads the JSON information like the example above, and show the
+  headlines and dates in their top of the page; they may also download at the same time other JSDN files from other news websites,
+  and combine all that information; the possibilities are endless.
+  
+  In another example, imagine that the website <em>https://trackacar.com</em> offers services to track a vehicle as as function of 
+  its license plate, in such a way that if a user wants to know the last coordinates of the car whose license plate is ES123456ABC,
+  the need to write in the browser <em>https://trackacar.com?licenseplate=ES123456ABC</em> (so a closing interrogation sign is
+  written after the website name, and the data is written in a format like property equals value), and the website returns something like
+  <pre>
+  {"position": "45.23478N, 5.234W", "dateandtime": "15/03/2023 18:23:44GMT"}
+  </pre>
+  which are the coordinates of the last known position of the vehicle. Then, the designer of a website called <em>https://showmyfriendscars.com</em>
+  that has a list of license plates of the vehicles of its 10 best friends, can use Javascript to download periodically (e.g., each minute) the position
+  of all its friends' cars, and use an image of the world as background of ther website, and plot a big yellow circle on each of the points of the coordinates
+  of the cars, so it creates a easy way to visually track where are those cars.
+  
+  Many websites that offer JSON data often ask for payment, others are free; in many cases, you need to register in the website itself before
+  being able to access the JSON data. A typical way to register is by entering an email and then receiving in the emnail 
+  what is called an API key, which is essentially a password that allows to access the services of the website. For example, 
+  imagine that the license plate tracker website asks for registration before giving the information (with or witout payment) and 
+  sends to our email the API key <em>wq345rfds9dh</em> (API keys tend to look like random data, and they tend to be longer than in this example); each
+  registered user will receive a different API key that will allow the website owner to keep track of how often each user
+  uses the service. The website will tell us how to use that API key to access the information. One common way is to append it to the URL that is used to
+  access the browser like
+  <pre>
+  https://trackacar.com?licenseplate=ES123456ABC&apikey=wq345rfds9dh
+  </pre>
+ The above way to write needed pieces of information (in this example, license plate and api key) is called URL parameters. The name of the
+  website is written normally <em>https://trackacar.com</em>, and the needed parameters are indicated by the interrogation sign <b>?</b>,
+  and then the parameters themselves are written separated by an ampersand <b>&</b> and each parameter is written with an equal sign <b>=</b>
+  separating the name of the parameter from its value. The ownwer of the website will tell us which names we need to use , and the format
+  that we need to use for its values. For example, a hypothetical website tellig us the weather forecast for a given city for a given day
+  could be in any of the following formats, or in any other one:
+  <pre>
+  https://www.favoriteweatherforecaster.com?city=burgos&country=spain&date=25/12/2034
+  https://www.favoriteweatherforecaster.com?city=burgos&country=spain&date=25/12/2034&apikey=213rfcvwvcewfg
+  https://www.favoriteweatherforecaster.com?coordinates=42.35N3.7W&date=25/12/2034&apikey=213rfcvwvcewfg
+  </pre>
+  
+  You can search in Google for something like "free public APIs" to find many websites that offer APIs to
+  access data through the Internet (usually in JSON format), in areas like weather, transportation, literature,
+  games, jobs, shopping, tracking, art, etc.
+  
+  <h2>Example 1: weather</h2>
+  
+  For example, this one returns the weather in the city of Ottawsa given city: <b>https://goweather.herokuapp.com/weather/ottawa</b>
 
-Many websites offer JSON files to get information intended to be used by a computer program. For example,
-this one returns the weather in a given city.
+  <h2>Example 2: dictionary</h2>
+  For example, this one returns a definition of the word computer in english: <b>https://api.dictionaryapi.dev/api/v2/entries/en/computer</b>
 
 
-for humans
-
-
-
+</body>
+</html>
