@@ -127,6 +127,128 @@ Many websites have data in JSON format. Websites like these are intended to be u
   access data through the Internet (usually in JSON format), in areas like weather, transportation, literature,
   games, jobs, shopping, tracking, art, etc.
   
+  In order to grab data from a website with Javascript, we need to use a piece of data called an object.
+  In Javascript, an object is a collection of data properties, also called fields, that often represents an object from the
+  physical world. An object can be created in several ways, but a common one is to write something like
+  this: <b>let micoche = {};</b>. This tells the browser that there is a variable that we chose to call
+  <em>micoche</em> that will be a container of several properties with values, that we will create later
+  in the code. For example, we can write at some point something like <b>micoche.marca = "Volkswagen";</b>
+  and that would add a property that we chose to call <b>marca</b>, with a value that we chose to call <b>Volkswagen</b>.
+  We also can later do things like <b>micoche.numeroDePuertas = 5;</b> to indicate that we use a number, in this case 5,
+  as the value for a property that we chose to call <em>numeroDePuertas</em>. 
+  
+  In order to download data from a website, either with JSON content or nor, we use a type of object called
+  a XMLHttpRequest. It is a type of object that is created by the browser and contains properties that allow
+  to take care of all the complexities involved in downloading the information so the programmer has an easy
+  time doing so. The way that we use an XMLHttpRequest is by doing something like this:
+  <pre>
+  let cosas = new XMLHttpRequest();
+  cosas.onload = cosas_a_hacer_tras_descargar;
+  cosas.onerror = cosas_a_hacer_si_falla_la_descarga;
+  cosas.onprogress = cosas_a_hacer_regularmente_mientras_descargo;
+  cosas.onabort = cosas_a_hacer_si_hay_fallos_imprevistos;
+  cosas.open("GET", "https://paginawebpreferida.com/blablabla")
+  cosas.setRequestHeader("campoQueMiWebMeDiceQueTengoQuePoner", "Loquesea")
+  cosas.setRequestHeader("otroCampoQueMiWebMeDiceQueTengoQuePoner", "Loquesea2")
+  cosas.send()
+  
+  function cosas_a_hacer_tras_descargar() {
+   document.getElementById("parrafo_de_information").innerHTML += "Descarga finalizada. En total fueron" + this.response.length+;
+   document.getElementById("parrafo_de_contenido").innerHTML += this.response;
+   let datosDeTemperatura = JSON.parse(this.response);
+   document.getElementById("parrafo_de_temperatura_en_arcade").innerHTML += "La ultima temperatura en Arcade es: " + datosDeTemperatura.arcade;
+   document.getElementById("parrafo_de_temperatura_en_soutomaior").innerHTML += "La ultima temperatura en Soutomaior es: " + datosDeTemperatura.soutomaior;
+  }
+  function cosas_a_hacer_si_falla_la_descarga() {
+   document.getElementById("parrafo_de_information").innerHTML += "Descarga fallida";
+  }
+  function cosas_a_hacer_regularmente_mienstras_descargo() {
+   document.getElementById("parrafo_de_information").innerHTML += "Descarga todavia en progreso...";
+  }
+  function cosas_a_hacer_si_hay_fallos_imprevistos() {
+   document.getElementById("parrafo_de_information").innerHTML += "HUbo un error imprevisto...";
+  }
+  </pre>
+  When we receive a response, the way to access its data is by means of <b>this.response</b>.
+  The size of the response itself can be accessed with <b>this.response.length</b>.
+  If that response is JSON, we can create a Javascript object that makes it easy to work with
+  it by using <b>let datosDeArcade = JSON.parse(this.response);</b>
+  
+  When we connect to a website to grab information, we typically cause them a cost due to them needing
+  to pay for the bandwidth to send us the information that we ask for. Thus, many websites want something
+  in exchange, either money or just our information. In order to do that, a registration process is
+  sometimes used, that results in we getting a piece off data called an API key or something similar, that
+  we need to include in our request somehow. SOmetimes, it is in the URL that we access, like we saw
+  before; some other times, the website instructs us to add it as what is called a header request, which
+  is a type of data that we do not indicate in the address bar, but that gets sent by the browser. If
+  the website tells us that we need to send our API key as a header request, they will need to tell us
+  two things; the name of the request header, and its value. For example, if the website tells us that
+  we need to include a request header named <b>apikeypassword</b> whose value is <b>blabliblu</b>, then
+  we need to use the <b>setRequestHeader("apikeypassword", "blabliblu")</b> when creating the XMLHttpRequest
+  object.
+  
+  The function send() sends the request to the destination website. Before that, we need to put all the
+  needed request headers if there is any (often we do not need to put any), and say what we want to
+  do when the download ends (the onload function) or fails because the website does not have the data
+  we request (the onerror) or the connection is interrupted (the onabort) or, if the download takes a
+  long time, what to show the user meanwhile so they are kept interested (the onprogress). If we do not
+  want to do anything special, we do not need to write any of these functions other than the onload one.
+  
+  We can have different downloads at the same time; in this case, due to Internet congestion, and to the fact
+  that sometimes websites process requests out of order, or to the fact that we are accessing different
+  websites, or to different sizes of different downloads, it could be the case that although we start 
+  downbloading in a given order, the downloads finish in a different order. In this case, it may be confusing
+  to know which download is which. To help distinguishing them when they finish,
+  we can either use a different function for each one or, to save typing, we can reuse the same function
+  for all our dowloads; in this last case, we need a way to distinguish whcih of the downloads is the
+  one that finished; we can add fields to the XMLHttpRequest object with whatever identifying information we want. E.g.,
+  imagine that there is a website that allows us to get information about the weather in sone town by calling
+  <b>https://mitiempometeorologifavorito.com/NAMEOFTOWN</b>, where we put the name of the town at the end. And it
+  returns information in the following JSON format:
+  <pre>
+  {"humidity": "40%", "temperature": "28C", "riskOfFire": "medium to high"}
+  </pre>
+  
+  Then, if we want to get the temperature from Arcade and Soutomaior and plot it in a paragraph whose id
+  is <em>parrafo</em>, then we can use one of tow styles of Javascript code. The first is this one:
+  
+  <pre>
+  let pueblo1 = new XMLHttpRequest();
+  let pueblo2 = new XMLHttpRequest();
+  pueblo1.onload = cosas_a_hacer_al_recibir_datos_de_arcade;
+  pueblo2.onload = cosas_a_hacer_al_recibir_datos_de_soutomaior;
+  pueblo1.send("GET", "https://mitiempometeorologifavorito.com/arcade")
+  pueblo2.send("GET", "https://mitiempometeorologifavorito.com/soutomaior")
+  
+  function cosas_a_hacer_al_recibir_datos_de_arcade() {
+   let datos = JSON.parse(this.response);
+   document.getElementById("parrafo").innerHTML += "Recibida info de Arcade. La temperatura es " + datos.temperature;
+  }
+  function cosas_a_hacer_al_recibir_datos_de_soutomaior() {
+   let datos = JSON.parse(this.response);
+   document.getElementById("parrafo").innerHTML += "Recibida info de Soutomaior. La temperatura es " + datos.temperature;
+  }
+  </pre>
+  The second is this other one, where the same function is used for both downloads, and the information
+  about the town is inside a field in the XMLHttpRequest object that we chose to name <b>nombreDelSitio</b>:
+  
+  <pre>
+  let pueblo1 = new XMLHttpRequest();
+  let pueblo2 = new XMLHttpRequest();
+  pueblo1.nombreDelSitio = "Arcade";
+  pueblo2.nombreDelSitio = "Soutomaior";
+  pueblo1.onload = cosas_a_hacer_al_recibir_datos;
+  pueblo2.onload = cosas_a_hacer_al_recibir_datos;
+  pueblo1.send("GET", "https://mitiempometeorologifavorito.com/arcade")
+  pueblo2.send("GET", "https://mitiempometeorologifavorito.com/soutomaior")
+ 
+  function cosas_a_hacer_al_recibir_datos() {
+   let datos = JSON.parse(this.response);
+   document.getElementById("parrafo").innerHTML += "Recibida info de " + this.nombreDelSitio + ". La temperatura es " + datos.temperature;
+  }
+  </pre>
+  
+  
   <h2>Example 1: weather</h2>
   
   For example, this one returns the weather in the city of Ottawsa given city: <b>https://goweather.herokuapp.com/weather/ottawa</b>
