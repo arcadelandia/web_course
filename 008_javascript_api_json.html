@@ -217,8 +217,10 @@ Many websites have data in JSON format. Websites like these are intended to be u
   let pueblo2 = new XMLHttpRequest();
   pueblo1.onload = cosas_a_hacer_al_recibir_datos_de_arcade;
   pueblo2.onload = cosas_a_hacer_al_recibir_datos_de_soutomaior;
-  pueblo1.send("GET", "https://mitiempometeorologifavorito.com/arcade")
-  pueblo2.send("GET", "https://mitiempometeorologifavorito.com/soutomaior")
+  pueblo1.open("GET", "https://mitiempometeorologifavorito.com/arcade")
+  pueblo2.open("GET", "https://mitiempometeorologifavorito.com/soutomaior")
+  pueblo1.send()
+  pueblo2.send()
   
   function cosas_a_hacer_al_recibir_datos_de_arcade() {
    let datos = JSON.parse(this.response);
@@ -239,9 +241,11 @@ Many websites have data in JSON format. Websites like these are intended to be u
   pueblo2.nombreDelSitio = "Soutomaior";
   pueblo1.onload = cosas_a_hacer_al_recibir_datos;
   pueblo2.onload = cosas_a_hacer_al_recibir_datos;
-  pueblo1.send("GET", "https://mitiempometeorologifavorito.com/arcade")
-  pueblo2.send("GET", "https://mitiempometeorologifavorito.com/soutomaior")
- 
+  pueblo1.open("GET", "https://mitiempometeorologifavorito.com/arcade")
+  pueblo2.open("GET", "https://mitiempometeorologifavorito.com/soutomaior")
+  pueblo1.send()
+  pueblo2.send()
+  
   function cosas_a_hacer_al_recibir_datos() {
    let datos = JSON.parse(this.response);
    document.getElementById("parrafo").innerHTML += "Recibida info de " + this.nombreDelSitio + ". La temperatura es " + datos.temperature;
@@ -250,9 +254,82 @@ Many websites have data in JSON format. Websites like these are intended to be u
   
   
   <h2>Example 1: weather</h2>
+  Write the following two files in a new folder, run them, and tryu to understand all lines of both.
+  <h2>File named ejemplo.html</h2>
+  <pre>
+<!doctype html>
+<html>
+<head>
+  <title>Fun with api!</title>
+  <script src="api.js" defer></script>
+</head>
+<body>
+  <h1>The weather in some random places around the globle:</h1>
+  <p id="parrafotiempo"></p>
+  <h1>Error log (if any):</h1>
+  <p id="parrafoerrores"></p>
+  <h1>Activity log:</h1>
+  <p id="parrafolog"></p>
+</body>
+</html>                                                                         
+  </pre>
+  <h2>File named api.js</h2>
+  <pre>
+    setTimeout(download_weather, 1000);                                             
+function download_weather() {                                                   
+                                                                                
+ setTimeout(download_weather, 10000);                                           
+                                                                                
+ document.getElementById("parrafolog").innerHTML += "Sending request...<br>";   
+                                                                                
+ let datos_london = new XMLHttpRequest();                                       
+ let datos_burgos = new XMLHttpRequest();                                       
+ let datos_tokyo = new XMLHttpRequest();                                        
+                                                                                
+ datos_london.nombrepueblo = "London";                                          
+ datos_burgos.nombrepueblo = "Burgos";                                          
+ datos_tokyo.nombrepueblo = "Tokyo";                                            
+                                                                                
+ datos_london.onload = print_weather_in_html_webpage;                           
+ datos_burgos.onload = print_weather_in_html_webpage;                           
+ datos_tokyo.onload = print_weather_in_html_webpage;                            
+                                                                                 
+ datos_london.onerror = print_error_in_html_webpage;                            
+ datos_burgos.onerror = print_error_in_html_webpage;                            
+ datos_tokyo.onerror = print_error_in_html_webpage;                             
+                                                                                
+ datos_london.open("GET", "https://goweather.herokuapp.com/weather/London", true);
+ datos_burgos.open("GET", "https://goweather.herokuapp.com/weather/Burgos", true);
+ datos_tokyo.open("GET", "https://goweather.herokuapp.com/weather/Tokyo", true);
+                                                                                
+ datos_london.send();                                                           
+ datos_burgos.send();                                                           
+ datos_tokyo.send();
+}                                                                               
+                                                                                
+function print_weather_in_html_webpage() {                                      
+  // The word "this" means the XMLHttpRequest object that led to this function being calledd
+  let datosjson = JSON.parse(this.response) // convertimos el json descargado a algo que Javascript entiende
+  let temperatura = datosjson.temperature; // la temperatura, segun nos devuelve la web en el json
+  let velocidadviento = datosjson.wind; // la fuerza de Eolo                    
+  let descripcion = datosjson.description; // esto es claro, soleado, cubierto, etc
+                                                                                
+  // esto es para crear una cadena con la fecha y hora actuales                 
+  let fechayhora = new Date().toLocaleString();                                 
+                                                                                
+  document.getElementById("parrafotiempo").innerHTML += "The weather in " + this.nombrepueblo;
+  document.getElementById("parrafotiempo").innerHTML += " at time " + fechayhora + " is: ";
+  document.getElementById("parrafotiempo").innerHTML += "temperature: " + temperatura + ", ";
+  document.getElementById("parrafotiempo").innerHTML += "wind speed: " + velocidadviento + ", ";
+  document.getElementById("parrafotiempo").innerHTML += "description: " + descripcion + ". Punto pelota.";
+  document.getElementById("parrafotiempo").innerHTML += "<br>";                 
+}                                                                               
+                                                                                
+function print_error_in_html_webpage() {                                        
+  document.getElementById("parrafoerrores").innerHTML += "Ups, hubo un error descargando info acerca de la ciudad de: " + this.nombrepueblo + ".<br>";
+}                           
+  </pre>
   
-  For example, this one returns the weather in the city of Ottawsa given city: <b>https://goweather.herokuapp.com/weather/ottawa</b>
-
   <h2>Example 2: dictionary</h2>
   For example, this one returns a definition of the word computer in english: <b>https://api.dictionaryapi.dev/api/v2/entries/en/computer</b>
 
