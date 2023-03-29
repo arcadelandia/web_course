@@ -11,34 +11,36 @@ Websites basically present data to their users. Most of the websites we interact
 geared towards a human being: HTML to categorize information, and CSS to make its presentation
 nice for a human viewer.
 
-There are websites that inted to make their data easy to access, not to humans, but also to
+There are websites that inted to make their data easy to access, not only to humans, but also to
 computers. The main difference between humans and computers is that computers are not as good
 as humans to search for a given piece of information if it is in the middle of more data. For
 example, it is reasonably easy for a human to look at a photo and try to see if there is
 something in that photo (for example, a fruit on top of a book); a computer has a much harder
 time doing that. As a result, when website data is targeted towards being used by a computer,
 or by a program running in a computer, its data tends to be made available in a format that
-makes it easy for the computer to make sense of it. There are many ways to do this. A popular
+makes it easy for the computer to make sense of it. There are many ways to do this; a popular
 way to do this is by using a language called JSON. 
 
 JSON is short for Javascript Object Notation, and it was designed to make it easy for Javascript
 programs to deal with website data. In theory, a Javascript program can download a HTML page in the
-same way as a human would, but HTML is a format designed to structure data for humans. JSON attempts
+same way as a human would, but HTML is a format designed to structure data for humans; JSON attempts
 to structure data for computers.
-  
-The rules to access JSON data, or any other kind of data geared towards computers, are usually
-called an API (short for application program interface); the ones to interact with humans are
-usually called GUI (short for graphical user interface).
 
-Most JSON files are used to represent sequences of attributes with values, which often represents
-objects from the real world. As a result, these collections of attributes with values are called objects.
-An attribute together with its value is also called a property. For example, we can represent a given orange fruit
+The rules to make information easy to access for a computer are usually  
+called an API (short for application program interface); the ones to interact with humans are
+usually called GUI (short for graphical user interface). Thus, the 
+rules to access information via JSON are called a JSON API.
+
+Most JSON files are used to represent sequences of attributes with values (foe example, weight and 40kg), 
+which often represents
+objects from the real world. As a result, these collections of attributes with values are called JSON objects.
+A JSON attribute together with its value is also called a JSON property. For example, we can represent a given orange fruit
 with a JSON object, with an attribute called <b>weight</b> whose value is <b>100g</b>, and an attribute 
 called <b>color</b> which can be <b>orange</b>, an attribute called <b>bittenByABug</b> whose
 value may be <b>some people say yes, some people say no</b>, and an attribute called
-<b>numberOfButsLivingInside</b> whose value is <b>35</b>. We are free to put any number of
-attributes to an object, and to give any value that we wish to those attributes. The JSON way to
-represent this orange object would be:
+<b>numberOfBugsLivingInside</b> whose value is <b>35</b>. We are free to put any number of
+attributes in an object, and to give any value that we wish to those attributes, and to write them
+in any order we wish. The JSON way to represent this orange object would be:
 <pre>
  {
    "weight": "100g",
@@ -47,20 +49,25 @@ represent this orange object would be:
    "numberOfBugsLivingInside": 35
  }
 </pre>
-The presence of blank spaces is irrelevant outside of the inside of quotes. For example, the above example file
-is the same as the following one:
+The presence of blank spaces is irrelevant outside of the inside of quotes (where by blank spaces we
+  mean the space bar ones, and any tabs, and newlines); the spaces between quotes are relevant
+  because they have meaning (for example, <b>red car</b> is different from <b>redcar</b>). For example, 
+  the above example file is for practical purposes the same as the following one:
 <pre>
 {"weight":"100g","color":"orange","bitenByBug":"some people say yes, some people say no","numberOfBugsLivingInside":35}
 </pre>
-When presenting JSON files for human reading, those spaces are often used to make it prettier.
+When presenting JSON files for human reading, those spaces are often used to make it prettier. When transferring them
+between computers, the semantically meaningless spaces are usually eliminated.
 
-Objects are represented betweeen brackets, with their properties separated by commas, and where
+JSON bbjects are represented betweeen brackets, with their properties separated by commas, and where
 each property has an attribute name written between quotes, and an attribute value that either
 is an integer name (which may be written without quotes), or a piece of information of any kind (which
-must be written inside quotes). There are some other types of values but we will see them later.
+must be written inside quotes), or a boolean valuie that may be <b>true</b> or <b>false</b> (without quotes),
+or the value <b>null</b> (without quotes), which means that that specific property has an empty value (whatever
+that means is up to interpretation according to the rules used by the website that creates the JSON object).
 
 JSON files can also have collections of objects. These collection of objects are called arrays,
-and are written between square brackets. For example, if we have a box with three objects: an apple, an strawberry,
+and are written between square brackets; order inside an array matters. For example, if we have a box with three objects: an apple, an strawberry,
 and a beach ball, we can represent those contents as:
 <pre>
 [
@@ -70,7 +77,7 @@ and a beach ball, we can represent those contents as:
 ]
 </pre>
   
-Many websites have data in JSON format. Websites like these are intended to be used by browsers running Javascript programs;
+Many websites offer data in JSON format. Websites like these are intended to be used by browsers running Javascript programs;
   these programs typically download the JSON data and represent it in the browser in some way that is nice for
   the users of that webiste, or of other websites. For example, let' consider
   a hypothetical news website <em>castillanews.com</em>, which offers pieces of information in JSON, which include things 
@@ -86,19 +93,20 @@ Many websites have data in JSON format. Websites like these are intended to be u
   Then, the programmers creating another website, for example <em>https://universenews.com</em>, can use a Javascript program
   in their website that connects to castillanews.com each minute, downloads the JSON information like the example above, and show the
   headlines and dates in their top of the page; they may also download at the same time other JSDN files from other news websites,
-  and combine all that information; the possibilities are endless.
+  and combine all that information; the possibilities here are endless, as decided by the programmer creating the webpage.
   
   In another example, imagine that the website <em>https://trackacar.com</em> offers services to track a vehicle as as function of 
   its license plate, in such a way that if a user wants to know the last coordinates of the car whose license plate is ES123456ABC,
-  the need to write in the browser <em>https://trackacar.com?licenseplate=ES123456ABC</em> (so a closing interrogation sign is
-  written after the website name, and the data is written in a format like property equals value), and the website returns something like
+  the need to write in the browser <em>https://trackacar.com?licenseplate=ES123456ABC</em> (so, a closing interrogation sign is
+  written after the website name, and the data is written in a format like: property equals value), and the website returns a JSON object
+  like this:
   <pre>
   {"position": "45.23478N, 5.234W", "dateandtime": "15/03/2023 18:23:44GMT"}
   </pre>
   which are the coordinates of the last known position of the vehicle. Then, the designer of a website called <em>https://showmyfriendscars.com</em>
   that has a list of license plates of the vehicles of its 10 best friends, can use Javascript to download periodically (e.g., each minute) the position
-  of all its friends' cars, and use an image of the world as background of ther website, and plot a big yellow circle on each of the points of the coordinates
-  of the cars, so it creates a easy way to visually track where are those cars.
+  of all its friends' cars, and, using a map of the world as the background photo of the website, plot a big yellow circle on each of the 
+  points of the coordinates of the cars, so it creates a easy way to visually track where are those cars.
   
   Many websites that offer JSON data often ask for payment, others are free; in many cases, you need to register in the website itself before
   being able to access the JSON data. A typical way to register is by entering an email and then receiving in the emnail 
@@ -106,22 +114,31 @@ Many websites have data in JSON format. Websites like these are intended to be u
   imagine that the license plate tracker website asks for registration before giving the information (with or witout payment) and 
   sends to our email the API key <em>wq345rfds9dh</em> (API keys tend to look like random data, and they tend to be longer than in this example); each
   registered user will receive a different API key that will allow the website owner to keep track of how often each user
-  uses the service. The website will tell us how to use that API key to access the information. One common way is to append it to the URL that is used to
+  uses the service; websites that ask for payment often charge monthly a credit card number provided by the user when regiatering the email, 
+  and the amount depends on how many times the API key has been used to connect to the servide.
+  The website will tell us how to use that API key to access the information. One common way is to append it to the URL that is used to
   access the browser like
   <pre>
   https://trackacar.com?licenseplate=ES123456ABC&apikey=wq345rfds9dh
   </pre>
  The above way to write needed pieces of information (in this example, license plate and api key) is called URL parameters. The name of the
-  website is written normally <em>https://trackacar.com</em>, and the needed parameters are indicated by the interrogation sign <b>?</b>,
+  website is written normally <em>https://trackacar.com</em>, and the start of the needed parameters are indicated by the interrogation sign <b>?</b>,
   and then the parameters themselves are written separated by an ampersand <b>&</b> and each parameter is written with an equal sign <b>=</b>
   separating the name of the parameter from its value. The ownwer of the website will tell us which names we need to use , and the format
   that we need to use for its values. For example, a hypothetical website tellig us the weather forecast for a given city for a given day
-  could be in any of the following formats, or in any other one:
+  could be in any of the following formats:
   <pre>
   https://www.favoriteweatherforecaster.com?city=burgos&country=spain&date=25/12/2034
   https://www.favoriteweatherforecaster.com?city=burgos&country=spain&date=25/12/2034&apikey=213rfcvwvcewfg
   https://www.favoriteweatherforecaster.com?coordinates=42.35N3.7W&date=25/12/2034&apikey=213rfcvwvcewfg
   </pre>
+  
+  Sometimes, instead of URL parameters, or in addition to URL parameters, the webiste where we are
+  registering will tell us that we need to use a HTTP header with some information: for example, that
+  the API key needs to be sent in a HTTP request header named <b>myapikey</b>, and whose value
+  must be the APIkey that we received in the email. We will see below how to do this using Javascript.
+  
+  <br>
   
   You can search in Google for something like "free public APIs" to find many websites that offer APIs to
   access data through the Internet (usually in JSON format), in areas like weather, transportation, literature,
