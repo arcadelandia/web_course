@@ -6,12 +6,13 @@
   </head>
  <body>
   <h1>Downloading data from the web using Javascript</h1>
-  
-Websites basically present data to their users. Most of the websites we interact with have data 
-geared towards a human being: HTML to categorize information, and CSS to make its presentation
-nice for a human viewer.
-
-There are websites that inted to make their data easy to access, not only to humans, but also to
+<p>
+Websites basically present data to their users. Most of the websites we interact with, have data 
+geared towards a human user: HTML to say what to present, and CSS to control how to present it
+to a human user.
+</p>
+<p>
+However, there are also websites that inted to make their data easy to access, not only to humans, but also to
 computers. The main difference between humans and computers is that computers are not as good
 as humans to search for a given piece of information if it is in the middle of more data. For
 example, it is reasonably easy for a human to look at a photo and try to see if there is
@@ -20,17 +21,20 @@ time doing that. As a result, when website data is targeted towards being used b
 or by a program running in a computer, its data tends to be made available in a format that
 makes it easy for the computer to make sense of it. There are many ways to do this; a popular
 way to do this is by using a language called JSON. 
-
+</p>
+<p>
 JSON is short for Javascript Object Notation, and it was designed to make it easy for Javascript
 programs to deal with website data. In theory, a Javascript program can download a HTML page in the
 same way as a human would, but HTML is a format designed to structure data for humans; JSON attempts
 to structure data for computers.
-
+</p>
+<p>
 The rules to make information easy to access for a computer are usually  
 called an API (short for application program interface); the ones to interact with humans are
 usually called GUI (short for graphical user interface). Thus, the 
 rules to access information via JSON are called a JSON API.
-
+</p>
+<p>
 Most JSON files are used to represent sequences of attributes with values (foe example, weight and 40kg), 
 which often represents
 objects from the real world. As a result, these collections of attributes with values are called JSON objects.
@@ -58,14 +62,16 @@ The presence of blank spaces is irrelevant outside of the inside of quotes (wher
 </pre>
 When presenting JSON files for human reading, those spaces are often used to make it prettier. When transferring them
 between computers, the semantically meaningless spaces are usually eliminated.
-
+</p>
+<p>
 JSON bbjects are represented betweeen brackets, with their properties separated by commas, and where
 each property has an attribute name written between quotes, and an attribute value that either
 is an integer name (which may be written without quotes), or a piece of information of any kind (which
 must be written inside quotes), or a boolean valuie that may be <b>true</b> or <b>false</b> (without quotes),
 or the value <b>null</b> (without quotes), which means that that specific property has an empty value (whatever
 that means is up to interpretation according to the rules used by the website that creates the JSON object).
-
+</p>
+<p>
 JSON files can also have collections of objects. These collection of objects are called arrays,
 and are written between square brackets; order inside an array matters. For example, if we have a box with three objects: an apple, an strawberry,
 and a beach ball, we can represent those contents as:
@@ -94,7 +100,8 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   in their website that connects to castillanews.com each minute, downloads the JSON information like the example above, and show the
   headlines and dates in their top of the page; they may also download at the same time other JSDN files from other news websites,
   and combine all that information; the possibilities here are endless, as decided by the programmer creating the webpage.
-  
+  </p>
+<p>
   In another example, imagine that the website <em>https://trackacar.com</em> offers services to track a vehicle as as function of 
   its license plate, in such a way that if a user wants to know the last coordinates of the car whose license plate is ES123456ABC,
   the need to write in the browser <em>https://trackacar.com?licenseplate=ES123456ABC</em> (so, a closing interrogation sign is
@@ -107,7 +114,8 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   that has a list of license plates of the vehicles of its 10 best friends, can use Javascript to download periodically (e.g., each minute) the position
   of all its friends' cars, and, using a map of the world as the background photo of the website, plot a big yellow circle on each of the 
   points of the coordinates of the cars, so it creates a easy way to visually track where are those cars.
-  
+  </p>
+<p>
   Many websites that offer JSON data often ask for payment, others are free; in many cases, you need to register in the website itself before
   being able to access the JSON data. A typical way to register is by entering an email and then receiving in the emnail 
   what is called an API key, which is essentially a password that allows to access the services of the website. For example, 
@@ -137,13 +145,16 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   registering will tell us that we need to use a HTTP header with some information: for example, that
   the API key needs to be sent in a HTTP request header named <b>myapikey</b>, and whose value
   must be the APIkey that we received in the email. We will see below how to do this using Javascript.
-  
-  <br>
-  
+  </p>
+
+<br>
+
+<p>
   You can search in Google for something like "free public APIs" to find many websites that offer APIs to
   access data through the Internet (usually in JSON format), in areas like weather, transportation, literature,
   games, jobs, shopping, tracking, art, etc.
-  
+</p>
+<p>  
   In order to grab data from a website with Javascript, we need to use a piece of data called an object.
   In Javascript, an object is a collection of data properties, also called fields, that often represents an object from the
   physical world. An object can be created in several ways, but a common one is to write something like
@@ -153,7 +164,8 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   and that would add a property that we chose to call <b>marca</b>, with a value that we chose to call <b>Volkswagen</b>.
   We also can later do things like <b>micoche.numeroDePuertas = 5;</b> to indicate that we use a number, in this case 5,
   as the value for a property that we chose to call <em>numeroDePuertas</em>. 
-  
+</p>
+<p>  
   In order to download data from a website, either with JSON content or nor, we use a type of object called
   a XMLHttpRequest. It is a type of object that is created by the browser and contains properties that allow
   to take care of all the complexities involved in downloading the information so the programmer has an easy
@@ -190,7 +202,8 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   The size of the response itself can be accessed with <b>this.response.length</b>.
   If that response is JSON, we can create a Javascript object that makes it easy to work with
   it by using <b>let datosDeArcade = JSON.parse(this.response);</b>
-  
+  </p>
+<p>
   When we connect to a website to grab information, we typically cause them a cost due to them needing
   to pay for the bandwidth to send us the information that we ask for. Thus, many websites want something
   in exchange, either money or just our information. In order to do that, a registration process is
@@ -203,14 +216,16 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   we need to include a request header named <b>apikeypassword</b> whose value is <b>blabliblu</b>, then
   we need to use the <b>setRequestHeader("apikeypassword", "blabliblu")</b> when creating the XMLHttpRequest
   object.
-  
+  </p>
+<p>
   The function send() sends the request to the destination website. Before that, we need to put all the
   needed request headers if there is any (often we do not need to put any), and say what we want to
   do when the download ends (the onload function) or fails because the website does not have the data
   we request (the onerror) or the connection is interrupted (the onabort) or, if the download takes a
   long time, what to show the user meanwhile so they are kept interested (the onprogress). If we do not
   want to do anything special, we do not need to write any of these functions other than the onload one.
-  
+  </p>
+<p>
   We can have different downloads at the same time; in this case, due to Internet congestion, and to the fact
   that sometimes websites process requests out of order, or to the fact that we are accessing different
   websites, or to different sizes of different downloads, it could be the case that although we start 
