@@ -147,84 +147,137 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   must be the APIkey that we received in the email. We will see below how to do this using Javascript.
   </p>
 
-<br>
-
 <p>
   You can search in Google for something like "free public APIs" to find many websites that offer APIs to
   access data through the Internet (usually in JSON format), in areas like weather, transportation, literature,
   games, jobs, shopping, tracking, art, etc.
 </p>
 <p>  
-  In order to grab data from a website with Javascript, we need to use a piece of data called an object.
-  In Javascript, an object is a collection of data properties, also called fields, that often represents an object from the
-  physical world. An object can be created in several ways, but a common one is to write something like
+  One of the easiest ways to grab data from a website using Javascript is by means of something called a Javascript object.
+  A Javascript object is a collection of data properties, also called fields, related to something that often
+  is an object from the real world. For example, a car is an object, and we can create properties in it like
+  number of doors, color, maximum speed, etc. Another example of a Javascript object can be a poem, whose
+ properties may be the language, its length in lines, its length in letters, its year of publication, and a series
+ of reviews. Another example can be a website, whose properties can be its URL, the name of the
+ person that last requested the website, and its size in bytes.
+ 
+ A Javascript object can be created in several ways, but a common one is to declare a variable and initialize
+ it with opening and closing brackets. In  other words, we create an object doing  something like
   this: <b>let micoche = {};</b>. This tells the browser that there is a variable that we chose to call
-  <em>micoche</em> that will be a container of several properties with values, that we will create later
-  in the code. For example, we can write at some point something like <b>micoche.marca = "Volkswagen";</b>
-  and that would add a property that we chose to call <b>marca</b>, with a value that we chose to call <b>Volkswagen</b>.
-  We also can later do things like <b>micoche.numeroDePuertas = 5;</b> to indicate that we use a number, in this case 5,
-  as the value for a property that we chose to call <em>numeroDePuertas</em>. 
+  <em>micoche</em> that will be a series of properties like we saw in the examples above. Each property has
+ a name and a value, and we create those in the Javascript code; names should not contain whitespace, nor
+ non-english letters. For example, we can create the examples above
+ writing something like <b>micoche.marca = "Volkswagen";</b>
+ <pre>
+ let micoche = {};
+ micoche.numerodepuertas = 5;
+ michoche.color = "azul claro casi verde";
+ micoche.maximumspeed = "180km/h";
+ 
+ let mipoema = {};
+ mipoema.lenguage = "castellano moderno";
+ mipoema.numerodelineas = 25;
+ mipoema.numerodeletras = 578;
+ mipoema.anhodepublicacion = 2020;
+ mipoema.criticas = [ "muy malo, no me gusta", "genial, obra maestra", "ni fu ni fa", "Pssssss. No lo tengo claro." ];
+ 
+ let paginawebpreferida = {};
+ paginawebpreferida.url = "https://www.paginawebquetengoqueinvenatarme.ejemplo.com/blablalba/blublublu.html?queso=si&nocilla=si";
+ paginawebpreferida.ultimoenacceder = "jimmy jones";
+ paginawebpreferida.tamanhoenbytes = 100200;
+  </pre>
+
+We can create objects ourselves, and also we can use special objects that are created by the browser.
+One of these special objects, called a XMLHttpRequest, makes it easy to download data from websites, 
+either with JSON content or nor. Its name comes from a kind of data named XML that we are not
+going to study, and that used to be popular years ago; most data is not XML anymore (for example,
+it is JSON, or HTML, or CSS, or Javascript, or images, or videos) but the name stuck; in addition, 
+the word HTTP is the name of the set of rules, or protocol, that web browsers use to download 
+data from any website. So, an XMLHttpRequest object is basically an object that allows us to make
+a request to download any kind of data from a website. Each XMLHttpRequest object has several properties
+that we do not need to care about other than make sure that are correctly setup, and we do that by
+writing something like <b>let datosdemiwebpreferida = new XMLHttpRequest()\;</b>, which declares
+a XMLHttpRequest object ready to be used (in other words, we do that, instead of declaring something like
+<b>let datosdemiwebpreferida = {};</b> which would not create any of the needed properties). 
+We can add as many additional properties to the XMLHttpRequest object as we want.
 </p>
-<p>  
-  In order to download data from a website, either with JSON content or nor, we use a type of object called
-  a XMLHttpRequest. It is a type of object that is created by the browser and contains properties that allow
-  to take care of all the complexities involved in downloading the information so the programmer has an easy
-  time doing so. The way that we use an XMLHttpRequest is by doing something like this:
+<p>
+ Once we do the request, there are several possibilities: either it
+ will be successful and the requested information is downloaded successfully, or the webserver will tell us that
+ the information is not accessible (for any reason), or the connection attempt fails (because it takes too long,
+ oir because the user decides to cancel the connection hitting the ESC key or the cross button in the menu).
+ If the download is successful, the browser will call the function whose name we store in a property called
+ <b>onload</b> in the XMLHttpRequest object, and will have the data available in a property called <b>response</b>,
+ the XMLHttpRequest object can be accesed in that function by means of the word <b>this</b>.
+ If the connection succeeds but the info is not available, the browser will call the 
+ function whose name we store in the <b>onerror</b> property. If the connection succeeds but the info is not available, 
+ the browser will call the function whose name we store in a property called <b>onabort</b>. 
+ While the connection is still pending (this is, has started but not yet finished), the browser will call
+ the function whose name we store in the <b>onmprogress</b> property. Let's see these with an example:
+  </p>
+<p>
+Let's imagine that we want to connect to a website named <em>https://datosdemipueblofavorito.com/blablabla</em>,
+ that returns a JSON file with weather data related to whatever town we indicate in the URL in two parameters that
+ must be named <b>nombrepueblo</b> and <b>nombrepais</b>. So, for example, if we call
+ <em>https://datosdemipueblofavorito.com/blablabla?nombrepueblo=madrid&pais=spain</em>,
+ , we receive a JSON file like this one:
+ <b>{"temperatura": "20C", "velocidadviento": "5km/h", "diasseguidossinllover": 5, "prevision": "marejada fuerte"}</b>.
+ In order to access this website, we register in it, and the registration process sends us instructions by email
+ telling us that we need an apikey to access the data, and the
+ apikey value is <em>qwerty123456ZX</em>, and that we need to send that apikey inside a URL parameter named <b>apikey</b>, and that we also 
+ need to include a second parameter with the name of to include a HTTP request header whose name needs to be <b>campoQueMiWebMeDiceQueTengoQuePoner</b> whose value
+ needs to be <b>Loquesea</b>, and another HTTP request header whose name needs to be <b>otroCampoQueMiWebMeDiceQueTengoQuePoner</b>
+ and whose value needs to be <b>OtraCosa</b>. Then, we want to log in a paragraph named <b>parrafo_de_incidencias</b> all relevant
+ information related to any error and to sucess of the data download. And, if the download is successful, we want to
+ show all the data received (this is, the entire JSON file) in a paragraph named <b>parrafo_de_contenido</b>, and
+ the temperature and wind speed in a paragraph called <b>parrafo_de_temperatura_y_viento</b>.
+ The following Javascript code does that for the town of Madrid, Spain:
   <pre>
   let cosas = new XMLHttpRequest();
+  // now we prepare the request
   cosas.onload = cosas_a_hacer_tras_descargar;
   cosas.onerror = cosas_a_hacer_si_falla_la_descarga;
   cosas.onprogress = cosas_a_hacer_regularmente_mientras_descargo;
   cosas.onabort = cosas_a_hacer_si_hay_fallos_imprevistos;
-  cosas.open("GET", "https://paginawebpreferida.com/blablabla")
-  cosas.setRequestHeader("campoQueMiWebMeDiceQueTengoQuePoner", "Loquesea")
-  cosas.setRequestHeader("otroCampoQueMiWebMeDiceQueTengoQuePoner", "Loquesea2")
-  cosas.send()
+  cosas.open("GET", "https://paginawebpreferida.com/blablabla?apikey=qwerty123456ZX&nombrepueblo=Madrid&nombrepais=Spain");
+  cosas.setRequestHeader("campoQueMiWebMeDiceQueTengoQuePoner", "Loquesea");
+  cosas.setRequestHeader("otroCampoQueMiWebMeDiceQueTengoQuePoner", "OtraCosa");
+  cosas.ciudad = "Madrid"; // we create this property, in order to store the name of the city we ask for, in whatever format we prefer
+  cosas.pais = "Espanha"; //  we create this property, in order to store the name of the country we ask for, in whatever format we prefer
+  // the request has been prepared, so now we can send it
+  cosas.send(); 
   
   function cosas_a_hacer_tras_descargar() {
-   document.getElementById("parrafo_de_information").innerHTML += "Descarga finalizada. En total fueron" + this.response.length+;
+   document.getElementById("parrafo_de_incidencias").innerHTML += "Descarga finalizada. En total descargamos" + this.response.length + " bytes.";
    document.getElementById("parrafo_de_contenido").innerHTML += this.response;
-   let datosDeTemperatura = JSON.parse(this.response);
-   document.getElementById("parrafo_de_temperatura_en_arcade").innerHTML += "La ultima temperatura en Arcade es: " + datosDeTemperatura.arcade;
-   document.getElementById("parrafo_de_temperatura_en_soutomaior").innerHTML += "La ultima temperatura en Soutomaior es: " + datosDeTemperatura.soutomaior;
+   let tempyviento = JSON.parse(this.response);
+   document.getElementById("parrafo_de_temperatura_y_viento").innerHTML += "Datos de temperatura y viento en: " + this.ciudad + ", " + cosas.pais + ".<br>";
+   document.getElementById("parrafo_de_temperatura_y_viento").innerHTML += "La temperatura es: " + tempyviento.temperatura + "<br>";
+   document.getElementById("parrafo_de_temperatura_y_viento").innerHTML += "La velocidad del viento es: " + tempyviento.velocidadviento + "<br>";
   }
   function cosas_a_hacer_si_falla_la_descarga() {
-   document.getElementById("parrafo_de_information").innerHTML += "Descarga fallida";
+   document.getElementById("parrafo_de_incidencias").innerHTML += "Descarga fallida.";
   }
-  function cosas_a_hacer_regularmente_mienstras_descargo() {
-   document.getElementById("parrafo_de_information").innerHTML += "Descarga todavia en progreso...";
+  function cosas_a_hacer_regularmente_mientras_descargo() {
+   document.getElementById("parrafo_de_incidencias").innerHTML += "Descarga todavia en progreso...";
   }
   function cosas_a_hacer_si_hay_fallos_imprevistos() {
-   document.getElementById("parrafo_de_information").innerHTML += "HUbo un error imprevisto...";
+   document.getElementById("parrafo_de_incidencias").innerHTML += "Hubo un error imprevisto.";
   }
   </pre>
-  When we receive a response, the way to access its data is by means of <b>this.response</b>.
-  The size of the response itself can be accessed with <b>this.response.length</b>.
-  If that response is JSON, we can create a Javascript object that makes it easy to work with
-  it by using <b>let datosDeArcade = JSON.parse(this.response);</b>
+  The order of URL parameters in the URL request does not matter (for example, here we wrote first the apikey, then
+the name of town, and then the name of country; we could have written those in any order).
+  When we receive a response, we can access its data is by means of <b>this.response</b>.
+  The size of the response itself, in bytes, can be accessed with <b>this.response.length</b>.
+  If, as in this example, we know that the response is JSON data, we can create a Javascript object that makes it easy to work with
+  it by using a function called JSON.parse in the following way;<b>let tempyviento = JSON.parse(this.response);</b>. Once
+that is done, we can access the value of any property in the downloaded JSON data by using a dot and the name of that property:
+for example, the expression <b>tempyviento.temperatura</b> has a value of <b>20C</b>, and <b>tempyviento.temperatura</b> has
+a value of <b>5km/h</b>.
   </p>
-<p>
-  When we connect to a website to grab information, we typically cause them a cost due to them needing
-  to pay for the bandwidth to send us the information that we ask for. Thus, many websites want something
-  in exchange, either money or just our information. In order to do that, a registration process is
-  sometimes used, that results in we getting a piece off data called an API key or something similar, that
-  we need to include in our request somehow. SOmetimes, it is in the URL that we access, like we saw
-  before; some other times, the website instructs us to add it as what is called a header request, which
-  is a type of data that we do not indicate in the address bar, but that gets sent by the browser. If
-  the website tells us that we need to send our API key as a header request, they will need to tell us
-  two things; the name of the request header, and its value. For example, if the website tells us that
-  we need to include a request header named <b>apikeypassword</b> whose value is <b>blabliblu</b>, then
-  we need to use the <b>setRequestHeader("apikeypassword", "blabliblu")</b> when creating the XMLHttpRequest
-  object.
-  </p>
-<p>
-  The function send() sends the request to the destination website. Before that, we need to put all the
-  needed request headers if there is any (often we do not need to put any), and say what we want to
-  do when the download ends (the onload function) or fails because the website does not have the data
-  we request (the onerror) or the connection is interrupted (the onabort) or, if the download takes a
-  long time, what to show the user meanwhile so they are kept interested (the onprogress). If we do not
-  want to do anything special, we do not need to write any of these functions other than the onload one.
-  </p>
+
+<br>
+
 <p>
   We can have different downloads at the same time; in this case, due to Internet congestion, and to the fact
   that sometimes websites process requests out of order, or to the fact that we are accessing different
