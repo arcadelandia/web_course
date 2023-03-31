@@ -276,17 +276,19 @@ for example, the expression <b>tempyviento.temperatura</b> has a value of <b>20C
 a value of <b>5km/h</b>.
   </p>
 
-<br>
-
 <p>
-  We can have different downloads at the same time; in this case, due to Internet congestion, and to the fact
+  In Javascript, We can have different downloads from the same or diferent websites at the same time. If this
+ is the case, there is no way to know in advance which of those will finish earlier, or which ones
+ will fail; even if we send them in a given order that we control in the Javascript code by means of the
+ <b>miobject.send();</b> function, due to Internet congestion, and to the fact
   that sometimes websites process requests out of order, or to the fact that we are accessing different
-  websites, or to different sizes of different downloads, it could be the case that although we start 
-  downbloading in a given order, the downloads finish in a different order. In this case, it may be confusing
-  to know which download is which. To help distinguishing them when they finish,
+  websites, or to different sizes of different downloads, those requests can finish in any order. In this case,
+  when the browser calls the corresponding <b>onload,onerror,onprogress,onabort</b> functions, 
+ it may be confusing to know which download is which. To help distinguishing them when they finish,
   we can either use a different function for each one or, to save typing, we can reuse the same function
-  for all our dowloads; in this last case, we need a way to distinguish whcih of the downloads is the
-  one that finished; we can add fields to the XMLHttpRequest object with whatever identifying information we want. E.g.,
+  for all our dowloads; in this last case, we need a way to distinguish which of the downloads is the
+  one that finished; one easy way to do this is to add a properties to each XMLHttpRequest object with 
+ a unique identifier that allows us to recognize it later. E.g.,
   imagine that there is a website that allows us to get information about the weather in sone town by calling
   <b>https://mitiempometeorologifavorito.com/NAMEOFTOWN</b>, where we put the name of the town at the end. And it
   returns information in the following JSON format:
@@ -295,7 +297,7 @@ a value of <b>5km/h</b>.
   </pre>
   
   Then, if we want to get the temperature from Arcade and Soutomaior and plot it in a paragraph whose id
-  is <em>parrafo</em>, then we can use one of tow styles of Javascript code. The first is this one:
+  is <em>parrafo</em>, then we can use one of the two following styles of Javascript code. The first is this one:
   
   <pre>
   let pueblo1 = new XMLHttpRequest();
@@ -337,15 +339,22 @@ a value of <b>5km/h</b>.
   }
   </pre>
   
+As we can see, in this second style, we are reusing the same onload function for both web requests. As a note, we can see
+that we chose not to do anything for the onerror,onabort, and onprogress functions in order to simplifyt the example; that means
+that, if any download fails, we will not react in any way (this is in general not recommended because it is often better to
+tell the user if any error happened).
   
+<h1>Exercise</h1>
+
   <h2>Example 1: weather</h2>
-  Write the following two files in a new folder, run them, and tryu to understand all lines of both.
+  Write the following two files in a new folder, open the HTML one in the browser, observe howe it works, and try to understand all lines of both files.
   <h2>File named ejemplo.html</h2>
-  <pre>
+  
+<pre>
 <!doctype html>
 <html>
 <head>
-  <title>Fun with api!</title>
+  <title>Fun with a JSON api!</title>
   <script src="api.js" defer></script>
 </head>
 <body>
@@ -365,7 +374,7 @@ function download_weather() {
                                                                                 
  setTimeout(download_weather, 10000);                                           
                                                                                 
- document.getElementById("parrafolog").innerHTML += "Sending request...<br>";   
+ document.getElementById("parrafolog").innerHTML += "Preparing requests...<br>";   
                                                                                 
  let datos_london = new XMLHttpRequest();                                       
  let datos_burgos = new XMLHttpRequest();                                       
@@ -383,13 +392,17 @@ function download_weather() {
  datos_burgos.onerror = print_error_in_html_webpage;                            
  datos_tokyo.onerror = print_error_in_html_webpage;                             
                                                                                 
- datos_london.open("GET", "https://goweather.herokuapp.com/weather/London", true);
- datos_burgos.open("GET", "https://goweather.herokuapp.com/weather/Burgos", true);
- datos_tokyo.open("GET", "https://goweather.herokuapp.com/weather/Tokyo", true);
-                                                                                
+ datos_london.open("GET", "https://goweather.herokuapp.com/weather/London");
+ datos_burgos.open("GET", "https://goweather.herokuapp.com/weather/Burgos");
+ datos_tokyo.open("GET", "https://goweather.herokuapp.com/weather/Tokyo");
+       
+ document.getElementById("parrafolog").innerHTML += "Sending requests...<br>";   
  datos_london.send();                                                           
+ document.getElementById("parrafolog").innerHTML += "Request for London sent!<br>";   
  datos_burgos.send();                                                           
+ document.getElementById("parrafolog").innerHTML += "Request for Burgos sent!<br>";   
  datos_tokyo.send();
+ document.getElementById("parrafolog").innerHTML += "Request for Tokyo sent!<br>";   
 }                                                                               
                                                                                 
 function print_weather_in_html_webpage() {                                      
@@ -414,10 +427,6 @@ function print_error_in_html_webpage() {
   document.getElementById("parrafoerrores").innerHTML += "Ups, hubo un error descargando info acerca de la ciudad de: " + this.nombrepueblo + ".<br>";
 }                           
   </pre>
-  
-  <h2>Example 2: dictionary</h2>
-  For example, this one returns a definition of the word computer in english: <b>https://api.dictionaryapi.dev/api/v2/entries/en/computer</b>
-
 
 </body>
 </html>
