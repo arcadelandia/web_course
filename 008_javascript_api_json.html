@@ -28,9 +28,67 @@ way to do this is by using a file format called JSON.
 </p>
 <p>
 JSON is short for Javascript Object Notation, and it was designed to make it easy for Javascript
-programs to deal with website data. In theory, a Javascript program can download a HTML page in the
-same way as a human would, but HTML is a format designed to structure data for humans; JSON attempts
-to structure data for computers.
+programs to deal with website data. For example, this is a JSON file that could be used to describe
+the contents of a photo:
+ <pre>
+ [ 
+   {"cosa": "manzana", "donde": "102px,20px", "color": "rojo"}, 
+   {"cosa": "libro", "donde": "700px,500px", "tapadura": "parece serlo"}, 
+   {"cosa": "gato", "donde": "200px,40px", "pelo": "gris con rayas"}, 
+ ]
+ </pre>
+ The same contents could be describned with an HTML file like this one:
+ <pre>
+  <p>
+   Hay un gato de pelo gris con rayas hacia la mitad de la foto, centrado en las 
+   coordenadas 200,400 medida en pixels desde
+   la esquina inferior izquierda. Hay una manzana roja en 102,20, y un libro que parece
+   de tapa dura en las coordenadas 700,500.
+  </p>
+ </pre>
+ The previous HTML file is perhaps easier to read for a human rather than the JSON file. THe JSON file, however,
+ has a very specific format, clearly delineating each element, and each attribure of each element, so it is
+  used more often than HTML. However, another HTML file like the following could also be used to clearly
+  convey the same information:
+  <pre>
+   <table>
+     <thead>
+      <tr> 
+        <th>Nombre</th>
+        <th>Coordenadas</th>
+        <th>Descripcion</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>Manzana</td>
+       <td>102px,20px</td>
+       <td>Color rojo</td>
+      </tr>
+      <tr>
+       <td>Libro</td>
+       <td>700px,500px</td>
+       <td>Parece de tapa dura</td>
+      </tr>
+      <tr>
+       <td>Gato</td>
+       <td>200px,40px</td>
+       <td>Gris con rayas</td>
+      </tr>
+     </tbody>
+   </table>
+  </pre>
+In theory, a Javascript program could download whatever data it needs
+in HTML format, but HTML is a format designed mainly for human consumption; JSON attempts to be easier
+to handle by programs because it forces the existence of semantic labels (those semantic labels would
+ be the words <em>cosa, donde, color, pelo, tapadura</em>). 
+whereas the HTML format does not force the existence of those labels, as we saw in the first HTML file 
+above, which uses a paragraph to use Spanish to describe the photo, and it would be hard for a program
+  to extract the number of objects and their characteristics from the analysis of the Spanish text. 
+  The second HTML file, in contrast, already has those labels, and it wouild be as easy to process
+  for a computer as the JSON file. Anyway, JSON is more often found in the Internet than HTML
+  as a file format to transfer information from a computer program to another, so we
+  will focus on JSON in this lesson.
 </p>
 <p>
 The rules to make information easy to access for a computer are usually  
