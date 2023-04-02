@@ -39,44 +39,44 @@ the contents of a photo:
  </pre>
  The same contents could be describned with an HTML file like this one:
  <pre>
-  <p>
+  &lt;p&gt;
    Hay un gato de pelo gris con rayas hacia la mitad de la foto, centrado en las 
    coordenadas 200,400 medida en pixels desde
    la esquina inferior izquierda. Hay una manzana roja en 102,20, y un libro que parece
    de tapa dura en las coordenadas 700,500.
-  </p>
+  &lt;/p&gt;
  </pre>
  The previous HTML file is perhaps easier to read for a human rather than the JSON file. THe JSON file, however,
  has a very specific format, clearly delineating each element, and each attribure of each element, so it is
   used more often than HTML. However, another HTML file like the following could also be used to clearly
   convey the same information:
   <pre>
-   <table>
-     <thead>
-      <tr> 
-        <th>Nombre</th>
-        <th>Coordenadas</th>
-        <th>Descripcion</th>
-      </tr>
-     </thead>
-     <tbody>
-      <tr>
-       <td>Manzana</td>
-       <td>102px,20px</td>
-       <td>Color rojo</td>
-      </tr>
-      <tr>
-       <td>Libro</td>
-       <td>700px,500px</td>
-       <td>Parece de tapa dura</td>
-      </tr>
-      <tr>
-       <td>Gato</td>
-       <td>200px,40px</td>
-       <td>Gris con rayas</td>
-      </tr>
-     </tbody>
-   </table>
+   &lt;table&gt;
+     &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Nombre&lt;/th&gt;
+        &lt;th&gt;Coordenadas&lt;/th&gt;
+        &lt;th&gt;Descripcion&lt;/th&gt;
+      &lt;/tr&gt;
+     &lt;/thead&gt;
+     &lt;tbody&gt;
+      &lt;tr&gt;
+       &lt;td&gt;Manzana&lt;/td&gt;
+       &lt;td&gt;102px,20px&lt;/td&gt;
+       &lt;td&gt;Color rojo&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+       &lt;td&gt;Libro&lt;/td&gt;
+       &lt;td&gt;700px,500px&lt;/td&gt;
+       &lt;td&gt;Parece de tapa dura&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+       &lt;td&gt;Gato&lt;/td&gt;
+       &lt;td&gt;200px,40px&lt;/td&gt;
+       &lt;td&gt;Gris con rayas&lt;/td&gt;
+      &lt;/tr&gt;
+     &lt;/tbody&gt;
+   &lt;/table&gt;
   </pre>
 In theory, a Javascript program could download whatever data it needs
 in HTML format, but HTML is a format designed mainly for human consumption; JSON attempts to be easier
