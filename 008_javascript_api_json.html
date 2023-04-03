@@ -179,22 +179,22 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   </p>
 <p>
   Many websites that offer JSON data often ask for payment, others are free; in many cases, you need to register in the website itself before
-  being able to access the JSON data. A typical way to register is by entering an email and then receiving in the emnail 
+  being able to access the JSON data. A typical way to register is by entering an email and then receiving in the email 
   what is called an API key, which is essentially a password that allows to access the services of the website. For example, 
   imagine that the license plate tracker website asks for registration before giving the information (with or witout payment) and 
   sends to our email the API key <em>wq345rfds9dh</em> (API keys tend to look like random data, and they tend to be longer than in this example); each
   registered user will receive a different API key that will allow the website owner to keep track of how often each user
-  uses the service; websites that ask for payment often charge monthly a credit card number provided by the user when regiatering the email, 
-  and the amount depends on how many times the API key has been used to connect to the servide.
+  uses the service; websites that ask for payment often charge monthly a credit card number provided by the user when registering the email, 
+  and the amount depends on how many times the API key has been used to connect to the service.
   The website will tell us how to use that API key to access the information. One common way is to append it to the URL that is used to
   access the browser like
   <pre>
   https://trackacar.com?licenseplate=ES123456ABC&apikey=wq345rfds9dh
   </pre>
  The above way to write needed pieces of information (in this example, license plate and api key) is called URL parameters. The name of the
-  website is written normally <em>https://trackacar.com</em>, and the start of the needed parameters are indicated by the interrogation sign <b>?</b>,
+  website is written normally <em>https://trackacar.com</em>, and the start of the needed parameters is indicated by the interrogation sign <b>?</b>,
   and then the parameters themselves are written separated by an ampersand <b>&</b> and each parameter is written with an equal sign <b>=</b>
-  separating the name of the parameter from its value. The ownwer of the website will tell us which names we need to use , and the format
+  separating the name of the parameter from its value. The owner of the website will tell us which names we need to use , and the format
   that we need to use for its values. For example, a hypothetical website tellig us the weather forecast for a given city for a given day
   could be in any of the following formats:
   <pre>
@@ -202,11 +202,13 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   https://www.favoriteweatherforecaster.com?city=burgos&country=spain&date=25/12/2034&apikey=213rfcvwvcewfg
   https://www.favoriteweatherforecaster.com?coordinates=42.35N3.7W&date=25/12/2034&apikey=213rfcvwvcewfg
   </pre>
-  
+  and the website will tell us which one of those, or any other, to use.
+  </p>
+  <p>
   Sometimes, instead of URL parameters, or in addition to URL parameters, the webiste where we are
-  registering will tell us that we need to use a HTTP header with some information: for example, that
+  registering will tell us that we need to use what is called a <b>HTTP header</b> with some information: for example, that
   the API key needs to be sent in a HTTP request header named <b>myapikey</b>, and whose value
-  must be the APIkey that we received in the email. We will see below how to do this using Javascript.
+  must be the API key that we received in the email. We will see below how to do this using Javascript.
   </p>
 
 <p>
@@ -215,7 +217,8 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   games, jobs, shopping, tracking, art, etc.
 </p>
 <p>  
-  One of the easiest ways to grab data from a website using Javascript is by means of something called a Javascript object.
+  One of the easiest ways to grab data from a website using Javascript is by means of something called a Javascript object,
+  which is very similar to a JSON object, but basically to be used inside a Javascript program.
   A Javascript object is a collection of data properties, also called fields, related to something that often
   is an object from the real world. For example, a car is an object, and we can create properties in it like
   number of doors, color, maximum speed, etc. Another example of a Javascript object can be a poem, whose
@@ -251,14 +254,14 @@ Many websites offer data in JSON format. Websites like these are intended to be 
 
 We can create objects ourselves, and also we can use special objects that are created by the browser.
 One of these special objects, called a XMLHttpRequest, makes it easy to download data from websites, 
-either with JSON content or nor. Its name comes from a kind of data named XML that we are not
+either with JSON content or in other file format. Its name comes from a kind of data named XML that we are not
 going to study, and that used to be popular years ago; most data is not XML anymore (for example,
 it is JSON, or HTML, or CSS, or Javascript, or images, or videos) but the name stuck; in addition, 
 the word HTTP is the name of the set of rules, or protocol, that web browsers use to download 
 data from any website. So, an XMLHttpRequest object is basically an object that allows us to make
 a request to download any kind of data from a website. Each XMLHttpRequest object has several properties
 that we do not need to care about other than make sure that are correctly setup, and we do that by
-writing something like <b>let datosdemiwebpreferida = new XMLHttpRequest()\;</b>, which declares
+writing something like <b>let datosdemiwebpreferida = new XMLHttpRequest()\;</b> when creating the object, which declares
 a XMLHttpRequest object ready to be used (in other words, we do that, instead of declaring something like
 <b>let datosdemiwebpreferida = {};</b> which would not create any of the needed properties). 
 We can add as many additional properties to the XMLHttpRequest object as we want.
@@ -267,15 +270,15 @@ We can add as many additional properties to the XMLHttpRequest object as we want
  Once we do the request, there are several possibilities: either it
  will be successful and the requested information is downloaded successfully, or the webserver will tell us that
  the information is not accessible (for any reason), or the connection attempt fails (because it takes too long,
- oir because the user decides to cancel the connection hitting the ESC key or the cross button in the menu).
+ or because the user decides to cancel the connection hitting the ESC key or the cross button in the menu).
  If the download is successful, the browser will call the function whose name we store in a property called
  <b>onload</b> in the XMLHttpRequest object, and will have the data available in a property called <b>response</b>,
  the XMLHttpRequest object can be accesed in that function by means of the word <b>this</b>.
  If the connection succeeds but the info is not available, the browser will call the 
- function whose name we store in the <b>onerror</b> property. If the connection succeeds but the info is not available, 
+ function whose name we store in the <b>onerror</b> property. If the connection does not succeed, 
  the browser will call the function whose name we store in a property called <b>onabort</b>. 
  While the connection is still pending (this is, has started but not yet finished), the browser will call
- the function whose name we store in the <b>onmprogress</b> property. Let's see these with an example:
+ each few seconds the function whose name we store in the <b>onmprogress</b> property, typically to reassure the user that the attempt is still ongoing. Let's see these with an example:
   </p>
 <p>
 Let's imagine that we want to connect to a website named <em>https://datosdemipueblofavorito.com/blablabla</em>,
@@ -287,10 +290,10 @@ Let's imagine that we want to connect to a website named <em>https://datosdemipu
  In order to access this website, we register in it, and the registration process sends us instructions by email
  telling us that we need an apikey to access the data, and the
  apikey value is <em>qwerty123456ZX</em>, and that we need to send that apikey inside a URL parameter named <b>apikey</b>, and that we also 
- need to include a second parameter with the name of to include a HTTP request header whose name needs to be <b>campoQueMiWebMeDiceQueTengoQuePoner</b> whose value
- needs to be <b>Loquesea</b>, and another HTTP request header whose name needs to be <b>otroCampoQueMiWebMeDiceQueTengoQuePoner</b>
- and whose value needs to be <b>OtraCosa</b>. Then, we want to log in a paragraph named <b>parrafo_de_incidencias</b> all relevant
- information related to any error and to sucess of the data download. And, if the download is successful, we want to
+ need to include a HTTP request header whose name needs to be <b>cabeceraUno</b> whose value
+ needs to be <b>Loquesea</b>, and another HTTP request header whose name needs to be <b>csegundaCabecera</b>
+ and whose value needs to be <b>OtraCosa</b>. We want to log in a paragraph named <b>parrafo_de_incidencias</b> all relevant
+ information related to any error or to the eventual success of the data download. And, if the download is successful, we want to
  show all the data received (this is, the entire JSON file) in a paragraph named <b>parrafo_de_contenido</b>, and
  the temperature and wind speed in a paragraph called <b>parrafo_de_temperatura_y_viento</b>.
  The following Javascript code does that for the town of Madrid, Spain:
@@ -302,8 +305,8 @@ Let's imagine that we want to connect to a website named <em>https://datosdemipu
   cosas.onprogress = cosas_a_hacer_regularmente_mientras_descargo;
   cosas.onabort = cosas_a_hacer_si_hay_fallos_imprevistos;
   cosas.open("GET", "https://paginawebpreferida.com/blablabla?apikey=qwerty123456ZX&nombrepueblo=Madrid&nombrepais=Spain");
-  cosas.setRequestHeader("campoQueMiWebMeDiceQueTengoQuePoner", "Loquesea");
-  cosas.setRequestHeader("otroCampoQueMiWebMeDiceQueTengoQuePoner", "OtraCosa");
+  cosas.setRequestHeader("cabecerUno", "Loquesea");
+  cosas.setRequestHeader("segundaCabecera", "OtraCosa");
   cosas.ciudad = "Madrid"; // we create this property, in order to store the name of the city we ask for, in whatever format we prefer
   cosas.pais = "Espanha"; //  we create this property, in order to store the name of the country we ask for, in whatever format we prefer
   // the request has been prepared, so now we can send it
@@ -334,12 +337,12 @@ the name of town, and then the name of country; we could have written those in a
   If, as in this example, we know that the response is JSON data, we can create a Javascript object that makes it easy to work with
   it by using a function called JSON.parse in the following way;<b>let tempyviento = JSON.parse(this.response);</b>. Once
 that is done, we can access the value of any property in the downloaded JSON data by using a dot and the name of that property:
-for example, the expression <b>tempyviento.temperatura</b> has a value of <b>20C</b>, and <b>tempyviento.temperatura</b> has
+for example, the expression <b>tempyviento.temperatura</b> has a value of <b>20C</b>, and <b>tempyviento.velocidadviento</b> has
 a value of <b>5km/h</b>.
   </p>
 
 <p>
-  In Javascript, We can have different downloads from the same or diferent websites at the same time. If this
+  In Javascript, we can have different downloads from the same or diferent websites at the same time. If this
  is the case, there is no way to know in advance which of those will finish earlier, or which ones
  will fail; even if we send them in a given order that we control in the Javascript code by means of the
  <b>miobject.send();</b> function, due to Internet congestion, and to the fact
@@ -347,12 +350,13 @@ a value of <b>5km/h</b>.
   websites, or to different sizes of different downloads, those requests can finish in any order. In this case,
   when the browser calls the corresponding <b>onload,onerror,onprogress,onabort</b> functions, 
  it may be confusing to know which download is which. To help distinguishing them when they finish,
-  we can either use a different function for each one or, to save typing, we can reuse the same function
-  for all our dowloads; in this last case, we need a way to distinguish which of the downloads is the
-  one that finished; one easy way to do this is to add a properties to each XMLHttpRequest object with 
+  we can use a different function for each one. However, this involves creating a lot of functions (for example, 
+  if we download 100 files, we need 100 functions, and that is a lot of typing). To save typing, we can reuse the same function
+  for all our dowloads; in this case, we need a way to distinguish which of the downloads is the
+  one that finished or failed; one easy way to do this is to add a property to each XMLHttpRequest object with 
  a unique identifier that allows us to recognize it later. E.g.,
   imagine that there is a website that allows us to get information about the weather in sone town by calling
-  <b>https://mitiempometeorologifavorito.com/NAMEOFTOWN</b>, where we put the name of the town at the end. And it
+  <b>https://mitiempometeorologicofavorito.com/NAMEOFTOWN</b>, where we put the name of the town at the end. And it
   returns information in the following JSON format:
   <pre>
   {"humidity": "40%", "temperature": "28C", "riskOfFire": "medium to high"}
