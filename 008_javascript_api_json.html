@@ -97,7 +97,7 @@ usually called GUI (short for graphical user interface). Thus, the
 rules to access information via JSON are called a JSON API.
 </p>
 <p>
-Most JSON files are used to represent sequences of attributes with values (foe example, weight and 40kg), 
+Most JSON files are used to represent sequences of attributes with values (for example, attribute name is weight, and attribute value is 40kg), 
 which often represent
 objects from the real world. As a result, these collections of attributes with values are called JSON objects.
 A JSON attribute together with its value is also called a JSON property. For example, we can represent a given orange fruit
@@ -129,7 +129,7 @@ between computers, the semantically meaningless spaces are usually eliminated.
 JSON objects are represented betweeen brackets, with their properties separated by commas, and where
 each property has an attribute name written between quotes, and an attribute value that either
 is an integer name (which may be written without quotes), or a piece of information of any kind (which
-must be written inside quotes), or a boolean valuie that may be <b>true</b> or <b>false</b> (without quotes),
+must be written inside quotes), or a boolean value that may be <b>true</b> or <b>false</b> (without quotes),
 or the value <b>null</b> (without quotes), which means that that specific property has an empty value (whatever
 that means is up to interpretation according to the rules used by the website that creates the JSON object).
 </p>
@@ -186,8 +186,7 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   registered user will receive a different API key that will allow the website owner to keep track of how often each user
   uses the service; websites that ask for payment often charge monthly a credit card number provided by the user when registering the email, 
   and the amount depends on how many times the API key has been used to connect to the service.
-  The website will tell us how to use that API key to access the information. One common way is to append it to the URL that is used to
-  access the browser like
+  The website will tell us how to use that API key to access the information. One common way is to append it to the URL, like this:
   <pre>
   https://trackacar.com?licenseplate=ES123456ABC&apikey=wq345rfds9dh
   </pre>
@@ -205,7 +204,7 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   and the website will tell us which one of those, or any other, to use.
   </p>
   <p>
-  Sometimes, instead of URL parameters, or in addition to URL parameters, the webiste where we are
+  Sometimes, instead of URL parameters, or in addition to URL parameters, the website where we are
   registering will tell us that we need to use what is called a <b>HTTP header</b> with some information: for example, that
   the API key needs to be sent in a HTTP request header named <b>myapikey</b>, and whose value
   must be the API key that we received in the email. We will see below how to do this using Javascript.
@@ -253,50 +252,58 @@ Many websites offer data in JSON format. Websites like these are intended to be 
   </pre>
 
 We can create objects ourselves, and also we can use special objects that are created by the browser.
-One of these special objects, called a XMLHttpRequest, makes it easy to download data from websites, 
-either with JSON content or in other file format. Its name comes from a kind of data named XML that we are not
+One of these special objects, called a <b>XMLHttpRequest</b> object, makes it easy to download data from websites, 
+be it either data in a JSON format, or in HTML format, or in any other file format. Its name comes from a kind of data named XML that we are not
 going to study, and that used to be popular years ago; most data is not XML anymore (for example,
 it is JSON, or HTML, or CSS, or Javascript, or images, or videos) but the name stuck; in addition, 
 the word HTTP is the name of the set of rules, or protocol, that web browsers use to download 
 data from any website. So, an XMLHttpRequest object is basically an object that allows us to make
 a request to download any kind of data from a website. Each XMLHttpRequest object has several properties
 that we do not need to care about other than make sure that are correctly setup, and we do that by
-writing something like <b>let datosdemiwebpreferida = new XMLHttpRequest()\;</b> when creating the object, which declares
-a XMLHttpRequest object ready to be used (in other words, we do that, instead of declaring something like
+writing something like <b>let datosdemiwebpreferida = new XMLHttpRequest();</b> when creating the object, which creates
+in the computer memory a XMLHttpRequest object ready to be used (in other words, we do that, instead of declaring something like
 <b>let datosdemiwebpreferida = {};</b> which would not create any of the needed properties). 
 We can add as many additional properties to the XMLHttpRequest object as we want.
 </p>
 <p>
  Once we do the request, there are several possibilities: either it
- will be successful and the requested information is downloaded successfully, or the webserver will tell us that
+ will be successful so the requested information is downloaded successfully, or the webserver will tell us that
  the information is not accessible (for any reason), or the connection attempt fails (because it takes too long,
- or because the user decides to cancel the connection hitting the ESC key or the cross button in the menu).
+ or because the user decides to cancel the connection hitting the ESC key or the cross button in the browser menu, or
+ something similar).
  If the download is successful, the browser will call the function whose name we store in a property called
- <b>onload</b> in the XMLHttpRequest object, and will have the data available in a property called <b>response</b>,
- the XMLHttpRequest object can be accesed in that function by means of the word <b>this</b>.
+ <b>onload</b> inside the XMLHttpRequest object, and will have the data available in a property called <b>response</b>;
+ the XMLHttpRequest object can be accessed in that function by means of the word <b>this</b>.
  If the connection succeeds but the info is not available, the browser will call the 
  function whose name we store in the <b>onerror</b> property. If the connection does not succeed, 
  the browser will call the function whose name we store in a property called <b>onabort</b>. 
  While the connection is still pending (this is, has started but not yet finished), the browser will call
- each few seconds the function whose name we store in the <b>onmprogress</b> property, typically to reassure the user that the attempt is still ongoing. Let's see these with an example:
+ each few seconds the function whose name we store in the <b>onmprogress</b> property, typically to allow the programmer
+ to reassure the user that the attempt is still ongoing by writing some message in the screen like "still downloading... wait a little more my friend". 
+ Let's see these with an example:
   </p>
 <p>
-Let's imagine that we want to connect to a website named <em>https://datosdemipueblofavorito.com/blablabla</em>,
- that returns a JSON file with weather data related to whatever town we indicate in the URL in two parameters that
+Let's imagine that we want to create a website that gives weather information about Madrid inside a nice, pretty page. To create
+ our website, we use the services of another weather website, already created by other people, accesible at the 
+ following URL: <em>https://datosdemipueblofavorito.com/blablabla</em>.
+ This website returns a JSON file with weather data related to whatever town we indicate in the URL in two parameters that
  must be named <b>nombrepueblo</b> and <b>nombrepais</b>. So, for example, if we call
- <em>https://datosdemipueblofavorito.com/blablabla?nombrepueblo=madrid&pais=spain</em>,
- , we receive a JSON file like this one:
+ <em>https://datosdemipueblofavorito.com/blablabla?nombrepueblo=madrid&nombrepais=spain</em>,
+ we receive a JSON file like this one:
  <b>{"temperatura": "20C", "velocidadviento": "5km/h", "diasseguidossinllover": 5, "prevision": "marejada fuerte"}</b>.
- In order to access this website, we register in it, and the registration process sends us instructions by email
+ JSON data can in theory be accessed in the browser by the users of our website, but it is typically too ugly for humans
+ to browse, so the goal of our website is to download the JSON and present it in a prettier way.
+ In order to access the weather website, we register in it, and the registration process sends us instructions by email
  telling us that we need an apikey to access the data, and the
  apikey value is <em>qwerty123456ZX</em>, and that we need to send that apikey inside a URL parameter named <b>apikey</b>, and that we also 
  need to include a HTTP request header whose name needs to be <b>cabeceraUno</b> whose value
- needs to be <b>Loquesea</b>, and another HTTP request header whose name needs to be <b>csegundaCabecera</b>
- and whose value needs to be <b>OtraCosa</b>. We want to log in a paragraph named <b>parrafo_de_incidencias</b> all relevant
- information related to any error or to the eventual success of the data download. And, if the download is successful, we want to
- show all the data received (this is, the entire JSON file) in a paragraph named <b>parrafo_de_contenido</b>, and
- the temperature and wind speed in a paragraph called <b>parrafo_de_temperatura_y_viento</b>.
- The following Javascript code does that for the town of Madrid, Spain:
+ needs to be <b>Loquesea</b>, and another HTTP request header whose name needs to be <b>segundaCabecera</b>
+ and whose value needs to be <b>OtraCosa</b>. When creating our webpage, we want to create a paragraph whose id is <b>parrafo_de_incidencias</b> 
+ and where we want to write all relevant information related to any error or to the eventual success of the data download from the weather website. 
+ And, if the download is successful, we want to show all the data received (this is, the entire JSON file) in a paragraph whose id is
+ <b>parrafo_de_contenido</b>, and also the temperature and wind speed in a paragraph called <b>parrafo_de_temperatura_y_viento</b>.
+ When we create our website, apart from the HTML file with the above mentioned paragraphs, we will use a Javascript file
+ with the following Javascript code:
   <pre>
   let cosas = new XMLHttpRequest();
   // now we prepare the request
@@ -335,8 +342,9 @@ the name of town, and then the name of country; we could have written those in a
   When we receive a response, we can access its data is by means of <b>this.response</b>.
   The size of the response itself, in bytes, can be accessed with <b>this.response.length</b>.
   If, as in this example, we know that the response is JSON data, we can create a Javascript object that makes it easy to work with
-  it by using a function called JSON.parse in the following way;<b>let tempyviento = JSON.parse(this.response);</b>. Once
-that is done, we can access the value of any property in the downloaded JSON data by using a dot and the name of that property:
+  it by using a function called <b>JSON.parse</b>, by creating a variable with the name that we choose (e.g., tempyviento)
+in the following way;<b>let tempyviento = JSON.parse(this.response);</b>. Once
+this is done, we can access the value of any property in the downloaded JSON data by using a dot and the name of that property:
 for example, the expression <b>tempyviento.temperatura</b> has a value of <b>20C</b>, and <b>tempyviento.velocidadviento</b> has
 a value of <b>5km/h</b>.
   </p>
@@ -344,18 +352,17 @@ a value of <b>5km/h</b>.
 <p>
   In Javascript, we can have different downloads from the same or diferent websites at the same time. If this
  is the case, there is no way to know in advance which of those will finish earlier, or which ones
- will fail; even if we send them in a given order that we control in the Javascript code by means of the
- <b>miobject.send();</b> function, due to Internet congestion, and to the fact
+ will fail (and this even though we control the order in which we send them them): due to Internet congestion, and to the fact
   that sometimes websites process requests out of order, or to the fact that we are accessing different
   websites, or to different sizes of different downloads, those requests can finish in any order. In this case,
   when the browser calls the corresponding <b>onload,onerror,onprogress,onabort</b> functions, 
  it may be confusing to know which download is which. To help distinguishing them when they finish,
   we can use a different function for each one. However, this involves creating a lot of functions (for example, 
   if we download 100 files, we need 100 functions, and that is a lot of typing). To save typing, we can reuse the same function
-  for all our dowloads; in this case, we need a way to distinguish which of the downloads is the
+  for all our downloads; in this case, we need a way to distinguish which of the downloads is the
   one that finished or failed; one easy way to do this is to add a property to each XMLHttpRequest object with 
  a unique identifier that allows us to recognize it later. E.g.,
-  imagine that there is a website that allows us to get information about the weather in sone town by calling
+  imagine that there is a website that allows us to get information about the weather in some town by calling
   <b>https://mitiempometeorologicofavorito.com/NAMEOFTOWN</b>, where we put the name of the town at the end. And it
   returns information in the following JSON format:
   <pre>
@@ -363,7 +370,8 @@ a value of <b>5km/h</b>.
   </pre>
   
   Then, if we want to get the temperature from Arcade and Soutomaior and plot it in a paragraph whose id
-  is <em>parrafo</em>, then we can use one of the two following styles of Javascript code. The first is this one:
+  is <em>parrafo</em>, then we can use one of the two following styles of Javascript code. The first alternative for the
+Javascript code is this one:
   
   <pre>
   let pueblo1 = new XMLHttpRequest();
@@ -384,14 +392,20 @@ a value of <b>5km/h</b>.
    document.getElementById("parrafo").innerHTML += "Recibida info de Soutomaior. La temperatura es " + datos.temperature;
   }
   </pre>
-  The second is this other one, where the same function is used for both downloads, and the information
-  about the town is inside a field in the XMLHttpRequest object that we chose to name <b>nombreDelSitio</b>:
+Here, we used a function for the arcade download, and another function for the SOutomaior download; in the arcade function,
+we write the name <b>Arcade</b> in the HTML paragraph, and same for Soutomaior.
+
+  The second altyernative style for the Javascript code is the following one, where now the same function is used for both downloads (now named
+<em>cosas_a_hacer_al_recibir_datos</em>). Since that function will be run when any of those downloads finishes, 
+and we want to write the name of the town (Arcade or SOutomaior) we need to know which doenload was it, the Arcade or the Soutomaior one,
+inside the function. We will use a variable named <em>nombredelsitio</em> inside the XMLHttpRequest object to store that, and we create
+it <b>before</b> sending the request:
   
   <pre>
   let pueblo1 = new XMLHttpRequest();
   let pueblo2 = new XMLHttpRequest();
-  pueblo1.nombreDelSitio = "Arcade";
-  pueblo2.nombreDelSitio = "Soutomaior";
+  pueblo1.nombreDelSitio = "Arcade";      // we need to add this variable to distinguish the request from others
+  pueblo2.nombreDelSitio = "Soutomaior";  // idem
   pueblo1.onload = cosas_a_hacer_al_recibir_datos;
   pueblo2.onload = cosas_a_hacer_al_recibir_datos;
   pueblo1.open("GET", "https://mitiempometeorologifavorito.com/arcade")
@@ -406,9 +420,10 @@ a value of <b>5km/h</b>.
   </pre>
   
 As we can see, in this second style, we are reusing the same onload function for both web requests. As a note, we can see
-that we chose not to do anything for the onerror,onabort, and onprogress functions in order to simplifyt the example; that means
-that, if any download fails, we will not react in any way (this is in general not recommended because it is often better to
-tell the user if any error happened).
+that we chose not to do anything for the onerror,onabort, and onprogress functions in order to simplify this particular example; that means
+that, if any download fails, we will not be able to react in any way inside the code to, for example, show an error message to the
+user. In general, it is always recommended to use those functions in order to be able to inform the user of any error condition that
+may appear.
   
 <h1>Exercise</h1>
 
@@ -435,62 +450,62 @@ tell the user if any error happened).
   </pre>
   <h2>File named api.js</h2>
   <pre>
-    setTimeout(download_weather, 1000);                                             
+setTimeout(download_weather, 1000);                                             
 function download_weather() {                                                   
                                                                                 
- setTimeout(download_weather, 10000);                                           
+     setTimeout(download_weather, 10000);                                           
                                                                                 
- document.getElementById("parrafolog").innerHTML += "Preparing requests...<br>";   
+     document.getElementById("parrafolog").innerHTML += "Preparing requests...<br>";   
                                                                                 
- let datos_london = new XMLHttpRequest();                                       
- let datos_burgos = new XMLHttpRequest();                                       
- let datos_tokyo = new XMLHttpRequest();                                        
+     let datos_london = new XMLHttpRequest();                                       
+     let datos_burgos = new XMLHttpRequest();                                       
+     let datos_tokyo = new XMLHttpRequest();                                        
                                                                                 
- datos_london.nombrepueblo = "London";                                          
- datos_burgos.nombrepueblo = "Burgos";                                          
- datos_tokyo.nombrepueblo = "Tokyo";                                            
+     datos_london.nombrepueblo = "London";                                          
+     datos_burgos.nombrepueblo = "Burgos";                                          
+     datos_tokyo.nombrepueblo = "Tokyo";                                            
                                                                                 
- datos_london.onload = print_weather_in_html_webpage;                           
- datos_burgos.onload = print_weather_in_html_webpage;                           
- datos_tokyo.onload = print_weather_in_html_webpage;                            
+     datos_london.onload = print_weather_in_html_webpage;                           
+     datos_burgos.onload = print_weather_in_html_webpage;                           
+     datos_tokyo.onload = print_weather_in_html_webpage;                            
                                                                                  
- datos_london.onerror = print_error_in_html_webpage;                            
- datos_burgos.onerror = print_error_in_html_webpage;                            
- datos_tokyo.onerror = print_error_in_html_webpage;                             
+     datos_london.onerror = print_error_in_html_webpage;                            
+     datos_burgos.onerror = print_error_in_html_webpage;                            
+     datos_tokyo.onerror = print_error_in_html_webpage;                             
                                                                                 
- datos_london.open("GET", "https://goweather.herokuapp.com/weather/London");
- datos_burgos.open("GET", "https://goweather.herokuapp.com/weather/Burgos");
- datos_tokyo.open("GET", "https://goweather.herokuapp.com/weather/Tokyo");
+     datos_london.open("GET", "https://goweather.herokuapp.com/weather/London");
+     datos_burgos.open("GET", "https://goweather.herokuapp.com/weather/Burgos");
+     datos_tokyo.open("GET", "https://goweather.herokuapp.com/weather/Tokyo");
        
- document.getElementById("parrafolog").innerHTML += "Sending requests...<br>";   
- datos_london.send();                                                           
- document.getElementById("parrafolog").innerHTML += "Request for London sent!<br>";   
- datos_burgos.send();                                                           
- document.getElementById("parrafolog").innerHTML += "Request for Burgos sent!<br>";   
- datos_tokyo.send();
- document.getElementById("parrafolog").innerHTML += "Request for Tokyo sent!<br>";   
+     document.getElementById("parrafolog").innerHTML += "Sending requests...<br>";   
+     datos_london.send();                                                           
+     document.getElementById("parrafolog").innerHTML += "Request for London sent!<br>";   
+     datos_burgos.send();                                                           
+     document.getElementById("parrafolog").innerHTML += "Request for Burgos sent!<br>";   
+     datos_tokyo.send();
+     document.getElementById("parrafolog").innerHTML += "Request for Tokyo sent!<br>";   
 }                                                                               
                                                                                 
 function print_weather_in_html_webpage() {                                      
-  // The word "this" means the XMLHttpRequest object that led to this function being calledd
-  let datosjson = JSON.parse(this.response) // convertimos el json descargado a algo que Javascript entiende
-  let temperatura = datosjson.temperature; // la temperatura, segun nos devuelve la web en el json
-  let velocidadviento = datosjson.wind; // la fuerza de Eolo                    
-  let descripcion = datosjson.description; // esto es claro, soleado, cubierto, etc
+     // The word "this" means the XMLHttpRequest object that led to this function being calledd
+     let datosjson = JSON.parse(this.response) // convertimos el json descargado a algo que Javascript entiende
+     let temperatura = datosjson.temperature; // la temperatura, segun nos devuelve la web en el json
+     let velocidadviento = datosjson.wind; // la fuerza de Eolo                    
+     let descripcion = datosjson.description; // esto es claro, soleado, cubierto, etc
                                                                                 
-  // esto es para crear una cadena con la fecha y hora actuales                 
-  let fechayhora = new Date().toLocaleString();                                 
-                                                                                
-  document.getElementById("parrafotiempo").innerHTML += "The weather in " + this.nombrepueblo;
-  document.getElementById("parrafotiempo").innerHTML += " at time " + fechayhora + " is: ";
-  document.getElementById("parrafotiempo").innerHTML += "temperature: " + temperatura + ", ";
-  document.getElementById("parrafotiempo").innerHTML += "wind speed: " + velocidadviento + ", ";
-  document.getElementById("parrafotiempo").innerHTML += "description: " + descripcion + ". Punto pelota.";
-  document.getElementById("parrafotiempo").innerHTML += "<br>";                 
+     // esto es para crear una cadena con la fecha y hora actuales                 
+     let fechayhora = new Date().toLocaleString();                                 
+                                                                                  
+     document.getElementById("parrafotiempo").innerHTML += "The weather in " + this.nombrepueblo;
+     document.getElementById("parrafotiempo").innerHTML += " at time " + fechayhora + " is: "; 
+     document.getElementById("parrafotiempo").innerHTML += "temperature: " + temperatura + ", ";
+     document.getElementById("parrafotiempo").innerHTML += "wind speed: " + velocidadviento + ", ";
+     document.getElementById("parrafotiempo").innerHTML += "description: " + descripcion + ". Punto pelota.";
+     document.getElementById("parrafotiempo").innerHTML += "<br>";                 
 }                                                                               
                                                                                 
 function print_error_in_html_webpage() {                                        
-  document.getElementById("parrafoerrores").innerHTML += "Ups, hubo un error descargando info acerca de la ciudad de: " + this.nombrepueblo + ".<br>";
+     document.getElementById("parrafoerrores").innerHTML += "Ups, hubo un error descargando info acerca de la ciudad de: " + this.nombrepueblo + ".<br>";
 }                           
   </pre>
 
