@@ -101,9 +101,9 @@ france.png, etc.)
 If we want to show the image named spain.png from the file index.html,
 we should not write
 </p>
-<p>
+<pre>
 &lt;img href="spain.png"&gt;
-</p>
+</pre>
 <p>
 because the browser will
 try to find the image inside the folder where index.html is; however,
@@ -111,9 +111,9 @@ as the image is not there (it is inside the multimedia folder instead)
 the browser will fail, and the image will not be shown to the user.
 Instead, we need to write
 </p>
-<p>
+<pre>
 &lt;img href="multimedia/spain.png"&gt;
-</p>
+</pre>
 <p>
 in order to indicate that the image is inside a folder named multimedia.
 </p>
@@ -122,9 +122,9 @@ When writing the file named spain.html in the folder named html,
 if we want to show the image called spain.png (which is located
 in multimedia/spain.png) , we should not write
 </p>
-<p>
+<pre>
 &lt;img href="multimedia/spain.png"&gt;
-</p>
+</pre>
 <p>
 because the browser will try to locate a folder named multimedia
 inside the html folder, and inside it to locate the image itself;
@@ -134,9 +134,9 @@ the html folder: this is, the browser needs to go up one level
 and there go to the multimedia folder, where the image is located.
 That is written as
 </p>
-<p>
+<pre>
 &lt;img href="../multimedia/spain.png"&gt;
-</p>
+</pre>
 <p>
 The two dots mean to go up one level, and can be used as many times
 as needed. 
