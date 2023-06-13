@@ -99,21 +99,33 @@ france.png, etc.)
 </p>
 <p>
 If we want to show the image named spain.png from the file index.html,
-we should not write 
-img href="spain.png" 
-, because the browser will
+we should not write
+</p>
+<p>
+&lt;img href="spain.png"&gt;
+</p>
+<p>
+because the browser will
 try to find the image inside the folder where index.html is; however,
 as the image is not there (it is inside the multimedia folder instead)
 the browser will fail, and the image will not be shown to the user.
 Instead, we need to write
-img href="multimedia/spain.png" 
+</p>
+<p>
+&lt;img href="multimedia/spain.png"&gt;
+</p>
+<p>
 in order to indicate that the image is inside a folder named multimedia.
 </p>
 <p>
 When writing the file named spain.html in the folder named html, 
 if we want to show the image called spain.png (which is located
 in multimedia/spain.png) , we should not write
-img href="multimedia/spain.png" 
+</p>
+<p>
+&lt;img href="multimedia/spain.png"&gt;
+</p>
+<p>
 because the browser will try to locate a folder named multimedia
 inside the html folder, and inside it to locate the image itself;
 however, there is no folder named multimedia inside the folder named
@@ -121,7 +133,11 @@ html; instead, the folder multimedia is inside the parent folder of
 the html folder: this is, the browser needs to go up one level
 and there go to the multimedia folder, where the image is located.
 That is written as
-img href="../multimedia/spain.png" 
+</p>
+<p>
+&lt;img href="../multimedia/spain.png"&gt;
+</p>
+<p>
 The two dots mean to go up one level, and can be used as many times
 as needed. 
 </p>
@@ -130,8 +146,15 @@ Idem for the CSS and Javascript files: if there is a css file
 named style.css inside the css folder, and the index.html
 wants to include it; the programmer will type the following
 in the index.html file:
-link rel="stylesheet" href="css/style.css"
+</p>
+<p>
+&lt;link rel="stylesheet" href="css/style.css"&gt;
+</p>
+<p>
 And inside the html/spain.html file we would write
-link rel="stylesheet" href="../css/style.css"
-  </body>
+</p>
+<p>
+&lt;link rel="stylesheet" href="../css/style.css"&gt;
+</p>
+</body>
 </html>
