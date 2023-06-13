@@ -1,0 +1,129 @@
+Th smallest website that we may create has a single HTML file. Ths 
+could be the case of a website that only has text, and no images, 
+no videos, no CSS files, nr Javascript files. The website programmer
+may decide to put all its textual content in a single HTML file.
+
+However, in general a website will have many files. One of these will
+be the main HTML file of the website (the one that users will initially
+access with their brower to access the website); in addition, there may
+be more HTML files. For example, a website about the countries of Europe
+may have a main HTML file and an additional HTML file for each country.
+In addition, each page may have images and/or videos. And in addition,
+the website may have a style described in one or more CSS files. In addition,
+the website may also have some kind of dynamic effect described in
+one or more JS files.
+
+When programmers create websites, they usually try to create a clean folder
+structure to neatly organize all those files needed for a website. One
+option is to put all archives in the same folder; however, this option
+is typically frowned upon because many programmers consider that it does
+not lead to a neat structure. As a result, some organization of files
+in folders is usually needed.
+
+Several conventions are common in order to organize the files of a website.
+Let's describe them:
+
+Filenames and folder names are usually lowercase; this applies to all parts 
+of the filemane,including the extension, if any is present. For example, 
+hello.html instead of HELLO.HTML or of Hello.html.
+
+Filenames usually only contain English alphabet characters (so no tildes or
+accents, etc). For example, espana.html instead of españa.html.
+
+The main HTML file of a website is called index.html, and is located at the
+top of the folder structure created for the website.
+
+The names of the folders should be given according to a logical pattern as chosen
+by the programmer; for example, a common one can be according to the function
+of the files in that folder: the HTML files may go in a folder named html,
+the images and videos and sound files may go 
+in a folder named multimedia, the CSS files in a folder called style,
+and the JS files in a folder named js, etc. The programmer has total liberty
+to choose these names, and to decide which files go where. The programmer
+also, if she prefers, can create subfolders inside any folder if she thinks
+that leads to an easier and neater folder structure: for example, if a website
+about countries of Europe has a multimedia folder where images and videos are
+put, but there are too many according to the tastes of the programmer (for example,
+because they are hard to visualize in a explorer window or anything else), 
+the programmer may create additional folders inside the multimedia folder, for
+example, one per country; so there would be a multimedia/spain folder where
+images for Spain would go, another folder named multimedia/france with
+files for France, etc.
+
+To sum up, a reasonable file and folder structure for any website is to
+have a index.html file that will be the entry point to the website, a 
+folder named style containing CSS files, a folder named js containing Javascript 
+files, and a multimedia folder containing images, audio and video files.
+
+When writing any HTML files, we will reference in various points the 
+HTML, CSS, and Javascript files that also form part of the website, and
+which are located in the folders and subfolders that we have created.
+The HTML files will be referenced from the href attribute of the
+a element; the CSS files will be referenced from the href attribute
+of the link element, and the Javascript files will be referenced
+from the src attribute of the script element. In addition, images
+and video (and audio) files are referenced from the src property of
+the img and source elements, respectively.
+
+When writing a given HTML file that contains references to any 
+other file inside our folder strucxture, we need to indicate
+the path that the browser needs to follow, from the folder where
+the HTML file being written is, to the folder where the desired
+file is.
+
+For example, imagine that we are writing a file named index.html
+that will be the main entry point to a website about Europe. Besides
+index.html, we have also created a folder named html to contain one HTML
+file for each country (spain,html, portugal.html, france.html), and 
+another folder named multimedia to contain
+an image file for each country in Europe (spain.png, portugal.png,
+france.png, etc.) 
+
+If we want to show the image named spain.png from the file index.html,
+we should not write 
+img href="spain.png" 
+, because the browser will
+try to find the image inside the folder where index.html is; however,
+as the image is not there (it is inside the multimedia folder instead)
+the browser will fail, and the image will not be shown to the user.
+Instead, we need to write
+img href="multimedia/spain.png" 
+in order to indicate that the image is inside a folder named multimedia.
+
+When writing the file named spain.html in the folder named html, 
+if we want to show the image called spain.png (which is located
+in multimedia/spain.png) , we should not write
+img href="multimedia/spain.png" 
+because the browser will try to locate a folder named multimedia
+inside the html folder, and inside it to locate the image itself;
+however, there is no folder named multimedia inside the folder named
+html; instead, the folder multimedia is inside the parent folder of
+the html folder: this is, the browser needs to go up one level
+and there go to the multimedia folder, where the image is located.
+That is written as
+img href="../multimedia/spain.png" 
+The two dots mean to go up one level, and can be used as many times
+as needed. 
+
+Idem for the CSS and Javascript files: if there is a css file
+named style.css inside the css folder, and the index.html
+wants to include it; the programmer will type the following
+in the index.html file:
+link rel="stylesheet" href="css/style.css"
+And inside the html/spain.html file we would write
+link rel="stylesheet" href="../css/style.css"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
