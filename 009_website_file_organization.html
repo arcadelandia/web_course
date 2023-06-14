@@ -101,16 +101,18 @@ the HTML file being written is, to the folder where the desired
 file is.
 </p>
 <p>
-For example, imagine that we are writing a file named index.html
+For example, imagine that we are writing a file named <em>index.html</em>
 that will be the main entry point to a website about Europe. Besides
-index.html, we have also created a folder named html to contain one HTML
-file for each country (spain,html, portugal.html, france.html), and 
-another folder named multimedia to contain
+<em>index.html</em>, we have also created a folder named <em>html</em> to contain one HTML
+file for each country (spain,html, portugal.html, france.html, etc.), and 
+another folder named <em>multimedia</em> to contain
 an image file for each country in Europe (spain.png, portugal.png,
 france.png, etc.) 
 </p>
 <p>
-If we want to show the image named spain.png from the file index.html,
+If we want to show the image named spain.png (that is inside the
+  <em>multimedia</em> folder) from the file <em>index.html</em> (that is NOT
+  inside the <em>multimedia</em> folder),
 we should not write
 </p>
 <pre>
@@ -118,9 +120,9 @@ we should not write
 </pre>
 <p>
 because the browser will
-try to find the image inside the folder where index.html is; however,
-as the image is not there (it is inside the multimedia folder instead)
-the browser will fail, and the image will not be shown to the user.
+try to find the image <em>spain.png</em> inside the folder where <em>index.html</em> is; however,
+the image is not there (it is inside the <em>multimedia</em> folder instead)
+so the browser will fail to find then image, and the image will not be shown to the user.
 Instead, we need to write
 </p>
 <pre>
@@ -130,20 +132,20 @@ Instead, we need to write
 in order to indicate that the image is inside a folder named multimedia.
 </p>
 <p>
-When writing the file named spain.html in the folder named html, 
-if we want to show the image called spain.png (which is located
-in multimedia/spain.png) , we should not write
+When writing the file named <em>france.html</em> in the folder named <em>html</em>, 
+if we want to show the image called <em>france.png</em> (which is located
+in the <em>multimedia</em> folder) , we should not write
 </p>
 <pre>
-&lt;img href="multimedia/spain.png"&gt;
+&lt;img href="multimedia/france.png"&gt;
 </pre>
 <p>
-because the browser will try to locate a folder named multimedia
-inside the html folder, and inside it to locate the image itself;
-however, there is no folder named multimedia inside the folder named
-html; instead, the folder multimedia is inside the parent folder of
-the html folder: this is, the browser needs to go up one level
-and there go to the multimedia folder, where the image is located.
+because the browser will try to locate the image inside a folder named <em>multimedia</em>
+inside the <em>html</em> folder (becasue that is the folder where the HTML file being written is);
+however, there is no folder named <em>multimedia</em> inside the folder named
+<em>html</em>; instead, the folder <em>multimedia</em> is inside the parent folder of
+the <em>html</em> folder; thus, in order to fidn the image, the browser needs to go up one level
+in the folder hierarchy, from there go to the multimedia folder, and grab the image from there
 That is written as
 </p>
 <pre>
@@ -154,19 +156,23 @@ The two dots mean to go up one level, and can be used as many times
 as needed. 
 </p>
 <p>
-Idem for the CSS and Javascript files: if there is a css file
-named style.css inside the css folder, and the index.html
-wants to include it; the programmer will type the following
-in the index.html file:
+Idem for the CSS and Javascript files: for example, if there is a CSS file
+named <em>colors.css</em> inside the <em>style</em> folder, and the <em>index.html</em>
+file wants to include it, the programmer will type the following
+in the <em>index.html</em> file:
 </p>
 <p>
-&lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;link rel="stylesheet" href="style/colors.css"&gt;
 </p>
 <p>
-And inside the html/spain.html file we would write
+Conversely, to include that same CSS file but this time from inside the <em>spain.html</em> 
+  file (which is inside the <em>html</em> folder) we would write
 </p>
 <p>
-&lt;link rel="stylesheet" href="../css/style.css"&gt;
+&lt;link rel="stylesheet" href="../style/colors.css"&gt;
 </p>
+  in order to indicate that the browser needs to go up one level from the folder ccontaining
+  the file being written (i.e., the two dots), and from there to go to the <em>style</em> folder, 
+  and there to grab the file.
 </body>
 </html>
