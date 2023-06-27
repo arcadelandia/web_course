@@ -91,8 +91,76 @@
     If, instead, you see an error saying that git has not been found, there
     was some installation error, and you will need to troubleshoot.
     
-    <h1>Using git in your computer</h1>
-   
+    <h1>Using git in your computer to manage a project from scratch</h1>
+   <ul>
+     <li>Create a folder named exercise1 in your Desktop. This will be the root folder of your example project for
+     this lesson.</li>
+     <li>Open the command prompt and change to that folder. (Alt+X, cmd, enter, and then cd Desktop/exercise1)</li>
+     <li>In order to create a project from scratch that uses git, you type <em>git init</em>. A folder named
+     <b>.git</b> will be created, possibly after asking you for your name and email (you do not need to put
+     anything real in those fields if you do not want; they will be shown to anybody you share your project
+     with later). You will not need to go inside that folder for any reason (but you can if you want, to take
+     a look at what is there), but it stores all information that git needs to do its job, so make sure that
+     you do not accidentally delete it (in the next lession we will see how to make backups of this .git folder
+     by means of online git managers such as the one in github.com, or the one in gitlab.com).</li>
+     <li>Create a file named index.html and write anything inside (for example, a couple of tags), and save the content.</li>
+     <li>Type in the command prompt, git status. This command shows a summary of what is going on
+     with the files in  your project. Initially, it will tell you that the file index.html is not being tracked, or something like
+     that. This means that git does not have any idea of whether it should manage that file (store any change you
+     may do in the future just in case you want to see it in a previous version later). To tell git to manage
+     that file, you type git add index.html. This adds the current state of the file to an area called the stage, contained
+     inside the .git folder (you do not need to worry about what happens inside the .git )</li>
+     <li>type git status again. It will tell you that it is tracking the file.</li>
+     <li>create, inside the exercise1 foldcer, another folder named blablabla, and inside it create a file named example.html.Write 
+     any information inside it (e.g., the doctype tag), and save it.</li>.
+     <li>from the command promt, and being in the Desktop/exercise1 folder, type git add blablabla/example.html</li>
+     <li>type git status again. It will tell you that it is tracking the example.html file.</li>
+     <li>If you want to create a snapshot of the work you just did in both files, you use the command git commit.
+       This takes whatever is in the stage area (where you put the files before via the git add command) and
+       writes it to its own records (stored inside the .git folder too) jointlyt with a textual explanation
+       written by you, which will be shown in the future to anybody that uses git to look at your project (which
+       is typically just you, or any collaborator that you may give your .git folder to). When you type git commit,
+     git will ask you to write a small text line with a brief descrioption of what you did (it is uisually
+       written starting with a verb in lowercase, directed to a hypothetical person doing the job of git, like*
+       create a firtst version of the webpage, or, create a skeleton of the webpage, or anything like
+       that, but can be whatever you want). In addition, a longer description can be also added, with
+     as many lines as you want, by leaving the second line as blank, and starting to write in the
+     third line. For example, it could be something like this.</li>
+     <pre>
+       add a first version of the webpage
+
+       I put only a skeleton index.html, plus a small exercise.html
+       inside a folder named blablabla because I did not have time
+       to put more information. When I return from lunch break, I will
+       write more stuff, and perhaps add more files.
+     </pre>
+     <li>Type git log. It will show you the version you have just created</li>
+     <li>Add more information to the index.html file, and save it</li>
+     <li>Also add more information to the exercise.html file, and save it</li>
+     <li>Type git diff. It will show you a series of differences with the previouslyu stored version of the project. This allows
+     you to quickly see what did you do since last version.</li>
+     <li>If you are happy with your work, and want to store it, do git status to have a list of all changed files, and
+     then do git add <filename> for all files that changed. Then, do git commit, and write a descriptive message.</li>
+     <li>Type git log, and observe your two versions (each version is called a commit in git parlance, so you will see
+     two commits; each commit has associated your descriptive message, and a unique id that looks like a string of 
+     letters and numbers (it is what is called a hexadecimal identifier).</li>
+     <li>Whenever you create a new file to add to your project, you add it via git add <file>, where file will
+     be prepended by the path to its containinmg folder if it is not in the root folder of the project.</file>
+    <li>If you want to remove a file, you type git rm <filename></li>
+    <li>After doing this during the development of any project, you will have many versions of your project, whose descriptions
+      can be checked by using git log. If you want to see the differences between the current version of your project and
+    an old one, you type git diff <hexadecimal ID of the version you want to compare to></li>
+     <li>If for any reason you lose the files of your project but you have the .git folder, you just need to copy that
+     folder somewhere, let`s say recoverfolder, and then go to recoverfolder and type <b>git reset --hard</b>. Youy
+     will recover the last version of the project, and continue working as usual like nothing happened.</li>
+     <li>Sometimes, git will complain about doing not being able to do something; usually that means that you ahve
+     not yet saved all files you are working with (in the text editor) or that the file that you have added to
+     the stage (for purposes of rpeparing it to be commited to the git history) has changed too. If that happens,
+     do not forget to save all your files, and then to do git add <file> for each file that yo uhave saved from
+     the text editor.</li>
+     <li>THere are many online tutorials about using git to manage programming projects, both in general, and
+     in Windows. Take a look at some targeted at beginners, in order to get a feeling for what people do with git.</li>
+   </ul>
     
 </body>
 </html>
