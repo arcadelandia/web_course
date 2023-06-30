@@ -8,61 +8,83 @@
     Programming involves creating text files; these text files are typically
     too long or complex to be created in a single programming session (e.g.,
     a couple of hours). For example, a given website could contain 10 HTML 
-    files, plus 2 CSS files, and 1 Js file, and it is usually unrealistic 
+    files, plus 2 CSS files, and 1 JS file, and it is usually unrealistic 
     to type them all in the same sitting session.
     </p>
     <p>
     Even if a given programming task (like creating a small website) was 
     small enough to create it in a single sitting, the programmer typically
-    does not like the first version that she has created, so it usually creates
+    does not like the first version that she has created, so she usually creates
     a second version containing modifications, or additions, or deletions,
     of elements of the first version; and this process is repeated several
     times until the programmer likes the final result. For example, the first
     version of a website about Europe may be just a couple of HTMLs containing
     the work of the programmer in his first two hours of work before she goes
     for lunch, then the second version adds more information to those HTML
-    files and contains, then the third adds some CSS files and the elements
-    inside the HTML files needed to point to the CSS files, and then the
-    fourth is the version existing when the programmer stops work for
-    the day, then the fifth eliminates some information that now the programmer
-    thinks is excessive, and then the sixth version eliminates typos, 
-    then the seventh version adds a menu in some place, etc. 
+    files, then the programmer goes for lunch, then the programmer returns from
+      lunch and creates the third version by perhaps adding some CSS files jointly
+      with the elements inside the HTML files needed to point to those CSS files, and then the
+    fourth add some more HTMLs and a JS, and that is the version when the programmer stops work for
+    the day, then the fifth session is created when the programmer returns 
+      for work the next day, and eliminates some information from the previous
+      versions that now the programmer thinks is excessive, and then the sixth version corrects typos, 
+    then the seventh version adds a menu in some place in an HTML place, etc. And then,
+      the programmer is happy with the results, after seven versions.
     </p>
     <p>
     When a programming project has several versions like in the previous
     example, is is oftem useful to have an easy way to refer to previous
     versions of the project: for example, it is common to work on a given
-    version during several days and then, due to a redesign, try to eliminate
-    whatever was done in the last versions in order to go back to a
+    version during several hours and then, due to a redesign, try to eliminate
+    whatever was done in the last version in order to go back to a
     previous one, and continue programming from there.
 </p>
     <p>
     It is also frequent to want to check a version that is several times previous
     to the current one, try some changes on top of that old one, and, if they
     are not satisfactory, discard them, and go back to the original, more advanced
-    version.
+    version; conversely, if that change is good, then to discard the original
+    latest version and instead use the new one. And after working on this last
+      version, maybe the programmer will change her mind again and want to return
+      to the original one. The work of the programmer involves creativity,
+      and, as all jobs that ionvolve creativity, is frequently subject to changes
+      in mind about the work done until that point; it is considered thus good
+      to have an easy way to go back and forth between old and new versions of work,
+      always being able to consult how many versions were created, and to use
+      any as base of more work.
 </p>
     <p>
-    In theory, if the programmer is well organized in her job, she can zip
-    all files of the project whenever she wants to create a version, and store
-    the zip file in a separate folder giving it a descriptive name; then, whenever she wants to recover
-    a previous version, she just grabs the corresponding zip file, unzips its
-    contents in the main project folder, and work from there. And, if she
+    In theory, if the programmer is well organized in her job, she can have
+      a folder in her computer dedicated to store backups of the programming project
+      folder (both folders separated from each other, perhaps both in the
+      Desktop folde of her computer). This nackup folder stores each version of that programming project
+      as a compressed file that containis all files found in the programming project folder; this
+      compresed file is typically a zip file with a descriptive name (for example, for
+      a website about Erope, we could have v1_skeleton.zip, v2_countries_capitals.zip,
+      v3_countries_climates.zip, v4_nice_style.zip, etc.). So, when she wants to backup the
+      current state of the website, she creates a zip file with the contents of the programming project folder,
+      gives it a descriptive name (e.g., v5_javascript_special_effects.zip),
+      and store it in the folder containing the zip files. Then, whenever she wants to recover
+    any version, she just grabs the corresponding zip file, unzips its
+    contents in the programming project folder, and work from there. And, if she
     ends up not being happy with whatever she does on top of that version,
-    she can simply erase them, go back to the folder of zip files and then
-    recover the zip file of the version she was working with, and continue from there.
-    Each zip file acts as a snapshot of the project at a specific point in time.
+    she can simply zip again the contents of the project folder (not erasing it, just
+      in case she changes her mind later and decides that she like it after all) and
+      store it in the zip folder with a descriptive name, and then recover the zip file of the version 
+      she prefers, and continue from there.
+    Thus, each zip file acts as a snapshot of the project at a specific point in time, whuch
+      comes handy when the programmer wants to recover a given old version.
     </p>
     <p>
-    However, although using sepearate zip files is an acceptable option,
-    the task of managing several versions of a project, being able to know
-    how many versions we produced, and to know how they differ (i.e., which
+    Although using separate zip files in a backup folder is an acceptable option to track programming work,
+    the task of managing several versions of a project (being able to know
+    how many versions we produced, and to know how they differ, which
     files they have, and which content are in those files, and the differences
-    between any tow versions) is so common, that programmers have created tools
-    specifically in charge of managing versions of groups of files used in programming projects.
-    These are called <b>version control</b> systems. Sometimes they are also called
-    source control because one of their main uses is to control versions 
-    of source code (source code being what programmers type), apart from
+    between any two versions) is so common in the daily life of programmers, that programmers have created tools
+    specifically to easily manage versions of the files used in programming projects.
+    These tools are called <b>version control</b> tools. Sometimes they are also called
+    <b>source control</b> tools because one of their main uses is to control versions 
+    of source code (source code being what programmers type), in addition to 
     other types of files like photos, audio files, video files, etc.
 </p>
     <p>
