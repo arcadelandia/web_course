@@ -23,7 +23,7 @@
     for lunch, then the second version adds more information to those HTML
     files, then she creates the third version by perhaps adding some CSS files jointly
       with the elements inside the HTML files needed to point to those CSS files, and then the
-    fourth add some more HTMLs and a JS, and that is the version when the programmer stops work for
+    fourth adds some more HTMLs and a JS, and that is the version when the programmer stops work for
     the day, then the fifth session is created when the programmer returns 
       for work the next day, and eliminates some information from the previous
       versions that now the programmer thinks is excessive, and then the sixth version corrects typos, 
@@ -32,7 +32,7 @@
     </p>
     <p>
     When a programming project has several versions like in the previous
-    example, is is oftem useful to have an easy way to refer to previous
+    example, is is often useful to have an easy way to refer to previous
     versions of the project: for example, it is common to work on a given
     version during several hours and then, due to a redesign, try to eliminate
     whatever was done in the last version in order to go back to a
@@ -46,8 +46,9 @@
     latest version and instead use the new one. And after working on this last
       version, maybe the programmer will change her mind again and want to return
       to the original one. The work of the programmer involves creativity,
-      and, as all jobs that ionvolve creativity, is frequently subject to changes
-      in mind about the work done until that point; it is considered thus good
+      and, as all jobs that involve creativity, is frequently subject to changes
+      due to the programmer changing her mind about the work done until any point,
+      doing, undoing, and redoing thinbs. Thus, t is considered good
       to have an easy way to go back and forth between old and new versions of work,
       always being able to consult how many versions were created, and to use
       any as base of more work.
@@ -56,23 +57,25 @@
     In theory, if the programmer is well organized in her job, she can have
       a folder in her computer dedicated to store backups of the programming project
       folder (both folders separated from each other, perhaps both in the
-      Desktop folde of her computer). This nackup folder stores each version of that programming project
+      Desktop folder of her computer). This backup folder stores each version of that programming project
       as a compressed file that containis all files found in the programming project folder; this
       compresed file is typically a zip file with a descriptive name (for example, for
-      a website about Erope, we could have v1_skeleton.zip, v2_countries_capitals.zip,
-      v3_countries_climates.zip, v4_nice_style.zip, etc.). So, when she wants to backup the
+      a website about Europe, we could have v1_skeleton.zip, v2_plus_countries_capitals.zip,
+      v3_plus_countries_climates.zip, v4_plus_nice_style.zip, etc., each version
+      typically containing the entirety of the programming project folder until the time that
+      zip file was created). So, when she wants to backup the
       current state of the website, she creates a zip file with the contents of the programming project folder,
-      gives it a descriptive name (e.g., v5_javascript_special_effects.zip),
+      gives it a descriptive name (e.g., v5_plui_javascript_special_effects.zip),
       and store it in the folder containing the zip files. Then, whenever she wants to recover
     any version, she just grabs the corresponding zip file, unzips its
     contents in the programming project folder, and work from there. And, if she
     ends up not being happy with whatever she does on top of that version,
     she can simply zip again the contents of the project folder (not erasing it, just
-      in case she changes her mind later and decides that she like it after all) and
+      in case she changes her mind later and decides that she liked it after all) and
       store it in the zip folder with a descriptive name, and then recover the zip file of the version 
       she prefers, and continue from there.
-    Thus, each zip file acts as a snapshot of the project at a specific point in time, whuch
-      comes handy when the programmer wants to recover a given old version.
+    Thus, each zip file acts as a snapshot of the project at a specific point in time, which
+      comes handy when the programmer wants to recover any given old version.
     </p>
     <p>
     Although using separate zip files in a backup folder is an acceptable option to track programming work,
@@ -89,7 +92,7 @@
     <p>
     There are many source cotrol systems; the most popular nowadays is called
     <b>git</b>, and it is the one you are most likely to work with if you have
-    a programming job. In this lession, we will learn the basics of git.
+    a programming job. In this lesson, we will learn the basics of git.
 </p>
     <p>
     If you are using Windows, go to google and type <b>git for windows</b>,
@@ -103,25 +106,24 @@
     more complex to use). Vim is fine, but a little tricky to use if you
       are not familiar with it; so, in order to make your life easier, choose 
       instead <b>Notepad</b> if available; if no option other than
-    the default one is available, leave it as it is. This option selects
-    the text editor that will allow you to associate to each version backup a descriptive text in plain
-      English that explains what that backup is about.
+    whatever appears as the default one is available, leave that default option as it is. 
+      This option selects the text editor that git will use to allow you to 
+      associate a description in plain English to each version that you create.
       This is handy because programmers tend to easily forget details
-    about each version of their programs (because they tend to be a lot), 
-      so <b>git</b> allows you to write any plain English description you
-    want when creating a version of your project.
+    about each version of their programs (because they tend to create lots of
+      versions of any programming project, just as backups).
 </p>
     <p>
     There are many videos and webpages about <b>git</b> in general, and installing
     <b>git</b> in windows in particular. Feel free to check any if you have any doubt.
 </p>
     <p>
-    To check that git has been correctly installed, open a new command prompt after finishing
+    In order to check that git has been correctly installed, open a new command prompt window after finishing
     the installation of <b>git</b> (do not use one that was open before installing <b>git</b>, 
-      if you had any open); you open a command prompt by typing 
+      if you had any open); you open a command prompt window by typing 
     Windows + R, and then typing <b>cmd</b> and then pressing Enter. Inside the command
-    prompt, type <b>git --version</b>. If <b>git</b> was installed correctly, you
-    should see a message that says the version of git that you have installed.
+    prompt window, type <b>git --version</b>. If <b>git</b> was installed correctly, you
+    should see a message that says the version of <b>git</b> that you have installed.
     If, instead, you see an error saying that <b>git</b> has not been found or something
       like that, that means that there was some installation error, and you will 
       need to figure out what went wrong.
