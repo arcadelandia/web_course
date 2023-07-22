@@ -14,6 +14,63 @@ these storage services integrate nicely with the <em>git</em> tool that we saw i
 <em>git providers</em>, and there are many: github.com, gitlab.com, and bitbucket.org are some of the most well known. In this
 lesson, we will see how to use <em>github.com</em> to store the backups of the programming projects that we create.
 </p>
-<p>
-  
-</p>
+<ol>
+  <li>Go to github.com and create an account.</li>
+  <li>Look for <em>github desktop</em> in Google; download it for Windows, and install it. This is a tool that makes the usage
+  of github.com a little easier, when working using Windows.</li>
+  <li>Read the instructions in <em>https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/overview/getting-started-with-github-desktop</em> about the usage
+  of github desktop.</li>
+  <li>Inside Github Desktop, got to File, then to Options, and then click in Sign in, if it shows that button (if it does not show, that means that you are already sign in).</li>
+  <li>Create a folder in your computer Desktop for this lesson exercise. Call it any name you want, for example, <em>lesson11</em></li>
+  <li>In your desktop lesson11 folder, create a file (e.g., index.html) and put inside any content you want.</li> 
+  <li>Open a command prompt window (Win+R, then cmd) and change to the lesson11 folder (typically by typing cd Escritorio/lesson11, or whatever name you need.</li>
+  <li>Type <em>git init</em> 
+  <li>Type <em>git add index.html</em> 
+  <li>Type <em>git commit</em>
+  <li>Up to this point, you have created a .git folder inside your lesson11 folder, and inside it you created a backup (also called a commit) of the state of the project. If you lose your
+  laptop, you lose this backup. We will use github.com to store there a copy of our .git folder, so if we lose our laptop, we can recover the erntire history of the project</li>
+  <li>Go to github.com, and create a new repository (that:s the name that git uses for the files and folders of any project); call it lesson11. It wil lask you whether you want
+  it to be public (thge entire Internet can see your project) or private (only you, and any other github.com user that you specify). Select whatever option you want, and at the end
+  it will show you sopme information, including a web address ending in .git, something like <em>https://github.com/arcadelandia/lesson11.git</em> (but with your username, and the name
+    that you chose for this lesson)</li>
+  <li>The whole point of git is to make life easy for programmers; programmers often cannot easily decide how to do a given task; thus, they often create two or more versions
+  of some file of a project (for example, a webpage about Spain with just only high-level information, and another version that is more detailed; onely one of these will be
+  finally used, but programmers are not really sure which one. So, they write both, and thus need to backup both until when the decision in favourt of one or the other is made.
+  git calls a branch to each of these alternatives, and it allows programmers to give them any name. For example, in the example above, the names of the two branches could
+  be fewdetails and moredetails, respectively, or anythging else. So, in git, a branch is any of the multiple alternative versions of a project. At the start of the creation 
+    of a project, and before any more branches are created, there is only one branch (the one with the files you create at thje beginning), and git calls ths only branch by the
+  name main, or master. The word master has negative connotations, so it is frequently avoided in favor of main.</li>
+  <li>Type in the command prompt window, <em>git branch -M main</em>. This changes the name of the branch you are working on, from master (the default), to main.</li>
+  <li>Type in the command prompt window, <em>git remote add origin https://github.com/arcadelandia/lesson11.git</em>, where the last part is the one that you just 
+    created (instead of arcadelandia, you put your github.com username). This tells the git program in your computer that, when trying to create a backup outside of
+    your laptop, it needs to use github.com, and inside it, your account as indicated by your username (instead of arcadelandia), and inside it, the repository you just created (lesson11 in this case).
+    The name origin is just a short name that you can use to distinguish one remote backup provider from each other, in the case that you have more than one; origin is just often used
+  by convention in the git world. So, the previous command simply means that, when copying a backup outside of your laptop, to use the indicated git provider, account, and repo</li>
+  <li>When copying a backup via git, you will need to use you github.com username, but not your password; you will need to create a special password just to copy your backups. This
+    password is called a token, and it is common to create it with an expiry date. To create this token, go to github.com, to your user icon, then 
+    to Settings, then to Developer settings, then to Tokens(classic), then to Generate token, and then it will ask you for a short description of what
+    you want it for (write somethinng, or a single word), and then click on "repo" (short for full access to any repositoiry, which is basically any project that you create). Then, click
+    on Generate token, and it will show you in the screen that token. Copy it somewhere, and when ptompted for a password later, use it. (If you forget it, you can come to the same
+    place to create a new one, and delete the old one; it will expire after the time that you indicated before, and by default that is 30 days, so after 30 days you will need to
+    create a new one.</li>
+  <li>Type in the command prompt window, <em>git push --set-upstream origin main</em>  This will maybe ask you for your username at github.com, so write
+    it, and then for your password, and yhis means the token that you created before, not your github.com account password. This command tells
+    git to use the remote named origin (the one at github.com) when creating a backup of the current branch (named main)</li>
+  <li>Type in the command prompt window, <em>git push</em>. This will copy the current state of the project to github.com, creating a full backup. If it asks you again
+    your username and password, use the username and token. In the future, after you are done with a work session and create a commit (typically several times an hour, 
+    or several times a day), any time you want to copy a backup of the current state of yourt project to github.com, use <em>git push</em></li>
+  <li>If you lose your laptop, you can recover your project by grabbing from github.com your project; this is called cloning in git parlance. 
+    To see how to do that, go to github.com, and go to your repository. You will see a green button saying something like "Code". Click on it,
+    and you will see an option named clone, and inside a URL saying something like <em>https://github.com/arcadelandia/lesson11.git</em>.
+    Then, in order to recuperate the entirety of that project, you just have to create in your new computer some folder to store it. To do that, create
+    a folder in your desktop and name it recovertest, which will be empty; open a command prompt window, and change to the inside
+    of that folder (e.g., doing cd Escritorio/recovertest, and run <em>git clone https://github.com/arcadelandia/lesson11.git</em>. You will
+  see that a new folder has been created with the name of yoiur repository (in this case, lesson11). If you go inside (cd lesson11), you will
+  see the state of your project when you just made the last backup; you can use git log to see all the commits that you did until that point. Congratulations! You may
+  have lost your old laptop, but you still have your projects :)</li>
+  <li>git is a tool that is heavily used by programmers during their workday; it also helps them to collaborate; it is very common that, when a project needs
+    to be done by several programmers, all share the same github.com repo, and each programmer creates a branch with its own work, and all copy their branches
+    each day to the same github.com repo, anmd periodically they use what is called a git merge to combine all those branches; this is already more
+    advanced material, and you will get there on time. Don't forget to read beginner tutorials, and watch Youtube tutorials to learn how to use git. Have fun!</li>
+    
+</ol>
