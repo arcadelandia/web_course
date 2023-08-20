@@ -7,20 +7,27 @@ Backups are fundamental for anybody that uses a computer to create any kind of d
 no backups exist, the contents are gone forever as well.
 </p>
 <p>
-Thus, programmers, as everybody else, should make backups of their project files. One way to back 
-  up a folder that contains a project, is to zip (i.e., compress into a single file) the folder; this is often done by right clicking 
-  on the folder will usually show an option saying something
-  like "Add to zip" or something like that). The resulting single file is then given a descriptive name, 
-  and then stored in an online service that allows so (like Google Drive), or in a USB stick, or
-emailed to an address, etc. Programmers can use this method, of course, for their projects. However,
-for the specific case of programming projects, there are several companies that offer free storage services to programmers; these companies have
-  computers always connected to the Internet whose sole purpose is to store programming projects created by anybody; these
-  services are popular among programmers and among companies employing programmers because they 
-  integrate nicely with the <em>git</em> tool that we saw in the previous lesson, which is used daily
-  by most professional programmers. The companies offering these storage services are usually called
-<em>git providers</em>, and there are many: github.com, gitlab.com, and bitbucket.org are some of the most well known. In this
-lesson, we will see how to use <em>github.com</em> to store the backups of the programming projects that we create.
+Thus, programmers, as everybody else, should make backups of their project files. 
+  One way to back up a folder that contains a project is to just zip the folder and save the resulting
+  zip file somewhere outside the computer; this is typically done by right clicking 
+  on the folder, which will usually show an option saying something
+  like "Add to zip" or something like that, then giving the resulting file a descriptive name, 
+  and then copying it in an online service that allows so (like Google Drive), or in a USB stick, or
+emailed to an address, etc. 
 </p>
+<p>
+  Programmers can use the zip method, of course, to backup their project files. However,
+for the specific case of programming projects, there are several companies that offer free 
+  storage services to programmers. These companies have computers always connected to the 
+  Internet whose sole purpose is to store files created by programmers. These
+  services are popular among programmers, and among companies employing programmers, because they 
+  integrate nicely with the <em>git</em> tool that we saw in the previous lesson, and 
+  which is used daily by most professional programmers. The companies offering these storage services are usually called
+<em>git providers</em>, and there are many: <em>github.com</em>, <em>gitlab.com</em>, and <em>bitbucket.org</em> 
+  are some of the most well known. In this lesson, we will see how to use <em>github.com</em> to store a
+  backup of a programming project that we will create.
+</p>
+<p>Let's do it!</p>
 <ol>
   <li>Go to github.com and create an account.</li>
   <li>Create a folder in your computer Desktop for this lesson's exercise. Call it any name you want, for example, <em>lesson11</em></li>
@@ -29,15 +36,16 @@ lesson, we will see how to use <em>github.com</em> to store the backups of the p
   <li>Type <em>git init</em> 
   <li>Type <em>git add index.html</em> 
   <li>Type <em>git commit</em>
-  <p>Just as a reminder, by running the previous three commands, as we saw in the previous lesson, you just create a .git folder inside the 
+  <p>Just as a reminder, by running the previous three commands, as we saw in the previous lesson, the git tool creates a .git folder inside the 
     lesson11 folder, and inside it a backup (also called a commit) is created, containing the state of the project up to that moment. 
-    If you lose your laptop, you lose this backup. We will use github.com to store there a copy of our .git folder, so if we lose our laptop, we can recover the entire history of the project.</p>
-  <li>github.com, and other git providers, use the word <b>repository (or repo, for short)</b> instead of the words <b>project backup</b>; so now we
-    are going to create a repository for your lesson11 project inside the github.com computers.  Thus, go to github.com, and create a new repository; call 
-    it lesson11 (you can choose any name you want, but it is advisable to use the same name for your laptop project folder, and for the github.com name,
-   in order to minimize confusion). It will ask you whether you want
+    If you lose your laptop, you lose this backup. We will use <em>github.com</em> to 
+    store there a copy of our .git folder, so if we lose our laptop, we can recover the entire history of the project up to the moment of the alst backup.</p>
+  <li>github.com, and other git providers, use the word <b>repository (or repo, for short)</b> instead of the words <b>project backup</b>. Thus, in git
+    lingo, we are going to create a repository for your lesson11 project inside the github.com computers.  Thus, go to github.com, and create a new repository; call 
+    it lesson11 (you can choose any name you want, but it is advisable to use the same name as whatever you called the project folder
+    inside your laptop, in order to minimize confusion). It will ask you whether you want
   it to be public (so anybody in the entire Internet can go to github.com, explore the list of projects that people make public, and see your project) 
-    or private (so only you can see the project, and any other github.com user that you specify). Select whatever option you want, and at the end
+    or private (so only you can see the project, and any other github.com users that you specify). Select whatever option you want, and at the end
   it will show you some information, which will include a web address ending in .git, something like <em>https://github.com/arcadelandia/lesson11.git</em> 
     (but instead of seeing arcadelandia, you will see your username, and the name that you chose for this lesson, which is probably lesson11 if you did not
     decide to change it). This web address, which starts with <em>https://</em>, and ends in <em>.git</em>, is called a <b>remote</b> (because it is the address
