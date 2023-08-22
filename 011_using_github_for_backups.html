@@ -51,10 +51,18 @@ for the specific case of programming projects, there are several companies that 
     decide to change it). This web address, which starts with <em>https://</em>, and ends in <em>.git</em>, is called a <b>remote</b> (because it is the address
     of a remote computer where you store a copy of your stuff :) ). For any existing repository, you can always see its git remote address by going to the
   main project page in github.com, clicking in the green button at the top right that says <em>code</em> (or something similar) and then you will be shown the remote address, among other things.</li>
-  <p>The whole point of git is to make life easy for programmers; programmers often cannot easily decide how to do a given task; thus, they often create two or more versions
-  of some file of a project; for example, a version of a webpage about Spain with just only high-level information, and another version that is more detailed; only one of these will be
-  finally used, but programmers are not really sure which one. So, they write both, and thus need to backup both until when the decision in favor of one or the other is made.
-  git calls each of these alternatives a <b>branch</b>, and it allows programmers to give them any name. For example, in the example above, the names of the two branches could
+  <p>The whole point of git is to make life easy for programmers. Programmers often cannot easily decide how to do a given task, they
+    are doubtful creatures. Thus, they often create two or more versions of some file when creating; for example, 
+    a programmer creating a website about Spain may create a first version
+    where the HTML files just only have high-level information about Spain; then, after a few hours, they
+    may wonder if a different version with a lot of detail would be better, and then proceed to create it. After
+    it, they may wonder if a third version with just photos and a few phrases would be ideal... etc.
+    The reality is that only one of these will be the one finally used in the project, but programmers 
+    are not really sure which one. So, they write the versions that they are thinking about, and thus need to backup all of them
+    until when the decision in favor of one of them is made.
+  git calls each of these alternative versions a <b>branch</b>; programmers can give to each branch any name they wish. 
+    
+    For example, in the example above, the names of the two branches could
   be <em>fewdetails</em> and <em>moredetails</em>, respectively, or anything else. So, in git, a branch is any of the multiple alternative versions of a project. At the start of the creation 
     of a project, and before any more branches are created, there is only one branch (the one with the files you create at the beginning), and git calls this unique branch by the
   name <em>main</em>, or <em>master</em>, although the latter one is not recommended as it has negative connotations.</p>
