@@ -81,34 +81,37 @@ for the specific case of programming projects, there are several companies that 
     the word <em>origin</em> is commonly used to refer to your backup in that computer.</li>
   <li>When doing a backup via github.com, you will need to use you github.com username, but not your password; you will need to create a special password used just 
     for copying your backups (and you can copy your backups as often as you want; many programmers do backups each few minutes). This special password is usually 
-    called a token, and it usually has an expiry date that you decide when creating it (when the expiryn date is near, you need to create a new token
+    called a token, and it usually has an expiry date that you decide when creating it (when the expiry date is near, you need to create a new token
     and replace the previous one). To create this token, go to github.com, to your user icon, then 
     to Settings, then to Developer settings, then to Tokens(classic), then to Generate token, and then it will ask you for a short description of what
     you want it for (write somethinng, or a single word), and then click on "repo" (short for full access to any repositoiry, which is basically any project that you create). Then, click
     on Generate token, and it will show you in the screen that token (it is usually a long series of letters and numbers and perhaps symbols). 
     Copy it somewhere where you can access it later easily (e.g., in your email, or in a text file in your laptop, etc), 
     and when prompted for a password later, use it. If you forget it, or lose it, you can go to the same
-    place to create a new one, and you can also delete the old one; it will expire after the time that you indicated before, and by default that time is 30 days, so after 30 days you will need to
+    place to create a new one, and you can also delete the old one; it will expire after the time that you indicated before, and by default that time is 30 days, so after 30 days (or earlier) you will need to
     create a new one.</li>
-  <li>Type in the command prompt window, <em>git push --set-upstream origin main</em>  This will maybe ask you for your username at github.com, so write
+  <li>Type in the command prompt window, <em>git push --set-upstream origin main</em>.  This will maybe ask you for your username at github.com, so write
     it, and then for your password, and this means the token that you created before, not your github.com account password. This command tells
-    git to use the remote named origin (the one at github.com) when creating a backup of the current branch (named main)</li>
+    git to use the remote named origin (in this case, the one at github.com) when creating a backup of the branch named main, which is your current (and for the moment, only) branch.</li>
   <li>Type in the command prompt window, <em>git push</em>. This will copy the current state of the project to github.com, creating a full backup. If it asks you again
     your username and password, use the username and token. In the future, after you are done with a work session and create a commit (typically several times an hour, 
     or several times a day), any time you want to copy a backup of the current state of your project to github.com, use the command <em>git push</em> from anywhere inside
   your project folder.</li>
   <li>If you lose your laptop, you can recover your project by grabbing from github.com your project; this is called <b>cloning</b> in git parlance. 
     To see how to do that, go to github.com, and go to your repository. You will see a green button saying something like "Code". Click on it,
-    and you will see an option named clone, and inside the remote web address saying something like <em>https://github.com/arcadelandia/lesson11.git</em>.
+    and you will see an option named clone, and inside it, you will see the remote web address of your repo, saying something like <em>https://github.com/arcadelandia/lesson11.git</em>.
     Then, in order to recuperate the entirety of that project, you just have to create in your new computer some folder to store it. To do that, create
-    a folder in your desktop and name it recovertest, which will be empty; open a command prompt window (Win+X and then cmd), and change to the inside
-    of that folder (e.g., doing cd Escritorio/recovertest, and then run <em>git clone https://github.com/arcadelandia/lesson11.git</em>. You will
-  see that a new folder has been created with the name of yoiur repository (in this case, lesson11 inside your recovertest folder). If you go inside (cd lesson11), you will
-  see the state of your project as it was when you just made the last backup (if you did any changes that you did not backup, those changes are lost forever unless you backed them
-    up somewhere else). You can use git log to see all the commits that you did until that point. Congratulations! You may
+    a folder in your desktop and name it somethig descriptive; for example, let's call it <em>recovertest</em>, which will be empty initially; then,
+    open a command prompt window (Win+X and then cmd), and change to the inside
+    of that folder (i.e., by typing <em>cd Escritorio/recovertest</em>), and then type the command <em>git clone https://github.com/arcadelandia/lesson11.git</em>. After
+    that, you will see that a new folder has been created with the name of your repository (in this case, <em>lesson11</em> inside your <em>recovertest</em> folder). 
+    If you go inside (cd lesson11), you will see the state of your project as it was when you made the last backup (if you did any changes 
+    that you did not yet backup at the moment of losing your laptop, those changes are lost forever unless you backed them
+    up somewhere else). You can use the command <em>git log</em> to see all the commits that you did until that point. Congratulations! You may
   have lost your old laptop, but you still have your projects :)</li>
   <p>git is a tool that is heavily used by programmers during their workday; it also helps them to collaborate; it is very common that, when a project needs
-    to be done by several programmers, all share the same github.com repo, and each programmer creates a branch with its own work, and all copy their branches
-    each day to the same github.com repo, anmd periodically they use what is called a git merge to combine all those branches; this is already more
-    advanced material, and you will get there on time. Don't forget to read beginner tutorials, and watch Youtube tutorials to learn how to use git. Have fun!</p>
+    to be done by several programmers at the same time, that all of them share the same github.com repo, and each programmer creates a branch with its own work, and all copy their branches
+    each day to the same github.com repo, anmd periodically they use what is called a <em>git merge</em> process to combine all those branches into
+    an unified branch; this is already more advanced material, and you will get there on time. Don't forget to read beginner tutorials, and 
+    watch Youtube tutorials to learn how to use git. Have fun!</p>
 </ol>
