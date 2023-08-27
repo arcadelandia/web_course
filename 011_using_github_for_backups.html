@@ -72,11 +72,13 @@ for the specific case of programming projects, there are several companies that 
   <li>Type, in the command prompt window that you opened before, <em>git branch -M main</em>. This changes the name of the branch you are working on, from <em>master</em> (the default), to <em>main</em>.</li>
   <li>Type again: <b>git branch</b>. It should show you the new name of your branch, which should be <em>main</em>.</li>
   <li>Type in the command prompt window, <em>git remote add origin https://github.com/arcadelandia/lesson11.git</em>, where instead of the <em>https://github.com/arcadelandia/lesson11.git</em> part,
-    you type the origin address that you copied in the step above (i.e., instead of arcadelandia, you put your github.com username; and, instead of lesson11 you sued another name,
+    you type the origin address that you copied a few steps above (i.e., instead of arcadelandia, you put your github.com username; and, instead of lesson11 you sued another name,
     that other name that you decided to use). This tells the git program in your computer that, when trying to create a backup outside of
     your laptop, it needs to use github.com, and inside it, your account as indicated by your username (instead of arcadelandia), and inside it, the repository you just created (lesson11 in this case).
-    The name <em>origin</em> is just a short name to refer to the remote address, and only used if you want to store your data in more than one remote computer, so we will
-    not deal with that case here; when you only use a single remote computer (i.e., the one at github.com) the word <em>origin</em> is commonly used, but you can use any other.</li>
+    The name <em>origin</em> is just a short name to refer to the remote address, and it is only used if you want to store your data in more than one remote computer, so we will
+    not deal with that case here<br>
+    NOTE: as a convention in the world of git, when you only use a single remote computer for the backup of your project (e.g., the one at github.com in our example) 
+    the word <em>origin</em> is commonly used to refer to your backup in that computer.</li>
   <li>When doing a backup via github.com, you will need to use you github.com username, but not your password; you will need to create a special password used just 
     for copying your backups (and you can copy your backups as often as you want; many programmers do backups each few minutes). This special password is usually 
     called a token, and it usually has an expiry date that you decide when creating it (when the expiryn date is near, you need to create a new token
