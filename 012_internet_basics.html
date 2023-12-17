@@ -12,14 +12,15 @@
     <p>
     Strictly speaking, the computers that form part of the Internet are those that are assigned what is called a public IP address. As these are
     expensive and scarce, usually only a few entities buy them: these entities are Internet Service Providers (ISPs, businesses that allow people
-      to connect to the Internet), large government organizations, and large companies. The seller of the IP addresses is an entity named IANA, which
+      to connect to the Internet), large government organizations, and large companies. The seller of the IP addresses is an US entity named IANA, which
       works through delegation to other entities (RIPE for Europe and Middle East, ARIN for North America, AFRINIC for Africa, LAPNIC for Latin Anerica, APNIC for
       Asia Pacific). Once an entity buys a public IP address, it typically 
       configures it inside a given computer; that computer can thus be considered as being part of the Internet. However, there are many other 
       computers that also want to connect, but that do not have a public IP address. In order to allow a computer that does not have a public IP address 
       to connect to the Internet, it is given what is called a private IP address, which is a piece of configuration data that allows 
-      that computer to communicate to another computer that has a public IP address, in order to ask that computer to exchange 
-      information in its behalf.
+      that computer to communicate to another computer that has a public IP address, and which will act in its name when using the Internet: when the
+      computer with the private IP address wants to download anyhting, it asks the computer with the public IP address to do so in its behalf, and then to
+      send the results.
     </p>
     <p>
     For example, a wireless ISP provider may have a router in a street in a city; that router has a public IP address, and thus can communicate
