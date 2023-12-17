@@ -29,6 +29,31 @@
       with other computers in the Internet; then, whenever a smartphone downloads a website, the smartphone is asking the wireless router 
       to download it in their name, which it does, while forwarding the data to the smartphone.
     </p>
-    
+    <p>
+      IP addresses come typically in two types: version 4 and version 6. Version 4 are typically written in a format that is four numbers separated
+      by dots, like 123.20.199.200 or something like that (each number goes between 0 and 255); if the first number is a 10, or if the first numbers are
+      192.168, or if the first number is a 172 and the second is between 16 and 31, then it is a private IP address; in other case, and except for a few
+      cases, it will be a public IP address. IP version 6 has longer formats than version 4.
+    </p>
+    <p>
+      When a computer dowenloads a website, it is sending data to the webserver indicating that it wants to download the requestes page, and the
+      sebserver sends data back with whatever are the results of the request. In the same way, in a videoconference, a computer is constantly sending
+      data with audio and video information, and also receiving it from the other end. In the same way as with the postal system, when the data to be
+      sent is too large, it will be divided in multiple data units called packets. Each packet has the source and destination IP addresses, apart from
+      the appropriate information in that packet. For example, if a webpage that we download has to be sent in 10 packets, each packet will have
+      a different part of the webpage; all packets will have the IP addresses of the sender and the receiver.
+    </p>
+    <p>
+      Remembering IP addresses is hard for humans, so a system called DNS appeared.
+    </p>
+    <p>
+      traceroute shows IP addresses.
+    </p>
+    <p>
+      whois shows the AS a IP belongs to, and contact info  about that AS; this can be used for attemps at geolocation.
+    </p>
+    <p>
+      RIPE has online access to geolocation databases, and to route information from several points in the Internet.
+    </p>
   </body>
 </html>
