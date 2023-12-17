@@ -6,21 +6,28 @@
   <body>
     <p>
     The Internet is formed by a large group of computers that are able to exchange information, and by the communication links among them.
-    The number of computers in the Internet is constantly changing as some computersa are connected and disconnected to/rom  the Internet.
+    The number of computers in the Internet is constantly changing as some computers are connected and disconnected to/from the Internet.
     The links among those computers are typically wireless, or optical fibers.
     </p>
     <p>
-    Strictly speaking, the computers that form part of the Internet are those that are assigned what is called a public IP address. As these may be
-    expensive and scarce, there is a mechanism that gives other computers what is called a private IP address, which is a mechanism that allows to
-    communicate with another computer that has a public IP address, in order to ask that computer to exchange information in the behalf of the
-    computer with the provate IP address.
+    Strictly speaking, the computers that form part of the Internet are those that are assigned what is called a public IP address. As these are
+    expensive and scarce, usually only a few entities buy them: these entities are Internet Service Providers (ISPs, businesses that allow people
+      to connect to the Internet), large government organizations, and large companies. The seller of the IP addresses is an entity named IANA, which
+      works through delegation to other entities (RIPE for Europe and Middle East, ARIN for North America, AFRINIC for Africa, LAPNIC for Latin Anerica, APNIC for
+      Asia Pacific). Once an entity buys a public IP address, it typically 
+      configures it inside a given computer; that computer can thus be considered as being part of the Internet. However, there are many other 
+      computers that also want to connect, but that do not have a public IP address. In order to allow a computer that does not have a public IP address 
+      to connect to the Internet, it is given what is called a private IP address, which is a piece of configuration data that allows 
+      that computer to communicate to another computer that has a public IP address, in order to ask that computer to exchange 
+      information in its behalf.
     </p>
     <p>
     For example, a wireless ISP provider may have a router in a street in a city; that router has a public IP address, and thus can communicate
     with any other computer in the Internet (download websites, send emails, etc.). Several hundreds of smartphones of people living in that street
-    get assigned a private IP address by that street router when they are switched on; and whenever a smartphone downloads a website, the smartphone
-    asks the wireless router to download it in their name, and then to send the website to the smartphone. This is done this way becuase the ISP
-    needs to pay an organization called IANA for having public IP addresses.
+    get assigned private IP addresses by that street router, and thus each smartphone can only communicate with the street router rather than
+      with other computers in the Internet; then, whenever a smartphone downloads a website, the smartphone is asking the wireless router 
+      to download it in their name, which it does, while forwarding the data to the smartphone.
     </p>
+    
   </body>
 </html>
