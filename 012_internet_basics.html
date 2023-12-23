@@ -101,10 +101,22 @@
       do not show many information due to the fact that many ISPs do not collaborate with the traceroute tool; try several. Hve fun!
     </p>
     <p>
-      whois shows the AS a IP belongs to, and contact info  about that AS; this can be used for attemps at geolocation.
+     Entities that buy public IP addresses typically buy them in bulk (becuase they are tytpically big, and need many public IP addresses).
+     In order to manage these addresses, they usually also buy what is called an Autonomous System number (or AS number), which they
+     register with IANA, and serves to know the company behind an IP address. Search in Google for "IP to AS lookup" and input 
+     an IP address. For example, one of the ones you saw as the output of the DNS lookup for cnn.com before, whcih may be 151.101.195.5;
+     this will tell you that it belongs to a entity called Fastly with a AS number of 54113. 
     </p>
+      <p>
+       There is a database called WHOIS that allows to get contact details ofr the entity behind an AS number (to contact them, although in last
+       years a lot of privacy-related laws kicked in, and in many cases not a lot of information is available). Look in Google
+       for <b>whois "AS" lookup</b> (make sure that you put quotes in AS just in case the results eliminate it, as it is a common word), 
+       go to one of the links that appear, and inout the 54113 number that you may haver seen above. It will give you
+       whatever information is available. YOu may need to try several of those links.
+      </p>
     <p>
-      RIPE has online access to geolocation databases, and to route information from several points in the Internet.
+      RIPE (accessible at <b>www.ripe.net</b>) is an entity whose mission is to make public data related to the Internet. It has a section (in Analyse->Internet Measurements) that
+     give access to a trove of information. Get familiar with it if you can, as it gives a very useful impression of the parts that form the Internet.
     </p>
   </body>
 </html>
