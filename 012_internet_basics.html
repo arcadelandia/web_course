@@ -1,4 +1,4 @@
-<html>
+ <html>
   <head>
     <title>Internet basics</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -91,7 +91,14 @@
       in the CNN server, and users around the world will be directed to any one of those in order to balance the load of all those servers.
     </p>
     <p>
-      traceroute shows IP addresses.
+      When your computer communicates with another one in the Internet, it sends and receives messages. Typically, your computer send those
+      to a router, which sends it to some other router, to another one, etc, until the final router gives the messages to the destination. The
+      response message may or may not follow the same route in reverse. There is a tool called traceroute that allows to estimate the public
+      IP addresses of all those routers. There are other tools, called geolocation tools, that allow to estimate the coordinates and postal address
+      of the buildings likely to contain those public IP addresses (typically to show them in a nice way in a map). Some websites 
+      allow to show this info in a nice way. For example, look in Google "traceroute map online", go to some of the first results, and
+      perform a traceroute of the cnn.com hostname (so, write cnn.com in the text field that appears); observe the results. Some DNS hostnames
+      do not show many information due to the fact that many ISPs do not collaborate with the traceroute tool; try several. Hve fun!
     </p>
     <p>
       whois shows the AS a IP belongs to, and contact info  about that AS; this can be used for attemps at geolocation.
