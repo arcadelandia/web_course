@@ -5,29 +5,44 @@
     </head>
   <body>
     <p>
-    The Internet is formed by a large group of computers that are able to exchange information, and by the communication links among them.
+    The Internet is a large group of computers that are able to exchange information.
     The number of computers in the Internet is constantly changing as some computers are connected and disconnected to/from the Internet.
-    The links among those computers are typically wireless, or optical fibers.
+    The links among those computers are typically wireless, or optical fibers, although other types exist.
     </p>
     <p>
-    Strictly speaking, the computers that form part of the Internet are those that are assigned what is called a public IP address. As these are
-    expensive and scarce, usually only a few entities buy them: these entities are Internet Service Providers (ISPs, businesses that allow people
-      to connect to the Internet), large government organizations, and large companies. The seller of the IP addresses is an US entity named IANA, which
+    Strictly speaking, for a computer to be part of the Internet it needs to be assigned what is called a public IP address, which will be
+      used in each and every piece of information exchanged with other computers, in the same way as the postal system. Public IP addresses
+      are relatively expensive and scarce, and as a result only a few entities buy them, typically Internet Service Providers (ISPs, businesses that allow people
+      to connect to the Internet), large government organizations, and large companies. The ultimate seller of the IP addresses is an US entity named IANA, which
       works through delegation to other entities (RIPE for Europe and Middle East, ARIN for North America, AFRINIC for Africa, LAPNIC for Latin Anerica, APNIC for
-      Asia Pacific). Once an entity buys a public IP address, it typically 
-      configures it inside a given computer; that computer can thus be considered as being part of the Internet. However, there are many other 
-      computers that also want to connect, but that do not have a public IP address. In order to allow a computer that does not have a public IP address 
-      to connect to the Internet, it is given what is called a private IP address, which is a piece of configuration data that allows 
-      that computer to communicate to another computer that has a public IP address, and which will act in its name when using the Internet: when the
-      computer with the private IP address wants to download anyhting, it asks the computer with the public IP address to do so in its behalf, and then to
-      send the results.
+      Asia Pacific). Once somebody buys a public IP address, it typically configures that address inside a given computer; that computer 
+      can thus be considered part of the Internet. 
+      </p>
+      <p>
+      There are many computers whose owners also want to connect to the Internet, but that do not want the expense of having to buy
+        a public IP address. In order to do that, they are configured to communicate with some other computer (for example, by 
+        using the "connect to network..." option  in a wifi network); this latter computer is usually called a router (because it 
+        basically routes all information of all computers connecting though it towards their destinations).
+        By doing this, the router assigns the computer what is called a private IP address, which is a number used to distinguish among
+        all computers using the same router, and that is used to communicate between the computer and the router exclusively.
+        This communication will be used to ask the router to download in its name each and every piece of information that the computer
+        wants to access from the Internet. As the computer does not have a public IP address, the rest of the Internet does not have
+        a way to send it any information; whenever the computer downloads soemthing, or sends something, it is the router the one
+        that puts its IP address in all the pieces of information sent. In order to observe which public IP address the router has,
+        you can search in Google "what is my IP address" or something similar. That website will simply look at the public IP address
+        written in the message that it is receiving in that request (which will be the router one, if the user computer does not have
+        a public IP address, or the computer IP address, if the computer has one).
     </p>
+    <p>
+      </p>
     <p>
     For example, a wireless ISP provider may have a router in a street in a city; that router has a public IP address, and thus can communicate
     with any other computer in the Internet (download websites, send emails, etc.). Several hundreds of smartphones of people living in that street
     get assigned private IP addresses by that street router, and thus each smartphone can only communicate with the street router rather than
       with other computers in the Internet; then, whenever a smartphone downloads a website, the smartphone is asking the wireless router 
-      to download it in their name, which it does, while forwarding the data to the smartphone.
+      to download it in their name, which it does, while forwarding the data to the smartphone. If the users go to a website that shows their
+      IP address, all of them will typically see the same IP address (the one of the router), or one of a few ones (if there are several routers
+      giving service to those users).
     </p>
     <p>
       IP addresses come typically in two types: version 4 and version 6. Version 4 are typically written in a format that is four numbers separated
@@ -36,15 +51,44 @@
       cases, it will be a public IP address. IP version 6 has longer formats than version 4.
     </p>
     <p>
-      When a computer dowenloads a website, it is sending data to the webserver indicating that it wants to download the requestes page, and the
-      sebserver sends data back with whatever are the results of the request. In the same way, in a videoconference, a computer is constantly sending
+      When a computer downloads a website, it sends a piece of data to the computer hosting the website (called the webserver) 
+      indicating that it wants to download the requestes page; then, the webserver sends data back with whatever are the results 
+      of the request. In the same way, in a videoconference, a computer is constantly sending
       data with audio and video information, and also receiving it from the other end. In the same way as with the postal system, when the data to be
-      sent is too large, it will be divided in multiple data units called packets. Each packet has the source and destination IP addresses, apart from
-      the appropriate information in that packet. For example, if a webpage that we download has to be sent in 10 packets, each packet will have
+      sent is too large, it will be divided in multiple data units called packets, or datagrams. Each packet has written in it the source and 
+      destination IP addresses (public ones), apart from  the appropriate information in that packet relative to what the user
+      wanted. For example, if a webpage that we download has to be sent in 10 packets, each packet will have
       a different part of the webpage; all packets will have the IP addresses of the sender and the receiver.
     </p>
     <p>
-      Remembering IP addresses is hard for humans, so a system called DNS appeared.
+      Remembering IP addresses is hard for humans, so a system called DNS appeared, which is a database hosted and duplicated in many computers in the Internet,
+      which stores a correspondence between a public IP address and a easier-to-remember name, also called a domain name,
+      or DNS hostname. People who have a public IP address in a computer and want other people
+      to communicate with that computer easily, pay a fee to have a DNS name; paying for a DNS hostname is not mandatory: the only
+      thing needed to use the Internet is the public IP address, nothing else. For example, we
+      could have a public IP address of 202.145.28.213, and then we could pay the DNS system to give us the name <b>chorradasvariadas.co.jp</b> in order
+      to have a more memorable way to remember that IP address. Then, whenever somebody wants to communicate with our computer, and thus need to
+      know the public IP address of that compuer, they first go to the DNS lookup tool, write the DNS name, and they get the public IP address. Then, they 
+      use that IP address as the destination address in the messages they send to our computer.
+      Web browsers work that way: when you write in the address bar (or you click on a link) <b>www.cnn.com</b>, you are writing the DNS hostname
+      that you want to access, and the browser basically consuilts the DNS database (hosted in other computer whose IP address it has stored inside the browser)
+      to ask for the public IP address (or one of the public IP addresses) associated to that hostname; then, it uses that public IP address in all its
+      communications.
+    </p>
+    <p>
+      Many entities with a lot of busy Internet computers replicate the content among several computes, in order to share the load; for example, facebook
+      may have several hundreds of computer in the world hosting the access page at <b>www.facebook.com</b>; otehrwise, a single computer could easily
+      be overwhelmed by all people trying to communicate with it. In this case, the company pays the DNS system to assign to the same DNS hostname (<b>www.facebook.com</b>)
+      many public IP addreses: as many as computers they have hosting the content that they want people to see when the open the website at <b>www.facebook.com</b>.
+      Then, when a user connects to facebook from Spain, its browser asks the DNS system for the public IP address of the facebook server, and the DNS system will
+      return, among all the possible public IP addresses of facebook.com, the one that appears to be closer to the user; for a user in Spain, it would
+      probably return a IP of a computer sitting somewhere in Spain or Europe, for a user in Japan some in Japan or close in Asia, for a user in New Zealand one
+      in New Zealand or Australia, etc.
+    </p>
+    <p>     
+      The DNS database can be checked by searching in Google "DNS online" or something like that. For example, go to the first link that appears in Google aftger searching for that,
+      and perform a search for the IP address corresponding to "cnn.com"; observe that there are several IP addresses returned: all of them store the information
+      in the CNN server, and users around the world will be directed to any one of those in order to balance the load of all those servers.
     </p>
     <p>
       traceroute shows IP addresses.
