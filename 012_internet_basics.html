@@ -64,10 +64,11 @@
       Remembering IP addresses is hard for humans, so a system called DNS appeared, which is a database hosted and duplicated in many computers in the Internet,
       which stores a correspondence between a public IP address and a easier-to-remember name, also called a domain name,
       or DNS hostname. People who have a public IP address in a computer and want other people
-      to communicate with that computer easily, pay a fee to have a DNS name; paying for a DNS hostname is not mandatory: the only
+      to communicate with that computer easily, pay a fee to IANA to get a DNS name; paying for a DNS hostname is not mandatory: the only
       thing needed to use the Internet is the public IP address, nothing else. For example, we
       could have a public IP address of 202.145.28.213, and then we could pay the DNS system to give us the name <b>chorradasvariadas.co.jp</b> in order
-      to have a more memorable way to remember that IP address. Then, whenever somebody wants to communicate with our computer, and thus need to
+      to have a more memorable way to remember that IP address; these DNS hostnames are usually called domain names, and end in a series of
+     suffixes meant for easy categorization (com, es, jp, org, etc); IANA delegates their management to other entities. In this way, whenever somebody wants to communicate with our computer, and thus need to
       know the public IP address of that compuer, they first go to the DNS lookup tool, write the DNS name, and they get the public IP address. Then, they 
       use that IP address as the destination address in the messages they send to our computer.
       Web browsers work that way: when you write in the address bar (or you click on a link) <b>www.cnn.com</b>, you are writing the DNS hostname
