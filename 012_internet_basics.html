@@ -23,13 +23,23 @@
       There are many computers whose owners also want to connect to the Internet, but that do not want the expense of having to buy
         a public IP address. In order to do that, they are configured to communicate with some other computer (for example, by 
         using the "connect to network..." option  in a wifi network); this latter computer is usually called a router (because it 
-        basically routes all information of all computers connecting though it towards their destinations).
-        By doing this, the router assigns the computer what is called a private IP address, which is a number used to distinguish among
-        all computers using the same router, and that is used to communicate between the computer and the router exclusively.
-        This communication will be used to ask the router to download in its name each and every piece of information that the computer
-        wants to access from the Internet. As the computer does not have a public IP address, the rest of the Internet does not have
-        a way to send it any information; whenever the computer downloads soemthing, or sends something, it is the router the one
-        that puts its IP address in all the pieces of information sent. In order to observe which public IP address the router has,
+        basically routes all information of all computers connecting though it towards their destinations): the router is part of the
+       Internet, and thus has a public IP address.
+        When you use the option to connect to a router in your laptop or smartphone,, the router assigns the computer what is 
+       called a private IP address, which is a number used to distinguish among
+        all computers using the same router, and that is used to allow the laptop to communicate exclusively with the router rather than
+        any computer in the Internet (which the computer cannot do anyways because it does not have a public IP address).
+        When the laptop wants to send something to another computer in the Internet, it first will use its private IP address
+       to communicate with the router, indicating whatever destination it wants to send data to (e.g., www.cnn.com); then, the router 
+       will send the message itself to the intended destination, by changing the private IP address to its own public IP address.
+       When the destination computer receives the message, it just sees in the source field the public IP address of the router; and thus, whatever it
+       sends back (for example, a HTML file) gets sent to the router; then, when it reaches the router, the router sends it back to
+       the computer that is the real destination. This is an exact equivalent to the forwarding process used in the traditional postal system.
+       Importantly, as the laptop does not have a public IP address, the rest of the Internet does not have
+        any way to initiate communications with the laptop, because the laptop does not have a public IP address (i.e., how would you sent a letter to somebody that has no postal address?); 
+       instead, it is the laptop the one that has to initiate communications with other computers in the Internet, in order to ask the router
+       to forward its message to a given destination and to give it back whatever comes as a response.
+       In order to observe which public IP address the router has,
         you can search in Google "what is my IP address" or something similar. That website will simply look at the public IP address
         written in the message that it is receiving in that request (which will be the router one, if the user computer does not have
         a public IP address, or the computer IP address, if the computer has one).
