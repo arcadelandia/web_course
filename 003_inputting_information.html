@@ -73,7 +73,11 @@ The HTML tag that creates a form is <b>form</b>. It usually contains one or more
   information in a database rather than store the search term itself, like Google Search does); this is controlled by an attribute 
   called "method" in the opening tag of the form: it can have a value of "post" if we
   want the server to store the info provided in the form; otherwise, we use a value of "get"
-  if the info should just be processed but not necessarily stored. 
+  if the info should just be processed but not necessarily stored; if the form contains a password field,
+  we should use post because get sunmissions are stored by
+  the browser jointly with the sent information, so
+  it can be stolen latrr if somebody gains access to our
+  browsing history.
   The most common case is that we want to store that data, so
   we will typically use "post". In our previous example, we are indicating that we want
   to store that information.
